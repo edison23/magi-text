@@ -1,0 +1,49 @@
+struktura magi
+
+Teoretická část
+	Wordnet
+		Koncept Wordnetu
+			- podobnost s thesaurem
+		Motivace pro WN oproti běžným slovníkům
+			- nevhodnost klasických slovníků pro NLP
+		Princetonský Wordnet
+			Struktura hesel
+			Sémantické vztahy ve WN
+		Neanglické Wordnety (Euronet, Balkanet, ...)
+			Odlišnosti struktury a sémantických vztahů
+	
+	Vyuziti WN
+		Rozsirovani search queries
+		Disambiguace
+		Vyuka
+
+	Rozhrani k WN
+
+
+Struktura
+
+Teoreticka cast
+	Wordnet
+		Koncept Wordnetu
+			- podobnost s thesaurem
+		Struktura
+			- synsety, linkovani synsetu sem. vztahy
+			- rozdil mezi subst., slovesy, ...
+			- jednotlive vztahy
+			- rozdily ve vztazich mezi jazyky
+			- SUMO? (Suggested Upper Merged Ontology)
+		Dalsi jazyky ve WN
+			- zaklad: princeton
+			- euronet, balkanet
+			- proc je cs v balkanetu
+	
+	Vyuziti WN
+		Rozsirovani search queries
+		Disambiguace
+		Vyuka
+
+	Rozhrani k WN
+
+
+
+Prakticka cast

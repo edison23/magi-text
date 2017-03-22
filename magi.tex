@@ -1,0 +1,69 @@
+\documentclass[a4paper, 11pt, oneside]{book}
+\usepackage{fontspec}
+\usepackage{lmodern}
+\usepackage[czech]{babel}
+\usepackage{csquotes}
+\usepackage{url}
+\usepackage{todonotes}
+\usepackage{xunicode}
+
+
+\usepackage[
+   backend=biber
+  ,style=iso-authoryear
+  ,sortlocale=cs_CZ
+  ,autocite=footnote
+  ,maxnames=2
+  ,minnames=1
+  ,urldate=long
+  ,spacecolon=false
+  ]
+  {biblatex}
+
+
+\addbibresource{bibliografie.bib}
+
+\newcommand{\td}[2][]{
+	{\todo[size=\footnotesize]{#2}}
+}
+
+\newcommand\ex{\textsf}
+
+\begin{document}
+
+	\part{Teoretické pojednání}
+
+	\chapter{Wordnet}
+
+		\section{Motivace vzniku}
+			Od počátků snah o zpracování přirozeného jazyka (NLP, natural language processing) bylo nutné poskytnout programu data o lexiku ve zpracovávaném textu, ať už ona data byla jakákoliv. Kupříkladu pro překlad se mělo za to, že stačí ekvivalentní dvojice ve zdrojovém a cílovém jazyce, později se přidal kontext v případě statistického strojového překladu spolu s dalšími informacemi, jako je například slovní druh. Tradičně se lexikální materiál ukládá způsobem nikoliv diametrálně odlišným od papírových slovníků určených pro lidské uživatele. Ty obvykle obsahují abecenedně (či podle jiného indexu \td{cit?}) seřazené jednotlivé záznamy s potřebnými informacemi o slovech, z nichž pak program může čerpat při zpracování textu.
+
+			Jak uvádí \textcite{pala2013vceska}, uspořádání lexikálního materiálu v takovéto formě je sice vhodné pro člověka, ale nikoliv pro strojové zpracování, a to z několika důvodů. Kromě toho, že vyhledávání v abecedním seznamu je relativně pomalé \td{nejaka citace?, dohledat neco, jak takovy slovniky byly ulozeny...}, struktura tradičního slovníku kvůli onomu abecednímu řazení inherentně vzdaluje slova, jež člověk chápe jako nějakým způsobem blízká. Tato blízkost může vyplývat ze vztahu volné synonymie, antonymie, podřazenosti, nadřazenosti, etc. Pokud si tedy například uživatel výkladového slovníku nepříliš obeznámený s daným jazykem vyhledá určité heslo, dozví se sice pravděpodobně jeho význam, ale nebude schopen své znalosti prohlubovat dále zjištěním, kupříkladu jaké je slovo odpovídá opačnému významu.
+
+			Dalším všeobecným problémem při využití tradičních slovníků k počítačovému zpracování jazyka je fakt, že lexikografové předpokládají u uživatele slovníku značné encyklopedické znalosti. Zařazují tak do slovníku jen informace dle jejich názoru důležité pro rozlišení (differentia specifica) a zařazující do kontextu či přiřazující k určité nadřazené třídě objektů (genus proximum). Vyhledá-li si tedy člověk ve Slovníku spisovného jazyka českého\td{citace} heslo \ex{vlk}, zjistí následující:
+
+			\ex{\textbf{vlk: } psovitá šelma šedě (n. šedožlutě) zbarvená, žijící v Evropě, Asii a v Sev. Americe}
+
+			Definice a priori předpokládá, že uživatel je obeznámen s tím, co je \ex{šelma} a co je \ex{pes}. Pokud takovou znalostí neslyne (což je vcelku představitelné například u cizince), je nucen si tato slova ve slovníku najít a podívat se na jejich definice (pomiňme nyní netriviální úkol převést slovo \ex{psovitá} na základní tvar \ex{pes}). Pokud nerozumí definicím ani nadřazených slov, musí pokračovat v hierarchii dále a dále. 
+
+			Z uvedeného případu plyne, že jakkoliv je možné správným vyhledáváním hyperonym\footnote{nadřazené slovo} dospět k tomu, že \ex{vlk} je \parencite{neverilovaulipova2014} konkrétní entita našeho vesmíru, živá bytost o čtyřech končetinách, savec nějakým způsobem přibuzný se psovi, má šedou srst etc., je takový proces dosti komplikovaný. Případ s cizincem se sice nemusí zdát zcela relevantní, protože se dá předpokladat, že daný člověk má, byť v jiném jazyce, stejné základní znalosti předpokládané lexikografy jako člověk český. Situace je však dramaticky jiná u počítače. Na rozdíl od člověka totiž počítač nemá žádné předchozí znalosti, tudíž musí projít celým procesem popsaným výše, aby byl schopen kupříkladu určit, že \ex{vlk} může umřít (ježto je živá bytost). Protože však tradiční slovníky typu SSJČ byly vytvářené pro papírové médium, neobsahují žádné propojení ve stylu \textit{toto je odkaz na hyperonymum}, a počítač tudíž jen těžko může zjišťovat, na které vlastně slovo se to má podívat, aby se dobral podstaty pojmu \ex{vlk}.
+
+			% \subsection{Strojově čitelné slovníky}
+
+			V zájmu automatizace vyhledávání ve slovníku vznikaly tzv. strojově čitelné slovníky\footnote{machine readable dictionary}, což je pojem souhrnně označující lexikální databáze. Podle množství informací, které taková databáze obsahuje, pak lze tyto dělit na slovníky, taxonomie a ontologie. Je evidentní, že obyčejný slovník neobsahuje oproti tradičnímu papírovému slovníku navíc žádné metainformace, takže je počítač při jeho užívání v podstatě omezen na elektronický listovač \parencite{miller1990introduction}. 
+
+			Naznačeny tedy byla jedna klíčová vlastnost, kterou databáze významů musí oproti tradičnímu slovníku mít, aby byla použitelná pro počítačové zpracování přirozeného jazyka. Jsou jí pojmenované sémantické vztahy mezi slovy. Díky nim je totiž možno jednoznačně určit, které slovo (či slova) je v takové databázi konkrétnímu slovu nadřazené, které je jeho specifikací, označením jeho částí, etc. S touto myšlenkou tedy vznikl Wordnet - lexikální síť provázaná sémantickými vztahy obsahující vedle vztahů ještě definice slov a jejich metainformace (například slovní druh). \parencite{pala2013vceska}
+
+		
+		\section{Historie Wordnetu}
+
+
+
+
+	% \begin{spacing}{1.05}
+	\printbibliography[title={Seznam literatury}]
+	% \end{spacing}
+
+	\addcontentsline{toc}{chapter}{Seznam literatury}
+
+\end{document}
