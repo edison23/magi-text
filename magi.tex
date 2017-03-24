@@ -109,7 +109,29 @@
 
 				\subsubsection{Synonymie}
 
-					
+					Synonymie je centrálním stavebním prvkem WordNetu, čehož má šanci si všimnou každý běžný uživatel. Na praktických aplikacích je tento jev nejlépe pozorovatelný, jelikož při vyhledání konkrétní formy je uživateli obvykle nabídnut výběr z jednotlivých významů dané formy. Aby byly od sebe významy oné formy odlišitelné, nabídka běžně sestává z výpisu skupin forem (tzv. synsetů, o tom později), přičemž každá skupina náleží k jednomu významu a obsahuje formy danému významu přiřazené. Kupříkladu při vyhledání slova \ex{kolo} tak je uživatel konfrontován s několika skupinami, které obsahují zhruba následující:
+
+					\begin{itemize}
+						\item \ex{kolo (1)},
+						\item \ex{jízdní kolo (1), bicykl (1), kolo (2)},
+						\item \ex{kružnice (1), cívka (1), kolo (3)},
+					\end{itemize}
+
+					přičemž čísla (zde) v závorce značí index významu dané formy v daném synsetu. Reprezentace v různých aplikacích a různých wordnetech se liší (standardem bývá číslo významu psát za dvojtečku), koncept však zůstává neměnný. 
+
+					Navzdory zdánilivé jednoduchosti výše uvedeného konceptu je všeobecnou otázkou, jak synonymii pojímat. Striktní teorie (obvykle připisovaná Leibnizovi) praví, že dvě slova jsou synonymní, pokud se jejich záměnou nikdy nezmění pravdivostní hodnota výroku. Lingvistickou interpretací tohoto poněkud matematicko-logického výroku může pak být, že synonymní dvě slova jsou v případě, že se jejich záměnou nikdy neporuší význam (zhruba ona pravdivostní hodnota) a gramatičnost výroku. Je nasnadě, že takto striktně synonymní slova budou pospolu v jazyce těžko přežívat, jelikož je dokázáno, že jazyk tíhne k ekonomičnosti, která by takovým soužitím dvou slov byla hrubě porušena. Pravděpodobně jedinými obecně uznávanými synonymy jsou obvykle dvojice cizího slova a domácího slova, například \ex{internacionální} a \ex{mezinárodní}. S relativně vysokou jistotou lze tvrdit, že jejich záměnou se nikdy pravdivostní hodnota výroku nezmění, stejně tak jako jeho gramatičnost. Stále však zůstává ve hře stylistika, která může být podobnou náhradou narušena (např. z důvodu cílové skupiny čtenářů či stylistické příznakovosti jednoho ze slov (srov. \ex{zajímavý} a \ex{interesantní})). Co se tendence k ekonomičnosti jazyka týče, lze předpokládat, že v těchto případech převládá potřeba synonym k eliminaci opakování určitých slov v textu a tím zajištění jeho stylistické uhlazenosti. 
+
+					Volnější interpretace synonymie také počítá s kontextem. Dvě slova jsou synonymní, jsou-li bez způsobení škod nahraditelná alespoň ve stejném kontextu. Jako příklad mohou posloužit formy \ex{board} a \ex{plank}\td{najit ceske priklady}. V kontextu dřevařství mohou tyto dvě formy pravděpodobně bez problému být nahrazeny jedna za druhou, ovšem v případě, že je forma \ex{board} použita ve významu \ex{comittee}, těžko ji lze nahradit za formu \ex{plank}, neboť by se věta obsahující takové nahrazení stala zcela nesmyslnou.
+
+					Bylo by nanejvýš logické považovat synonymii za vztah diskrétní, tedy že dvě formy buďto synonymní jsou, či nejsou. Z logického hlediska to nepochybně z již uvedeného vyplývá, ovšem lingvisticko-filosofický náhled výcházející z poznatků reálného jazyka se na tuto problematiku poněkud liší. Jak bylo dokázáno, synonymie v striktním slova smyslu je velice vzácná. Její volnější interpretace je značně častější, ale také výrazně vágnější -- kontext, v němž dvě formy synonymní jsou může být velmi široký, či naopak velice úzký. Záměna některých dvojic (obecně n-tic, lze ale předpokládat, že mnoho forem nebude mít dvě další synonymní) může měnit stylistiku a význam výpovědi více či méně, přičemž ony dvě formy stále dle daných kritérií lze považovat za synonymní. Nelze tedy než vyvodit, že synonymie, minimálně z pohledu přirozeného jazyka, je jevem graduálním, a některé formy jsou tak \textit{synonymnější} než jiné.
+
+					Zaměnitelnost forem podporuje ještě jeden koncept, na němž je WordNet postaven, a to fakt, že jednotlivé významy jsou seskupovány podle slovních druhů. Jak již bylo řečeno, tento systém vede k jisté redundantnosti, jelikož zvláště v syntetických\td{check, nekecam?} jazycích, jako je kupříkladu angličtina, lze nalézt mnoho případů, kdy identická slovní forma zastupuje více slovních druhů. Významy, které taková slovní forma zastupuje (napříč slovními druhy), mohou být velice blízké, nikdy však nebudou stejné (nelze říci, že význam slovesa \ex{run}\footnote{běžet} a substantiva \ex{run}\footnote{běh} je identický). Jejich záměnou by se sice nestalo vůbec nic, jelikož čtenář či posluchač textu, v němž taková záměna nastala, by automaticky formu interpretoval ve prospěch správného slovního druhu, avšak pokud by slovní druh byl nějakým způsobem \uv{vynucen} (nechť nyní čtenář pomine úvahy, jakým způsobem lze \uv{vynutit} slovní druh formy), stala by se výpověď zcela negramatickou a nesmyslnou. 
+
+					Seskupování významů podle slovních druhů a seskupování forem dle vztahu synonymie se tedy zdá v případě lexikální databáze určené pro strojové zpracování jako vhodným konceptem. Oproti tradičním slovníkům se totiž počítačově zpracovávaná lexikální databáze nemusí potýkat s problémem lidského faktoru -- jednotlivé synonymické řady je stroj schopen prohledávat, na rozdíl od člověka, velice účině, a nahradí tak v případě, že WordNet používá člověk, neúčinné lidské procházení restříkového obsahu.
+
+
+
+					% centralni jednotka WN, davalo by smysl rozlisovat syn. mezi formami a mezi vyznamy, ale pro technickou jednoduchost se to nedela; je to symetricka relace a pokud jsou ji spojeny vyznamy, pak i jejich formy; zamenitelnost - silna: zamenou se nemeni pravdivost vyroku, slabsi: podle kontextu - vyznam se v kontextu zamenou nezmeni (plank × board); z toho plyne nutnost redundance slovnich druhu (show a show nelze zamenit); z log. hlediska diskretni (bud slova syn. jsou ci ne), ale z lingv./fil. hlediska gradient - nektere dvojice jsou syn~ctejsi nez jine- porad je to ale reflexivni; 
 
 
 	% \begin{spacing}{1.05}

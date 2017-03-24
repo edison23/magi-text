@@ -18,6 +18,7 @@ Teoretická část
 		Vyuka
 
 	Rozhrani k WN
+		Prehled a proc jsou napycu
 
 
 Struktura
