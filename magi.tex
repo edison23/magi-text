@@ -27,14 +27,26 @@
 	{\todo[size=\footnotesize]{#2}}
 }
 
+\author{edík}
+\title{Magi}
+
 \newcommand\ex{\textsf}
 
 \begin{document}
 
+	\maketitle
+
+	\newpage
+
+	\tableofcontents
+
+	\newpage
+
 	\part{Teoretické pojednání}
 
-	\chapter{Princetonský WordNet}
-
+	\chapter{Princetonský WordNet} % (fold)
+	\label{cha:princeton_wn}
+	
 		Princetonský WordNet je prvním wordnet vůbec. Vznikal na univerzite v Princetonu pod G. A. Millerem od poloviny 80. let 20. století. Vzhledem k tomu, že byl prvním wordnetem, bylo k němu referováno jako k WordNetu, bez přívlastku. Ačkoliv tento stav v podstatě přetrvává dodnes, oproti době jeho vzniku se situace změnila, vzniklo několik dalších wordnetů a nastala tudíž potřeba je rozlišit. V anglickém prostředí se obvykle pojmem WordNet míní ten princetonský a všechny ostatní wordnety mají přívlastek. Příkladem nechť je Balkanet či Eurowordnet. Ačkoliv v mezinárodním prostředí je obvyklé přívlastek \uv{princetonský} používat, bude tato práce pracovat s následujícím rozlišením:\td{a samozrejme bych to actually mohl dodrzovat, tohle jsem si vymyslel az po napsani tehle kapitoly, lol}
 
 		\begin{itemize}
@@ -97,19 +109,30 @@
 		% 	- As of November 2012 WordNet's latest Online-version is 3.1.
 
 
-			\subsection{Sémantické vztahy WordNetu}
+		\section{Sémantické vztahy WordNetu}
 
-				Jak bylo naznačeno výše, koncept WordNetu je založen na lexikální sémantice, tedy představě, že slovo je kombinací slovní formy a významu, nebo slovního významu. Slovní forma je projevem \uv{fyzickým}, tedy je to vyřčená či napsaná instance významu. Jak je zjevné z přirozeného jazyka, nelze počítat s tím, že by zobrazení významu na formu bylo bijektivní, tedy každý význam byl namapován jedna ku jedné na slovní formu. Mapování je v přirozeném jazyce tzv. více ku více, tedy jedna forma může zastupovat více významů a jeden význam může být vyjádřen více formami. Je velmi časté, že jedna slovní forma zastupuje více významů. Kupříkladu slovní forma \ex{koruna} může zastupovat význam měny, vrcholku stromu, vladařského odznaku, etc. Toto zobrazení se nazývá homonymií\footnote{totožnost formy}. Možný je samozřejmě i opačný případ, kdy více významům slouží k vyjádření jedna slovní forma, což je nazýváno polysémií\footnote{víceznačností}. Příkladem může být forma \ex{kolej}, již lze interpretovat jako referenci k stopě po voze, případně dvojici kolejnic jako vodící dráze pro dopravní prostředky\td{cit. SSJC} a zároveň jako zařízení vysoké školy pro ubytování studentů.\td{cit SSJC}
+			Jak bylo naznačeno výše, koncept WordNetu je založen na lexikální sémantice, tedy představě, že slovo je kombinací slovní formy a významu, nebo slovního významu. Slovní forma je projevem \uv{fyzickým}, tedy je to vyřčená či napsaná instance významu. Jak je zjevné z přirozeného jazyka, nelze počítat s tím, že by zobrazení významu na formu bylo bijektivní, tedy každý význam byl namapován jedna ku jedné na slovní formu. Mapování je v přirozeném jazyce tzv. více ku více, tedy jedna forma může zastupovat více významů a jeden význam může být vyjádřen více formami. Je velmi časté, že jedna slovní forma zastupuje více významů. Kupříkladu slovní forma \ex{koruna} může zastupovat význam měny, vrcholku stromu, vladařského odznaku, etc. Toto zobrazení se nazývá homonymií\footnote{totožnost formy}. Možný je samozřejmě i opačný případ, kdy více významům slouží k vyjádření jedna slovní forma, což je nazýváno polysémií\footnote{víceznačností}. Příkladem může být forma \ex{kolej}, již lze interpretovat jako referenci k stopě po voze, případně dvojici kolejnic jako vodící dráze pro dopravní prostředky\td{cit. SSJC} a zároveň jako zařízení vysoké školy pro ubytování studentů.\td{cit SSJC}
 
-				\textcite{miller1990introduction} popisují výše naznačené vztahy pomocí takzvané lexikální matice. Ta názorně zobrazuje formy synonymní (F_1 a F_2) a formy polysémní (F_2):
+			\textcite{miller1990introduction} popisují výše naznačené vztahy pomocí takzvané lexikální matice. Ta názorně zobrazuje formy synonymní ($F_1$ a $F_2$) a formy polysémní ($F_2$):
 
-				{\tt tabulka z miller1990introduction pg. 4: http://i.imgur.com/sohtwe5.png}
+			{\tt tabulka z miller1990introduction pg. 4: http://i.imgur.com/sohtwe5.png}
 
-				\td{tady by jeste slo pokracovat opisovanim dalsi casti toho clanku (miller1990introduction pg 5 >>>)}
+			\td{tady by jeste slo pokracovat opisovanim dalsi casti toho clanku (miller1990introduction pg 5 >>>)}
+
+			V dalších podkapitolách budou rozebrány podrobněji, nikoliv však vyčerpávajícím způsobem, sémentické vztahy konstituující Wordnet. Jelikož se sémantické vztahy pro jednotlivé slovní druhy liší, bude tato kapitola strukturována primárně právě podle slovních druhů a až sekundárně podle sémantických vztahů.
+
+			% proc musi sem. vztahy byt rozdelene podle PoS: o subst. nelze moc rikat, ze jsou antonymni, etc.., 
+
+			\subsection{Frekvenční distribuce sémantických vztahů ve WordNetu}
+
+				% nejdriv nutno zjistit, jak je to s temi vztahy ruznych slovnich druhu... jinak ta statistika nedava vuebc smysl 
+
+			\subsection{Substantiva}
+
 
 				\subsubsection{Synonymie}
 
-					Synonymie je centrálním stavebním prvkem WordNetu, čehož má šanci si všimnou každý běžný uživatel. Na praktických aplikacích je tento jev nejlépe pozorovatelný, jelikož při vyhledání konkrétní formy je uživateli obvykle nabídnut výběr z jednotlivých významů dané formy. Aby byly od sebe významy oné formy odlišitelné, nabídka běžně sestává z výpisu skupin forem (tzv. synsetů, o tom později), přičemž každá skupina náleží k jednomu významu a obsahuje formy danému významu přiřazené. Kupříkladu při vyhledání slova \ex{kolo} tak je uživatel konfrontován s několika skupinami, které obsahují zhruba následující:
+					Synonymie je centrálním organizačním vztahem pro substantiva ve WordNetu. Na praktických aplikacích je tento jev nejlépe pozorovatelný, jelikož při vyhledání konkrétní formy je uživateli obvykle nabídnut výběr z jednotlivých významů dané formy. Aby byly od sebe významy oné formy odlišitelné, nabídka běžně sestává z výpisu skupin forem (tzv. synsetů, o tom později), přičemž každá skupina náleží k jednomu významu a obsahuje formy danému významu přiřazené. Kupříkladu při vyhledání slova \ex{kolo} tak je uživatel konfrontován s několika skupinami, které obsahují zhruba následující:
 
 					\begin{itemize}
 						\item \ex{kolo (1)},
@@ -127,11 +150,26 @@
 
 					Zaměnitelnost forem podporuje ještě jeden koncept, na němž je WordNet postaven, a to fakt, že jednotlivé významy jsou seskupovány podle slovních druhů. Jak již bylo řečeno, tento systém vede k jisté redundantnosti, jelikož zvláště v syntetických\td{check, nekecam?} jazycích, jako je kupříkladu angličtina, lze nalézt mnoho případů, kdy identická slovní forma zastupuje více slovních druhů. Významy, které taková slovní forma zastupuje (napříč slovními druhy), mohou být velice blízké, nikdy však nebudou stejné (nelze říci, že význam slovesa \ex{run}\footnote{běžet} a substantiva \ex{run}\footnote{běh} je identický). Jejich záměnou by se sice nestalo vůbec nic, jelikož čtenář či posluchač textu, v němž taková záměna nastala, by automaticky formu interpretoval ve prospěch správného slovního druhu, avšak pokud by slovní druh byl nějakým způsobem \uv{vynucen} (nechť nyní čtenář pomine úvahy, jakým způsobem lze \uv{vynutit} slovní druh formy), stala by se výpověď zcela negramatickou a nesmyslnou. 
 
-					Seskupování významů podle slovních druhů a seskupování forem dle vztahu synonymie se tedy zdá v případě lexikální databáze určené pro strojové zpracování jako vhodným konceptem. Oproti tradičním slovníkům se totiž počítačově zpracovávaná lexikální databáze nemusí potýkat s problémem lidského faktoru -- jednotlivé synonymické řady je stroj schopen prohledávat, na rozdíl od člověka, velice účině, a nahradí tak v případě, že WordNet používá člověk, neúčinné lidské procházení restříkového obsahu.
-
-
+					Seskupování významů podle slovních druhů a seskupování forem dle vztahu synonymie se tedy zdá v případě lexikální databáze určené pro strojové zpracování jako vhodným konceptem. Oproti tradičním slovníkům se totiž počítačově zpracovávaná lexikální databáze nemusí potýkat s problémem lidského faktoru -- jednotlivé synonymické řady je stroj schopen prohledávat, na rozdíl od člověka, velice účině, a nahradí tak v případě, že WordNet používá člověk, neúčinné lidské procházení restříkového obsahu.\td{psano v chvatu, mohlo by se to mozna trochu uhladit...}
 
 					% centralni jednotka WN, davalo by smysl rozlisovat syn. mezi formami a mezi vyznamy, ale pro technickou jednoduchost se to nedela; je to symetricka relace a pokud jsou ji spojeny vyznamy, pak i jejich formy; zamenitelnost - silna: zamenou se nemeni pravdivost vyroku, slabsi: podle kontextu - vyznam se v kontextu zamenou nezmeni (plank × board); z toho plyne nutnost redundance slovnich druhu (show a show nelze zamenit); z log. hlediska diskretni (bud slova syn. jsou ci ne), ale z lingv./fil. hlediska gradient - nektere dvojice jsou syn~ctejsi nez jine- porad je to ale reflexivni; 
+				
+			% slovesa nemaji meronymii, ale has_a relation -- entailment
+
+			\subsection{Antonymie}
+
+				% tak jaky tam vlastne jsou vztahy? jsou deleny pro PoS, ci nikoliv?
+	% chapter princeton_wn (end)
+
+	\chapter{Další wordnety} % (fold)
+	\label{cha:dalsi_wordnety}
+	
+		Podle vzoru princetonského WordNetu začaly postupně vznikat i další sémantické sítě založené na stejném konceptu. Tyto sémantické sítě se samozřejmě svou strukturou do menší či větší míry liší\td{nakou kurva citaci}, hlavním kritériem pro to, aby mohly být považovány za wordnet je to, aby obsahovaly synsety a hyponyma\td{http://globalwordnet.org/wordnets-in-the-world/}. Jelikož se tato práce bude primárně zabývat wordnetem českým, bude pro srovnání uvádět dva hlavní evropské vícejazyčené wordnety, a to Eurowordnet a Balkanet. 
+		
+
+	% chapter dalsi_wordnety (end)
+
+
 
 
 	% \begin{spacing}{1.05}
