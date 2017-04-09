@@ -7,8 +7,16 @@ Teoretická část
 		Motivace pro WN oproti běžným slovníkům
 			- nevhodnost klasických slovníků pro NLP
 		Princetonský Wordnet
+			Organizace
+				vztahy
+					*semant., lex.
+					frekvence vztahu
+				hierachizace slovni zasoby
+				substantiva
+					synonymie/anonym
+					hypero/hypo/mero...
 			Struktura hesel
-			Sémantické vztahy ve WN
+			Sémantické vztahy ve WN --^
 		Neanglické Wordnety (Euronet, Balkanet, ...)
 			Odlišnosti struktury a sémantických vztahů
 	

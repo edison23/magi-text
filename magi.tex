@@ -8,6 +8,7 @@
 \usepackage{todonotes}
 \usepackage{xunicode}
 \usepackage{graphicx}
+\usepackage{tikz-qtree}
 \graphicspath{ {imgs/} }
 
 \usepackage[
@@ -26,7 +27,7 @@
 \addbibresource{bibliografie.bib}
 
 \newcommand{\td}[2][]{
-	{\todo[size=\footnotesize]{#2}}
+	{\hskip -0.5em\todo[size=\footnotesize]{#2}}
 }
 
 \author{edík}
@@ -113,8 +114,11 @@
 			Ačkoliv není zřejmé, jak je znalost o slovním druhu určitého slova získávána, lze z uvedených dat předpokládat, že slovní druh je vskutku primární organizační vlastností lexikálního materiálu v lidském mozku a informace o něm je snadno dostupná (alespoň intuitivně). Jelikož správné tvoření vět vyžaduje alespoň intuitivní povědomí o tom, které slovo náleží ke které syntaktické kategorii, není s podivem, že tato informace je dostupná lidskému uvažování velmi jednoduše. Jelikož se však slova stejného slovního druhu příliš často nevyskytují pohromadě, není evidentní, jak tyto znalosti člověk získává. \parencite{fillenbaum1965grammatical, miller1990introduction}
 
 			\subsection{Synsety a vztahy mezi nimi}
+			\label{cha:princeton-synset-rels}
 
-				Slova (slovní formy) jsou ve WordNetu seskupována podle svého významu a slovního druhu, k němuž náležejí. Takové řadě slov se v terminologii WordNetu říká synset (synonym set), neboli synonymická řada. 
+				% do vztahu by slo zaradit neco o vztazich obecne - Semantic Relations and the Lexicon (M. Lynne Murphy) - 
+
+				Slova (slovní formy) jsou ve WordNetu seskupována podle svého významu a slovního druhu, k němuž náležejí. Takové řadě slov se v terminologii WordNetu říká synset (synonym set), neboli synonymická řada. Každý synset reprezentuje jeden význam, ale je nutno mít na paměti, že granularita synsetů nemusí být konsistentní a v podstatě záleží na tom, jak si tvůrci zadefinovali synonymum (více v kap. \ref{cha:synon} na straně \pageref{cha:synon}).
 
 				Aby bylo možno WordNet použít k inferenčnímu vyvozování závěrů (získávání informací) o slovech, a to strojově, což znamená bez nutnosti mít jakékoliv předchozí encyklopedické znalosti, které má obvykle uživatel tradičního slovníku k disposici, jsou synsety ve WordNetu propojeny vztahy, z nichž je zřejmé, jakou informaci inferenční stroj získá, přejde-li po onom vztahu k dalšímu konceptu. 
 
@@ -167,7 +171,9 @@
 
 				% nejdriv nutno zjistit, jak je to s temi vztahy ruznych slovnich druhu... jinak ta statistika nedava vuebc smysl 
 
-			V této kapitole budou podrobněji rozebrány sémantické vztahy konstituující WordNet. Struktura těchto vztahů není, jak by se na první pohled mohlo zdát, plochá, ale organizovaná podle syntaktické kategorie významů, jež jsou jimi propojeny. Substantiva mají své vlastní vztahy, stejně tak adjektiva, verba a adverbia. Pojmenování těchto vztahů vychází z lingvistických termínu k nim relevantních (např. \ex{hyperonymie}) a v některých pojmenování některých se napříč různými syntaktickými kategoriemi překrývá, ačkoliv jde o vztahy různé. Například angl. sloveso \ex{run}\footnote{čes. \ex{běžet}} má ve WordNetu jako \ex{hyperonymum} uveden synset s významem \ex{pohybovat se velmi rychle} obsahující slovesa \ex{travel rapidly, speed, hurry, zip}\footnote{čes. \ex{cestovat rychle, uhánět, ...}}. Je evidentní, že tento vztah hyperonymie není identický se vztahem hyperonymie u substantiv, kde \ex{house}\footnote{čes. \ex{dům}} má jako přímé hyperonymum uveden synset \ex{building, edifice}\footnote{čes. \ex{stavba}}. Z činnosti \ex{běžet} vyplývá činnost \ex{rychle se pohybovat}, ale \ex{budova} je pro \ex{dům} nadřazenou třídou. Jde tedy o vztah nikoliv nepodobný, ale ne identický. \td{cit wordnet 3.1 a mozna jeste neco...}
+			V této kapitole budou podrobněji rozebrány sémantické vztahy konstituující WordNet. Sémantické vztahy jsou, na rozdíl od vztahů lexikálních, které jsou vztahy mezi slovními formami, vztahy mezi koncepty (významy). Rozdíl nejlépe ilustruje protipříklad. Synonymie je typickým vztahem lexikálním; kdyby byla vztahem sémantickým, znamenalo by to, že dva různé významy (koncepty) mají stejný význam, což je nesmysl, jelikož v tom případě to nejsou dva významy, ale jeden. 
+
+			Struktura těchto vztahů není, jak by se na první pohled mohlo zdát, plochá, ale organizovaná podle syntaktické kategorie významů, jež jsou jimi propojeny. Substantiva mají své vlastní vztahy, stejně tak adjektiva, verba a adverbia. Pojmenování těchto vztahů vychází z lingvistických termínu k nim relevantních (např. \ex{hyperonymie}) a v některých pojmenování některých se napříč různými syntaktickými kategoriemi překrývá, ačkoliv jde o vztahy různé. Například angl. sloveso \ex{run}\footnote{čes. \ex{běžet}} má ve WordNetu jako \ex{hyperonymum} uveden synset s významem \ex{pohybovat se velmi rychle} obsahující slovesa \ex{travel rapidly, speed, hurry, zip}\footnote{čes. \ex{cestovat rychle, uhánět, ...}}. Je evidentní, že tento vztah hyperonymie není identický se vztahem hyperonymie u substantiv, kde \ex{house}\footnote{čes. \ex{dům}} má jako přímé hyperonymum uveden synset \ex{building, edifice}\footnote{čes. \ex{stavba}}. Z činnosti \ex{běžet} vyplývá činnost \ex{rychle se pohybovat}, ale \ex{budova} je pro \ex{dům} nadřazenou třídou. Jde tedy o vztah nikoliv nepodobný, ale ne identický. \td{cit wordnet 3.1 a mozna jeste neco...}
 
 			% Tato kapitola tedy bude primárně organizována podle slovních druhů a sekundárně podle jednotlivých sémantických vztahů.
 
@@ -180,17 +186,19 @@
 
 			\subsection{Meronymie a holonymie}
 
-				Meronymie (a k ní komplementární vztah holonymie) jsou, navzdory nepříliš rozšířenému názvosloví, dalším vztahem, jenž je pro uživatele jazyka intuitivní a známý. Jde o vztah \textit{být částí}, potažmo \textit{mít část}. Meronymie je definována tak, že A je meronymem B, pokud A je částí B. Meronymie je vztahem stejně jako hyperonymie transitivním a asymetrickým.\parencite{cruse1986lexical}\td{cit Cruse, 1986, ale vubec tomu nerozumim... http://i.imgur.com/h6NcRVJ.png}
+				Meronymie (a k ní komplementární vztah holonymie) jsou, navzdory nepříliš rozšířenému názvosloví, dalším vztahem, jenž je pro uživatele jazyka intuitivní a známý. Jde o vztah \textit{být částí}, potažmo \textit{mít část}. Meronymie je definována tak, že A je meronymem B, pokud A je částí B. Meronymie je vztahem stejně jako hyperonymie transitivním a asymetrickým.\parencite{cruse1986lexical}\td{cit Cruse, 1986, ale vubec tomu nerozumim... http://i.imgur.com/h6NcRVJ.png} Tento vztah také hierarchizuje lexikum do určitých úrovní, ale na rozdíl od vztahu nadřazenosti, v nemž obvykle jeden význam mívá jeden až dva nadřazené významy, u vztahu části a celku by byla situace složitější. Je totiž na snadě, že jeden význam může být meronymem mnoha holonymům -- kupříkladu \ex{dveře} jsou meronymem u \ex{dům}, \ex{auto}, \ex{šatník}, občas \ex{počítačová skříň}, etc. 
+
+				Vztah části a celku je vlastní výhradně substantivům.
+
+			% jeste slovesa - entailment a cause (buy:pay, kill:die)
 
 
 		\section{Lexikální vztahy ve Wordnetu}
 
-			Lexikální vztahy jsou, na rozdíl od vztahů sémantických, které jsou vztahy mezi významy (koncepty), vztahy mezi slovními formami. Rozdíl nejlépe ilustruje protipříklad -- kdyby synonymie byla vztahem sémantickým, znamenalo by to, že dva různé významy (koncepty) mají stejný význam, což je nesmysl, jelikož v tom případě to nejsou dva významy, ale jeden. 
-
 			\subsection{Synonymie}
 			\label{cha:synon}
 
-				Synonymie je centrálním organizačním vztahem pro substantiva ve WordNetu. Na praktických aplikacích je tento jev nejlépe pozorovatelný, jelikož při vyhledání konkrétní formy je uživateli obvykle nabídnut výběr z jednotlivých významů dané formy. Aby byly od sebe významy oné formy odlišitelné, nabídka běžně se obvykle sestává ze seznamu skupin slovních forem náležejících do nalezených synsetů\footnote{\url{https://www.englishforums.com/English/AdjectiveSatellite/nwzhv/post.htm#1126701}} Kupříkladu při vyhledání slova \ex{kolo} v českém wordnetu tak je uživatel konfrontován s několika skupinami, které obsahují zhruba následující:
+				Synonymie je základním definičním vztahem pro synsety ve WordNetu. Na praktických aplikacích je tento jev nejlépe pozorovatelný, jelikož při vyhledání konkrétní formy je uživateli obvykle nabídnut výběr z jednotlivých významů dané formy. Aby byly od sebe významy oné formy odlišitelné, nabídka běžně se obvykle sestává ze seznamu skupin slovních forem náležejících do nalezených synsetů\footnote{\url{https://www.englishforums.com/English/AdjectiveSatellite/nwzhv/post.htm#1126701}} Kupříkladu při vyhledání slova \ex{kolo} v českém wordnetu tak je uživatel konfrontován s několika skupinami, které obsahují zhruba následující:
 
 				\begin{itemize}
 					\item \ex{kolo (1)},
@@ -238,24 +246,97 @@
 				% tak jaky tam vlastne jsou vztahy? jsou deleny pro PoS, ci nikoliv?
 	% chapter princeton_wn (end)
 
-	\chapter{Další wordnety} % (fold)
+	\chapter{Další wordnety}
 	\label{cha:dalsi_wordnety}
+
+		% base concept 
+			% - koncept, kterej je co nejvys v sem. hierarchii a ma spoustu vztahu na dalsi koncepty (ale proc?)
+			% - universalita: 
 	
 		Podle vzoru princetonského WordNetu začaly postupně vznikat i další sémantické sítě založené na stejném konceptu. Tyto sémantické sítě se samozřejmě svou strukturou do větší či menší míry liší\td{nakou kurva citaci}, hlavním kritériem pro to, aby mohly být považovány za wordnet, je to, aby obsahovaly synsety a hyponyma\td{http://globalwordnet.org/wordnets-in-the-world/}. % Jelikož se tato práce bude primárně zabývat wordnetem českým, bude pro srovnání uvádět dva hlavní evropské vícejazyčené wordnety, a to Eurowordnet a Balkanet. 
 
 		\section{EuroWordNet} % (fold)
 		\label{sec:eurowordnet}
-		
-		% section eurowordnet (end)
+			
+			% motivace - aby bylo mozny delat nfo retrieval, search queries augment
+			% prolinkovani s PWN1.5 pomoci ILI - interlingual index
+				% plochy, aby nereflektoval organizaci nejakeho konkretniho WN
+			% odlisne vztahy od PWN
+
+			EuroWordNet je mezinárodní lexikální databáze pro osm evropských jazyků (angličtina, čeština, dánština, francouzština, italština, němčina, španělština). Jde o soubor jednotlivých národních wordnetů, které jsou propojeny takzvaným mezijazykovým indexem (ILI, \textit{inter-lingual-index}). Obecně jsou wordnety Eurowordnetu založené svou strukturou na princetonském WordNetu (verze 1.5), ale z důvodu různorodosti jazyků se v některých aspektech od něj odlišují.
+
+			Základní motivací pro vznik EuroWordNetu byla evropská jazyková různorodost a z ní pramenící problémy ve zpracování dat a napomáhání uživateli v přístupu k neanglickým datům. Vossel 1999 (Vossen-Eurowordnet.pdf, pg XX) argumentuje, že uživatel musí umět anglicky a být obeznámen s tím, jak je zdroj, v němž vyhledává napsán, aby byl schopen v něm účinně hledat. Vytvořením wordnetů pro jiné jazyky si slibuje, že se zlepší možnost přístupu uživatelů k neanglickým datům, možnosti inference znalostí z těchto dat a případně i mezijazykové vyhledávání. Poslední je založeno na faktu, že od počátku byly jednotlivé wordnety EuroWordNetu vytvářeny s tím, že budou propojeny na základě základních konceptů (BCS, \textit{Base Concepts}\td{rikam to dobre? vubec jim nerozumim}) a mezijazykového indexu.
+
+			Jelikož se jednotlivé jazyky zapojené v projektu EuroWordNetu značně odlišují ve struktuře své slovní zásoby, jsou jednotlivé wordnety nezávislé. To znamená, že se mohou odlišovat například svou hierarchizací. Stejný koncept tak může ve dvou různých wordnetech mít různá hyperonyma, meronyma, etc., protože například anglické označení pro prst je odlišené, pokud jde o prst na noze (\ex{toe}), či na ruce (\ex{finger}). Podobně má v jiném příkladu dánština odlišené označení hlavy u zvířat vyjma koní, tedy \ex{kof}, a hlavy lidské a koňské (\ex{hoofd})\td{nekde jsem to cetl, ale nemuzu to dohledat (a slovnik to popira, tak to mozna bude jiny jazyk... dunno, TB fixed}.
+
+			Národní wordnety jsou vzájemně propojené přes mezijazykový index s anglickým wordnetem, který je obsahově založený na princetonském WordNetu, ale není identický. Anglický wordnet v EuroWordNetu byl přizpůsoben strukturně tak, aby byl použitelný v EuroWordNetu. V národních wordnetech existuje několik druhů konceptů, které jsou rozlišeny podle příbuznosti s koncepty v ostatních národních wordnetech. Pokud je koncept přítomen ve všech wordnetech EuroWordNetu, jde o koncept tzv. \textit{Global Base Concepts} (GBC). Koncept, jenž jen přítomen v alespoň dvou národních wordnetech je označován jako \textit{Common Base Concepts} (CBC) a v poslední řadě koncept, který se vyskytuje pouze v jednom národním wordnetu nese označení \textit{Local Base Concepts} (LBC). Propojení konceptů společných pro více jazyků je zajištěno pomocí jednotných identifikátorů a mezijazykového indexu, který je nadmnožinou všech konceptů v EuroWordNetu. ILI je hierarchicky plochá struktura (proto \textit{index}, nejde o další \uv{všejazykový wordnet}).
+
+			Jelikož v době, kdy EuroWordNetu vznikal, byl princetonský WordNet poněkud omezený mimo jiné co se vztahů mezi slovními druhy týče, vznikly pro EuroWordNet speciální vztahy umožňující úplnější práci s významy. Základní vztahy přejaté z princetonského WordNetu 1.5 jsou uvedeny v tabulce \ref{wn-rels} na straně \pageref{wn-rels}.
+
+			\begin{table}[t]
+				\centering
+				\label{wn-rels}
+				\begin{tabular}{l l l}
+				Relace                           & Slovnědruhové kombinace & Příklad                \\\hline
+				antonymie                        & A-A, V-V                & open:close             \\\hline
+				hyponymie                        & N-N, V-V                & car:vehicle, walk:move \\\hline
+				meronymie                        & N-N                     & head:nose              \\\hline
+				vyplývání\footnote{entailment} & V-V                     & buy:pay                \\\hline
+				následek                         & V-V                     & kill:die               
+				\end{tabular}
+				\caption{Vztahy přejaté z princetonského WN (N: substantivum, A: adjektivum, V: verbum)}
+			\end{table}
+
+			Navíc k těmto vztahům byly přidány štítky (\textit{labels}), jež relaci konkretizují. Byly použity následující štítky:\td{nikdy jsem to nevidel, pls je to nekde?}
+
+			\begin{itemize}
+				\item conjunction/disjunction
+				\item non-factive
+				\item reversed
+				\item negation
+			\end{itemize}
+
+			Použití konjunktivního a disjunktivního štítku spočívá v myšlence, že například u meronymie by bylo vhodné rozlišovat, zda jde o části, které dohromady tvoří celek, nebo jde o podčásti částí (např. \ex{nůž} má meronyma \ex{čepel}, \ex{rukojeť}, \ex{ostří}, ale \ex{ostří} je ve skutečnosti meronymem až \ex{rukejeti}, nikoliv přímo samotného \ex{nože}\td{vubec netusim, jestli to chapu spravne, spis mi prijde, ze ne..}). [cit Vossen-Eurowordnet.pdf, pg 5]
+
+			Štítek \textit{non-factive}\td{jak to prelozit? nezda se mi, ze by to melo s timhle cokoliv spolecneho: https://goo.gl/7Zw1SG} je používán u kauzální relace, která nemusí být nutně naplněna:
+
+				% \begin{itemize}
+				% 	\item \ex{zabít}\hskip 3em \textit{vyústí v}\hskip 3em \ex{zemřít}
+				% 	\item \ex{hledat}\hskip 3em \textit{vyústí v}\hskip 3em \ex{najít} \texttt{non-factive}
+				% \end{itemize}
+
+				\begin{table}[h]
+				\centering
+				% \caption{My caption}
+				\label{my-label}
+				\begin{tabular}{lllcc}
+					příčina	& vztah & následek & non-factive? & nutně vyplývá? \\ \hline
+					\ex{zabít}  & \textit{vyústí v} & \ex{zemřít} & – & ano                       \\
+					\ex{hledat} & \textit{vyústí v} & \ex{najít} & \texttt{non-factive} & ne
+				\end{tabular}
+				\end{table}
+
+			Podobně lze upřesnit pomocí štítků další relace tak, že jsou ve výsledku jednoznačnější a wordnet, v němž jsou takto označené obsaženy, může poskytovat více informací. 
+
+			% prostor pro rozsireni
+
+			Jako další vylepšení oproti tehdejší verzi princetonského WordNetu přinesl EuroWordNet také relace mezi slovními druhy a vztah blízkého synonyma\td{hmm, a co near antonym? to be investigated}. Argument pro zavedení mezislovnědruhových relací je relativně přímočarý, a to, že umožňují \uv{sblížit} koncepty, které jsou si příbuzné, jen náleží k jinému slovnímu druhu. Nutno podotknout, že v době psaní této práce je princetonský WordNet ve verzi 3.1 a obsahuje už relaci \ex{derivationally related form}, která zajišťuje přesně toto propojení (více o synsetech v princetonském WordNetu v kapitole \ref{cha:princeton-synset-rels} na straně \pageref{cha:princeton-synset-rels}). Co se vztahu blízkého synonyma (\ex{near antonym} týče, důvodem pro jeho zavedení byl údajně zájem mít možnost přiblížit koncepty, které jsou si významově podobné, ale pouze na své úrovni. U takových konceptů platí, že byť jejich význam je podobný, jejich hyponyma nelze zařadit pod jeden koncept, jelikož se rozdíl mezi oněmi koncepty svázanými vztahem blízkého synonyma prohlubuje. Příkladem budiž trojice nizozemských slov \ex{aparaat}, \ex{werktuig} a \ex{instrument}, jež jsou si významově nepříliš vzdálená:
+
+			\Tree[.voorwerp\\objekt 
+					[.lichaam\\tělo]
+					[.aparaat\\přístroj]
+					[.werktuig\\nástroj][.instrument\\pomůcka]
+				]
+
 		
 
 		\section{BalkaNet} % (fold)
 		\label{sec:balkanet}
 		
-		% section balkanet (end)
 
-	% chapter dalsi_wordnety (end)
-
+	% co nechapu:
+	% - adjektiva (jakysi model s kolem (stred kola nejakej core), sprinclikama k obvodu (vztahy k "satelite adjectives"), osa k dalsimu "stredu kola"... )
+	% - nevim, kde najit rozdily mezi Princeton WN verzema (1.5 vs 2.1 vs. 3.0)
 
 
 
