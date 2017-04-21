@@ -358,7 +358,7 @@
 
 	\part{Přehled a porovnání existujících vizualizací sémantických sítí}
 
-		Tato část textu bude zaměřena na zmapování existujících dostupných rozhraní a jejich zhodnocení. Výčet jednotlivých rozhraní rozhodně není vyčerpávající, jelikož některé vědecké insituce mohou vyvíjet své nástroje pro práci se sémantickými sítěmi neveřejně, některé nástroje už nejsou dostupné, etc. Nástroje pro vizualizaci dat wordnetů byly vybírány pro přehled v této práci podle několika kritérií relevantních především pro koncového uživatele, avšak i pro případné vývojáře dalších wordnetů (tedy zda dané rozhraní mohou použít pro svá data).
+		Tato část textu bude zaměřena na zmapování existujících dostupných rozhraní a jejich zhodnocení. Výčet jednotlivých rozhraní rozhodně není vyčerpávající, jelikož některé vědecké insituce mohou vyvíjet své nástroje pro práci se sémantickými sítěmi neveřejně, některé nástroje už nejsou dostupné, etc. Nástroje pro vizualizaci\footnote{Terminologická poznámka: v této práci je vizualizací dat wordnetů míněna jak textová reprezentace, tak grafická.} dat wordnetů byly vybírány pro přehled v této práci podle několika kritérií relevantních především pro koncového uživatele, avšak i pro případné vývojáře dalších wordnetů (tedy zda dané rozhraní mohou použít pro svá data).
 
 		\chapter{Metodologie porovnání}
 
@@ -386,7 +386,7 @@
 						\item GRAPH WORDS online thesaurus (\url{http://graphwords.com/})
 					\end{itemize}
 
-				Pro účely porovnání (určení východiska\td{well, baseline}) budou do popisu zahrnuta ještě dvě rozhraní, a to oficiální vyhledávací rozhraní princetonského WordNetu (\url{http://wordnetweb.princeton.edu/perl/webwn}) a slovníkové rozhraní na provozované Fakultou informatiky Masarykovy univerzity DEBDict (\url{https://deb.fi.muni.cz:8005/debdict/}).
+				Pro účely porovnání (určení východiska\td{well, baseline}) budou do popisu zahrnuta ještě jedno rozhraní, a to oficiální vyhledávací rozhraní princetonského WordNetu (\url{http://wordnetweb.princeton.edu/perl/webwn}). 
 
 			\section{Strukturalizace přehledu a kritéria hodnocení}
 
@@ -394,35 +394,85 @@
 
 				K rozdělení podle dostupnosti bylo přistoupeno jednak proto, že v době psaní této práce je pokročilost webových technologií dostatečná k tomu, aby podobné vizualizace byly tvořeny jako webové stránky, a jednak proto, že cílem této práce je vytvořit všeobecně dostupné a použitelné rozhraní k wordnetům. Všeobecně použitelným je míněna použitelnost nejen na osobních počítačích, ale také na mobilních zařízeních, což v podstatě vyřazuje použití technologií jako jsou zásuvné moduly Java používané k realizaci různých existujících rozhraním (příkladem budiž \ex{Visual Editor}). 
 
+				Rozhraní jsou hodnocena na základě několika kritérií. Cílem je porovnat jejich přínos v kontextu ostatních existujících rozhraní a v kontextu současných trendů webových aplikací a ilustrovat, s jakými problémy se všeobecně rozhraní potýkají.  Z tohoto důvodu právě nebyla do přehledu zařazována rozhraní, která se podobají svou funkcionalitou a ovládáním rozhraním již zařazeným. Kritéria hodnocení v této práci jsou následující:
+
+					\begin{itemize}
+						\item přínos oproti základnímu oficiálnímu rozhraní princetonského WordNetu
+							\begin{itemize}
+								\item originální vizualizace dat vedoucí k možnosti identifikovat trendy v datech, které zůstávají uživateli skryty případě základní textové reprezentace dat
+								\item reprezentace dat vhodnější z hlediska zásad přístupnosti webu\footnote{web accessibility}
+							\end{itemize}
+						\item responsivita rozhraní -- kvalitní použitelnost rozhraní i na zařízeních s menší obrazovkou, jako jsou mobilní zařízení typu chytrý telefon či tablet
+						\item v případě webových aplikací ukládání stavu aplikace v adresním řádku prohlížeče (umožňuje sdílení nebo založení odkazu ke konkrétnímu hledání a zachování nastavení aplikace)
+					\end{itemize}
+
 			\section{Podmínky testování}
 
 				Pro testování rozhraní, které bylo pro účely této práce provedeno, byl použit operační systém Ubuntu 16.04 LTS v 64bitové verzi, webový prohlížeč Pale Moon ve verzi 27.1.1 (rovněž 64bitový) s nastavaným uživatelským agentem na Firefox (z důvodů kompatibility). Ačkoliv se počítalo, vzhledem k nepříliš rozšířenému vykresovacímu jádru toho prohlížeče, s možnými problémy v zobrazení některých rozhraní, nebyly tyto zjištěny, a tak nebylo nutné provádět testování rozhraní ještě v dalších prohlížečích. Lze předpokládat, že v rozšířených prohlížečích, jako jsou Firefox či Chrome, budou jednotlivá rozhraní fungovat a vypada podobně, jako v prohlížeči Pale Moon.
 
-			\section{WordNet Search a DEBDict jako základ porovnání}
+				Testování na mobilním chytrém telefonu bylo prováděno na zařízení Nexus 5 (displej s úhlopříčkou 5" a rozlišením 1080 × 1920 px) s operačním systémem Android 6 v prohlížeči Chrome (sestavení 57.0). Možnost \textit{request desktop site} byla nastavena na \textit{vypnuto}.
 
-				Lorem ipsum cype.
+			\section{WordNet Search jako základ porovnání}
+			\label{wnvis:wnsearch}
+
+				Oficiální rozhraní k princetonskému WordNetu je koncipováno jako textová reprezentace dat, přičemž, byť volitelně, umožňuje zobrazovat veškeré k hledanému výrazu relevantní informace, jež WordNet obsahuje. Data jsou vizualizována jako soubor seznamů.
+
+				Po vyhledání zadaného výrazu jsou uživateli prezentovány v bodech jednotlivé synsety obsahující hledanou slovní formu rozdělené podle slovních druhů, k nimž přináležejí. V základním nastavení každý bod sestává ze slovních forem tvořících daný synset, jeho definici, případný příklad užití a odkaz na detaily synsetu. Kliknutím na tento odkaz se zobrazí v podseznamu sémantické a lexikální relace, v nichž je daný synset přítomen. Samotné relace jsou opět odkazy, jejichž otevřením je uživateli prezentován seznam synsetů, které jsou spolu s daným synsetem v dané relaci přítomny. Postupným otevíráním detailů synsetů v podseznamech se lze zanořovat hlouběji a hlouběji do struktury, resp. se ve struktuře vzdalovat původnímu synsetu po hranách relací.
+
+				Uživatel má možnosti si zvolit množství informací, jež jsou mu prezentovány, a to od úplného minima (pouze slovní formy nalezených synsetů a jejich syntaktické kategorie) až po vše, co se ve WordNetu vyskytuje, včetně identifikátorů a dalších technických detailů. Rozhraní svůj stav ukládá jako parametry URL\footnote{Uniform Resource Locator}, takže je možné jej pozdějí obnovit z adresy.
+
+				Rozhraní není responsivní, ale vzhledem k tomu, že je v základu relativně úzké (pod 700 px), je na chytrém telefonu použitelné.
+
+				\begin{figure}[h]
+					\centering
+					\includegraphics[width=0.8\textwidth]{wnsearch.png}
+					\caption{Ukázka rozhraní: WordNet Search 3.1 v základním nastavení a s otevřenými detaily synsetů}
+					\label{fig:wnsearch}
+				\end{figure}				
 
 		\chapter{Vizualizace s webovým rozhraním}
 
 			Jako bylo naznačeno v úvodu této části, vizualizací s webovým rozhraním se v této práci míní taková implementace, která ze strany uživatele nevyžaduje instalaci žádných doplňujících aplikací či aplikačních prostředí\td{lze takhle nazvat Javu?} kromě samotného webového prohlížeče.
 
 			\section{An interactive visualization of the Princeton WordNet database}
+			\label{wnvis:intviswn}
 
 				Jeden z projektů programátora jménem Mateo Gianolio z Lundské univerzity (Švédsko)\td{src: https://www.linkedin.com/in/mateo-gianolio-a89558b6/?trk=profile-badge-name}. Jde o jednoduché rozhraní napojené na princetonský WordNet, které po zadání hledaného výrazu zobrazí synsety obsahující daný výraz. Jednotlivé synsety jsou barevně odlišeny podle syntaktických kategorií (slovních druhů), k nimž náležejí, a uspořádány kruhově kolem hledaného výrazu. Z každého synsetu je vždy zobrazena jen první slovní forma. Pokud uživatel najede kursorem myši na některý ze synsetů, zobrazí se další případné slovní formy náležející do daného synsetu a jeho glosa (definice), je-li dostupná.
 
 				Další slovní formy v nalezených synsetech jsou klikatelné, což umožňuje dostat se přes ně na synsety obsahující onu slovní formu, na níž bylo uživatelem kliknuto (s identickým výsledkem, jako kdyby dané slovo uživatel zadal do vyhledávacího pole).
 
-				Ačkoliv úvodní odstavec na stránce s rozhraním vybízí uživatele k \uv{prozkoumání desambiguace slov}, zobrazují výsledky hledání pouze synsety a slovní formy do nich náležející, přičemž synsety připojené sémantickými vztahy hyponymie, meronymie etc. nejsou zobrazitelné (jinak než případným náhodným výskytem jedné slovní formy ve více synsetech). To použití WordNetu omezuje na obyčejný thesaurus.
+				Ačkoliv úvodní odstavec na stránce s rozhraním vybízí uživatele k \uv{prozkoumání desambiguace slov}\td{cit web}, zobrazují výsledky hledání pouze synsety a slovní formy do nich náležející, přičemž synsety připojené sémantickými vztahy hyponymie, meronymie etc. nejsou zobrazitelné (jinak než případným náhodným výskytem jedné slovní formy ve více synsetech). To použití WordNetu omezuje na obyčejný thesaurus.
 
 				Samotný design grafického rozhraní je řešen poněkud nešťastně a působí dojmem, že cílem autora bylo prokázat své schopnosti používat různé standardní tranformační funkce CSS.\td{odkazat na kapitolu o CSS nekde dal a mozna to, ze to je fakt v CSS...} Pro indikaci běžícího procesu vyhledávání byl použit efekt rotační animace pro vyhledávací pole a po dokončení vyhledávání jsou výsledky zobrazeny paprskovitě okolo vyhledávacího pole. To způsobuje, že některé texty jsou zobrazeny pod úhlem až 90 stupňů, což může pro některé uživatele činit jejich přečtení obtížnějším. 
 
-				% Rozhraní navíc nesplňuje základní pravidla webové dostupnosti kvůli tomu, že jej nelze ovládat pouze klávesnicí.
+				Rozhraní není tzv. responsivní, tedy nepřizpůsobuje se velikosti obrazovky, na níž je zobrazeno. 
 
 				Toto rozhraní tedy poskytuje velice omezený přístup k datům WordNetu a neposktuje žádné výhody oproti základnímu oficiálnímu rozhraní k princetonskému WordNetu. Jeho grafické pojetí je čistě arbitrární, neslouží žádnému účelu a naopak zhoršuje jeho použitelnost.
 
-				
+				\begin{figure}[h]
+					\centering
+					\includegraphics[width=0.8\textwidth]{intviswn.png}
+					\caption{Ukázka rozhraní: An interactive visualization of the Princeton WordNet database}
+					\label{fig:intviswn}
+				\end{figure}
 
+			\section{WordNET Editor}
+			\label{wnvis:wncoledit}
 
+				Webová aplikace WordNET Editor byla vytvořena s cílem poskytnout internetové komunitě praktický a účinný nástroj pro rozvoj WordNetu. Její autoři argumentují, že jelikož vývoj WordNetu vyžaduje velké množství lidské práce, a je proto důležité jej tvořit tak, jako je tvořena internetová encyklopedie Wikipedie, tedy kolaborací nezávislých uživatelů. \parencite{szymanski2007cooperative} K tomu je však potřeba nástroj, který takovou spolupráci umožní, což podle nich oficiální nástroje princetonského WordNetu nejsou (mimo jiné pravděpodobně proto, že WordNet byl vyvíjen uzavřenou skupinou lidí \parencite{fellbaum2005wordnets}). Vedle editoru vztahů a synsetů však obsahuje WordNET Editor i prohlížeč wordnetu, pro který bylo rozhraní do tohoto přehledu zařazeno. Data, jež aplikace používá, jsou verzí princetonského WordNetu odvětvenou v jeho verzi 2.1. \parencite{szymanski2007cooperative}
+
+				Rozhraní je rozděleno do levého sloupce a pravého (většího) \uv{plátna}, jež slouží pro grafické vyobrazení vztahů. Po vyhledání zadaného výrazu nabídne aplikace uživateli seznam synsetů, v nichž se výraz nachází. Nabídka synsetů je klikatelná a po uživateli je po zvolení synsetu kliknutím prezentováno grafické vyobrazení daného synsetu se všemi jeho vztahy. V levém sloupci si pak uživatel může vybírat, další synsety, které chce do pravé sekce přidat, může také otevírat dvojklikem již zobrazené synsety a lze i v nastavení filtrovat, které vztahy a slovní druhy se mají zobrazovat. Aplikace však zřejmě neobsahuje intuitivní způsob jak zobrazené synsety z plátna vpravo odebírat zobrazené synsetu a při otevírání dalších plátno nepřepisuje, ale synsety přidává k existujícím (neprovázaně). To může vést ke značné nepřehlednosti reprezentace, avšak aplikace umožňuje přibližování a oddalování plátna a vizuální přesouvání zobrazení po plátně, což s jistým úsilím uživatele nepřehlednost může eliminotvat. Také nutno vytknout absenci textového pojmenování vztahů mezi synsety. Barevné rozlišení je v tomto případě nevhodně zvolené, jelikož vztahů je v rozhraní hodně a některé barvy jsou obtížně odlišitelné.
+
+				Grafické zobrazení vztahů mezi koncepty je řešeno hvězdicovitě, přičemž ve středu je zvolený synset, jenž byl výsledkem hledání, a od něj jsou vedeny hrany představující vztahy k příbuzným synsetům. Zajímavý je originální koncept zobrazení synsetů příbuzných k hledanému (otevřenému) synsetu. Ten je v grafu reprezentován svými členskými slovními formami, ale příbuzné koncepty jsou reprezentovány svými definicemi. Trochu na závadu však je, že se zřejmě nedá (minimálně v prohlížecím režimu) zobrazit detail příbuzného synsetu a uživatel se dozví pouze jeho definici. 
+
+				Chování tohoto rozhraní na mobilním zařízení nebylo provedeno, jelikož je zjevné, že je určeno především k editacím a podle toho je také navrženo. Rozhraní poskytuje grafický náhled na strukturu dat, ale pro nevhodné kódování vztahů do barev a nezobrazovaní dostatečného množství informací je jeho ovládání neintuitivní. Nutno podotknout, že rozhraní tak, jak je vyobrazeno v \textcite{szymanski2007cooperative}, vypadá značně odlišně a například obsahuje pojmenované vztahy.
+
+				Podle webové stránky projektu\td{cit http://wordventure.eti.pg.gda.pl/} je rozhraní vyvinuto s otevřeným zdrojem, pro jeho obdržení je však nutno kontaktovat vývojáře. Lze ale předpokládat jeho použitelnost i pro ostatní wordnety.
+
+			\section{Cornetto Demo}
+			\label{wnvis:cornetto}
+
+				Cornetto je prohlížeč pro nizozemský wordnet a jako jediná ze zde předkládaných aplikací kombinuje grafickou a textovou vizualizaci dat. 
 
 
 	% \begin{spacing}{1.05}
