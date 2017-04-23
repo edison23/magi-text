@@ -487,11 +487,11 @@
 			\section{Cornetto Demo}
 			\label{wnvis:cornetto}
 
-				Cornetto Demo je prohlížeč pro nizozemský wordnet a jako jediný ze zde předkládaných aplikací kombinuje grafickou a textovou vizualizaci dat. To je dáno zřejmě mimo jiné tím, že Cornetto Demo není pouze rozhraním pro wordnet, ale kombinuje data ze dvou zdrojů. Jednak z Referentie Bestand Nederlands \parencite{martin2005referentie}, a jednak z nizozemského wordnetu. Referentie Bestand Nederlands je slovník obsahuji informace podobně strukturované jako FrameNet \parencite{fillmore2004framenet} spolu s rozšířením o kombinatorické chování slov v určitém významu \parencite{horak2008development}. 
+				Cornetto Demo je prohlížeč pro nizozemský wordnet a jako jedno z mála dostupných webových aplikací kombinuje grafickou a textovou vizualizaci dat. To je dáno zřejmě mimo jiné tím, že Cornetto Demo není pouze rozhraním pro wordnet, ale kombinuje data ze dvou zdrojů. Jednak z Referentie Bestand Nederlands \parencite{martin2005referentie}, a jednak z nizozemského wordnetu. Referentie Bestand Nederlands je slovník obsahuji informace podobně strukturované jako FrameNet \parencite{fillmore2004framenet} spolu s rozšířením o kombinatorické chování slov v určitém významu \parencite{horak2008development}. 
 
 				Rozhraní je rozděleno na tři moduly, základní vyhledávání, pokročilé vyhledávání a vizualizace synsetů. 
 
-				Základní vyhledávání slouží k prostému vyhledávání lexikálních jednotek. Dotaz je možné základním způsobem omezovat či rozšiřovat, a to pomocí zástupných znaků (\ex{*}, \ex{?}) a volby slovních druhů, v jakých se má výhledávat. \parencite{cornettoGettingStarted}
+				Základní vyhledávání slouží k prostému vyhledávání lexikálních jednotek. Dotaz je možné základním způsobem omezovat či rozšiřovat, a to pomocí zástupných znaků (\ex{*}, \ex{?}\footnote{přičemž \ex{*} zastupuje posloupnost kterýchkoliv znaků, \ex{?} zastupuje jeden kterýkoliv znak}) a volby slovních druhů, v jakých se má výhledávat. \parencite{cornettoGettingStarted}
 
 				Pokročilé vyhledávání umožňuje v nizozemském wordnetu najít lexikální jednotky, které mají společné specifické parametry. Jako kritéria pro vyhledávání lze zvolit kterékoliv kombinace všech příznaků, jež jsou ve wordnetu u lexikálních jednotek přítomny. Takto je možné například vyhledat všechna slovesa, která jsou řazena do domény tance a jsou označena jako archaická.  
 
@@ -531,7 +531,7 @@
 
 				Hrany mezi synsety jsou orientované (znázorněné jako šipky) a jejich k jejich pojmenování zvolil autor sémantické významy daných vztahů, tedy např. hyperonymie je značena slovem \textit{is}\footnote{angl. \textit{je}}; např. \ex{apple tree \textit{is} fruit tree}\footnote{angl. jabloň je ovocný strom}.
 
-				Vyhledávací formulář umožňuje filtrování výsledků hledání podle slovních druhů a typů vztahu. Graf je navíc aktualizován v reálném čase podle toho, jak jsou podmínky filtrování uživatelem měněny. Nevýhodou však je absence funkcí \textit{vybrat vše} a \textit{nevybrat nic}, která je citelná zvláště v případě, že uživatel chce vybrat pouze jeden druh relace (kterých je mnoho, tudíž odebrání všech relací z výběru kromě jedné může být časově náročné).
+				Vyhledávací formulář umožňuje filtrování výsledků hledání podle slovních druhů a typů vztahu. Graf je navíc aktualizován v reálném čase podle toho, jak jsou podmínky filtrování uživatelem měněny. Nevýhodou však je absence funkcí \textit{vybrat vše} a \textit{nevybrat nic}, která je citelná zvláště v případě, že uživatel chce vybrat pouze jeden druh relace (kterých je mnoho, tudíž odebrání všech relací z výběru kromě jedné může být časově náročné). Hledání také nabízí funkci napovídání poté, co uživatel zadá několik znaků z počátku slova. To umožňuje vybrat hledané slovo z nabídky a ušetřit několik úhozů, což je zvláště užitečné u delších slov či pro uživatele, který nevyhledává ve svém rodném jazyce a není si jist pravopisem hledaného slova.
 
 				\begin{figure}[h]
 					\centering
@@ -544,7 +544,22 @@
 
 				Rozhraní je neresponsivní a na mobilním zařízení je nutné k zajištění čitelnosti textů na stránce obsah přiblížit, což vede k nutnosti rolovaní jak vertikálnímu, tak horizontálnímu. Také není možné využít funkcionality přesouvání prvků na plátně, což ale při použití na vizualizaci dat z wordnetu není velkým omezením funkčnosti. Co se udržování stavu aplikace v URL týče, je implementováno pouze čtení parametru {\tt q} (od \textit{query}), zpětně do něj ale už zapisováno není. Odkazy na synsety na levé straně tento parametr obsahují, stejně tak jej lze zkopírovat přes kontextové menu pro každý uzel v rozhraní, takže teoreticky je možné obnovit kterýkoliv stav aplikace, byť dostupnost této funkcionality není příliš intuitivní.
 
-				Přínost tohoto rozhraní tkví především v relativně přehledné vizualizaci dat princetonského WordNetu, nutno však podotknout, že pro některé své vlastnosti nemusí pro nezkušeného uživatele být zpočátku příliš intuitivní (např. zmíněné křížení hran).
+				Přínos tohoto rozhraní tkví především v relativně přehledné vizualizaci dat princetonského WordNetu, nutno však podotknout, že pro některé své vlastnosti nemusí pro nezkušeného uživatele být zpočátku příliš intuitivní (např. zmíněné křížení hran).
+
+				Na knihovně, na níž je toto rozhraní postaveno, stojí ještě některá další rozhraní k princetonskému WordNetu, například VisuWords\footnote{\url{http://www.visuwords.com/}} či Visual Thesaurus\footnote{\url{https://www.visualthesaurus.com}}. Ta nebyla do hodnocení v této práci zahrnuta, protože jsou funkčně podobná tomuto rozhraní.
+
+			\section{sloWTool}
+			\label{vis:slowtool}
+
+				Rozhraní sloWTool bylo vyvinuto pro potřeby slovinského wordnetu, jenž je založen na princetonském WordNetu a vznikl skombinováním několika zdrojů, například Wikipedie, dvojjazyčných slovníků či paralelních korpusů. Je víceúčelovým nástrojem, který umožňuje textovou reprezentaci, vizualizaci a editaci dat z wordnetu. Tvůrcům sloužilo k revizím slovinského wordnetu po jeho rozšiřování automatickými nástroji. \parencite{fivser2012slownet}
+
+				Rozložení stránky je vzdáleně podobné tomu u základního oficiálního rozhraní k princetonskému WordNetu, a to v tom smyslu, že neobsahuje relativně rozšířený levý sloupec na výběr synsetů, ale jednotlivé významy, které jsou nalezeny po zadaní hledané slovní formy do vyhledávacího pole, seskupuje do sekcí v hlavním bloku s textovou reprezentací dat. Vyhledávací pole podporuje napovídání existujících významů, což může usnadnit práci s rozhraním. V textové reprezentací rozhraní zobrazuje zřejmě všechny dostupné informace o synsetech, tedy se chová podobně jako základní rozhraní princetonského WordNetu, je-li nastaveno tak, aby nefiltrovalo žádné informce. U jednotlivých vztahů, v nichž je daný synset přítomen, pak je možné kliknutím otevřít synset nacházející se pomyslně na druhé straně daného vztahu (např. \ex{bicykle} má meronymum \ex{sedlo}, takže lze otevřít detail synsetu \ex{sedlo}). To trpí stejným neduhem, jako základní rozhraní princetonského WordNetu, to jest, že lze ve smyčce otevírat nadřazený a podřazený synset a stále se zanořovat do smyčky hlouběji. To je nejen nesmyslné, ale zároveň to v implementaci tohoto rozhraní postupně může začít zpomalovat rychlost reakcí prohlížeče pro nadměrné množství uzlů v DOM\footnote{document object model}.
+
+				Po levé straně se nachází lišta s ikonami odkazujícími na dalšími moduly, které se otevírají v emulacích nových oken (v témže panelu). Mezi tyto moduly patří mimo jiné i pokročilé hledání, vizualizace a nápověda. 
+
+				Pokročilé hledání funguje podobně jako u ostatních rozhraní, tedy umožňuje používat zástupné znaky (\ex{*} a \ex{?}), filtrovat slovní druhy, nebo vyhledávat v jiných polích než jsou slovní formy patřící do synsetů (například v definicích či podle identifikátoru synsetu). 
+
+				Vizualizace, modul z hlediska této práce nejpodstatnější, je určen k zobrazení grafické interpretace vztahů vyhledanýho synsetů. Na rozdíl od ostatních rozhraní tato vizualizace zobrazuje všechny vyhledané synsety (s kořenem grafu označeným jako \textit{search}\footnote{hledání}) a neumožňuje jejich filtrování. Také nepodporuje zřejmě žádnou formu interakce kromě zvýraznění příslušného synsetu v hlavním bloku textové reprezentace poté, co je na něj (nebo jeho členskou slovní formu) ve vizualizaci kliknuto. Pokud uživatel potřebuje zobrazit vizualizaci jednoho konkrétního synsetu, je nucen použít pokročilé vyhledávání a vyhledat daný synset nejlépe podle jeho identifikátoru, který je vždy unikátní. Vizualizace je zatížena také dalšími problémy, jako jsou nedostatečné možnosti přizpůsobování velikosti zobrazovací plochy (zvětšování okna je podporováno, ale plátno s grafem zůstává konstantně velké), občasnou desynchronizací obsahu vizualizace s výsledky hledání, náročností na uživatelovo technické vybavení počítače (především výpočetní jednotku) a značnou nepřehledností způsobenou nedostatečně či nevhodně řešenou penalizací překrývání prvků na zobrazovací ploše. 
 
 
 
