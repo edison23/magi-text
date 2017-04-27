@@ -2,7 +2,7 @@
 % \usepackage[right=8cm]{geometry}
 \usepackage{fontspec}
 \usepackage{lmodern}
-\usepackage[czech]{babel}
+\usepackage[english,czech]{babel}
 \usepackage{csquotes}
 \usepackage{url}
 \usepackage{todonotes}
@@ -11,10 +11,14 @@
 \usepackage{tikz-qtree}
 \graphicspath{ {imgs/} }
 
+% https://github.com/michal-h21/biblatex-iso690
+% unzip to ~/texmf/tex/latex and use as style=iso-*
+% some possible styles: iso-authoryear, iso-numeric, iso-alphabetic
+
 \usepackage[
-   backend=bibtex
-  ,style=alphabetic
-  % ,style=iso-authoryear
+   backend=biber
+  % ,style=alphabetic
+  ,style=iso-alphabetic
   ,sortlocale=cs_CZ
   ,autocite=footnote
   ,maxnames=2
@@ -24,8 +28,24 @@
   ]
   {biblatex}
 
+% to be fixed, this is to substitute non-existen czech norm by some other similiar, but croatian is not the one we want (does it matter?)
+\DeclareQuoteAlias{croatian}{czech}
+
+% and theres something like this:
+% czech quotes
+% \usepackage{csquotes}
+% \DeclareQuoteStyle{czech}
+%   {\quotedblbase}
+%   {\textquotedblleft}
+%   {\textquoteleft}
+%   {\textquoteright}
+
+% \renewcommand{\uv}[1]{
+%   \enquote{#1}
+% }
 
 \addbibresource{bibliografie.bib}
+\renewcommand*{\labelalphaothers}{\textsuperscript{+}}
 
 \newcommand{\td}[2][]{
 	{\hskip -0.5em\todo[size=\footnotesize]{#2}}
@@ -365,7 +385,7 @@
 
 	\part{Přehled a porovnání existujících vizualizací sémantických sítí}
 
-		Tato část textu bude zaměřena na zmapování existujících dostupných rozhraní a jejich zhodnocení. Výčet jednotlivých rozhraní rozhodně není vyčerpávající, jelikož některé vědecké insituce mohou vyvíjet své nástroje pro práci se sémantickými sítěmi neveřejně, některé nástroje už nejsou dostupné, etc. Nástroje pro vizualizaci\footnote{Terminologická poznámka: v této práci je vizualizací dat wordnetů míněna jak textová reprezentace, tak grafická.} dat wordnetů byly vybírány pro přehled v této práci podle několika kritérií relevantních především pro koncového uživatele, avšak i pro případné vývojáře dalších wordnetů (tedy zda dané rozhraní mohou použít pro svá data).
+		Tato část textu bude zaměřena na zmapování existujících dostupných rozhraní a jejich zhodnocení. Výčet jednotlivých rozhraní rozhodně není vyčerpávající, jelikož některé vědecké insituce mohou vyvíjet své nástroje pro práci se sémantickými sítěmi neveřejně, některé nástroje už nejsou dostupné, etc. Nástroje pro vizualizaci\footnote{Terminologická poznámka: v této práci je vizualizací dat wordnetů míněna vizualizace jak textová reprezentace, tak grafická.} dat wordnetů byly vybírány pro přehled v této práci podle několika kritérií relevantních především pro koncového uživatele, avšak i pro případné vývojáře dalších wordnetů (tedy zda dané rozhraní mohou použít pro svá data).
 
 		\chapter{Metodologie porovnání}
 
@@ -551,7 +571,7 @@
 			\section{sloWTool}
 			\label{vis:slowtool}
 
-				Rozhraní sloWTool bylo vyvinuto pro potřeby slovinského wordnetu, jenž je založen na princetonském WordNetu a vznikl skombinováním několika zdrojů, například Wikipedie, dvojjazyčných slovníků či paralelních korpusů. Je víceúčelovým nástrojem, který umožňuje textovou reprezentaci, vizualizaci a editaci dat z wordnetu. Tvůrcům sloužilo k revizím slovinského wordnetu po jeho rozšiřování automatickými nástroji. \parencite{fivser2012slownet}
+				Rozhraní sloWTool bylo vyvinuto pro potřeby slovinského wordnetu, jenž je založen na princetonském WordNetu a vznikl skombinováním několika zdrojů, například Wikipedie, dvojjazyčných slovníků či paralelních korpusů. Je víceúčelovým nástrojem, který umožňuje textovou reprezentaci, vizualizaci a editaci dat z wordnetu. Tvůrcům sloužilo k revizím slovinského wordnetu po jeho rozšiřování automatickými nástroji. \parencite{fivser2012slownet} Cílem při vývoji tohoto rozhraní podle \textcite{fivser2011visualizing} bylo překonat nevýhody tehdejších dostupných rozhraní a vyvinout nástroj, který by mezi jiným umožňoval prohlížení i editaci, spolupráci mnoha autorů včetně anonymních editací (záměr tvůrců byl využít náhodných návštěvníků k opravování chyb, jež ve wordnetu naleznou) či možnost jednoduché registrace uživatelů. Mezi dalšími podmínkami byla možnost přidávání dalších wordnetů do systému a s tím spojená schopnost rozhraní zobrazovat vícejazyčná data. V neposlední řadě se autoři v kontextu tehdejších nástrojů také snažili zaměřit na platformní nezávislost a přenositelnost rozhraní. 
 
 				Rozložení stránky je vzdáleně podobné tomu u základního oficiálního rozhraní k princetonskému WordNetu, a to v tom smyslu, že neobsahuje relativně rozšířený levý sloupec na výběr synsetů, ale jednotlivé významy, které jsou nalezeny po zadaní hledané slovní formy do vyhledávacího pole, seskupuje do sekcí v hlavním bloku s textovou reprezentací dat. Vyhledávací pole podporuje napovídání existujících významů, což může usnadnit práci s rozhraním. V textové reprezentací rozhraní zobrazuje zřejmě všechny dostupné informace o synsetech, tedy se chová podobně jako základní rozhraní princetonského WordNetu, je-li nastaveno tak, aby nefiltrovalo žádné informce. U jednotlivých vztahů, v nichž je daný synset přítomen, pak je možné kliknutím otevřít synset nacházející se pomyslně na druhé straně daného vztahu (např. \ex{bicykle} má meronymum \ex{sedlo}, takže lze otevřít detail synsetu \ex{sedlo}). To trpí stejným neduhem, jako základní rozhraní princetonského WordNetu, to jest, že lze ve smyčce otevírat nadřazený a podřazený synset a stále se zanořovat do smyčky hlouběji. To je nejen nesmyslné, ale zároveň to v implementaci tohoto rozhraní postupně může začít zpomalovat rychlost reakcí prohlížeče pro nadměrné množství uzlů v DOM\footnote{document object model}.
 
@@ -559,17 +579,61 @@
 
 				Pokročilé hledání funguje podobně jako u ostatních rozhraní, tedy umožňuje používat zástupné znaky (\ex{*} a \ex{?}), filtrovat slovní druhy, nebo vyhledávat v jiných polích než jsou slovní formy patřící do synsetů (například v definicích či podle identifikátoru synsetu). 
 
-				Vizualizace, modul z hlediska této práce nejpodstatnější, je určen k zobrazení grafické interpretace vztahů vyhledanýho synsetů. Na rozdíl od ostatních rozhraní tato vizualizace zobrazuje všechny vyhledané synsety (s kořenem grafu označeným jako \textit{search}\footnote{hledání}) a neumožňuje jejich filtrování. Také nepodporuje zřejmě žádnou formu interakce kromě zvýraznění příslušného synsetu v hlavním bloku textové reprezentace poté, co je na něj (nebo jeho členskou slovní formu) ve vizualizaci kliknuto. Pokud uživatel potřebuje zobrazit vizualizaci jednoho konkrétního synsetu, je nucen použít pokročilé vyhledávání a vyhledat daný synset nejlépe podle jeho identifikátoru, který je vždy unikátní. Vizualizace je zatížena také dalšími problémy, jako jsou nedostatečné možnosti přizpůsobování velikosti zobrazovací plochy (zvětšování okna je podporováno, ale plátno s grafem zůstává konstantně velké), občasnou desynchronizací obsahu vizualizace s výsledky hledání, náročností na uživatelovo technické vybavení počítače (především výpočetní jednotku) a značnou nepřehledností způsobenou nedostatečně či nevhodně řešenou penalizací překrývání prvků na zobrazovací ploše. 
+				Vizualizace, modul z hlediska této práce nejpodstatnější, je určen k zobrazení grafické interpretace vztahů vyhledanýho synsetů. Na rozdíl od ostatních rozhraní tato vizualizace zobrazuje všechny vyhledané synsety (s kořenem grafu označeným jako \textit{search}\footnote{hledání}) a neumožňuje jejich filtrování. Také nepodporuje zřejmě žádnou formu interakce kromě přesouvání prvků na plátně a zvýraznění příslušného synsetu v hlavním bloku textové reprezentace poté, co je na něj (nebo jeho členskou slovní formu) ve vizualizaci kliknuto. Pokud uživatel potřebuje zobrazit vizualizaci jednoho konkrétního synsetu, je nucen použít pokročilé vyhledávání a vyhledat daný synset nejlépe podle jeho identifikátoru, který je vždy unikátní. Vizualizace je zatížena také dalšími problémy, jako jsou nedostatečné možnosti přizpůsobování velikosti zobrazovací plochy (zvětšování okna je podporováno, ale plátno s grafem zůstává konstantně velké), občasnou desynchronizací obsahu vizualizace s výsledky hledání, náročností na uživatelovo technické vybavení počítače (především výpočetní jednotku) a značnou nepřehledností způsobenou nedostatečně či nevhodně řešenou penalizací překrývání prvků na zobrazovací ploše. 
+
+				\begin{figure}[h]
+					\centering
+					\includegraphics[width=1.0\textwidth]{slowtool.png}
+					\caption{Ukázka rozhraní sloWTool (s otevřenou grafickou vizualizací)}
+					\label{fig:slowtool}
+				\end{figure}
+
+				Rozhraní je svými možnostmi zprostředkování informací z wordnetu poměrně inovativní, reálná použitelnost ovšem trpí zmíněnými nedostatky a odchyluje jej tím od původního záměru autorů, který minimálně zčásti zůstává nenaplněn. Je sice pravdou, že \textit{s aplikací je možné pracovat v každém moderním přihlížeči, ať už na počítači, tabletu, či dokonce mobilním telefonu} \parencite{fivser2011visualizing}, nutno ale podotknout, že rozhraní je zcela neresponsivní a jeho ovládací prvky jsou zcela nevhodné pro ovládání na menší obrazovce a dotykem.
+
+				Stav aplikace lze do jisté míry uložit pomocí odkazu \textit{Link}, který vede na adresu, z níž lze obnovit hledané slovo (konfiguraci otevřených nástrojů však už nikoliv).
+
+				Navzdory všem nedostatkům této aplikace je dlužno uznat, že se svou univerzalitou a funkcionalitou značně přibližuje rozhraní, které je praktickým cílem i této práce.
+
+				SloWtool bylo vytvořeno pod licencí Creative Commons\footnote{\url{https://creativecommons.org/licenses/by-nc-sa/3.0/}} a jeho zdrojový kód je dostupný na platformě pro aplikace s otevřeným zdrojem Launchpad\footnote{\url{https://launchpad.net/slowtool}}.
+
+			\section{BabelNetXplorer}
+			\label{vis:babel}
+
+				BabelNet je rozsáhlý projekt vícejazykové sémantické sítě, který čerpá data z více zdrojů. Záměrem autorů bylo při tvorbě této sémantické sítě 
+				% poskytnout vědecké komunitě i široké veřejnosti volně dostupný multilinguální zdroj provázaných informací a soubor nástrojů, které umožní s těmito informacemi pracovat. 
+				eliminovat základní faktory definující nevýhody tehdejších (a potažmo i aktuálních) mezinárodních projektů zabývajících se sémantickými sítěmi. Těmi jsou manuální tvorba dat, které sítě konstituují, a s tím související nerovnoměrnost množství dat přes jednotlivé jazyky. Jazyky s vysokou hustotou zdrojů, jakým je například angličtina, tak ve výsledku mají více dat i v sémantické síti. Autoři BabelNetu se pokusili tento problém překonat kombinací několika metod, jejichž společným jmenovatelem je automatizace. Informace o významech jsou v BabelNetu doplňovány z Wikipedie, která je podle autorů díky mnohačetným zásahům expertů z různých oborů ve výsledku přesným a informarčně bohatým zdrojem. Druhá důležitá metoda, zaměřující se především na nerovnoměrnost dat v různých jazycích, je automatický překlad zdrojů. \parencite{navigli2010babelnet}
+
+				BabelNetXplorer je webové grafické rozhraní vytvořené pro vizualizaci dat z BabelNetu. \cite{navigli2012babelnetxplorer} uvádějí, že rozhraní slouží k vizualizaci vztahů pro slova nalezená v BabelNetu a ilustrují vzhled rozhraní dvěma snímky obrazovky. V době psaní této práce však rozhraní BabelNetXploreru vypadá výrazně odlišně, což je vzhledem k tomu, že od vzniku práce \cite{navigli2012babelnetxplorer} uběhlo pět let, pochopitelné. V této práci bude z evidentních důvodů rozebrána použitelnost a funkcionalita současného rozhraní.
+
+				Rozhraní obsahuje klasicky vyhledávací pole, vedle něhož se nacházejí rozbalovací menu, v nichž si uživatel může vybrat, ve kterém jazyce chce vyhledávat a, případně, do kterého jazyke chce slovo přeložit. Po úspěšném dokončení vyhledávání jsou uživateli zobrazeny odkazy na jednotlivé synsety v seznamu, který není nepodobný ostatním rozhraním. Podstatným rozdílem však je, že se v něm zobrazují i ilustrační obrázky, které, byť nejsouce vždy velmi informativní, mohou napomoci uživateli v orientaci, který synset jej zajímá. 
+
+				V detailu synsetu, který se zobrazí po kliknutí na příslušný odkaz, je uživateli zobrazen seznam slovních forem, které k daném synsetu náleží, jeho definice (s možností zobrazit i jeho definice nejen z daného wordnetu, v němž uživatel vyhledává, ale i z Wikipedie a dalších zdrojů), jeho případný překlad a sémantické vztahu, do nichž tento synset náleží. K disposici má uživatel i možnost zobrazit si daný synset paralelně v dalších jazycích pomocí nabídky pod vyhledávacím polem (viditelné na snímku obrazovky \ref{fig:babelxplorer} na straně \pageref{fig:babelxplorer}). Níže na stránce jsou uživateli prezentovány informace z dalších zdrojů napojených na BabelNet, jako jsou obrázky, překlady, odkazy na Wikipedii, etc. a odkaz na vizuální reprezentaci sémantických vztahů otevřeného synsetu. 
+
+				\begin{figure}[h]
+					\centering
+					\includegraphics[width=1.0\textwidth]{babelxplorer.png}
+					\caption{Ukázka rozhraní BabelXplorer (detail synsetu v textové reprezentaci)}
+					\label{fig:babelxplorer}
+				\end{figure}
+
+				Vizuální reprezentace je řešena tradičním hvězdicovitým grafem, který má dva režimy. Jeden zobrazuje vedle textových názvů jednotlivých synsetů přítomných v grafu i jejich zástupné obrázky, druhý je čistě textový a, nutno podotknout, značně přehlednější. Uzly reprezentující synsety jsou provázány barevně odlišenými hranami, kde barvy značí druh vztahů, který dva synsety spojuje. Uzly jsou klikatelné, přičemž po kliknutí na některý z příbuzných synsetů se zobrazí tento synset a opět hvězdicovitě další synsety, s nimiž je zkoumaný synset provázán některým ze vztahů. Při najetí korsorem myši na určitý synset se zobrazí jeho detail; tyto informační bubliny jsou však vázány na pozici kursoru myši a nelze tak kursorem najet do detailu tak, aby bylo možné kliknout na odkazy, které jsou v informační bublině obsaženy, a dostat se tak na textovou reprezentaci daného synsetu. Zdá se tedy, že není možné přejít z grafické reprezentace do textové.
+
+				Poněkud nešťastně je řešen design vizualizace, jelikož jednak není možné graf přibližovat a oddalovat, a jednak pokud uživatel nenajede na konkrétní synset kursorem myši, graf se samovolně neustále otáčí, což ztěžuje orientaci v něm.
+
+				Rozhraní všeobecně responsivní, textová reprezentace je dobře použitelná i na mobilním rozhraní s malou obrazovkou. Grafická reprezentace je však omezena na větší obrazovky, jelikož v ní není možné graf posouvat po obrazovce, a tudíž jeho značná část (byť se částěčně přizpůsobuje zobrazovací ploše), zřejmě v závislosti na velikosti obrazovky zařízení, zůstává uživateli skryta.
+
+				V době vzniku této práce mělo rozhraní dvě verze, z nichž jedna byla označana jako \textit{živá beta}, druhá jako \textit{současná (3.7)}, avšak při testování nebyly zjištěny zásadní rozdíly mezi těmito verzemi. Nutno ovšem podotknout, že na testovacím desktopovém prohlížeči vykazovala verze beta minoritní chyby v rozložení stránky.
 
 
 
  
 	% \begin{spacing}{1.05}
-	\printbibliography[title={Seznam literatury}]
+	\printbibliography[]
+	% \printbibliography[title={Seznam literatury}]
 	% \bibliographystyle{alpha}
 	% \bibliography{bibliografie}
 	% \end{spacing}
 
-	\addcontentsline{toc}{chapter}{Seznam literatury}
+	\addcontentsline{toc}{chapter}{Bibliografie}
 
 \end{document}
