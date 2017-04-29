@@ -417,6 +417,7 @@
 						\item Visual Browser (\url{https://nlp.fi.muni.cz/projekty/visualbrowser/})
 						\item Treebolic (\url{})
 						\item Artha (\url{http://artha.sourceforge.net/wiki/index.php/Home})
+						\item GoldenDict (\url{http://goldendict.org/})
 						% \item GRAPH WORDS online thesaurus (\url{http://graphwords.com/})
 					\end{itemize}
 
@@ -681,18 +682,35 @@
 
 			Desktopové aplikace jsou takové aplikace, které jsou nativně určeny pro běh na operačním systému uživatelova počítače. Nativně spouštěná aplikace je, ať už přímo, či nepřímo, závislá na programových vlastnostech operačního systému daného stroje, stejně jako zprostředkovaně na jeho technickém vybavení. Přístupy k distribuci desktopových aplikací jsou v zásadě dva; první, z evidentních důvodů běžný především pro operační systém Windows, spočívá v distribuci již skompilovaných binárních souborů, které zajistí instalaci daného programu do systému a uživateli zbývá jen příslušný program spustit. Druhý způsob, běžný spíše pro různé linuxové distribuce, je založený na distribuci souborů obsahujících zdrojový kód programu, přičemž uživatel je nucen, má-li zájem program používat, si binární spustitelný soubor skompilovat. Druhý způsob pro programátora skýtá zásadní výhodu v tom, že se nemusí zajímat o prostředí, na němž bude koncový uživatel jeho program provozovat, protože kompilace programu pro všechny dostupné konfigurace (kombinace progamového a technickéh vybavení koncového uživatele) je náročná na zdroje. \parencite{Elizabeth2015} Pro onoho koncového uživatele však slyne druhá varianta tou nevýhodou, že kompilace programového vybavení vyžaduje z jeho strany netriviální usilí a znalosti o vlastním systému. 
 
-			V rámci rozhraní určených pro zprostředkování dat z wordnetů jsou desktopové aplikace nejméně zastoupeny. Je tomu pravděpodobně proto, že jsou nejnáročnější na vývoj, zvláště mají-li být dostupné ze všech majoritních desktopových platforem.
+			V rámci rozhraní určených pro zprostředkování dat z wordnetů jsou desktopové aplikace nejméně zastoupeny. Je tomu pravděpodobně proto, že jsou nejnáročnější na vývoj, zvláště mají-li být dostupné ze všech majoritních desktopových platforem. Dalším důvodem může být fakt, že často bývá zvolen model klient--server, pro který jsou vhodnější spíše aplikace v Javě \parencite[13]{gosling1995java} a webová rozhraní.
 
 			\section{Artha}
 
-				Artha je multiplatformí thesaurus založený na WordNetu 3.0 \parencite{}. Aplikace je minimálně pro GTK\footnote{grafické prostředí používané na některých linuxových distribucích, například Ubuntu} nativní, takže poskytuje komfortní práci a je možno ji nainstalovat z repozitářů (tedy nevyžaduje náročnou kompilaci). Funguje bez připojení k Internetu a zobrazení je zaměřeno především na zobrazení významů synsetů (význam jsa reprezentován definicemi). Problémem je ukládání stavů aplikace, který se projevuje na nepříliš propracované funkcionalitě možnosti kroku zpět (na předchozí vyhledávání). Pokud například uživatel dvojklikne na slovo v definici, Artha se jej pokusí\footnote{selže, pokud uživatel vybere před dvojklikem více slov} přesměrovat na definici tohoto slova ve WordNetu, ale při kroku zpět už mu zobrazí slovo které hledal \textit{před} slovem, z něhož se dostal na \textit{současnou} definici. Oproti základnímu rozhraní WordNetu nabízí Artha větší pohodlí v podobě desktopové offline aplikace, což pro uživatele například znamená, že není při používání tohoto rozhraní závislý na připojení k Internetu.
+				\begin{figure}[h]
+					\centering
+					\includegraphics[width=1.0\textwidth]{wnartha-ubuntu.png}
+					\caption{Ukázka rozhraní aplikace Artha}
+					\label{fig:wnartha-ubuntu}
+				\end{figure}
 
-				Artha zobrazuje data čistě textově (ve smyslu, že nenabízí žádnou formu vizualizace), přičemž rozhraní dělí na dvě části, a to nalezené synsety a sémantické vztahy, které se k danému synsetu vážou. 
+				Artha je multiplatformí thesaurus založený na WordNetu 3.0 \parencite{ramaswamy2012}. Grafické prostředí aplikace je vytvořeno v GTK\footnote{multiplatformní soubor nástrojů pro tvorbu grafických rozhraní (\url{https://www.gtk.org/})}, takže umožňuje (minimálně na testovací konfiguraci, tedy operační systém Ubuntu 16.04) komfortní práci. Je možno ji nainstalovat z repozitářů (tedy nevyžaduje náročnou kompilaci), což je pro koncového uživatele velmi pozitivní. Dle dokumentace je k disposici instalátor i na operační systém Windows\footnote{\url{https://www.microsoft.com/en-us/windows/}}. O Apple macOS\footnote{\url{https://www.apple.com/lae/macos}} se dokumentace nezmiňuje. Funguje bez připojení k Internetu a zobrazení je zaměřeno především na zobrazení významů synsetů (význam jsa reprezentován definicemi). Problémem je ukládání stavů aplikace, který se projevuje na nepříliš propracované funkcionalitě možnosti kroku zpět (na předchozí vyhledávání). Pokud například uživatel dvojklikne na slovo v definici, Artha se jej pokusí\footnote{selže, pokud uživatel vybere před dvojklikem více slov} přesměrovat na definici tohoto slova ve WordNetu, ale při kroku zpět už mu zobrazí slovo které hledal \textit{před} slovem, z něhož se dostal na \textit{současnou} definici. Oproti základnímu rozhraní WordNetu nabízí Artha větší pohodlí v podobě desktopové offline aplikace, což pro uživatele například znamená, že není při používání tohoto rozhraní závislý na připojení k Internetu.
+
+				Artha zobrazuje data čistě textově (ve smyslu, že nenabízí žádnou formu vizualizace), přičemž rozhraní dělí na dvě části, a to nalezené synsety a sémantické vztahy, které se k danému synsetu vážou (ilustrováno na snímku obrazovky \ref{fig:wnartha-ubuntu} na straně \pageref{fig:wnartha-ubuntu}). 
 
 			\section{GoldenDict}
+ 		
+ 				\begin{figure}[h]
+					\centering
+					\includegraphics[width=1.0\textwidth]{wngoldendick-ubuntu.png}
+					\caption{Ukázka rozhraní aplikace GoldenDict}
+					\label{fig:wngoldendick-ubuntu}
+				\end{figure}
 
-				Podobně jako Artha funguje GoldenDict, který, byvše univerzálnějším rozhraním pro více lexikografických zdrojů, byl testován jen ve své verzi pro WordNet. GoldenDict zobrazuje čistě textovou reprezentaci umožňující kliknutím zobrazit detaily jednotlivých synsetů, přičemž
- 	
+				Podobně jako Artha funguje GoldenDict, který, byvše univerzálnějším rozhraním pro více lexikografických zdrojů, byl testován jen ve své verzi pro WordNet. GoldenDict zobrazuje čistě textovou reprezentaci umožňující kliknutím zobrazit detaily jednotlivých synsetů. Slovníková data si obstarává aplikace sama, takže uživatel nemusí podstupovat instalaci dat princetonského WordNet (která může být netriviální, protože například pro Windows neposkytují oficiální webové stránky instalátor pro data WordNetu ve verzi 3). Zároveň však rozhraní umožňuje přidávat další slovníky a v základu umožňuje zobrazovat výsledku hledání z Wikipedie. 
+
+				Rozhraní obsahuje levý sloupec pro zobrazování výsledků hledání a společně s hlavní plochou pro zobrazování detailů synsetu se chová podobně jako ostatní rozhraní (ilustrováno na snímku obrazovky \ref{fig:wngoldendick-ubuntu} na straně \pageref{fig:wngoldendick-ubuntu}). Aplikace udržuje historii hledání, umožňuje hledat slova z definic synsetů pomocí dvojkliku kursorem myši a dává uživateli k disposici relativně široké možnosti konfigurovatelnosti. Její rozhraní se dobře přizpůsobuje velikosti obrazovky (potažmo okna).
+
+				Grafické rozhraní aplikace GoldenDict je postaveno na Qt\footnote{\url{https://www.qt.io/ui/}} a pro zobrazování dat z webu používá vykreslovací jádro WebKit\footnote{\url{https://webkit.org/}}. \parencite{goldendict2016}
  
 	% \begin{spacing}{1.05}
 	\printbibliography[]
