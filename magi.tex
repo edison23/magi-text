@@ -465,7 +465,7 @@
 					\label{fig:wnsearch}
 				\end{figure}
 
-				Podobnou jako WordNet Search splňují i některá další rozhraní. Za zmínku stojí například WNSearch\footnote{\url{http://www.golovchenko.org/cgi-bin/wnsearch}}, což je minimalistické čiště textové rozhraní, které díky absenci jakýchkoliv stylů je responsivní a dobře použitelné na mobilních zařízeních s libovolně velkým displeje. Mezi další rozhraní s podobnou funkcionalitou patří URCS Wordnet Browser (pro Javu)\footnote{\url{http://www.cs.rochester.edu/research/cisd/wordnet/}} či GoldenDict (desktopové rozhraní)\footnote{\url{http://goldendict.org/}}.
+				Podobnou jako WordNet Search splňují i některá další rozhraní. Za zmínku stojí například WNSearch\footnote{\url{http://www.golovchenko.org/cgi-bin/wnsearch}}, což je minimalistické čiště textové rozhraní, které díky absenci jakýchkoliv stylů je responsivní a dobře použitelné na mobilních zařízeních s libovolně velkým displeje. Mezi další rozhraní s podobnou funkcionalitou patří URCS Wordnet Browser (pro Javu)\footnote{\url{http://www.cs.rochester.edu/research/cisd/wordnet/}} či GoldenDict (rozhraní pro stolní počítače\footnote{myšleno všeobecně pro zařízení typu stolních počítačů, laptopů, případně tabletů etc., na nichž je provozován operační systém nikoliv určený pro mobilní zařízení})\footnote{\url{http://goldendict.org/}}.
 
 		\chapter{Vizualizace s webovým rozhraním}
 
@@ -643,6 +643,13 @@
 
 			\section{wnbroswer}
 
+				\begin{figure}[ht]
+					\centering
+					\includegraphics[width=1.0\textwidth]{wnwordnetbrowswer.png}
+					\caption{Ukázka rozhraní wnbroswer}
+					\label{fig:wnwordnetbrowswer}
+				\end{figure}
+
 				Rozhraní wnbroswer\footnote{sic erat scriptum} je určeno k prezentaci dat z princetonskému WordNetu, které pracuje pouze s grafovou grafickou reprezentací. Bylo vytvořeno pro reprezentaci dat z WordNetu ve verzi 3.0 a vyšší a vyžaduje lokální instalaci dat. Rozhraní je zřejmě svázáno se vznikem rumunského wordnetu \parencite{fivser2011visualizing}. Sestává z vyhledávacího pole, volby, mezi kterými syntaktickými kategoriemi se má vyhledávat, a selektoru na typy vazeb, jež mají být zobrazeny. Po úspěšném vyhledání konkrétního slova se zobrazí graf konceptuálně podobný grafu z rozhraní sloWTool, tedy ve středu je uzel reprezentující hledaný výraz, z něhož vedou hrany k jednotlivým synsetům, jež danou slovní formu obsahují. 
 
 				Grafická reprezentace je interaktivní, tedy na ní lze zvolit, jaký druh sémantického vztahu se má zobrazit, a lze tak u každého uzlu postupně zobrazit všechny synsety, které jsou s ním provázány; toho lze docílit buď přes kontextové menu, nebo přes volby vztahů v levém sloupci rozhraní, v němž se mimo jiné nachází i vyhledávací pole. Rozhraní zobrazuje i detaily zvoleného synsetu (po kliknutí na daný synset), takže až na technické informace typu číslo významu a podobně je schopno zobrazovat všechna dostupná data.
@@ -653,14 +660,14 @@
 
 				Poněkud komicky působí fakt, že rozhraní má tři různé názvy: wnbroswer (hlavní nadpis stránky projektu), WordNet Browswer (titulek okna aplikace) a wnbrowser (ostatní výskyty). 
 
-				\begin{figure}[h]
-					\centering
-					\includegraphics[width=1.0\textwidth]{wnwordnetbrowswer.png}
-					\caption{Ukázka rozhraní wnbroswer}
-					\label{fig:wnwordnetbrowswer}
-				\end{figure}
-
 			\section{Treebolic}
+
+				\begin{figure}[ht]
+					\centering
+					\includegraphics[width=1.0\textwidth]{wntreebolic.png}
+					\caption{Ukázka rozhraní Treebolic (se zobrazenou informační bublinou na synsetu)}
+					\label{fig:wntreebolic}
+				\end{figure}
 
 				Treebolic je aplikace určená k zobrazování hierarchických dat v hyperobilicke reprezentaci, která zajišťuje, že důležitá data v centru obrazovky jsou zobrazena uživateli ve větším měřítku, než data na okrajích grafu. Reprezentaci si lze představit jako plochu zobrazenou přes čočku. 
 
@@ -711,6 +718,48 @@
 				Rozhraní obsahuje levý sloupec pro zobrazování výsledků hledání a společně s hlavní plochou pro zobrazování detailů synsetu se chová podobně jako ostatní rozhraní (ilustrováno na snímku obrazovky \ref{fig:wngoldendick-ubuntu} na straně \pageref{fig:wngoldendick-ubuntu}). Aplikace udržuje historii hledání, umožňuje hledat slova z definic synsetů pomocí dvojkliku kursorem myši a dává uživateli k disposici relativně široké možnosti konfigurovatelnosti. Její rozhraní se dobře přizpůsobuje velikosti obrazovky (potažmo okna).
 
 				Grafické rozhraní aplikace GoldenDict je postaveno na Qt\footnote{\url{https://www.qt.io/ui/}} a pro zobrazování dat z webu používá vykreslovací jádro WebKit\footnote{\url{https://webkit.org/}}. \parencite{goldendict2016}
+
+
+		\chapter{Shrnutí přehledu rozhraní a vyplývající závěry o vhodném rozhraní k sémantickým sítím}
+
+			% z hlediska pouzitelnosti byva lepsi webovy rozhrani, bo to uzivatel nemusi instalovat (some fuken links for that)
+			% java je sice kchul, ale porad ji musi mit uzivatele nainstalovanou, asi lidi moc nemaji (applety jsou uplne k nicemu uz, FF to prestal podporovat)
+			% drtiva vetsina rozhrani neni responsivni, coz je problem, kdyz vetsina lidi pouziva web z mobilu: http://bgr.com/2016/11/02/internet-usage-desktop-vs-mobile/
+			% je potreba rozhrani, ktery bude webovy, vypadat konsistentne na vsech zarizenich a bude splnovat, co se od nej ocekava (designove) - co se ocekava od WN browseru? dunno, but it's important - https://conversionxl.com/why-simple-websites-are-scientifically-better/
+
+			Rozhraní v přehledu prezentovaném v této práci byla hodnocena dle různých aspektů odpovídajícím účelu a provedení dané třídy rozhraní. Nejpodrobněji byla hodnocena webová rozhraní. U těch byla jako největší společný nedostatek identifikována nedostatečná responsivita, což vede k tomu, že uživatel dané rozhraní nemůže (nebo může velmi omezeně) používat na mobilním zařízení. To v době, kdy počet uživatelů přistupujících k webovým službám přes mobilní zařízení je vyšší než počet těch, kteří k nim přistupují pomocí klasických stolních počítačů \parencite{Heisler2016}, aplikaci značně diskriminuje. Z podobného důvodu jsou v nevýhodě také rozhraní vytvořená pro aplikační prostředí Java a v ještě větší míře aplikace vytvořené přímo pro operační systémy stolních počítačů. 
+
+			Aplikace vytvořené v Javě jsou sice teoreticky spustitelné i na některých mobilních operačních systémech (zejména Android\footnote{\url{https://android.stackexchange.com/questions/63710/can-you-run-normal-java-programs-on-android}}, u ostatních je podpora omezená či žádná\footnote{\url{http://stackoverflow.com/questions/15501477/can-windows-phone-support-java}, \url{http://www.iphonefaq.org/archives/9731}, \url{http://stackoverflow.com/questions/1193524/can-we-run-java-applictions-on-iphone} inter alia}), prakticky je jejich použitelnost vzhledem k jejich designu grafického rozhraní omezena ale také výhradně na stolní počítače. 
+
+			Pro některé aplikace vyvinuté v Javě byly vytvořeny tzv. aplety Java\footnote{\url{https://nlp.fi.muni.cz/projekty/visualbrowser/applet/index.html}}, ale vzhledem k tomu, že některé silně rozšířené webové prohlížeče tento druh zásuvných modulů už vůbec nepodporují \parencite{MozzilaFoundation2017}, je jejich použití značně omezené a do budoucnosti lze předpokládat plošnou nepoužitelnost. 
+
+			Rozhraní závislá na platformě (operačním systému, případně aplikačním rozhraní) mají navíc tu nevýhodu, že uživatel nalezená data nemůže jednoduše sdílet například se svými kolegy (od toho u webových rozhraní hodnocené reflektování stavu aplikace v adresním řádku prohlížeče). 
+
+			Z výše uvedeného je zřejmé, že je potřeba rozhraní, které bude použitelné univerzálně na všech platformách, a zároveň bude implementovat funkcionalitu všeobecně očekávanou u rozhraní pro wordnet. Tou je jednak textová prezentace dat a k ní dodatečná vizualizice ve formě grafu. Ideální rozhraní by také mělo splňovat designové požadavky moderních webových aplikací na přístupnost, tedy například nepředpokládat určitou velikost obrazovky uživatelova zařízení či ctít zásady vizuální přístupnosti (konstrastní barevné kódování, nepřekrývání textových prvků na obrazovce etc.). Je samozřejmě evidentní, že grafická prezentace dat nemůže být přizpůsobena velikosti obrazovky mobilního zařízení, mají-li být textové prvky čitelné a zároveň zachované rozložení prvků, může však být alespoň zajištěno, že funkcionalita posouvání zobrazovací plochy dotykem (u dotykových zařízení) není znemožněna funkcionalitou svázanou s prvky na obrazovce (jak tomu často bývá u implementací grafů synsetů, jejichž uzly je možné tažením myší přesouvat po zobrazovací ploše). 
+
+			Kýžené rozhraní by také mělo splňovat požadavky na vizuální atraktivitu, aby se uživatelé cítili komfortně při práci s takovým rozhraním. Aspekty vizuálně komfortního rozhraní jsou do značné míry subjektivní, zdá se však, že uživatelé očekávají jistou prototipičnost designového konceptu od webové stránky s určitým účelem \parencite{walker2013simple, tuch2012role}. Studie \parencite{tuch2012role} také potvrzuje, že uživatelé pozitivně vnímají webové stránky s nízkou komplexitou, což může u implementace rozhraní wordnetu být problémem, jelikož takové rozhraní inherentně musí poskytovat velké množství informací. Cílem tedy je zobrazované informace vhodně strukturovat tak, aby uživatel měl pocit, že danou stránku zná a ví, kde na ní co najde, a necítil se zahlcen množstvím informací. Detaily designu takové aplikace jsou rozebrány v [zatím neexistující kapitole o tom, jak ty cypovinu píšu]. 
+
+	\part{Praktická část: rozhraní k sémantické síti}
+
+		\chapter{Design rozhraní}
+
+			\section{Textová prezentace}
+
+
+			\section{Grafická prezentace}
+
+
+		\chapter{Použité technologie}
+
+			\section{HTML}
+
+			\section{CSS}
+
+			\section{JavaScript}
+
+			\section{JSON}
+
+
  
 	% \begin{spacing}{1.05}
 	\printbibliography[]
