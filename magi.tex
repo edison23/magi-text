@@ -349,7 +349,7 @@
 
 				% prostor pro rozsireni
 
-				Jako další vylepšení oproti tehdejší verzi princetonského WordNetu přinesl EuroWordNet také relace mezi slovními druhy a vztah blízkého synonyma\td{hmm, a co near antonym? to be investigated}. Argument pro zavedení mezislovnědruhových relací je relativně přímočarý, a to, že umožňují \uv{sblížit} koncepty, které jsou si příbuzné, jen náleží k jinému slovnímu druhu. Nutno podotknout, že v době psaní této práce je princetonský WordNet ve verzi 3.1 a obsahuje už relaci \ex{derivationally related form}, která zajišťuje přesně toto propojení (více o synsetech v princetonském WordNetu v kapitole \ref{cha:princeton-synset-rels} na straně \pageref{cha:princeton-synset-rels}). Co se vztahu blízkého synonyma (\ex{near synonym}) týče, důvodem pro jeho zavedení byl údajně zájem mít možnost přiblížit koncepty, které jsou si významově podobné, ale pouze na své úrovni. U takových konceptů platí, že byť jejich význam je podobný, jejich hyponyma nelze zařadit pod jeden koncept, jelikož se rozdíl mezi oněmi koncepty svázanými vztahem blízkého synonyma prohlubuje. Příkladem budiž trojice nizozemských slov \ex{aparaat}, \ex{werktuig} a \ex{instrument}, jež jsou si významově nepříliš vzdálená:
+				Jako další vylepšení oproti tehdejší verzi princetonského WordNetu přinesl EuroWordNet také relace mezi slovními druhy a vztah blízkého synonyma\td{hmm, a co near antonym? to be investigated}. Argument pro zavedení mezislovnědruhových relací je relativně přímočarý, a to, že umožňují \uv{sblížit} koncepty, které jsou si příbuzné, jen náleží k jinému slovnímu druhu. Nutno podotknout, že v době vzniku této práce je princetonský WordNet ve verzi 3.1 a obsahuje už relaci \ex{derivationally related form}, která zajišťuje přesně toto propojení (více o synsetech v princetonském WordNetu v kapitole \ref{cha:princeton-synset-rels} na straně \pageref{cha:princeton-synset-rels}). Co se vztahu blízkého synonyma (\ex{near synonym}) týče, důvodem pro jeho zavedení byl údajně zájem mít možnost přiblížit koncepty, které jsou si významově podobné, ale pouze na své úrovni. U takových konceptů platí, že byť jejich význam je podobný, jejich hyponyma nelze zařadit pod jeden koncept, jelikož se rozdíl mezi oněmi koncepty svázanými vztahem blízkého synonyma prohlubuje. Příkladem budiž trojice nizozemských slov \ex{aparaat}, \ex{werktuig} a \ex{instrument}, jež jsou si významově nepříliš vzdálená:
 
 				% \Tree[.voorwerp\\objekt 
 				% 		[.lichaam\\tělo]
@@ -385,7 +385,7 @@
 
 	\part{Přehled a porovnání existujících vizualizací sémantických sítí}
 
-		Tato část textu bude zaměřena na zmapování existujících dostupných rozhraní a jejich zhodnocení. Výčet jednotlivých rozhraní rozhodně není vyčerpávající, jelikož některé vědecké insituce mohou vyvíjet své nástroje pro práci se sémantickými sítěmi neveřejně, některé nástroje už nejsou dostupné, etc. Nástroje pro vizualizaci\footnote{Terminologická poznámka: v této práci je vizualizací dat wordnetů míněna vizualizace jak textová reprezentace, tak grafická.} dat wordnetů byly vybírány pro přehled v této práci podle několika kritérií relevantních především pro koncového uživatele, avšak i pro případné vývojáře dalších wordnetů (tedy zda dané rozhraní mohou použít pro svá data).
+		Tato část textu bude zaměřena na zmapování existujících dostupných rozhraní a jejich zhodnocení. Výčet jednotlivých rozhraní rozhodně není vyčerpávající, jelikož některé vědecké instituce mohou vyvíjet své nástroje pro práci se sémantickými sítěmi neveřejně, některé nástroje už nejsou dostupné, etc. Nástroje pro vizualizaci\footnote{Terminologická poznámka: v této práci je vizualizací dat wordnetů míněna vizualizace jak textová reprezentace, tak grafická.} dat wordnetů byly vybírány pro přehled v této práci podle několika kritérií relevantních především pro koncového uživatele, avšak i pro případné vývojáře dalších wordnetů (tedy zda dané rozhraní mohou použít pro svá data).
 
 		\chapter{Metodologie porovnání}
 
@@ -400,27 +400,33 @@
 					\end{itemize}
 
 				% mozna vypsat vysledky a zaradit ten seznam sem? plus nejak exaktneji algoritmus filtrovani?
-				Z přehledu byly samozřejmě vyřazeny implementace, které k době hledání\footnote{20. dubna 2017} už nebyly dostupné. Také nebyla zahrnuta rozhraní, která jsou funkčně podobná jiným. Ačkoliv většina existujících rozhraní zřejmě pracuje buďto výhradně s princetonským WordNetem, či jej jako zdroj dat nabízí jako jednu z možností, nebylo na toto bráno ohled. Podstatné z hlediska použitelnosti však je, zda je zdrojový kód rozhraní dostupný a je možné jej použít i pro vizualizaci jiné sémantické sítě než kupříkladu princetonského WordNetu. Výsledkem tohoto průzkumu dostupných implementací rozhraní je XX vizualizací dat wordnetů:
+				Z přehledu byly samozřejmě vyřazeny implementace, které k době hledání\footnote{20. dubna 2017} už nebyly dostupné. Také nebyla zahrnuta rozhraní, která jsou funkčně podobná jiným. Ačkoliv většina existujících rozhraní zřejmě pracuje buďto výhradně s princetonským WordNetem, či jej jako zdroj dat nabízí jako jednu z možností, nebylo na toto bráno ohled. Do přehledu byla zahrnována především rozhraní, která jsou dostupná z webového prohlížeče, jelikož je to pro koncového uživatele nejpohodlnější způsob přístupu k aplikaci (není nucen instalovat žádný přídavný software na svůj počítač), ovšem vzhledem k rozšířenosti rozhraní určených pro aplikační prostředí Java byla do přehledu zahrnuta i některá rozhraní právě tohoto typu. Jsou však popisována pouze povrchněji a měla by při interpretaci hodnocení být automaticky značně penalizována, jelikož je uživatel mající zájem takové rozhraní použít nucen instalovat aplikační rozhraní Java, pokud jej nemá. Dalším důvodem k penalizaci je také fakt, tyto aplikace nejsou přímo spustitelné na mobilních zařízeních\footnote{Pro Android existuje emilační rozhraní XY link, lze však předpokládat, že použitelnost vizualizací wordnetu bude na zařízení s malou obrazovkou poněkud omezená.} \parencite{gronli2014mobile} a jejich portabilita do formy nativních aplikací může omezená a obtížná.
+
+				Podstatná z hlediska hodnocení je také univerzalita, tedy zda je zdrojový kód rozhraní otevřený a je možné jej použít i pro vizualizaci jiné sémantické sítě, než pro kterou bylo rozhraní vyvinuto. Je ovšem dlužno podotknout, že tato informace bývá často nedostupná; potom se v rámci této práce předpokládá, že kód otevřený není.
+
+				Do přehledu byla tedy zahrnuta následující rozhraní:
 
 					\begin{itemize}
 						\item An interactive visualization of the Princeton WordNet database (\url{http://mateogianolio.com/wordnet-visualization/})
 						\item WordNET Editor (\url{http://wordventure.eti.pg.gda.pl/wne/wne.html})
-						\item A Graphical WordNet Browser (\url{http://homepages.inf.ed.ac.uk/adubey/software/wnbrowser/index.html})
-						\item Visual Browser (\url{https://nlp.fi.muni.cz/projekty/visualbrowser/})
 						\item Cornetto Demo (\url{http://cornetto.clarin.inl.nl/wordnet.xql?ssID=&word_form=&pos=&sense_pos=1})
 						\item WordVis (\url{http://wordvis.com/})
 						\item sloWTool (\url{http://nl.ijs.si/slowtool/})
 						\item BabelNet (\url{http://babelnet.org})
-						\item GRAPH WORDS online thesaurus (\url{http://graphwords.com/})
+						\item wnbroswer\footnote{sic erat scriptum} (\url{http://homepages.inf.ed.ac.uk/adubey/software/wnbrowser/index.html})
+						\item Visual Browser (\url{https://nlp.fi.muni.cz/projekty/visualbrowser/})
+						\item Treebolic (\url{})
+						\item Artha (\url{http://artha.sourceforge.net/wiki/index.php/Home})
+						% \item GRAPH WORDS online thesaurus (\url{http://graphwords.com/})
 					\end{itemize}
 
-				Pro účely porovnání (určení východiska\td{well, baseline}) budou do popisu zahrnuta ještě jedno rozhraní, a to oficiální vyhledávací rozhraní princetonského WordNetu (\url{http://wordnetweb.princeton.edu/perl/webwn}). 
+				Pro účely porovnání (určení východiska\td{well, baseline}) bude do popisu zahrnuto ještě jedno rozhraní, a to oficiální vyhledávací rozhraní princetonského WordNetu (\url{http://wordnetweb.princeton.edu/perl/webwn}). 
 
 			\section{Strukturalizace přehledu a kritéria hodnocení}
 
 				Výše vypsaná rozhraní budou v dalších kapitolách rozdělena podle toho, zda umožňují přístup z webového přihlížeče (nativně, bez nutnosti mít nainstalované prostředí Java\td{nejakej link, mozna vysvetleni?}), budou zhodnoceny jejich positiva a negativa z hlediska použitelnosti pro získání informací o hledaném výrazu a v neposlední řadě také podle toho, jak kvalitní jejich uživatelské rozhraní je. 
 
-				K rozdělení podle dostupnosti bylo přistoupeno jednak proto, že v době psaní této práce je pokročilost webových technologií dostatečná k tomu, aby podobné vizualizace byly tvořeny jako webové stránky, a jednak proto, že cílem této práce je vytvořit všeobecně dostupné a použitelné rozhraní k wordnetům. Všeobecně použitelným je míněna použitelnost nejen na osobních počítačích, ale také na mobilních zařízeních, což v podstatě vyřazuje použití technologií jako jsou zásuvné moduly Java používané k realizaci různých existujících rozhraním (příkladem budiž \ex{Visual Editor}). 
+				K rozdělení podle dostupnosti bylo přistoupeno jednak proto, že v době vzniku této práce je pokročilost webových technologií dostatečná k tomu, aby podobné vizualizace byly tvořeny jako webové stránky, a jednak proto, že cílem této práce je vytvořit všeobecně dostupné a použitelné rozhraní k wordnetům. Všeobecně použitelným je míněna použitelnost nejen na osobních počítačích, ale také na mobilních zařízeních, což v podstatě vyřazuje použití technologií jako jsou zásuvné moduly Java používané k realizaci různých existujících rozhraním (příkladem budiž \ex{Visual Editor}). 
 
 				Rozhraní jsou hodnocena na základě několika kritérií. Cílem je porovnat jejich přínos v kontextu ostatních existujících rozhraní a v kontextu současných trendů webových aplikací a ilustrovat, s jakými problémy se všeobecně rozhraní potýkají.  Z tohoto důvodu právě nebyla do přehledu zařazována rozhraní, která se podobají svou funkcionalitou a ovládáním rozhraním již zařazeným. Kritéria hodnocení v této práci jsou následující:
 
@@ -453,10 +459,12 @@
 
 				\begin{figure}[h]
 					\centering
-					\includegraphics[width=0.8\textwidth]{wnsearch.png}
+					\includegraphics[width=1.0\textwidth]{wnsearch.png}
 					\caption{Ukázka rozhraní: WordNet Search 3.1 v základním nastavení a s otevřenými detaily synsetů}
 					\label{fig:wnsearch}
-				\end{figure}				
+				\end{figure}
+
+				Podobnou jako WordNet Search splňují i některá další rozhraní. Za zmínku stojí například WNSearch\footnote{\url{http://www.golovchenko.org/cgi-bin/wnsearch}}, což je minimalistické čiště textové rozhraní, které díky absenci jakýchkoliv stylů je responsivní a dobře použitelné na mobilních zařízeních s libovolně velkým displeje. Mezi další rozhraní s podobnou funkcionalitou patří URCS Wordnet Browser (pro Javu)\footnote{\url{http://www.cs.rochester.edu/research/cisd/wordnet/}} či GoldenDict (desktopové rozhraní)\footnote{\url{http://goldendict.org/}}.
 
 		\chapter{Vizualizace s webovým rozhraním}
 
@@ -566,7 +574,7 @@
 
 				Přínos tohoto rozhraní tkví především v relativně přehledné vizualizaci dat princetonského WordNetu, nutno však podotknout, že pro některé své vlastnosti nemusí pro nezkušeného uživatele být zpočátku příliš intuitivní (např. zmíněné křížení hran).
 
-				Na knihovně, na níž je toto rozhraní postaveno, stojí ještě některá další rozhraní k princetonskému WordNetu, například VisuWords\footnote{\url{http://www.visuwords.com/}} či Visual Thesaurus\footnote{\url{https://www.visualthesaurus.com}}. Ta nebyla do hodnocení v této práci zahrnuta, protože jsou funkčně podobná tomuto rozhraní.
+				Na knihovně, na níž je toto rozhraní postaveno, stojí ještě některá další rozhraní k princetonskému WordNetu, například VisuWords\footnote{\url{http://www.visuwords.com/}, \url{https://www.linux.com/news/visuwords-wordnet-goes-graphical}} či Visual Thesaurus\footnote{\url{https://www.visualthesaurus.com}}. Ta nebyla do hodnocení v této práci zahrnuta, protože jsou funkčně podobná tomuto rozhraní.
 
 			\section{sloWTool}
 			\label{vis:slowtool}
@@ -603,7 +611,7 @@
 				% poskytnout vědecké komunitě i široké veřejnosti volně dostupný multilinguální zdroj provázaných informací a soubor nástrojů, které umožní s těmito informacemi pracovat. 
 				eliminovat základní faktory definující nevýhody tehdejších (a potažmo i aktuálních) mezinárodních projektů zabývajících se sémantickými sítěmi. Těmi jsou manuální tvorba dat, které sítě konstituují, a s tím související nerovnoměrnost množství dat přes jednotlivé jazyky. Jazyky s vysokou hustotou zdrojů, jakým je například angličtina, tak ve výsledku mají více dat i v sémantické síti. Autoři BabelNetu se pokusili tento problém překonat kombinací několika metod, jejichž společným jmenovatelem je automatizace. Informace o významech jsou v BabelNetu doplňovány z Wikipedie, která je podle autorů díky mnohačetným zásahům expertů z různých oborů ve výsledku přesným a informarčně bohatým zdrojem. Druhá důležitá metoda, zaměřující se především na nerovnoměrnost dat v různých jazycích, je automatický překlad zdrojů. \parencite{navigli2010babelnet}
 
-				BabelNetXplorer je webové grafické rozhraní vytvořené pro vizualizaci dat z BabelNetu. \cite{navigli2012babelnetxplorer} uvádějí, že rozhraní slouží k vizualizaci vztahů pro slova nalezená v BabelNetu a ilustrují vzhled rozhraní dvěma snímky obrazovky. V době psaní této práce však rozhraní BabelNetXploreru vypadá výrazně odlišně, což je vzhledem k tomu, že od vzniku práce \cite{navigli2012babelnetxplorer} uběhlo pět let, pochopitelné. V této práci bude z evidentních důvodů rozebrána použitelnost a funkcionalita současného rozhraní.
+				BabelNetXplorer je webové grafické rozhraní vytvořené pro vizualizaci dat z BabelNetu. \cite{navigli2012babelnetxplorer} uvádějí, že rozhraní slouží k vizualizaci vztahů pro slova nalezená v BabelNetu a ilustrují vzhled rozhraní dvěma snímky obrazovky. V době vzniku této práce však rozhraní BabelNetXploreru vypadá výrazně odlišně, což je vzhledem k tomu, že od vzniku práce \cite{navigli2012babelnetxplorer} uběhlo pět let, pochopitelné. V této práci bude z evidentních důvodů rozebrána použitelnost a funkcionalita současného rozhraní.
 
 				Rozhraní obsahuje klasicky vyhledávací pole, vedle něhož se nacházejí rozbalovací menu, v nichž si uživatel může vybrat, ve kterém jazyce chce vyhledávat a, případně, do kterého jazyke chce slovo přeložit. Po úspěšném dokončení vyhledávání jsou uživateli zobrazeny odkazy na jednotlivé synsety v seznamu, který není nepodobný ostatním rozhraním. Podstatným rozdílem však je, že se v něm zobrazují i ilustrační obrázky, které, byť nejsouce vždy velmi informativní, mohou napomoci uživateli v orientaci, který synset jej zajímá. 
 
@@ -624,8 +632,67 @@
 
 				V době vzniku této práce mělo rozhraní dvě verze, z nichž jedna byla označana jako \textit{živá beta}, druhá jako \textit{současná (3.7)}, avšak při testování nebyly zjištěny zásadní rozdíly mezi těmito verzemi. Nutno ovšem podotknout, že na testovacím desktopovém prohlížeči vykazovala verze beta minoritní chyby v rozložení stránky.
 
+		\chapter{Vizulizace v aplikačním prostředí Java}
 
+			Java je objektově orientovaný programovací jazyk, který je zaměřený na to, aby měl co nejméně závislostí na konkrétním operačním systému a technickém vybavení počítače, jak jen to je možné. To je výhodné zejména kvůli tzv. konceptu WORA (\textit{write once, run anywhere}, tedy napiš jednou, spusť kdekoliv), protože to znamená, že skompilované programy napsané v Javě lze spustit na jakémkoliv stroji, který podporuje Javu. Takto skompilované programy se spouští v aplikačním prostředí zvaném Java Virtual Machine\footnote{virtuální stroj Javy} (JVM), jež vytváří uniformní prostředí pro běh aplikací. Výhodou Javy tedy je velká přenositelnost programů v tomto jazyce napsaných, jelikož jednou skompilovaný kód lze spustit na různých operačních systémech a zařízeních. Nevýhodou je, že si uživatel, který chce program v Javě spustit, musí nainstalovat aplikační prostředí Javy (JVM). 
 
+			Java je velmi oblíbená pro vývoj aplikací, které fungují podle modelu klient--server, což je uspořádání, v němž data má uložená centrální server, k nemuž se připojují uživatelské klienty, odesílají mu své požadavky a uživatelům zobrazují vrácená data. Na podobném principu může fungovat i rozhraní pro wordnet, pokud jsou data wordnetu uložena na serveru.
+
+			Vizualizace vytvořené pro prostředí Java nemá příliš smysl hodnotit z hlediska responsivity, jelikož a priori nejsou vytvářena pro mobilní zařízení (až na výjimky, které nebylo možné zhodnotit z důvodu jejich nedostupnosti v době vzniku této práce). Co však bráno v potaz být může je jejich schopnost přizpůsobit se velikosti obrazovky. Jakkoliv tento parametr může se zdát být samozřejmým, ukázalo se, že ne všechna rozhraní jsou na různé velikosti obrazovek osobních počítačů přizpůsobena.
+
+			\section{wnbroswer}
+
+				Rozhraní wnbroswer\footnote{sic erat scriptum} je určeno k prezentaci dat z princetonskému WordNetu, které pracuje pouze s grafovou grafickou reprezentací. Bylo vytvořeno pro reprezentaci dat z WordNetu ve verzi 3.0 a vyšší a vyžaduje lokální instalaci dat. Rozhraní je zřejmě svázáno se vznikem rumunského wordnetu \parencite{fivser2011visualizing}. Sestává z vyhledávacího pole, volby, mezi kterými syntaktickými kategoriemi se má vyhledávat, a selektoru na typy vazeb, jež mají být zobrazeny. Po úspěšném vyhledání konkrétního slova se zobrazí graf konceptuálně podobný grafu z rozhraní sloWTool, tedy ve středu je uzel reprezentující hledaný výraz, z něhož vedou hrany k jednotlivým synsetům, jež danou slovní formu obsahují. 
+
+				Grafická reprezentace je interaktivní, tedy na ní lze zvolit, jaký druh sémantického vztahu se má zobrazit, a lze tak u každého uzlu postupně zobrazit všechny synsety, které jsou s ním provázány; toho lze docílit buď přes kontextové menu, nebo přes volby vztahů v levém sloupci rozhraní, v němž se mimo jiné nachází i vyhledávací pole. Rozhraní zobrazuje i detaily zvoleného synsetu (po kliknutí na daný synset), takže až na technické informace typu číslo významu a podobně je schopno zobrazovat všechna dostupná data.
+
+				Jakkoliv velikost okna s aplikací měnit lze, velikost plochy pro vykreslování grafu zůstává neměnné velikosti, lze tedy v terminologii webových aplikací říci, že je neresponsivní, jelikož se nedokáže přizpůsobit velikosti obrazovky zařízení uživatele.
+
+				Aplikaci je možné používat bez připojení k Interetu, jelikož spoléhá na data WordNetu nainstalovaná lokálně. 
+
+				Poněkud komicky působí fakt, že rozhraní má tři různé názvy: wnbroswer (hlavní nadpis stránky projektu), WordNet Browswer (titulek okna aplikace) a wnbrowser (ostatní výskyty). 
+
+				\begin{figure}[h]
+					\centering
+					\includegraphics[width=1.0\textwidth]{wnwordnetbrowswer.png}
+					\caption{Ukázka rozhraní wnbroswer}
+					\label{fig:wnwordnetbrowswer}
+				\end{figure}
+
+			\section{Treebolic}
+
+				Treebolic je aplikace určená k zobrazování hierarchických dat v hyperobilicke reprezentaci, která zajišťuje, že důležitá data v centru obrazovky jsou zobrazena uživateli ve větším měřítku, než data na okrajích grafu. Reprezentaci si lze představit jako plochu zobrazenou přes čočku. 
+
+				Zobrazení používá model prezentující vše, co je nalezeno k hledanému slovu, tedy při úspěšném vyhledání výsledků se veprostřed vizualizace zobrazí reprezentace vyhledávání, s níž jsou hranami provázáany všechny nalezené synsety. Oproti ostatním zde popisovaným prostředím navíc seskupuje tyto synsety podle slovního druhu, tedy zavádí další metakategorii v zobrazení, což přispívá k přehlednosti zobrazení. 
+
+				Co jí naopak ubírá, jsou poněkud kryptické ikony sémantických vztahů, jejichž význam je sice popsán na hraně, kde jsou dané ikony umístění, popřípadě je možno jej odhalit pomocí nabídky \textit{Info} v kontextovém menu po kliknutí pravým tlačítkem danou ikonu, ale při prvním setkání se toto řešení nezdá být příliš ergonomickým (mimo jiné proto, že duplikuje informace). Ne zcela evidentní jsou také číselné a procentuální údaje v místě uzlů se synsety. Uživatel se sice díky řešení, které používá konexe hranami ze synsetů k členským slovním formám, dozví, o který synset jde (díky oněm členským slovním formám), ale význam zmíněných údajů zůstává skryt. Výhdoou je barevné kódování významů jednotlivých hran. Barvy jsou navíc editovatelné v nastavení, takže teoreticky rozhraní vyhoví i osobám se zhoršeným vnímáním barev.
+
+				Aplikace byla vyvinuta i pro Android (jakkoliv v rámci této práce netestována), tudíž lze říci, že jistým zprostředkovaným způsobem splňuje požadavky na responsivitu.
+
+				Aplikaci je možné používat bez připojení k Interetu, jelikož spoléhá na data WordNetu nainstalovaná lokálně.
+
+				Teoretický přínos této implementace spočívá v pohledu na stratifikaci důležitosti vizualizovaných dat. Idea hyperbolického zobrazení, rozvinutá dále především v oblasti ovladatelnosti, by mohl být správným krokem prezentace dat ve větším množství, než je schopna obrazovka (a potažmo zorné pole) uživatele pojmout.
+
+			\section{VisualBrowser}
+
+				Verze aplikace VisualBrowser testovaná v rámci této práce neprokázala dostatečnou intuitivitu a funkčnost, aby její vlastnosti mohly být dále rozebrány. 
+
+		\chapter{Desktopové aplikace}
+
+			Desktopové aplikace jsou takové aplikace, které jsou nativně určeny pro běh na operačním systému uživatelova počítače. Nativně spouštěná aplikace je, ať už přímo, či nepřímo, závislá na programových vlastnostech operačního systému daného stroje, stejně jako zprostředkovaně na jeho technickém vybavení. Přístupy k distribuci desktopových aplikací jsou v zásadě dva; první, z evidentních důvodů běžný především pro operační systém Windows, spočívá v distribuci již skompilovaných binárních souborů, které zajistí instalaci daného programu do systému a uživateli zbývá jen příslušný program spustit. Druhý způsob, běžný spíše pro různé linuxové distribuce, je založený na distribuci souborů obsahujících zdrojový kód programu, přičemž uživatel je nucen, má-li zájem program používat, si binární spustitelný soubor skompilovat. Druhý způsob pro programátora skýtá zásadní výhodu v tom, že se nemusí zajímat o prostředí, na němž bude koncový uživatel jeho program provozovat, protože kompilace programu pro všechny dostupné konfigurace (kombinace progamového a technickéh vybavení koncového uživatele) je náročná na zdroje. \parencite{Elizabeth2015} Pro onoho koncového uživatele však slyne druhá varianta tou nevýhodou, že kompilace programového vybavení vyžaduje z jeho strany netriviální usilí a znalosti o vlastním systému. 
+
+			V rámci rozhraní určených pro zprostředkování dat z wordnetů jsou desktopové aplikace nejméně zastoupeny. Je tomu pravděpodobně proto, že jsou nejnáročnější na vývoj, zvláště mají-li být dostupné ze všech majoritních desktopových platforem.
+
+			\section{Artha}
+
+				Artha je multiplatformí thesaurus založený na WordNetu 3.0 \parencite{}. Aplikace je minimálně pro GTK\footnote{grafické prostředí používané na některých linuxových distribucích, například Ubuntu} nativní, takže poskytuje komfortní práci a je možno ji nainstalovat z repozitářů (tedy nevyžaduje náročnou kompilaci). Funguje bez připojení k Internetu a zobrazení je zaměřeno především na zobrazení významů synsetů (význam jsa reprezentován definicemi). Problémem je ukládání stavů aplikace, který se projevuje na nepříliš propracované funkcionalitě možnosti kroku zpět (na předchozí vyhledávání). Pokud například uživatel dvojklikne na slovo v definici, Artha se jej pokusí\footnote{selže, pokud uživatel vybere před dvojklikem více slov} přesměrovat na definici tohoto slova ve WordNetu, ale při kroku zpět už mu zobrazí slovo které hledal \textit{před} slovem, z něhož se dostal na \textit{současnou} definici. Oproti základnímu rozhraní WordNetu nabízí Artha větší pohodlí v podobě desktopové offline aplikace, což pro uživatele například znamená, že není při používání tohoto rozhraní závislý na připojení k Internetu.
+
+				Artha zobrazuje data čistě textově (ve smyslu, že nenabízí žádnou formu vizualizace), přičemž rozhraní dělí na dvě části, a to nalezené synsety a sémantické vztahy, které se k danému synsetu vážou. 
+
+			\section{GoldenDict}
+
+				Podobně jako Artha funguje GoldenDict, který, byvše univerzálnějším rozhraním pro více lexikografických zdrojů, byl testován jen ve své verzi pro WordNet. GoldenDict zobrazuje čistě textovou reprezentaci umožňující kliknutím zobrazit detaily jednotlivých synsetů, přičemž
+ 	
  
 	% \begin{spacing}{1.05}
 	\printbibliography[]
