@@ -51,7 +51,7 @@
 \newcommand{\td}[2][]{
 	{\hskip -0.5em\todo[size=\footnotesize]{#2}}
 }
-\newcommand{\simplywn}{\textit{Simply Wordnet}}
+\newcommand{\simplywn}{\textit{Simply Wordnet} }
 
 % \def\inch#1{#1''}
 
@@ -807,7 +807,7 @@
 
 				Hlavní nadpis tvoří výpis slov patřících do zobrazeného synsetu, pod je zobrazena jeho definice, cesta ke němu a další informace, jako například slovní druh či číslo základního konceptu (BCS)\td{tuhle zkratku jsem mel nekde blbe nahore}. Cestou k synsetu je míněn seřazený seznam synsetů, přes něž je možnost se ze zobrazeného synsetu možno nejkratší cestou dostat ke kořenovému synsetu. Pod tímto blokem s informacemi o daném synsetu uživatel nalezne výpis synsetů, s nimiž je zobrazený synset provázán sémantickými relacemi. Jednotlivé vztahy jsou rozděleny do sloupců, což přispívá k lepšímu škálovaní reprezentace sémantických relací. Uživateli v této sekci není zobrazena jedna důležitá sémantická relace, a to hyperonymie; synsety k zobrazenému synsetu nadřazené jsou totiž zobrazeny ve zmíněné cestě k synsetu.
 
-				Aby byla zvýšena interaktivita rozhraní, jsou zobrazené synsety vypisovány uživateli jako hypertextové odkazy. Přes tyto odkazy je možné přejít na příslušný synset, čímž je umožněno procházení wordnetu přes vztahy jako jsou hyponymie, meronymie, hyperonymie etc. V textovém zobrazení se vyskytují dva druhy hypertextových odkazů. První jsou v levém sloupci v seznamu synsetů nalezených při vyhledávání a slouží volbě zobrazeného synsetu. Vzhledem k tomu, že server po vyhledávání vrací soubor všech nalezených synsetů, nevyvolává přechod po těchto odkazech nové hledání. Druhým druhem odkazů jsou zde takové, které vedou na konkrétní synsety. Vyskytují se pravé části textového rozhraní, a to v cestě k zobrazenému synsetu a v sémantických relacích, do nichž tento náleží. Pokud na ně uživatel klikne, spustí se nové vyhledávání podle identifikačního řetězce synsetu, na nějž uživatel klikl. Výsledkem tohoto hledání je jeden konkrétní synset.
+				Aby byla zvýšena interaktivita rozhraní, jsou zobrazené synsety vypisovány uživateli jako hyperodkazy, neboli hypertextové odkazy. Přes tyto odkazy je možné přejít na příslušný synset, čímž je umožněno procházení wordnetu přes vztahy jako jsou hyponymie, meronymie, hyperonymie etc. V textovém zobrazení se vyskytují dva druhy hypertextových odkazů. První jsou v levém sloupci v seznamu synsetů nalezených při vyhledávání a slouží volbě zobrazeného synsetu. Vzhledem k tomu, že server po vyhledávání vrací soubor všech nalezených synsetů, nevyvolává přechod po těchto odkazech nové hledání. Druhým druhem odkazů jsou zde takové, které vedou na konkrétní synsety. Vyskytují se pravé části textového rozhraní, a to v cestě k zobrazenému synsetu a v sémantických relacích, do nichž tento náleží. Pokud na ně uživatel klikne, spustí se nové vyhledávání podle identifikačního řetězce synsetu, na nějž uživatel klikl. Výsledkem tohoto hledání je jeden konkrétní synset.
 
 				Jednou z odchylek od tradičních postupů v textové reprezentaci dat z wordnetu je udávání příslušnosti slovní formy ke konkrétnímu významu. Tuto příslušnost se tradičně reprezentuje číslem za slovní formou, jež je této odděleno od dvojtečkou. To však může pro uživatele neznalého tradic v reprezentaci wordnetů být matoucí, a tak bylo v rámci zlepšení přístupnosti nového rozhraní \simplywn přistoupeno k zobrazení čísla významu dané slovní formy jako čísla v horním indexu za ní. To by mělo umožnit neznalému uživateli tento pro něj pravděpodobně bezvýznamný údaj snáze ignorovat.
 
@@ -820,22 +820,52 @@
 
 				Koncept zobrazení grafem spočívá v použití tří druhů uzlů s odlišným významem, které jsou spojeny hranami, jejichž význam je závislý na tom, které uzly spojují. Prvním druhem uzlů jsou ty, jež reprezentují synsety. Takový uzel se v grafu vždy vyskytuje minimálně jeden kořenový, což je v tomto případě ten synset, jehož detaily jsou otevřeny. Další jsou pak členové případných sémantických relací, jichž je kořenový členem. Z kořenového uzlu vedou hrany ke dvěma zbývajícím druhům uzlů, jimiž jsou slovní formy a sémantické relace. Uzly reprezentující slovní formy náležející k danému synsetu jsou tímto propojeny hranou pojmenovanou \textit{member word}, tedy členské slovo, a žádné další hrany z nich nevedou. 
 
-				Co se uzlů reprezentujících sémantické relace týče, tam může význam jejich přítomnosti v grafu být na první pohled poněkud obskurnější, důvody k jeho použití jsou však jednoduché. Intuitivně by sémantická relace měla být hrana, jež vede mezi synsety spojenými touto relací. Pojmenování hrany by se pak odvíjelo od druhu relace, již reprezentuje. Problémem s tímto způsobem zobrazení tkví v tom, že značně centralizuje zobrazení do hvězdicovitého obrazce okolo centrálního uzlu, což zobrazované uzly vizuálně uspořádá do hierarchicky ploché struktury a sníží přehlednost grafu. Z tohoto důvodu byly do vizualizace grafem zavedeny uzly reprezentující sémantické relace, které synsety svázané s kořenovým uzlem stejným vztahem sdružují do jednoho podstromu. Díky tomu je dosaženo rozčlenění grafu na jednotlivé sekce podle těchto sémantických relací a uživatel není nucen zkoumat význam každé hrany mezi synsety (cf. vizualizace v rozhraní Cornetto, sekce \ref{wnvis:cornetto} na straně \pageref{wnvis:cornetto}).
+				Co se uzlů reprezentujících sémantické relace týče, tam může význam jejich přítomnosti v grafu být na první pohled poněkud obskurnější, důvody k jeho použití jsou však jednoduché. Intuitivně by sémantická relace měla být hrana, jež vede mezi synsety spojenými touto relací. Pojmenování hrany by se pak odvíjelo od druhu relace, již reprezentuje. Problémem s tímto způsobem zobrazení tkví v tom, že značně centralizuje zobrazení do hvězdicovitého obrazce okolo centrálního uzlu, což zobrazované uzly vizuálně uspořádá do hierarchicky ploché struktury a sníží přehlednost grafu. Z tohoto důvodu byly do vizualizace grafem zavedeny uzly reprezentující sémantické relace, které synsety svázané s kořenovým uzlem stejným vztahem sdružují do jednoho podstromu. Díky tomu je dosaženo rozčlenění grafu na jednotlivé sekce podle těchto sémantických relací a uživatel není nucen zkoumat význam každé hrany mezi synsety (cf. vizualizace v rozhraní Cornetto, kapitola \ref{wnvis:cornetto} na straně \pageref{wnvis:cornetto}).
 
 				Responsivita této vizualizace je inherentně omezena tím, že se graf i byť i nepříliš komplexního synsetu, nemůže na malou obrazovku mobilního zařízení vejít, zvláště mají-li být textové popisy uzlů čitelné. Tím, že vizualizace umožňuje přibližování a oddalování, je však tento problém do jisté míry eliminován, protože uživatel může graf přiblížit a přejíždět po něm podobně, jako to umožňují například aplikace na zobrazování elektronických map\footnote{\url{https://www.mapy.cz}}. Toto řešení samozřejmě zavádí na dotykových obrazovkách problém s tím, aby nebylo znemožněno rolování po zbytku stránky. To bylo vyřešeno pomocí zachování okrajů po stranách kolem plochy s grafem, kde se běžně vyskytují rolovací ovládací lišty a uživatel tak tohoto okraje může využít k rolování stránky namísto posouvání grafu.
 
 
 		\chapter{Použité technologie}
 
-			
+			Rozhraní \simplywn je vytvořeno jako aplikace pro webové prohlížeče (k nimž se všeobecně referuje jako k webovým stránkám), přesněji řečeno jde o dokument v HTML\footnote{HyperText Markup Language}, jenž je dynamicky generovaný na straně klienta pomocí skriptovacího jazyka JavaScript a jím zpracovávaných dat ze serveru posílaných ve formátu JSON\footnote{JavaScript Object Notation}. Vzhled dokumentu je definován pomocí jazyka CSS\footnote{Cascading Style Sheets}. Jednotlivé role uvedených technologií budou rozebrány v následujících kapitolách.
 
 			\section{HTML}
 
-			\section{CSS}
+				Značkovací jazyk HTML je základním stavebním prvkem většiny aplikací pro webové prohlížeče. Jako značkovací jazyk umožňuje HTML strukturalizaci textového dokumentu do částí, definici významů jednotlivých částí (například označení nadpisu) a do jisté míry jej lze užívat i pro definici vzhledu textu (tučný řez písma, etc.). Poskytuje také prostředky pro tzv. hyperodkazy, jimiž lze provázat různé dokumenty či části jednoho dokumentu. Nezřídka se tyto odkazy v dnešní době používají jako ovládací prvky k řízení změn obsahu dynamicky generovaného dokumentu, kterým je například zde popisované rozhraní \simplywn. 
+
+				V rozhraní \simplywn HTML slouží k definici struktury zobrazené webové stránky, jejímu rozdělení na jednotlivé sekce (levý sloupec, pravá plocha, záhlaví, etc.) a ke strukturalizaci posléze zobrazovaných informací. Příkladem může být výpis sémantických relací, v nichž je zobrazovaný synset přítomen. Jednotlivé relace jsou rozděleny do bloků (jež jsou později pomocí CSS nastaveny tak, aby se zobrazovaly jako sloupce) a jednotlivé synsety svázané se zobrazovaným příslušným vztahem jsou vypsány v seznamu. 
+
+				% ukázka kodu stranky
 
 			\section{JavaScript}
 
-			\section{JSON}
+				JavaScript je vysokoúrovňový\footnote{silně abstrahovaný od nízkoúrovňových instrukcí procesoru a nezávislý (či méně závislý) na technickém vybavení počítače} dynamický\footnote{úkony, jež jsou u statických jazyků prováděny při kompilaci, jsou prováděny za běhu programu} netypovaný\footnote{kterékoliv operace jsou povoleny nad jakýmikoliv daty, nekontroluje se typ proměnných} a interpretovaný\footnote{program spouštěný bez předchozí statické kompilace, interpretem následně rozložený na kompilované podrutiny} programovací jazyk používaný vedle HTML a CSS jako jedna ze tří základních technologií pro tvorbu webových aplikací. Jeho funkce spočívá v zásadě v ovládání obsahu stránky na základě událostí, kterými mohou být například akce uživatele jako kliknutí na odkaz či akce serveru jako je dokončení požadavku a navrácení jeho výsledků.% [cit] wikipedia
+
+				Popisované rozhraní JavaScript využívá na sledování akcí uživatele (inicializace hledání a přepínání zobrazeného synsetu či vizualizace), odesílání požadavků uživatele serveru (hledání), přijímání odpovědí na tyto požadavky a následné zpracování odpovědi a aktualizace HTML dokumentu%tady si stojim za "html dokument", bo je to "htmlovy dokument", nikoliv neco jako "jazyk html" (cf. "webovy dokument" vs. "prostredi web(u)")
+				, tedy zobrazení výsledků hledání uživateli. %history api?
+
+				\subsection{JSON}
+
+					JSON je formát určený pro výměnu dat a je zároveň strojově i lidsky čitelný (jedná se o čistý text). Strukturálně se podobá objektům například v JavaScriptu, tedy sestává z párů \texttt{klíč:hodnota}. Klíčem bývá řetězec znaků, hodnotou může například v JavaScriptu být cokoliv, co je objekt (což je v JavaScriptu v podstatě cokoliv).% [cit] http://www.json.org/
+
+					Tento formát je velmi vhodný na přenos informací, jakými jsou data z wordnetu, jelikož se jedná o čistě textová data, odpověď, již lze jednoduše zpracovat v jazyce JavaScript, je také poměrně intuitivně lidsky čitelná. 
+
+					% ukazka kodu
+
+
+			\section{CSS}
+
+
+		% popis, jak to funguje
+		% - struktura stranky v html?
+		% - nejakej runtime JS (tezky, neni to tak pekne primocary jako baka)
+		% - popis struktury JSON odpovedi
+
+		% uvahy, co dal
+		% - zrychlit?
+		% - klikatelny sunsety ve stromecku?
+		% - history by mohla fungovat, snad se ji podari zprovoznit
+			
 
 
  
