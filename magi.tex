@@ -51,6 +51,7 @@
 \newcommand{\td}[2][]{
 	{\hskip -0.5em\todo[size=\footnotesize]{#2}}
 }
+\newcommand{\simplywn}{\textit{Simply Wordnet}}
 
 % \def\inch#1{#1''}
 
@@ -762,21 +763,71 @@
 
 			Rozhraní závislá na platformě (operačním systému, případně aplikačním rozhraní) mají navíc tu nevýhodu, že uživatel nalezená data nemůže jednoduše sdílet například se svými kolegy (od toho u webových rozhraní hodnocené reflektování stavu aplikace v adresním řádku prohlížeče). 
 
-			Z výše uvedeného je zřejmé, že je potřeba rozhraní, které bude použitelné univerzálně na všech platformách, a zároveň bude implementovat funkcionalitu všeobecně očekávanou u rozhraní pro wordnet. Tou je jednak textová prezentace dat a k ní dodatečná vizualizice ve formě grafu. Ideální rozhraní by také mělo splňovat designové požadavky moderních webových aplikací na přístupnost, tedy například nepředpokládat určitou velikost obrazovky uživatelova zařízení či ctít zásady vizuální přístupnosti (konstrastní barevné kódování, nepřekrývání textových prvků na obrazovce etc.). Je samozřejmě evidentní, že grafická prezentace dat nemůže být přizpůsobena velikosti obrazovky mobilního zařízení, mají-li být textové prvky čitelné a zároveň zachované rozložení prvků, může však být alespoň zajištěno, že funkcionalita posouvání zobrazovací plochy dotykem (u dotykových zařízení) není znemožněna funkcionalitou svázanou s prvky na obrazovce (jak tomu často bývá u implementací grafů synsetů, jejichž uzly je možné tažením myší přesouvat po zobrazovací ploše). 
+			Z výše uvedeného je zřejmé, že je potřeba rozhraní, které bude použitelné univerzálně na všech platformách, a zároveň bude implementovat funkcionalitu všeobecně očekávanou u rozhraní pro wordnet. Tou je jednak textová prezentace dat a k ní dodatečná vizualizace ve formě grafu. Ideální rozhraní by také mělo splňovat designové požadavky moderních webových aplikací na přístupnost, tedy například nepředpokládat určitou velikost obrazovky uživatelova zařízení či ctít zásady vizuální přístupnosti (konstrastní barevné kódování, nepřekrývání textových prvků na obrazovce etc.). Je samozřejmě evidentní, že grafická prezentace dat nemůže být přizpůsobena velikosti obrazovky mobilního zařízení, mají-li být textové prvky čitelné a zároveň zachované rozložení prvků, může však být alespoň zajištěno, že funkcionalita posouvání zobrazovací plochy dotykem (u dotykových zařízení) není znemožněna funkcionalitou svázanou s prvky na obrazovce (jak tomu často bývá u implementací grafů synsetů, jejichž uzly je možné tažením myší přesouvat po zobrazovací ploše). 
 
-			Kýžené rozhraní by také mělo splňovat požadavky na vizuální atraktivitu, aby se uživatelé cítili komfortně při práci s takovým rozhraním. Aspekty vizuálně komfortního rozhraní jsou do značné míry subjektivní, zdá se však, že uživatelé očekávají jistou prototipičnost designového konceptu od webové stránky s určitým účelem \parencite{walker2013simple, tuch2012role}. Studie \parencite{tuch2012role} také potvrzuje, že uživatelé pozitivně vnímají webové stránky s nízkou komplexitou, což může u implementace rozhraní wordnetu být problémem, jelikož takové rozhraní inherentně musí poskytovat velké množství informací. Cílem tedy je zobrazované informace vhodně strukturovat tak, aby uživatel měl pocit, že danou stránku zná a ví, kde na ní co najde, a necítil se zahlcen množstvím informací. Detaily designu takové aplikace jsou rozebrány v [zatím neexistující kapitole o tom, jak ty cypovinu píšu]. 
+			Kýžené rozhraní by také mělo splňovat požadavky na vizuální atraktivitu, aby se uživatelé cítili komfortně při práci s takovým rozhraním. Aspekty vizuálně komfortního rozhraní jsou do značné míry subjektivní, zdá se však, že uživatelé očekávají jistou prototypičnost designového konceptu od webové stránky s určitým účelem \parencite{walker2013simple, tuch2012role}. Studie \parencite{tuch2012role} také potvrzuje, že uživatelé pozitivně vnímají webové stránky s nízkou komplexitou, což může u implementace rozhraní wordnetu být problémem, jelikož takové rozhraní inherentně musí poskytovat velké množství informací. Cílem tedy je zobrazované informace vhodně strukturovat tak, aby uživatel měl pocit, že danou stránku zná a ví, kde na ní co najde, a necítil se zahlcen množstvím informací. Detaily designu takové aplikace jsou rozebrány v kapitole \ref{cha:navrh} a následujících.
 
 	\part{Praktická část: rozhraní k sémantické síti}
 
-		\chapter{Design rozhraní}
+		\chapter{Návrh rozhraní}
+		\label{cha:navrh}
 
-			\section{Textová prezentace}
+			% cil prakticky casti = napsat rozhrani, ktery by bylo rozumne univerzalni (da se nasadit na cokoliv, co bude davat ocekavany format dat), umoznilo by textovy i graf. zobrazeni, bylo by pouzitelny na mobilu
+			% graficky zobrazeni: bylo usouzeno, ze stabilni neinteraktivni (krom zoom/panning) je lepsi, bo se da pouzit i na telefonu; zadny tooltipy, nic
 
+			Cílem praktické části této práce bylo vytvořit rozhraní k sémantickým sítím typu wordnet, které by nebylo zatíženo nedostatky, jež byly pozorovány u rozhraní testovaných v předchozí části práce. Zřejmě nejrozšířenějším problémem u existujících rozhraní pro webové prohlížeče je jejich do různé míry problematická použitelnost na mobilních zařízeních s malým displejem (u některých naprostá nepoužitelnost). Rozhraní implementovaná ve formě aplikace pro stolní počítače jsou na mobilní zařízení nepřenositelná již ze své podstaty a nemohou být proto z pohledu použitelnosti na mobilních zařízeních být hodnocena vůbec, faktem ale zůstává, že je jejich nepřenositelnost v porovnání s webovými rozhraními diskriminuje. 
 
-			\section{Grafická prezentace}
+			Rozhraní, které je výstupem této práce si tedy klade za cíl umožnit uživatelům přístup k datům wordnetů odkudkoliv, bez ohledu na to, zda pracují na mobilním telefonu, tabletu, laptopu či stolním počítači. Jeho návrh se snaží být technologicky nadčasový, ačkoliv v tomto aspektu budou ve světě webových technologií, jenž se neustále vyvíjí, pravděpodobně vždy existovat jisté limity. Pro rozhraní vytvořené v rámci této práce to jsou především požadavky na webový prohlížeč koncového uživatele. Uživatelův prohlížeč musí podporovat technologie ECMAScript verze 6\footnote{také známý jako ECMAScript 2015}\td{mozna jen 5, ale zatim to na nem nefunguje} (k němuž je všeobecně referováno jako k JavaScriptu), HTML verze 5 a CSS verze 3. Podrobněji se vysvětlení požadavků na verze bude věnovat kapitola [casem...]. 
+
+			Rozhraní bylo v rámci této práce tedy navrženo tak, aby umožňovalo zobrazení dat jak textové, tak grafické. Textové zobrazení je vhodné pro zobrazení synsetů, které obsahují velké množství potomků (hyponyma, meronyma, etc.), a mohou v grafickém rozhraní být nepřehledné. Také se textové rozhraní spíše hodí k použití na mobilních zařízeních, jelikož se lépe přizpůsobuje velikost obrazovky. Grafické zobrazení je naopak vhodné pro rychlý přehled míry komplexity synsetu a jeho vztahů. Může sloužit především jako ilustrace daného slovního významu. Textové a grafické zobrazení se vzájemně nedoplňují, ale jsou různým zobrazením týchž dat, a v zásadě dávají uživateli na výběr, které ze zobrazení je pro něj komfortnější či užitečnější.
+
+			\section{Cíle nového rozhraní}
+
+				Přesto, že existujících rozhraní je dostupných mnoho, žádné z nich nesplňuje požadavky moderní platformě nezávislé aplikace, jak bylo ukázáno v hodnotící části. Proto vznikl záměr vytvořit takové rozhraní, které by tyto požadavky (do co největší míry) splňovalo. Vzhledem k původním záměrům samotného WordNetu (a na něj navazujících projektů), mezi nimiž byly například edukativní účely, je nutné, aby rozhraní k těmto projektům bylo intuitivní, vizuálně přitažlivé a snadno přístupné. Snadná přístupnost například minimalizuje nutnost správné přípravy školních počítačů k použití takového rozhraní, což opět zvyšuje šance, že aplikace bude skutečně použita.
+
+				S touto vizí tedy byla vytvořena webová aplikace \simplywn, která ja v dalších částech této práce prezentována.
+
+		\chapter{Prezentace vytvořeného rozhraní}
+
+			\section{Základní představení}
+
+				Rozhraní \simplywn uživateli při prvním otevření prezentuje prázdnou stránku s vyhledávacím formulářem v levém sloupci a nápovědou, jak začít s rozhraním pracovat, v pravém prostoru určeném k následné prezentaci dat.\footnote{Při zobrazení rozhraní na displeji užším než 768 pixelů se z levého sloupce stane horní část stránky, k pravém prostoru se pak uživatel dostane sjetím po stránce dolů. Při popisu rozhraní bude k těmto částem nadále referováno jako k levé a pravé z důvodu přehlednosti.}
+
+				Vyhledávací formulář sestává jednak ze samotného pole pro vložení hledaného výrazu a tlačítka na spuštění vyhledávání, a jednak z rozbalovací nabídky, v níž může uživatel vybrat wordnet, v němž chce vyhledávat. Nad polem pro vkládání jsou také tlačítka určená k volbě reprezentace synsetu.
+
+				Pokud je zadané slovo po spuštění vyhledávání úspěšně nalezeno, zobrazí se uživateli v levém sloupci pod vyhledávacím formulářem nabídka synsetů, v nichž se hledaný výraz vyskytoval, a v pravém prostoru podle zvolené reprezentace buďto textová data o zvoleném (případně prvním) synsetu, či jeho reprezentace grafem.
+
+				Při přepínání vizualizace dat mezi textovou a grafickou se mění pouze obsah pravé části rozhraní, obsah levého sloupce s vyhledávacím polem a výpisem zobrazených synsetů zůstává neměnný.
+
+				Zadá-li uživatel výraz, který se v daném wordnetu nevyskytuje, je mu po neúspěšném dokončení vyhledávání prezentována zpráva o negativním výsledku hledání. 
+
+			\section{Textová reprezentace}
+
+				Textový režim reprezentace dat je až na několik odchylek relativně konservativní a snaží se uživateli přinést přehledný a zároveň komplexní výpis nalezených informací. 
+
+				Hlavní nadpis tvoří výpis slov patřících do zobrazeného synsetu, pod je zobrazena jeho definice, cesta ke němu a další informace, jako například slovní druh či číslo základního konceptu (BCS)\td{tuhle zkratku jsem mel nekde blbe nahore}. Cestou k synsetu je míněn seřazený seznam synsetů, přes něž je možnost se ze zobrazeného synsetu možno nejkratší cestou dostat ke kořenovému synsetu. Pod tímto blokem s informacemi o daném synsetu uživatel nalezne výpis synsetů, s nimiž je zobrazený synset provázán sémantickými relacemi. Jednotlivé vztahy jsou rozděleny do sloupců, což přispívá k lepšímu škálovaní reprezentace sémantických relací. Uživateli v této sekci není zobrazena jedna důležitá sémantická relace, a to hyperonymie; synsety k zobrazenému synsetu nadřazené jsou totiž zobrazeny ve zmíněné cestě k synsetu.
+
+				Aby byla zvýšena interaktivita rozhraní, jsou zobrazené synsety vypisovány uživateli jako hypertextové odkazy. Přes tyto odkazy je možné přejít na příslušný synset, čímž je umožněno procházení wordnetu přes vztahy jako jsou hyponymie, meronymie, hyperonymie etc. V textovém zobrazení se vyskytují dva druhy hypertextových odkazů. První jsou v levém sloupci v seznamu synsetů nalezených při vyhledávání a slouží volbě zobrazeného synsetu. Vzhledem k tomu, že server po vyhledávání vrací soubor všech nalezených synsetů, nevyvolává přechod po těchto odkazech nové hledání. Druhým druhem odkazů jsou zde takové, které vedou na konkrétní synsety. Vyskytují se pravé části textového rozhraní, a to v cestě k zobrazenému synsetu a v sémantických relacích, do nichž tento náleží. Pokud na ně uživatel klikne, spustí se nové vyhledávání podle identifikačního řetězce synsetu, na nějž uživatel klikl. Výsledkem tohoto hledání je jeden konkrétní synset.
+
+				Jednou z odchylek od tradičních postupů v textové reprezentaci dat z wordnetu je udávání příslušnosti slovní formy ke konkrétnímu významu. Tuto příslušnost se tradičně reprezentuje číslem za slovní formou, jež je této odděleno od dvojtečkou. To však může pro uživatele neznalého tradic v reprezentaci wordnetů být matoucí, a tak bylo v rámci zlepšení přístupnosti nového rozhraní \simplywn přistoupeno k zobrazení čísla významu dané slovní formy jako čísla v horním indexu za ní. To by mělo umožnit neznalému uživateli tento pro něj pravděpodobně bezvýznamný údaj snáze ignorovat.
+
+			\section{Grafická reprezentace}
+
+				Grafická reprezentace nalezených dat je alternativou k textové a jejím cílem je uživateli především vizualizovat vztahy, jichž je prohlížený synset členem. Podobně jako textová reprezentace se snaží příliš se neodchylovat způsobem zobrazení od již existujících zobrazení a zároveň eliminovat nedostatky v použitelnosti, jimiž se většina existujících implementací vyznačuje. Jmenovitě grafické zobrazení v \simplywn vůbec nepoužívá interaktivní prvky typu informačních bublin, jež se zobrazují při přejetí myší\footnote{tyto bývají anglicky označovány jako \textit{popup tooltip}}. Tyto bubliny jsou velmi oblíbené zřejmě proto, že umožňují bez ztráty přehlednosti celého grafu uživateli přístup k podrobnějším informacím. Jejich zásadní nevýhoda ovšem tkví v tom, že na dotykových obrazovkách, jimiž bývají vybavena současná mobilní zařízení, koncept přejetí myší po prvky neexistuje. To je z toho důvodu, že grafické rozhraní na těchto zařízení nebývá ovládáno externím technickým vybavením počítače typu myš, které pohybuje po obrazovce kursorem, ale uživatel používá dotyku svých prstů či stylu a dotek na určitém místě obrazovky znamená obvykle kliknutí. Nelze tedy tak jako u klasických počítačů rozlišit přejetí kursorem myši a kliknutí a funkcionalita zmíněných informačních bublin je tedy buďto zcela nepřístupná či přístupná jen velmi omezeně. 
+
+				Další interaktivita značně rozšířená u existujících vizualizací je možnost přetažením uzlu myší přeuspořádat graf. U některých z vizualizací může taková možnost být užitečná proto, že při větším počtu uzlů překryjí jejich popisky a přetažením lze takový překryv eliminovat (většinou však na úkor vniku jiného překryvu). Obecně však při správném nastavení zobrazení by taková funkcionalita neměla být potřebná, a proto nebyla zavedena ani do vizualizace v \simplywn.  
+				% zminit se, ze tam nejsou ani linky, jezto to neumime zaimplementovat asi.. ale mozna jo: http://visjs.org/examples/network/events/interactionEvents.html
+
+				Koncept zobrazení grafem spočívá v použití tří druhů uzlů s odlišným významem, které jsou spojeny hranami, jejichž význam je závislý na tom, které uzly spojují. Prvním druhem uzlů jsou ty, jež reprezentují synsety. Takový uzel se v grafu vždy vyskytuje minimálně jeden kořenový, což je v tomto případě ten synset, jehož detaily jsou otevřeny. Další jsou pak členové případných sémantických relací, jichž je kořenový členem. Z kořenového uzlu vedou hrany ke dvěma zbývajícím druhům uzlů, jimiž jsou slovní formy a sémantické relace. Uzly reprezentující slovní formy náležející k danému synsetu jsou tímto propojeny hranou pojmenovanou \textit{member word}, tedy členské slovo, a žádné další hrany z nich nevedou. 
+
+				Co se uzlů reprezentujících sémantické relace týče, tam může význam jejich přítomnosti v grafu být na první pohled poněkud obskurnější, důvody k jeho použití jsou však jednoduché. Intuitivně by sémantická relace měla být hrana, jež vede mezi synsety spojenými touto relací. Pojmenování hrany by se pak odvíjelo od druhu relace, již reprezentuje. Problémem s tímto způsobem zobrazení tkví v tom, že značně centralizuje zobrazení do hvězdicovitého obrazce okolo centrálního uzlu, což zobrazované uzly vizuálně uspořádá do hierarchicky ploché struktury a sníží přehlednost grafu. Z tohoto důvodu byly do vizualizace grafem zavedeny uzly reprezentující sémantické relace, které synsety svázané s kořenovým uzlem stejným vztahem sdružují do jednoho podstromu. Díky tomu je dosaženo rozčlenění grafu na jednotlivé sekce podle těchto sémantických relací a uživatel není nucen zkoumat význam každé hrany mezi synsety (cf. vizualizace v rozhraní Cornetto, sekce \ref{wnvis:cornetto} na straně \pageref{wnvis:cornetto}).
+
+				Responsivita této vizualizace je inherentně omezena tím, že se graf i byť i nepříliš komplexního synsetu, nemůže na malou obrazovku mobilního zařízení vejít, zvláště mají-li být textové popisy uzlů čitelné. Tím, že vizualizace umožňuje přibližování a oddalování, je však tento problém do jisté míry eliminován, protože uživatel může graf přiblížit a přejíždět po něm podobně, jako to umožňují například aplikace na zobrazování elektronických map\footnote{\url{https://www.mapy.cz}}. Toto řešení samozřejmě zavádí na dotykových obrazovkách problém s tím, aby nebylo znemožněno rolování po zbytku stránky. To bylo vyřešeno pomocí zachování okrajů po stranách kolem plochy s grafem, kde se běžně vyskytují rolovací ovládací lišty a uživatel tak tohoto okraje může využít k rolování stránky namísto posouvání grafu.
 
 
 		\chapter{Použité technologie}
+
+			
 
 			\section{HTML}
 
