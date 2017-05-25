@@ -848,12 +848,68 @@
 
 					JSON je formát určený pro výměnu dat a je zároveň strojově i lidsky čitelný (jedná se o čistý text). Strukturálně se podobá objektům například v JavaScriptu, tedy sestává z párů \texttt{klíč:hodnota}. Klíčem bývá řetězec znaků, hodnotou může například v JavaScriptu být cokoliv, co je objekt (což je v JavaScriptu v podstatě cokoliv).% [cit] http://www.json.org/
 
-					Tento formát je velmi vhodný na přenos informací, jakými jsou data z wordnetu, jelikož se jedná o čistě textová data, odpověď, již lze jednoduše zpracovat v jazyce JavaScript, je také poměrně intuitivně lidsky čitelná. 
+					Tento formát je vhodný na přenos informací, jakými jsou data z wordnetu, jelikož se jedná o strukturovaná, čistě textová data. Další možností pro přenos takových dat je například formát XML\footnote{eXtensible Markup Language}. Ten oproti formátu JSON umožňuje přesnější specifikace typů hodnot a validaci dat, avšak pro dané množství informací je datově větší (má větší režii na značkování). XML je navíc oproti formátu JSON méně pohodlně zpracovatelné v JavaScriptu, jelikož syntax formátu JSON reflektuje strukturu objektů v JavaScriptu. Vzhledem k tomu, že data z wordnetů bývají krátké řetězce, je evidentní, že při použití XML by bylo přenášeno zbytečně velké množství strukturních informací v podobě značkování. To v kombinaci s jednoduchostí zpracování formátu JSON v JavaScriptu přispělo k rozhodnutí použít v aplikaci \simplywn k přenosu dat JSON.
 
 					% ukazka kodu
 
+				\subsection{Ajax}
+
+					Ajax\footnote{Asynchronous JavaScript And XML} je souhrnné označení pro asynchronní přenosu dat ve formátu XML pomocí JavaScriptu používá se pro komunikaci webových aplikací se serverem. Rozdílem oproti tradičnímu přenosu informací mezi serverem a webovou stránkou načtenou u klienta tkví v tom, že bez použití Ajaxu je nutné pro zpracování odpovědi na požadavek načíst stránku znova. Hlavním využitím Ajaxu bývají právě aplikace, jejichž funkčnost je závislá na komunikaci se vzdáleným serverem bez nutnosti načítat celou webovou stránku znovu. \parencite{garrett2005ajax}
+
+					Vzhledem k tomu, že u komplexních webových aplikací může být načítání celé stránky znova nevýhodné z mnoha důvodů. Jedním ze scénářů může být například potřeba obnovit data na části stránky, zatímco uživatel vkládá data (například komentář) na jiné části\footnote{Existovala možnost toto obejít pomocí rámců, ale ty měly mnoho zásadních nevýhod}. Úplným znovunačtením by byla uživatelova vložená data ztracena, takže je nutné obnovovat jen její část, k čemuž je výhodné využít Ajax.
+
+					Dalším poměrně jednoduchým důvodem k využívání Ajaxu je uživatelův komfort -- je možné během načítání zobrazovat indikátor načítání, při výpadku spojení zobrazit uživatelsky přívětivou zprávu, etc.
+
+					Asynchronní výměna dat se serverem probíhá pomocí aplikačního rozhraní XMLHttpRequest (XHR), které skriptovacím jazykům na straně klienta, jako je například JavaScript, umožňuje odesílat data na vzdálený server. Po přijetí odpovědi se pak stará o dodání dat zpět do skriptu. [cit klement?]
+
+				\subsection{Historie v prohlížeči}
+
+					Historie je schopnost webových prohlížečů přecházet mezi jednotlivými stavy, které nastaly během uživatelova užívání daného okna (či karty) prohlížeče. Při tradičním návrhu webového portálu, zjednodušeně tedy souboru několika webových stránek, pokud se má změnit obsah stránky (například kliknutím na odkaz vedoucí na jinou část portálu), odešle se požadavek na server, který v odpověď vrátí nový obsah, přičemž na straně uživatele je nutné znova načíst celou stránku, která se má měnit. V tomto případě se automaticky prohlížečem ukládá do tzv. historie změna stavu a je možné se k předchozímu stavu vrátit. 
+
+					Při užívání dynamického generování obsahu stránky na straně klienta a přenosu požadavků a dat pomocí Ajaxu nastává problém, že z hlediska prohlížeče se stav nezmění, tudíž není nic zapsáno do historie. Tento problém byl v minulosti řešen různými způsoby, pátá verze HTML však implementuje aplikační rozhraní pro možnost ovládat uměle historii prohlížeče. Je tedy možné v libovolný okamžik běhu JavaScriptu přidat do historie další stav a tím umožnit jeho obnovení například při uživatelově akci \uv{přejít zpět}.
+
+					[okecat impementaci tady, nebo pozdejc?]
+
+					Druhým problémem při dynamickém generování obsahu stránky je udržování adresního řádku prohlížeče, který obsahuje URL\footnote{Uniform Resource Locator}, aby bylo později možné z adresy obnovit stav; to je výhodné zejména z toho důvodu, že by mělo být možné adresu uložit či sdílet. JavaScript umožňuje nativně manipulaci s adresou v adresním řádku, přičemž \simplywn jeho udržování implementuje pomocí knihovny URI.js. [cit https://medialize.github.io/URI.js/]
+
+				\subsection{Použité knihovny a zásuvné moduly pro JavaScript}
+
+					\paragraph{jQuery} je knihovna navržená s cílem usnadnit programování v JavaScriptu. Je zaměřená především na zjednodušení práce s elementy v HTML dokumentu, práci s~událostmi (např. stisk klávesy) a~komunikaci mezi klientem a~serverem pomocí Ajaxu. \parencite{jqueryWeb}
+
+					\paragraph{URI.js} zjednodušuje práci s adresami (URL). Knihovna URI.js umožňuje jednak obsah adresního řádku zpracovávat pro další práci, a jednak jej umožňuje nastavovat tak, aby odpovídal stavu, v němž se aplikace nachází. \parencite{urijsWeb}
+
+					\paragraph{Perfect Scrollbar} je zásuvný modul určený k zobrazování rolovacích lišt, jež jsou flexibilnější než základní systémové lišty některých operačních systémů. Dají se na rozdíl od těch systémových mimo jiné vzhledově přizpůsobit zbytku aplikace, tudíž nepůsobí tak obtrusivně. \parencite{perfectScrollbarGithub}
+
+					\paragraph{Vis.js} je vizualizační knihovna, navržená pro zobrazení velkého množství dynamicky generovaných dat. Umožňuje navíc pokročilou manipulaci s daty, jako je přidávání a odebírání uzlů grafu, změny štítků uzlů, etc. V \simplywn využit její modul \textit{Network} k zobrazení detailů synsetu grafem. \parencite{visjWeb}
 
 			\section{CSS}
+
+				CSS, neboli kaskádové styly, jsou systém definování vzhledu prvků (obvykle náležejících do HTML dokumentu). Pojem kaskádový má tento jazyk proto, že vlastnosti prvků jsou děděny od rodičů a podle dědičnosti prvky možné i vybírat. Prvotním smyslem užívání CSS bylo oddělení obsahu webové stránky od jejího vzhledu. To je podstatné jednak pro udržitelnou správu stránky, a~jednak pro větší flexibilitu. Použití CSS umožňuje zobrazit jednu stránku různými způsoby, jedním z~nichž může být například vzhled přizpůsobený pro tisk či pro barvoslepé uživatele.
+
+				Kaskádové styly jsou v \simplywn tedy využity k tomu, aby byla stránka s aplikací uživatelsky přívětivá, atraktivní a vhodně zobrazena na zařízeních různých velikostí (částečně je využito stylování podmíněného šířkou obrazovky).
+
+				\subsection{Bootstrap}
+
+					Aplikace \simplywn využívá Bootstrap\footnote{\url{http://getbootstrap.com/}}, což je sada nástrojů v HTML a CSS pro tvorbu webových stránek. Obsahuje šablony různých prvků, které se na webových stránkách vyskytují, definuje základní vlastnosti některých prvků, aby rozložení stránky bylo responsivní a mimo jiné také do jisté míry zajišťuje konformní vzhled napříč různými prohlížeči.
+
+		\chapter{Implementace rozhraní}
+
+		% - ziskani dat od uzivatele z formulare
+		% - vytvoreni url pro pozadavek na server
+		% - ziskani dat ze serveru
+		% - serializace dat, popis struktury jsonu
+		% - vypsani seznamu nalezenych synsetu, highlight prislusneho z url / prvniho
+		% - zobrazeni prislusnou vizualizaci data (podle url/prvni synset)
+		% - text:
+		% 	- naplneni html prislusnymi hodnotami (dynamicke generovani prvku -- tohle se jeste bude menit asi)
+		% - vis:
+		% 	- WNTree(), prochazeni jsonu do sirky, generovani uzlu a hran
+		% 	- strucne nastaveni knihovny
+
+		% - ilustrace html struktury?
+		% - podminkovani procesu na zaklade url
+		% - event listenery na odkazy
+
 
 
 		% popis, jak to funguje
