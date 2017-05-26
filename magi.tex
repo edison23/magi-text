@@ -9,8 +9,12 @@
 \usepackage{todonotes}
 \usepackage{xunicode}
 \usepackage{graphicx}
-\usepackage{tikz-qtree}
+% \usepackage{tikz-qtree}
+\usepackage{tikz}
 \graphicspath{ {imgs/} }
+\usepackage{verbatimbox}
+
+\def\verbarg{{\scriptsize\makebox[2ex]{\arabic{VerbboxLineNo}}}\hspace{2ex}}
 
 % https://github.com/michal-h21/biblatex-iso690
 % unzip to ~/texmf/tex/latex and use as style=iso-*
@@ -788,6 +792,7 @@
 				S touto vizí tedy byla vytvořena webová aplikace \simplywn, která ja v dalších částech této práce prezentována.
 
 		\chapter{Prezentace vytvořeného rozhraní}
+		\label{cha:ui}
 
 			\section{Základní představení}
 
@@ -835,7 +840,12 @@
 
 				V rozhraní \simplywn HTML slouží k definici struktury zobrazené webové stránky, jejímu rozdělení na jednotlivé sekce (levý sloupec, pravá plocha, záhlaví, etc.) a ke strukturalizaci posléze zobrazovaných informací. Příkladem může být výpis sémantických relací, v nichž je zobrazovaný synset přítomen. Jednotlivé relace jsou rozděleny do bloků (jež jsou později pomocí CSS nastaveny tak, aby se zobrazovaly jako sloupce) a jednotlivé synsety svázané se zobrazovaným příslušným vztahem jsou vypsány v seznamu. 
 
-				% ukázka kodu stranky
+				\begin{figure}[h]
+					\centering
+					\includegraphics[width=1.0\textwidth]{html3d.png}
+					\caption{Třídimenzionální vizualizace struktury rozhraní}
+					\label{fig:html3d}
+				\end{figure}
 
 			\section{JavaScript}
 
@@ -845,6 +855,7 @@
 				, tedy zobrazení výsledků hledání uživateli. %history api?
 
 				\subsection{JSON}
+				\label{cha:json}
 
 					JSON je formát určený pro výměnu dat a je zároveň strojově i lidsky čitelný (jedná se o čistý text). Strukturálně se podobá objektům například v JavaScriptu, tedy sestává z párů \texttt{klíč:hodnota}. Klíčem bývá řetězec znaků, hodnotou může například v JavaScriptu být cokoliv, co je objekt (což je v JavaScriptu v podstatě cokoliv).% [cit] http://www.json.org/
 
@@ -893,6 +904,143 @@
 					Aplikace \simplywn využívá Bootstrap\footnote{\url{http://getbootstrap.com/}}, což je sada nástrojů v HTML a CSS pro tvorbu webových stránek. Obsahuje šablony různých prvků, které se na webových stránkách vyskytují, definuje základní vlastnosti některých prvků, aby rozložení stránky bylo responsivní a mimo jiné také do jisté míry zajišťuje konformní vzhled napříč různými prohlížeči.
 
 		\chapter{Implementace rozhraní}
+
+			% \section{Struktura rozhraní}
+
+			% 	Struktura rozhraní z hlediska uživatele již byla popsána v kapitole \ref{cha:ui} na straně \pageref{cha:ui}. Aby však bylo možné rozebrat, jak rozhraní funguje na pozadí, je nutné krátce popsat, jak je rozhraní utvořeno na úrovni prvků v HTML a jaké mají jednotlivé části účel. 
+
+ 		% 		\begin{figure}[h]
+			% 		\centering
+			% 		\includegraphics[width=1.0\textwidth]{html3d.png}
+			% 		\caption{Třídimenzionální vizualizace struktury rozhraní}
+			% 		\label{fig:html3d}
+			% 	\end{figure}
+
+			% 	Bráno shora je po celé šíři rozhraní blok sloužící jako záhlaví. Ten obsahuje pouze název rozhraní s odkazem na základní obrazovku rozhraní a plní z hlediska funkcionality jediný účel, a to, že dává uživateli možnost vrátit rozhraní do původního stavu tím, že na něj klikne.
+
+			% 	Níže vlevo je postranní sloupec, který obsahuje všechny persistentní ovládací prvky, tedy takové, jež jsou uživateli dostupné stále. Jsou jím tlačítka na změn
+
+			\section{Získávání dat}
+
+				Data, jež jsou ve výsledku zobrazována uživateli, jsou načítána ze serveru v závislosti na vstupu, který uživatel tím či oním způsobem zadal. Vstup uživatele může být dvojího druhu (byť z hlediska výsledného zpracování se nijak neliší). Jednak uživatel zadává kýžené slovo do vyhledávacího pole, a jednak může kliknout na odkaz vedoucí na jiný synset. Druhý případ se potom od prvního liší pouze v tom, že text ve vyhledávacím poli není slovo z přirozeného jazyka, ale identifikátor synsetu, na nějž bylo kliknuto. Kliknutí na synset je přitom pouze zkratka, během níž se automaticky zadá identifikátor daného synsetu do vyhledávacího pole a spustí se vyhledávání.
+
+				\subsection{Vyhledávání}
+
+					Aby bylo možno vyhledávání spustit se správnými parametry, je nutno získat od uživatele dva údaje. Jedním je vyhledávané slovo, které je extrahováno z vyhledávacího pole, druhým je zdroj dat, v němž se má vyhledávat. Pro výběr druhého slouží rozbalovací nabídka pod vyhledávacím polem, která obsahuje seznam zdrojů dat, v nichž je možno vyhledávat.
+
+					Zde je na místě podotknout, že schopnost aplikačního rozhraní, jež zajišťuje samotné vyhledávání, vyhledávat jak podle slovní formy, tak dle identifikátoru, otevírá možnost vyhledávat konkrétní synset napříč dostupnými wordnety. 
+
+					Po spuštění vyhledávání je na server s aplikačním rozhraním odeslán požadavek složený ze vstupních dat. Jeho forma je například následující:
+
+					\medskip
+					\url{https://nlp.fi.muni.cz/~xrambous/fw/abulafia/ZDROJ?action=jsonvis&query=SLOVO}
+					\medskip
+
+					V tomto řetězci jsou dvě hodnoty, které se mění s uživatelovým vstupem. V ukázce výše jimi podřetězce \texttt{ZDROJ} a \texttt{SLOVO}, které reprezentují prohledávaný wordnet a vyhledávané slovo, v tomto pořadí.
+
+				\subsection{Struktura odpovědi serveru}
+
+					V případě úspěšného vyhledávání je ze serveru přijata odpověď ve formátu JSON (bližší popis formátu v kapitole \ref{cha:json} na straně \pageref{cha:json}). Jeho strukturu lze popsat jako pole objektů\footnote{V terminologii jiných jazyků by tento datový typ byl nazýván slovníkem (\textit{dictionary}), asociativním polem (\textit{associative array}), etc.}, kde každý z těchto objektů reprezentuje jeden nalezený synset. Objekty synsetů pak obsahují jednak řetězce jako identifikátor, slovní druh či definici, a jednak další pole. Pole pod klíčem \texttt{paths} slouží k ukládání cesty k danému synsetu, pole pod klíčem \texttt{synset} obsahuje členská slova a jejich významy a pole s klíčem \texttt{children} pak obsahuje sémantické relace daného synsetu. 
+
+					Struktura odpovědi může být ilustrována následujícím zjednodušenou ukázkou:
+
+					\begin{verbnobox}[\verbarg\small]
+[
+    { // hlavní synset:
+        "id": "ENG20-02759263-n",
+        "pos": "n",
+        "def": "definice synsetu",
+        "synset": [
+            {
+                "name": "kotouč",
+                "meaning": "2"
+            },
+            ... // další členská slova synsetu
+        ], // cesty k synsetu:
+        "paths": [
+            {
+                "name": "path-1",
+                "breadcrumbs": [
+                    {
+                        "id": "ENG20-00020486-n",
+                        "def": "",
+                        "synset": [
+                            {
+                                "name": "abstrakce",
+                                "meaning": "1"
+                            },
+                            ... // další členská slova synsetu
+                        ]
+                    },
+                    ... // další části cesty
+                ]
+            },
+            ... // alternativní cesty
+        ],
+        "children": [
+            { // sémantické relace synsetu
+                "name": "hyponym",
+                "children": [
+                    {
+                        "id": "ENG20-04050919-n",
+                        "def": "",
+                        "synset": [
+                            {
+                                "name": "člunek",
+                                "meaning": "1"
+                            },
+                            ... // další členská slova synsetu
+                        ]
+                    },
+                    ... // další synsety v dané relaci
+                ]
+            },
+            ... // další sémantické relace
+        ]
+    },
+    ... // další nalezené synsety
+]
+					\end{verbnobox}
+
+					Pokud je vyhledávání neúspěšné, vrací server pouze prázdné pole. Tento stav je kontrolován aplikací a v případě, že nastane, je uživatel upozorněn, že dané vyhledávání nevrátilo pro daný zdroj dat žádné výsledky. 
+
+				\section{Zpracování odpovědi}
+
+					Získaná data jsou v několika krocích zpracována tak, aby jejich použití v aplikaci bylo jednodušší a jejich struktura odpovídala potřebám rozhraní. Jmenovitě pro textovou reprezentaci je pole objektů se synsety serializováno do jednoho objektu, v němž lze odkazovat na potřebný synset univerzálnějším způsobem (podle jeho identifikátoru). 
+
+					Zpracování odpovědi pro potřeby vizualizace grafem je poněkud komplexnější. Je evidentní, že pro vykreslení grafu je nutné mít k disposici uzly a hrany, jimiž jsou uzly spojeny. V JSONu získaném ze serveru tyto vztahy implicitně obsažený jsou, ale pouze tak, že určitý objekt je rodičem dalších objektů, či dítětem výše postaveného objektu. Explicitní údaje o těchto vztazích ve vlastnostech objektů obsaženy nejsou, a je tudíž nutné je pro knihovnu, která graf vykresluje, vytvořit. Pro tento účel obsahuje aplikace \simplywn funkci \texttt{BFSThruSynsets()}, která prochází synsety v JSONu metodou procházení do šířky, každý nalezený synset zapisuje do seznamu uzlů a zároveň k němu do seznamu hran zapisuje uspořádanou dvojici, která sestává z identifikátoru jeho rodičovského uzlu a jeho vlastního identifikátoru. Pořadí, v jakém jsou jednotlivé uzly procházeny, je znázorněno na grafu \ref{fig:bfs-ilustr} na straně \pageref{fig:bfs-ilustr}. Procházení do šířky je implementováno pomocí fronty.
+
+					% \begin{tikzpicture}[sibling distance=10em,
+					%   every node/.style = {shape=rectangle, rounded corners,
+					%     draw, align=center,
+					%     top color=white, bottom color=blue!20}]]
+					\begin{figure}
+						\centering
+						\begin{tikzpicture}[level distance=2em]
+						  \tikzstyle{every node}=[shape=rectangle, rounded corners, draw, align=center]
+						  \tikzstyle{level 1}=[sibling distance=10em]
+						  \tikzstyle{level 2}=[sibling distance=5em]
+						  \tikzstyle{level 3}=[sibling distance=3em] 
+						  \node {1}
+						  	child { node{2} 
+						  		child { node{5} }
+						  		child { node{6} }
+						  	}
+						  	child { node{3} 
+						  		child { node{7} }
+						  		child { node{8} }
+						  		child { node{9} }
+						  	}
+						  	child { node{4} 
+						  		child { node{10} }
+						  	};
+						\end{tikzpicture}
+						\caption{Ilustrace pořadí, v jakém jsou uzly zapisovány při procházení grafu do šířky}
+						\label{fig:bfs-ilustr}
+					\end{figure}
+
+				
+
 
 		% - ziskani dat od uzivatele z formulare
 		% - vytvoreni url pro pozadavek na server
