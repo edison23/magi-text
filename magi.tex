@@ -55,7 +55,7 @@
 \newcommand{\td}[2][]{
 	{\hskip -0.5em\todo[size=\footnotesize]{#2}}
 }
-\newcommand{\simplywn}{\textit{Simply Wordnet} }
+\newcommand{\simplywn}{\textit{NSFW viewer} }
 
 % \def\inch#1{#1''}
 
@@ -71,7 +71,8 @@
 \newcommand\ex{\textsf}
 
 \begin{document}
-
+	
+	\pagestyle{empty}
 	\maketitle
 
 	\newpage
@@ -753,6 +754,7 @@
 
 
 		\chapter{Shrnutí přehledu rozhraní a vyplývající závěry o vhodném rozhraní k sémantickým sítím}
+		\label{cha:shrnuti-prehledu}
 
 			% z hlediska pouzitelnosti byva lepsi webovy rozhrani, bo to uzivatel nemusi instalovat (some fuken links for that)
 			% java je sice kchul, ale porad ji musi mit uzivatele nainstalovanou, asi lidi moc nemaji (applety jsou uplne k nicemu uz, FF to prestal podporovat)
@@ -827,7 +829,7 @@
 
 				Co se uzlů reprezentujících sémantické relace týče, tam může význam jejich přítomnosti v grafu být na první pohled poněkud obskurnější, důvody k jeho použití jsou však jednoduché. Intuitivně by sémantická relace měla být hrana, jež vede mezi synsety spojenými touto relací. Pojmenování hrany by se pak odvíjelo od druhu relace, již reprezentuje. Problémem s tímto způsobem zobrazení tkví v tom, že značně centralizuje zobrazení do hvězdicovitého obrazce okolo centrálního uzlu, což zobrazované uzly vizuálně uspořádá do hierarchicky ploché struktury a sníží přehlednost grafu. Z tohoto důvodu byly do vizualizace grafem zavedeny uzly reprezentující sémantické relace, které synsety svázané s kořenovým uzlem stejným vztahem sdružují do jednoho podstromu. Díky tomu je dosaženo rozčlenění grafu na jednotlivé sekce podle těchto sémantických relací a uživatel není nucen zkoumat význam každé hrany mezi synsety (cf. vizualizace v rozhraní Cornetto, kapitola \ref{wnvis:cornetto} na straně \pageref{wnvis:cornetto}).
 
-				Responsivita této vizualizace je inherentně omezena tím, že se graf i byť i nepříliš komplexního synsetu, nemůže na malou obrazovku mobilního zařízení vejít, zvláště mají-li být textové popisy uzlů čitelné. Tím, že vizualizace umožňuje přibližování a oddalování, je však tento problém do jisté míry eliminován, protože uživatel může graf přiblížit a přejíždět po něm podobně, jako to umožňují například aplikace na zobrazování elektronických map\footnote{\url{https://www.mapy.cz}}. Toto řešení samozřejmě zavádí na dotykových obrazovkách problém s tím, aby nebylo znemožněno rolování po zbytku stránky. To bylo vyřešeno pomocí zachování okrajů po stranách kolem plochy s grafem, kde se běžně vyskytují rolovací ovládací lišty a uživatel tak tohoto okraje může využít k rolování stránky namísto posouvání grafu.
+				Responsivita této vizualizace je inherentně omezena tím, že se graf byť i nepříliš komplexního synsetu nemůže na malou obrazovku mobilního zařízení vejít, zvláště mají-li být textové popisy uzlů čitelné. Tím, že vizualizace umožňuje přibližování a oddalování, je však tento problém do jisté míry eliminován, protože uživatel může graf přiblížit a přejíždět po něm podobně, jako to umožňují například aplikace na zobrazování elektronických map\footnote{\url{https://www.mapy.cz}}. Toto řešení samozřejmě zavádí na dotykových obrazovkách problém s tím, aby nebylo znemožněno rolování po zbytku stránky. To bylo vyřešeno pomocí zachování okrajů po stranách kolem plochy s grafem, kde se běžně vyskytují rolovací ovládací lišty a uživatel tak tohoto okraje může využít k rolování stránky namísto posouvání grafu.
 
 
 		\chapter{Použité technologie}
@@ -879,8 +881,6 @@
 
 					Při užívání dynamického generování obsahu stránky na straně klienta a přenosu požadavků a dat pomocí Ajaxu nastává problém, že z hlediska prohlížeče se stav nezmění, tudíž není nic zapsáno do historie. Tento problém byl v minulosti řešen různými způsoby, pátá verze HTML však implementuje aplikační rozhraní pro možnost ovládat uměle historii prohlížeče. Je tedy možné v libovolný okamžik běhu JavaScriptu přidat do historie další stav a tím umožnit jeho obnovení například při uživatelově akci \uv{přejít zpět}.
 
-					[okecat impementaci tady, nebo pozdejc?]
-
 					Druhým problémem při dynamickém generování obsahu stránky je udržování adresního řádku prohlížeče, který obsahuje URL\footnote{Uniform Resource Locator}, aby bylo později možné z adresy obnovit stav; to je výhodné zejména z toho důvodu, že by mělo být možné adresu uložit či sdílet. JavaScript umožňuje nativně manipulaci s adresou v adresním řádku, přičemž \simplywn jeho udržování implementuje pomocí knihovny URI.js. [cit https://medialize.github.io/URI.js/]
 
 				\subsection{Použité knihovny a zásuvné moduly pro JavaScript}
@@ -891,7 +891,7 @@
 
 					\paragraph{Perfect Scrollbar} je zásuvný modul určený k zobrazování rolovacích lišt, jež jsou flexibilnější než základní systémové lišty některých operačních systémů. Dají se na rozdíl od těch systémových mimo jiné vzhledově přizpůsobit zbytku aplikace, tudíž nepůsobí tak obtrusivně. \parencite{perfectScrollbarGithub}
 
-					\paragraph{Vis.js} je vizualizační knihovna, navržená pro zobrazení velkého množství dynamicky generovaných dat. Umožňuje navíc pokročilou manipulaci s daty, jako je přidávání a odebírání uzlů grafu, změny štítků uzlů, etc. V \simplywn využit její modul \textit{Network} k zobrazení detailů synsetu grafem. \parencite{visjWeb}
+					\paragraph{Vis.js} je vizualizační knihovna, navržená pro zobrazení velkého množství dynamicky generovaných dat. Umožňuje navíc pokročilou manipulaci s daty, jako je přidávání a odebírání uzlů grafu, změny štítků uzlů, etc. V \simplywn je využit její modul \textit{Network} k zobrazení detailů synsetu grafem. \parencite{visjWeb}
 
 			\section{CSS}
 
@@ -1005,10 +1005,14 @@
 					Pokud je vyhledávání neúspěšné, vrací server pouze prázdné pole. Tento stav je kontrolován aplikací a v případě, že nastane, je uživatel upozorněn, že dané vyhledávání nevrátilo pro daný zdroj dat žádné výsledky. 
 
 				\section{Zpracování odpovědi}
+				\label{cha:zpracovani}
 
 					Získaná data jsou v několika krocích zpracována tak, aby jejich použití v aplikaci bylo jednodušší a jejich struktura odpovídala potřebám rozhraní. Jmenovitě pro textovou reprezentaci je pole objektů se synsety serializováno do jednoho objektu, v němž lze odkazovat na potřebný synset univerzálnějším způsobem (podle jeho identifikátoru). 
 
-					Zpracování odpovědi pro potřeby vizualizace grafem je poněkud komplexnější. Je evidentní, že pro vykreslení grafu je nutné mít k disposici uzly a hrany, jimiž jsou uzly spojeny. V JSONu získaném ze serveru tyto vztahy implicitně obsažený jsou, ale pouze tak, že určitý objekt je rodičem dalších objektů, či dítětem výše postaveného objektu. Explicitní údaje o těchto vztazích ve vlastnostech objektů obsaženy nejsou, a je tudíž nutné je pro knihovnu, která graf vykresluje, vytvořit. Pro tento účel obsahuje aplikace \simplywn funkci \texttt{BFSThruSynsets()}, která prochází synsety v JSONu metodou procházení do šířky, každý nalezený synset zapisuje do seznamu uzlů a zároveň k němu do seznamu hran zapisuje uspořádanou dvojici, která sestává z identifikátoru jeho rodičovského uzlu a jeho vlastního identifikátoru. Pořadí, v jakém jsou jednotlivé uzly procházeny, je znázorněno na grafu \ref{fig:bfs-ilustr} na straně \pageref{fig:bfs-ilustr}. Procházení do šířky je implementováno pomocí fronty.
+					Zpracování odpovědi pro potřeby vizualizace grafem je poněkud komplexnější. Je evidentní, že pro vykreslení grafu je nutné mít k disposici uzly a hrany, jimiž jsou uzly spojeny. V JSONu získaném ze serveru tyto vztahy implicitně obsažený jsou, ale pouze tak, že určitý objekt je rodičem dalších objektů, či dítětem výše postaveného objektu. Explicitní údaje o těchto vztazích ve vlastnostech objektů obsaženy nejsou, a je tudíž nutné je pro knihovnu, která graf vykresluje, vytvořit. Pro tento účel obsahuje aplikace \simplywn funkci \texttt{DFSThruSynsets()}, která prochází synsety v JSONu metodou procházení do hloubky%\footnote{Procházení grafu do šířky je algoritmus pro prohledávání grafu, jenž prochází nejprve sousední uzly a až poté, co projde všechny, se posouvá na další úroveň grafu \parencite{epstein1996ics}}
+					\footnote{Procházení do hloubky (DFS, depth first search) je algoritmus pro prohledávání grafu, jenž prochází postupně celé větve grafu.  Druhou možností je procházení do šířky (BFS, breadth first search), které prochází nejprve všechny uzly co nejblíže kořeni (tedy na stejné úrovni) a až poté přechází na nižší (hlubší) úroveň. \parencite{epstein1996ics} Z hlediska aplikace \simplywn se tyto dva přístupy liší jen tím, že vykreslují mírně odlišně uspořádané grafy (struktura je zachována)}, každý nalezený synset zapisuje do seznamu uzlů a zároveň k němu do seznamu hran zapisuje uspořádanou dvojici, která sestává z identifikátoru jeho rodičovského uzlu a jeho vlastního identifikátoru. Pořadí, v jakém jsou jednotlivé uzly procházeny, je znázorněno na grafu \ref{fig:bfs-ilustr} na straně \pageref{fig:bfs-ilustr}. Procházení do hloubky je implementováno pomocí zásobníku a rekurse. Během procházení dat je pomocí různých atributů nalezených objektů rozlišováno pět druhů uzlů, a to kořenový synset, tedy ten, jejž si uživatel vybral, (\texttt{root}), jeho členská slova (\texttt{rootLeaf}), ostatní synsety (\texttt{synset}), jejich členská slova (\texttt{leaf}) a uzly představující sémantické relace (\texttt{semGroup}). 
+
+
 
 					% \begin{tikzpicture}[sibling distance=10em,
 					%   every node/.style = {shape=rectangle, rounded corners,
@@ -1022,24 +1026,47 @@
 						  \tikzstyle{level 2}=[sibling distance=5em]
 						  \tikzstyle{level 3}=[sibling distance=3em] 
 						  \node {1}
-						  	child { node{2} 
-						  		child { node{5} }
-						  		child { node{6} }
-						  	}
-						  	child { node{3} 
-						  		child { node{7} }
-						  		child { node{8} }
+						  	child { node{8} 
+						  		child { node{10} }
 						  		child { node{9} }
 						  	}
 						  	child { node{4} 
-						  		child { node{10} }
+						  		child { node{7} }
+						  		child { node{6} }
+						  		child { node{5} }
+						  	}
+						  	child { node{2} 
+						  		child { node{3} }
 						  	};
 						\end{tikzpicture}
 						\caption{Ilustrace pořadí, v jakém jsou uzly zapisovány při procházení grafu do šířky}
 						\label{fig:bfs-ilustr}
 					\end{figure}
 
-				
+				\section{Zobrazení dat}
+
+					Ve chvíli, kdy jsou data zpracována, může být jejich příslušná část, tedy jeden synset, zobrazena uživateli. Který synset se bude zobrazovat, je v případě, že v adrese (URL) existuje parametr synset specifikující, rozhodnuto na základě onoho parametru, jinak je vybrán pro další operace objekt se synsetem, jenž se v datech vyskytuje jako první. 
+
+					Zároveň je uživateli zobrazen seznam nalezených synsetů, tedy výpis jejich členských slov, v levém sloupci. Každý řádek je zároveň odkazem, kliknutím na nějž si uživatel může vybrat, kterou část dat si přeje prohlížet. Taková akce vyvolá výběr objektu, který obsahuje synset s identifikátorem shodným s tím, který byl uveden v odkazu.
+
+					Objekt obsahující příslušnou část dat je následně předán funkci \texttt{renderView()}, který na základě stavu aplikace uloženého v adrese zavolá funkci zobrazující data textovou reprezentací, či grafickou.
+
+					Textové zobrazení dat je řešeno jednoduchým naplňováním částečně předpřipraveného HTML dokumentu očekávanými daty. Rozhraní počítá s neúplností dat, takže není v tomto ohledu striktní a pokud se požadované informace v datech nevyskytují (typicky definice synsetu je pole, které u nezanedbatelného počtu konceptů v českém wordnetu chybí), je daná struktura naplněna prázdným řetězcem a nezobrazuje se. Kromě informací, jejichž existence je v datech nejistá, se v nich vyskytují i informace s předem neznámou délkou. Mezi takové patří například počet synsetů odpovídajících hledanému výrazu, pro každý z nich pak počet relací, jichž jsou členem, počet dalších synsetů v dané relaci či například počet členských slov jednotlivých zobrazených synsetů. Zobrazení takových informací je v rozhraní řešeno cykly a z hlediska struktury HTML to bývají seznamy, jakožto prvky nejvhodnější pro výpis položek. Výjimkou jsou členská slova synsetů, ta jsou vypisována jako řetězec znaků rozdělený čárkami (pomocí funkce \texttt{synString()}).
+
+					Grafické zobrazení realizuje knihovna Vis.js, které jsou vstupem data vytvořená ze serverové odpovědi (struktura a tvorba těchto dat je popsána v kapitole \ref{cha:zpracovani} na straně \pageref{cha:zpracovani}). Nastavení vykreslovací funkce je upraveno tak, aby výsledný graf byl statický a s jeho uzly nebylo možné tažením myší hýbat. Důvody k tomuto nastavení jsou rozebrány v kapitole \ref{cha:shrnuti-prehledu} na straně \pageref{cha:shrnuti-prehledu}. Mezi dalšími nastaveními jsou například parametry zajišťující penalizaci překrývajících se uzlů (nutno podotknout, že jakkoliv vysoká tato penalizace může být, nepodařilo se najít taková nastavení, aby k ní za žádných okolností -- zejména na velkých synsetech -- nedošlo), vzhled jednotlivých druhů uzlů\footnote{vzhled prvků grafu není možné definovat externími pravidly v CSS} či parametry stabilizace grafu. Stabilizace grafu je proces, který probíhá poté, co jsou knihovnou vytvořeny na vykreslovacím plátně všechny uzly a hrany mezi nimi. Vykreslovací funkce využívá emulace fyzikálních zákonů mezi jednotlivými prvky, takže uzly se odpuzují podobně, jako v reálném světě se odpuzují elektrony, a hrany se chovají jako pružiny, které mají svou ideální délku. Kombinace odpudivých a přitažlivých sil zajišťuje tendenci k rovnoměrnému rozmístění prvků na ploše.
+
+				\section{Uchovávání stavu v URL}
+
+					Aplikace využívá URL, tedy adresy, k uchovávání svého stavu, tedy prostředku k případnému pozdějšímu obnovení aplikace do identického stavu, v jakém se v libovolném okamžiku právě nachází. Aby bylo toto dosažitelné, je nutné uchovávat slovo, které uživatel vyhledával (tedy obsah hledacího pole), který z výsledků v levém sloupci zvolil a který z režimů zobrazení dat je aktivní. 
+
+					Vzhledem k tomu, že se ve všech případech jedná o relativně krátkou textovou informaci, lze ji pohodlně ukládat jako parametr URL\footnote{query strings}. Parametry URL jsou nepovinnou částí adresy a mohou obsahovat data ve formátu \texttt{klíč:hodnota}, například \url{http://www.example.org/index.html?klic1=hodnota1&klic2=hodnota2}. \parencite{berners2005uniform} Ačkoliv \textcite{berners2005uniform} nespecifikuje použití více dvojic \texttt{klíč:hodnota} v parametrech URL, běžně se toto implementuje oddělováním jednotlivých dvojic znakem ampersand (\texttt{\&}). Tak řeší problematiku ukládání více dvojic i rozhraní \simplywn: 
+
+					\medskip
+					\url{...wordnet-ui.html?input=kolo&source=wncz&vis=graph#ENG20-03403613-n}
+					\medskip
+
+					Výše uvedený příklad obsahuje i dosud nerozebranou část adresy, a to fragment. Fragment je podobně jako parametry nepovinná část adresy, která se využívá na bližší identifikaci informace v dokumentu, tedy může být kupříkladu odkazem na podsekci v dokumentu. \parencite{berners2005uniform} Všeobecně se fragment používá k odkazování uvnitř dokumentu, tedy lokálně na straně uživatele, naproti tomu parametry bývají odesílány na server pro účely parametrizace požadavků. V rozhraní \simplywn je fragment využíván k ukládání identifikátoru zvoleného synsetu.
+
 
 
 		% - ziskani dat od uzivatele z formulare
