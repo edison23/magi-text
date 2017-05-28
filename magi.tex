@@ -920,6 +920,14 @@
 
 			% 	Níže vlevo je postranní sloupec, který obsahuje všechny persistentní ovládací prvky, tedy takové, jež jsou uživateli dostupné stále. Jsou jím tlačítka na změn
 
+
+			\begin{figure}[h]
+				\centering
+				\includegraphics[width=1.0\textwidth]{wordnet-ui-diag_v1.eps}
+				\caption{Zjednodušený vývojový diagram logiky rozhraní}
+				\label{fig:wordnet-ui-diag_v1}
+			\end{figure}
+
 			\section{Získávání dat}
 
 				Data, jež jsou ve výsledku zobrazována uživateli, jsou načítána ze serveru v závislosti na vstupu, který uživatel tím či oním způsobem zadal. Vstup uživatele může být dvojího druhu (byť z hlediska výsledného zpracování se nijak neliší). Jednak uživatel zadává kýžené slovo do vyhledávacího pole, a jednak může kliknout na odkaz vedoucí na jiný synset. Druhý případ se potom od prvního liší pouze v tom, že text ve vyhledávacím poli není slovo z přirozeného jazyka, ale identifikátor synsetu, na nějž bylo kliknuto. Kliknutí na synset je přitom pouze zkratka, během níž se automaticky zadá identifikátor daného synsetu do vyhledávacího pole a spustí se vyhledávání.
@@ -1059,13 +1067,15 @@
 
 					Aplikace využívá URL, tedy adresy, k uchovávání svého stavu, tedy prostředku k případnému pozdějšímu obnovení aplikace do identického stavu, v jakém se v libovolném okamžiku právě nachází. Aby bylo toto dosažitelné, je nutné uchovávat slovo, které uživatel vyhledával (tedy obsah hledacího pole), který z výsledků v levém sloupci zvolil a který z režimů zobrazení dat je aktivní. 
 
-					Vzhledem k tomu, že se ve všech případech jedná o relativně krátkou textovou informaci, lze ji pohodlně ukládat jako parametr URL\footnote{query strings}. Parametry URL jsou nepovinnou částí adresy a mohou obsahovat data ve formátu \texttt{klíč:hodnota}, například \url{http://www.example.org/index.html?klic1=hodnota1&klic2=hodnota2}. \parencite{berners2005uniform} Ačkoliv \textcite{berners2005uniform} nespecifikuje použití více dvojic \texttt{klíč:hodnota} v parametrech URL, běžně se toto implementuje oddělováním jednotlivých dvojic znakem ampersand (\texttt{\&}). Tak řeší problematiku ukládání více dvojic i rozhraní \simplywn: 
+					Vzhledem k tomu, že se ve všech případech jedná o relativně krátkou textovou informaci, lze ji pohodlně ukládat jako parametr URL\footnote{query strings}. Parametry URL jsou nepovinnou částí adresy a mohou obsahovat data ve formátu \texttt{klíč:hodnota}, například \url{http://www.example.org/index.html?klic1=hodnota1&klic2=hodnota2}. \parencite{berners2005uniform} Ačkoliv \textcite{berners2005uniform} nespecifikuje použití více dvojic \texttt{klíč:hodnota} v parametrech URL, běžně se toto implementuje oddělováním jednotlivých dvojic znakem ampersand (\texttt{\&}). Tak je řešena problematika ukládání více údajů i rozhraní \simplywn: 
 
 					\medskip
 					\url{...wordnet-ui.html?input=kolo&source=wncz&vis=graph#ENG20-03403613-n}
 					\medskip
 
 					Výše uvedený příklad obsahuje i dosud nerozebranou část adresy, a to fragment. Fragment je podobně jako parametry nepovinná část adresy, která se využívá na bližší identifikaci informace v dokumentu, tedy může být kupříkladu odkazem na podsekci v dokumentu. \parencite{berners2005uniform} Všeobecně se fragment používá k odkazování uvnitř dokumentu, tedy lokálně na straně uživatele, naproti tomu parametry bývají odesílány na server pro účely parametrizace požadavků. V rozhraní \simplywn je fragment využíván k ukládání identifikátoru zvoleného synsetu.
+
+					Při načtení v prohlížeči aplikace nejprve zjišťuje, zda adresa obsahuje parametry, ze kterých by se měl obnovit stav. Pokud ne (tedy neobsahuje žádné parametry, či se existující parametry neshodují s těmi používanými aplikací), je rozhraní uvedeno do výchozího stavu. V opačném případě proběhne pokus o uvedení rozhraní do stavu odpovídajícího hodnotám parametrů, tedy spustí se vyhledávání podle parametru \texttt{input} ve wordnetu zvoleném podle parametru \texttt{source}. Pokud hledání proběhne úspěšně, zobrazí se v režimu vizualizace podle parametru \texttt{vis} synset, jehož identifikátor odpovídá fragmentu za znakem \texttt{\#}.
 
 
 
