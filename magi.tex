@@ -72,12 +72,18 @@
 
 \begin{document}
 	
-	\pagestyle{empty}
+	% \pagestyle{empty}
 	\maketitle
 
 	\newpage
 
 	\tableofcontents
+
+	\newpage
+
+	\chapter*{Úvod}\label{uvod}
+
+	\addcontentsline{toc}{chapter}{Úvod}
 
 	\newpage
 
@@ -781,15 +787,17 @@
 			% cil prakticky casti = napsat rozhrani, ktery by bylo rozumne univerzalni (da se nasadit na cokoliv, co bude davat ocekavany format dat), umoznilo by textovy i graf. zobrazeni, bylo by pouzitelny na mobilu
 			% graficky zobrazeni: bylo usouzeno, ze stabilni neinteraktivni (krom zoom/panning) je lepsi, bo se da pouzit i na telefonu; zadny tooltipy, nic
 
-			Cílem praktické části této práce bylo vytvořit rozhraní k sémantickým sítím typu wordnet, které by nebylo zatíženo nedostatky, jež byly pozorovány u rozhraní testovaných v předchozí části práce. Zřejmě nejrozšířenějším problémem u existujících rozhraní pro webové prohlížeče je jejich do různé míry problematická použitelnost na mobilních zařízeních s malým displejem (u některých naprostá nepoužitelnost). Rozhraní implementovaná ve formě aplikace pro stolní počítače jsou na mobilní zařízení nepřenositelná již ze své podstaty a nemohou být proto z pohledu použitelnosti na mobilních zařízeních být hodnocena vůbec, faktem ale zůstává, že je jejich nepřenositelnost v porovnání s webovými rozhraními diskriminuje. 
+			\section{Východiska}
 
-			Rozhraní, které je výstupem této práce si tedy klade za cíl umožnit uživatelům přístup k datům wordnetů odkudkoliv, bez ohledu na to, zda pracují na mobilním telefonu, tabletu, laptopu či stolním počítači. Jeho návrh se snaží být technologicky nadčasový, ačkoliv v tomto aspektu budou ve světě webových technologií, jenž se neustále vyvíjí, pravděpodobně vždy existovat jisté limity. Pro rozhraní vytvořené v rámci této práce to jsou především požadavky na webový prohlížeč koncového uživatele. Uživatelův prohlížeč musí podporovat technologie ECMAScript verze 6\footnote{také známý jako ECMAScript 2015}\td{mozna jen 5, ale zatim to na nem nefunguje} (k němuž je všeobecně referováno jako k JavaScriptu), HTML verze 5 a CSS verze 3. Podrobněji se vysvětlení požadavků na verze bude věnovat kapitola [casem...]. 
+				Cílem praktické části této práce bylo vytvořit rozhraní k sémantickým sítím typu wordnet, které by nebylo zatíženo nedostatky, jež byly pozorovány u rozhraní testovaných v předchozí části práce. Zřejmě nejrozšířenějším problémem u existujících rozhraní pro webové prohlížeče je jejich do různé míry problematická použitelnost na mobilních zařízeních s malým displejem (u některých naprostá nepoužitelnost). Rozhraní implementovaná ve formě aplikace pro stolní počítače jsou na mobilní zařízení nepřenositelná již ze své podstaty a nemohou být proto z pohledu použitelnosti na mobilních zařízeních být hodnocena vůbec, faktem ale zůstává, že je jejich nepřenositelnost v porovnání s webovými rozhraními diskriminuje. 
 
-			Rozhraní bylo v rámci této práce tedy navrženo tak, aby umožňovalo zobrazení dat jak textové, tak grafické. Textové zobrazení je vhodné pro zobrazení synsetů, které obsahují velké množství potomků (hyponyma, meronyma, etc.), a mohou v grafickém rozhraní být nepřehledné. Také se textové rozhraní spíše hodí k použití na mobilních zařízeních, jelikož se lépe přizpůsobuje velikost obrazovky. Grafické zobrazení je naopak vhodné pro rychlý přehled míry komplexity synsetu a jeho vztahů. Může sloužit především jako ilustrace daného slovního významu. Textové a grafické zobrazení se vzájemně nedoplňují, ale jsou různým zobrazením týchž dat, a v zásadě dávají uživateli na výběr, které ze zobrazení je pro něj komfortnější či užitečnější.
+				Rozhraní, které je výstupem této práce si tedy klade za cíl umožnit uživatelům přístup k datům wordnetů odkudkoliv, bez ohledu na to, zda pracují na mobilním telefonu, tabletu, laptopu či stolním počítači. Jeho návrh se snaží být technologicky nadčasový, ačkoliv v tomto aspektu budou ve světě webových technologií, jenž se neustále vyvíjí, pravděpodobně vždy existovat jisté limity. Pro rozhraní vytvořené v rámci této práce to jsou především požadavky na webový prohlížeč koncového uživatele. Uživatelův prohlížeč musí podporovat technologie ECMAScript verze 6\footnote{také známý jako ECMAScript 2015}\td{mozna jen 5, ale zatim to na nem nefunguje} (k němuž je všeobecně referováno jako k JavaScriptu), HTML verze 5 a CSS verze 3. Podrobněji se vysvětlení požadavků na verze bude věnovat kapitola [casem...]. 
+
+				Rozhraní bylo v rámci této práce tedy navrženo tak, aby umožňovalo zobrazení dat jak textové, tak grafické. Textové zobrazení je vhodné pro zobrazení synsetů, které obsahují velké množství potomků (hyponyma, meronyma, etc.), a mohou v grafickém rozhraní být nepřehledné. Také se textové rozhraní spíše hodí k použití na mobilních zařízeních, jelikož se lépe přizpůsobuje velikost obrazovky. Grafické zobrazení je naopak vhodné pro rychlý přehled míry komplexity synsetu a jeho vztahů. Může sloužit především jako ilustrace daného slovního významu. Textové a grafické zobrazení se vzájemně nedoplňují, ale jsou různým zobrazením týchž dat, a v zásadě dávají uživateli na výběr, které ze zobrazení je pro něj komfortnější či užitečnější.
 
 			\section{Cíle nového rozhraní}
 
-				Přesto, že existujících rozhraní je dostupných mnoho, žádné z nich nesplňuje požadavky moderní platformě nezávislé aplikace, jak bylo ukázáno v hodnotící části. Proto vznikl záměr vytvořit takové rozhraní, které by tyto požadavky (do co největší míry) splňovalo. Vzhledem k původním záměrům samotného WordNetu (a na něj navazujících projektů), mezi nimiž byly například edukativní účely, je nutné, aby rozhraní k těmto projektům bylo intuitivní, vizuálně přitažlivé a snadno přístupné. Snadná přístupnost například minimalizuje nutnost správné přípravy školních počítačů k použití takového rozhraní, což opět zvyšuje šance, že aplikace bude skutečně použita.
+				Přesto, že existujících rozhraní je dostupných mnoho, žádné z nich nesplňuje požadavky moderní platformně nezávislé aplikace, jak bylo ukázáno v hodnotící části. Proto vznikl záměr vytvořit takové rozhraní, které by tyto požadavky (do co největší míry) splňovalo. Vzhledem k původním záměrům samotného WordNetu (a na něj navazujících projektů), mezi nimiž byly například edukativní účely, je nutné, aby rozhraní k těmto projektům bylo intuitivní, vizuálně přitažlivé a snadno přístupné. Snadná přístupnost například minimalizuje nutnost správné přípravy školních počítačů k použití takového rozhraní, což opět zvyšuje šance, že aplikace bude skutečně použita.
 
 				S touto vizí tedy byla vytvořena webová aplikace \simplywn, která ja v dalších částech této práce prezentována.
 
@@ -844,7 +852,7 @@
 
 				\begin{figure}[h]
 					\centering
-					\includegraphics[width=1.0\textwidth]{html3d.png}
+					\includegraphics[width=1.0\textwidth]{html3d2.png}
 					\caption{Třídimenzionální vizualizace struktury rozhraní}
 					\label{fig:html3d}
 				\end{figure}
@@ -869,7 +877,7 @@
 
 					Ajax\footnote{Asynchronous JavaScript And XML} je souhrnné označení pro asynchronní přenosu dat ve formátu XML pomocí JavaScriptu používá se pro komunikaci webových aplikací se serverem. Rozdílem oproti tradičnímu přenosu informací mezi serverem a webovou stránkou načtenou u klienta tkví v tom, že bez použití Ajaxu je nutné pro zpracování odpovědi na požadavek načíst stránku znova. Hlavním využitím Ajaxu bývají právě aplikace, jejichž funkčnost je závislá na komunikaci se vzdáleným serverem bez nutnosti načítat celou webovou stránku znovu. \parencite{garrett2005ajax}
 
-					Vzhledem k tomu, že u komplexních webových aplikací může být načítání celé stránky znova nevýhodné z mnoha důvodů. Jedním ze scénářů může být například potřeba obnovit data na části stránky, zatímco uživatel vkládá data (například komentář) na jiné části\footnote{Existovala možnost toto obejít pomocí rámců, ale ty měly mnoho zásadních nevýhod}. Úplným znovunačtením by byla uživatelova vložená data ztracena, takže je nutné obnovovat jen její část, k čemuž je výhodné využít Ajax.
+					Vzhledem k tomu, že u komplexních webových aplikací může být načítání celé stránky znova nevýhodné z mnoha důvodů. Jedním ze scénářů může být například potřeba obnovit data na části stránky, zatímco uživatel vkládá data (například komentář) na jiné části\footnote{Existuje možnost toto obejít pomocí rámců, ale ty mají mnoho zásadních nevýhod}. Úplným znovunačtením by byla uživatelova vložená data ztracena, takže je nutné obnovovat jen její část, k čemuž je výhodné využít Ajax.
 
 					Dalším poměrně jednoduchým důvodem k využívání Ajaxu je uživatelův komfort -- je možné během načítání zobrazovat indikátor načítání, při výpadku spojení zobrazit uživatelsky přívětivou zprávu, etc.
 
@@ -1012,70 +1020,94 @@
 
 					Pokud je vyhledávání neúspěšné, vrací server pouze prázdné pole. Tento stav je kontrolován aplikací a v případě, že nastane, je uživatel upozorněn, že dané vyhledávání nevrátilo pro daný zdroj dat žádné výsledky. 
 
-				\section{Zpracování odpovědi}
-				\label{cha:zpracovani}
+			\section{Zpracování odpovědi}
+			\label{cha:zpracovani}
 
-					Získaná data jsou v několika krocích zpracována tak, aby jejich použití v aplikaci bylo jednodušší a jejich struktura odpovídala potřebám rozhraní. Jmenovitě pro textovou reprezentaci je pole objektů se synsety serializováno do jednoho objektu, v němž lze odkazovat na potřebný synset univerzálnějším způsobem (podle jeho identifikátoru). 
+				Získaná data jsou v několika krocích zpracována tak, aby jejich použití v aplikaci bylo jednodušší a jejich struktura odpovídala potřebám rozhraní. Jmenovitě pro textovou reprezentaci je pole objektů se synsety serializováno do jednoho objektu, v němž lze odkazovat na potřebný synset univerzálnějším způsobem (podle jeho identifikátoru). 
 
-					Zpracování odpovědi pro potřeby vizualizace grafem je poněkud komplexnější. Je evidentní, že pro vykreslení grafu je nutné mít k disposici uzly a hrany, jimiž jsou uzly spojeny. V JSONu získaném ze serveru tyto vztahy implicitně obsažený jsou, ale pouze tak, že určitý objekt je rodičem dalších objektů, či dítětem výše postaveného objektu. Explicitní údaje o těchto vztazích ve vlastnostech objektů obsaženy nejsou, a je tudíž nutné je pro knihovnu, která graf vykresluje, vytvořit. Pro tento účel obsahuje aplikace \simplywn funkci \texttt{DFSThruSynsets()}, která prochází synsety v JSONu metodou procházení do hloubky%\footnote{Procházení grafu do šířky je algoritmus pro prohledávání grafu, jenž prochází nejprve sousední uzly a až poté, co projde všechny, se posouvá na další úroveň grafu \parencite{epstein1996ics}}
-					\footnote{Procházení do hloubky (DFS, depth first search) je algoritmus pro prohledávání grafu, jenž prochází postupně celé větve grafu.  Druhou možností je procházení do šířky (BFS, breadth first search), které prochází nejprve všechny uzly co nejblíže kořeni (tedy na stejné úrovni) a až poté přechází na nižší (hlubší) úroveň. \parencite{epstein1996ics} Z hlediska aplikace \simplywn se tyto dva přístupy liší jen tím, že vykreslují mírně odlišně uspořádané grafy (struktura je zachována)}, každý nalezený synset zapisuje do seznamu uzlů a zároveň k němu do seznamu hran zapisuje uspořádanou dvojici, která sestává z identifikátoru jeho rodičovského uzlu a jeho vlastního identifikátoru. Pořadí, v jakém jsou jednotlivé uzly procházeny, je znázorněno na grafu \ref{fig:bfs-ilustr} na straně \pageref{fig:bfs-ilustr}. Procházení do hloubky je implementováno pomocí zásobníku a rekurse. Během procházení dat je pomocí různých atributů nalezených objektů rozlišováno pět druhů uzlů, a to kořenový synset, tedy ten, jejž si uživatel vybral, (\texttt{root}), jeho členská slova (\texttt{rootLeaf}), ostatní synsety (\texttt{synset}), jejich členská slova (\texttt{leaf}) a uzly představující sémantické relace (\texttt{semGroup}). 
+				Zpracování odpovědi pro potřeby vizualizace grafem je poněkud komplexnější. Je evidentní, že pro vykreslení grafu je nutné mít k disposici uzly a hrany, jimiž jsou uzly spojeny. V JSONu získaném ze serveru tyto vztahy implicitně obsažený jsou, ale pouze tak, že určitý objekt je rodičem dalších objektů, či dítětem výše postaveného objektu. Explicitní údaje o těchto vztazích ve vlastnostech objektů obsaženy nejsou, a je tudíž nutné je pro knihovnu, která graf vykresluje, vytvořit. Pro tento účel obsahuje aplikace \simplywn funkci \texttt{DFSThruSynsets()}, která prochází synsety v JSONu metodou procházení do hloubky%\footnote{Procházení grafu do šířky je algoritmus pro prohledávání grafu, jenž prochází nejprve sousední uzly a až poté, co projde všechny, se posouvá na další úroveň grafu \parencite{epstein1996ics}}
+				\footnote{Procházení do hloubky (DFS, depth first search) je algoritmus pro prohledávání grafu, jenž prochází postupně celé větve grafu.  Druhou možností je procházení do šířky (BFS, breadth first search), které prochází nejprve všechny uzly co nejblíže kořeni (tedy na stejné úrovni) a až poté přechází na nižší (hlubší) úroveň. \parencite{epstein1996ics} Z hlediska aplikace \simplywn se tyto dva přístupy liší jen tím, že vykreslují mírně odlišně uspořádané grafy (struktura je zachována)}, každý nalezený synset zapisuje do seznamu uzlů a zároveň k němu do seznamu hran zapisuje uspořádanou dvojici, která sestává z identifikátoru jeho rodičovského uzlu a jeho vlastního identifikátoru. Pořadí, v jakém jsou jednotlivé uzly procházeny, je znázorněno na grafu \ref{fig:bfs-ilustr} na straně \pageref{fig:bfs-ilustr}. Procházení do hloubky je implementováno pomocí zásobníku a rekurse. Během procházení dat je pomocí různých atributů nalezených objektů rozlišováno pět druhů uzlů, a to kořenový synset, tedy ten, jejž si uživatel vybral, (\texttt{root}), jeho členská slova (\texttt{rootLeaf}), ostatní synsety (\texttt{synset}), jejich členská slova (\texttt{leaf}) a uzly představující sémantické relace (\texttt{semGroup}). 
 
 
 
-					% \begin{tikzpicture}[sibling distance=10em,
-					%   every node/.style = {shape=rectangle, rounded corners,
-					%     draw, align=center,
-					%     top color=white, bottom color=blue!20}]]
-					\begin{figure}
-						\centering
-						\begin{tikzpicture}[level distance=2em]
-						  \tikzstyle{every node}=[shape=rectangle, rounded corners, draw, align=center]
-						  \tikzstyle{level 1}=[sibling distance=10em]
-						  \tikzstyle{level 2}=[sibling distance=5em]
-						  \tikzstyle{level 3}=[sibling distance=3em] 
-						  \node {1}
-						  	child { node{8} 
-						  		child { node{10} }
-						  		child { node{9} }
-						  	}
-						  	child { node{4} 
-						  		child { node{7} }
-						  		child { node{6} }
-						  		child { node{5} }
-						  	}
-						  	child { node{2} 
-						  		child { node{3} }
-						  	};
-						\end{tikzpicture}
-						\caption{Ilustrace pořadí, v jakém jsou uzly zapisovány při procházení grafu do šířky}
-						\label{fig:bfs-ilustr}
-					\end{figure}
+				% \begin{tikzpicture}[sibling distance=10em,
+				%   every node/.style = {shape=rectangle, rounded corners,
+				%     draw, align=center,
+				%     top color=white, bottom color=blue!20}]]
+				\begin{figure}
+					\centering
+					\begin{tikzpicture}[level distance=2em]
+					  \tikzstyle{every node}=[shape=rectangle, rounded corners, draw, align=center]
+					  \tikzstyle{level 1}=[sibling distance=10em]
+					  \tikzstyle{level 2}=[sibling distance=5em]
+					  \tikzstyle{level 3}=[sibling distance=3em] 
+					  \node {1}
+					  	child { node{8} 
+					  		child { node{10} }
+					  		child { node{9} }
+					  	}
+					  	child { node{4} 
+					  		child { node{7} }
+					  		child { node{6} }
+					  		child { node{5} }
+					  	}
+					  	child { node{2} 
+					  		child { node{3} }
+					  	};
+					\end{tikzpicture}
+					\caption{Ilustrace pořadí, v jakém jsou uzly zapisovány při procházení grafu do šířky}
+					\label{fig:bfs-ilustr}
+				\end{figure}
 
-				\section{Zobrazení dat}
+			\section{Zobrazení dat}
 
-					Ve chvíli, kdy jsou data zpracována, může být jejich příslušná část, tedy jeden synset, zobrazena uživateli. Který synset se bude zobrazovat, je v případě, že v adrese (URL) existuje parametr synset specifikující, rozhodnuto na základě onoho parametru, jinak je vybrán pro další operace objekt se synsetem, jenž se v datech vyskytuje jako první. 
+				Ve chvíli, kdy jsou data zpracována, může být jejich příslušná část, tedy jeden synset, zobrazena uživateli. Který synset se bude zobrazovat, je v případě, že v adrese (URL) existuje parametr synset specifikující, rozhodnuto na základě onoho parametru, jinak je vybrán pro další operace objekt se synsetem, jenž se v datech vyskytuje jako první. 
 
-					Zároveň je uživateli zobrazen seznam nalezených synsetů, tedy výpis jejich členských slov, v levém sloupci. Každý řádek je zároveň odkazem, kliknutím na nějž si uživatel může vybrat, kterou část dat si přeje prohlížet. Taková akce vyvolá výběr objektu, který obsahuje synset s identifikátorem shodným s tím, který byl uveden v odkazu.
+				Zároveň je uživateli zobrazen seznam nalezených synsetů, tedy výpis jejich členských slov, v levém sloupci. Každý řádek je zároveň odkazem, kliknutím na nějž si uživatel může vybrat, kterou část dat si přeje prohlížet. Taková akce vyvolá výběr objektu, který obsahuje synset s identifikátorem shodným s tím, který byl uveden v odkazu.
 
-					Objekt obsahující příslušnou část dat je následně předán funkci \texttt{renderView()}, který na základě stavu aplikace uloženého v adrese zavolá funkci zobrazující data textovou reprezentací, či grafickou.
+				Objekt obsahující příslušnou část dat je následně předán funkci \texttt{renderView()}, který na základě stavu aplikace uloženého v adrese zavolá funkci zobrazující data textovou reprezentací, či grafickou.
 
-					Textové zobrazení dat je řešeno jednoduchým naplňováním částečně předpřipraveného HTML dokumentu očekávanými daty. Rozhraní počítá s neúplností dat, takže není v tomto ohledu striktní a pokud se požadované informace v datech nevyskytují (typicky definice synsetu je pole, které u nezanedbatelného počtu konceptů v českém wordnetu chybí), je daná struktura naplněna prázdným řetězcem a nezobrazuje se. Kromě informací, jejichž existence je v datech nejistá, se v nich vyskytují i informace s předem neznámou délkou. Mezi takové patří například počet synsetů odpovídajících hledanému výrazu, pro každý z nich pak počet relací, jichž jsou členem, počet dalších synsetů v dané relaci či například počet členských slov jednotlivých zobrazených synsetů. Zobrazení takových informací je v rozhraní řešeno cykly a z hlediska struktury HTML to bývají seznamy, jakožto prvky nejvhodnější pro výpis položek. Výjimkou jsou členská slova synsetů, ta jsou vypisována jako řetězec znaků rozdělený čárkami (pomocí funkce \texttt{synString()}).
+				\paragraph{Textové zobrazení} dat je řešeno jednoduchým naplňováním částečně předpřipraveného HTML dokumentu očekávanými daty. Rozhraní počítá s neúplností dat, takže není v tomto ohledu striktní a pokud se požadované informace v datech nevyskytují (typicky definice synsetu je pole, které u nezanedbatelného počtu konceptů v českém wordnetu chybí), je daná struktura naplněna prázdným řetězcem a nezobrazuje se. Kromě informací, jejichž existence je v datech nejistá, se v nich vyskytují i informace s předem neznámou délkou. Mezi takové patří například počet synsetů odpovídajících hledanému výrazu, pro každý z nich pak počet relací, jichž jsou členem, počet dalších synsetů v dané relaci či například počet členských slov jednotlivých zobrazených synsetů. Zobrazení takových informací je v rozhraní řešeno cykly a z hlediska struktury HTML to bývají seznamy, jakožto prvky nejvhodnější pro výpis položek. Výjimkou jsou členská slova synsetů, ta jsou vypisována jako řetězec znaků rozdělený čárkami (pomocí funkce \texttt{synString()}).
 
-					Grafické zobrazení realizuje knihovna Vis.js, které jsou vstupem data vytvořená ze serverové odpovědi (struktura a tvorba těchto dat je popsána v kapitole \ref{cha:zpracovani} na straně \pageref{cha:zpracovani}). Nastavení vykreslovací funkce je upraveno tak, aby výsledný graf byl statický a s jeho uzly nebylo možné tažením myší hýbat. Důvody k tomuto nastavení jsou rozebrány v kapitole \ref{cha:shrnuti-prehledu} na straně \pageref{cha:shrnuti-prehledu}. Mezi dalšími nastaveními jsou například parametry zajišťující penalizaci překrývajících se uzlů (nutno podotknout, že jakkoliv vysoká tato penalizace může být, nepodařilo se najít taková nastavení, aby k ní za žádných okolností -- zejména na velkých synsetech -- nedošlo), vzhled jednotlivých druhů uzlů\footnote{vzhled prvků grafu není možné definovat externími pravidly v CSS} či parametry stabilizace grafu. Stabilizace grafu je proces, který probíhá poté, co jsou knihovnou vytvořeny na vykreslovacím plátně všechny uzly a hrany mezi nimi. Vykreslovací funkce využívá emulace fyzikálních zákonů mezi jednotlivými prvky, takže uzly se odpuzují podobně, jako v reálném světě se odpuzují elektrony, a hrany se chovají jako pružiny, které mají svou ideální délku. Kombinace odpudivých a přitažlivých sil zajišťuje tendenci k rovnoměrnému rozmístění prvků na ploše.
+				\paragraph{Grafické zobrazení} realizuje knihovna Vis.js, které jsou vstupem data vytvořená ze serverové odpovědi (struktura a tvorba těchto dat je popsána v kapitole \ref{cha:zpracovani} na straně \pageref{cha:zpracovani}). Nastavení vykreslovací funkce je upraveno tak, aby výsledný graf byl statický a s jeho uzly nebylo možné tažením myší hýbat. Důvody k tomuto nastavení jsou rozebrány v kapitole \ref{cha:shrnuti-prehledu} na straně \pageref{cha:shrnuti-prehledu}. Mezi dalšími nastaveními jsou například parametry zajišťující penalizaci překrývajících se uzlů (nutno podotknout, že jakkoliv vysoká tato penalizace může být, nepodařilo se najít taková nastavení, aby k ní za žádných okolností -- zejména na velkých synsetech -- nedošlo), vzhled jednotlivých druhů uzlů\footnote{vzhled prvků grafu není možné definovat externími pravidly v CSS} či parametry stabilizace grafu. Stabilizace grafu je proces, který probíhá poté, co jsou knihovnou vytvořeny na vykreslovacím plátně všechny uzly a hrany mezi nimi. Vykreslovací funkce využívá emulace fyzikálních zákonů mezi jednotlivými prvky, takže uzly se odpuzují podobně, jako v reálném světě se odpuzují elektrony, a hrany se chovají jako pružiny, které mají svou ideální délku. Kombinace odpudivých a přitažlivých sil zajišťuje tendenci k rovnoměrnému rozmístění prvků na ploše.
 
-				\section{Uchovávání stavu v URL}
+			\section{Uchovávání stavu v URL}
 
-					Aplikace využívá URL, tedy adresy, k uchovávání svého stavu, tedy prostředku k případnému pozdějšímu obnovení aplikace do identického stavu, v jakém se v libovolném okamžiku právě nachází. Aby bylo toto dosažitelné, je nutné uchovávat slovo, které uživatel vyhledával (tedy obsah hledacího pole), který z výsledků v levém sloupci zvolil a který z režimů zobrazení dat je aktivní. 
+				Aplikace využívá URL, tedy adresy, k uchovávání svého stavu, tedy prostředku k případnému pozdějšímu obnovení aplikace do identického stavu, v jakém se v libovolném okamžiku právě nachází. Aby bylo toto dosažitelné, je nutné uchovávat slovo, které uživatel vyhledával (tedy obsah hledacího pole), který z výsledků v levém sloupci zvolil a který z režimů zobrazení dat je aktivní. 
 
-					Vzhledem k tomu, že se ve všech případech jedná o relativně krátkou textovou informaci, lze ji pohodlně ukládat jako parametr URL\footnote{query strings}. Parametry URL jsou nepovinnou částí adresy a mohou obsahovat data ve formátu \texttt{klíč:hodnota}, například \url{http://www.example.org/index.html?klic1=hodnota1&klic2=hodnota2}. \parencite{berners2005uniform} Ačkoliv \textcite{berners2005uniform} nespecifikuje použití více dvojic \texttt{klíč:hodnota} v parametrech URL, běžně se toto implementuje oddělováním jednotlivých dvojic znakem ampersand (\texttt{\&}). Tak je řešena problematika ukládání více údajů i rozhraní \simplywn: 
+				Vzhledem k tomu, že se ve všech případech jedná o relativně krátkou textovou informaci, lze ji pohodlně ukládat jako parametr URL\footnote{query strings}. Parametry URL jsou nepovinnou částí adresy a mohou obsahovat data ve formátu \texttt{klíč:hodnota}, například \url{http://www.example.org/index.html?klic1=hodnota1&klic2=hodnota2}. \parencite{berners2005uniform} Ačkoliv \textcite{berners2005uniform} nespecifikuje použití více dvojic \texttt{klíč:hodnota} v parametrech URL, běžně se toto implementuje oddělováním jednotlivých dvojic znakem ampersand (\texttt{\&}). Tak je řešena problematika ukládání více údajů i rozhraní \simplywn: 
 
-					\medskip
-					\url{...wordnet-ui.html?input=kolo&source=wncz&vis=graph#ENG20-03403613-n}
-					\medskip
+				\medskip
+				\url{...wordnet-ui.html?input=kolo&source=wncz&vis=graph#ENG20-03403613-n}
+				\medskip
 
-					Výše uvedený příklad obsahuje i dosud nerozebranou část adresy, a to fragment. Fragment je podobně jako parametry nepovinná část adresy, která se využívá na bližší identifikaci informace v dokumentu, tedy může být kupříkladu odkazem na podsekci v dokumentu. \parencite{berners2005uniform} Všeobecně se fragment používá k odkazování uvnitř dokumentu, tedy lokálně na straně uživatele, naproti tomu parametry bývají odesílány na server pro účely parametrizace požadavků. V rozhraní \simplywn je fragment využíván k ukládání identifikátoru zvoleného synsetu.
+				Výše uvedený příklad obsahuje i dosud nerozebranou část adresy, a to fragment. Fragment je podobně jako parametry nepovinná část adresy, která se využívá na bližší identifikaci informace v dokumentu, tedy může být kupříkladu odkazem na podsekci v dokumentu. \parencite{berners2005uniform} Všeobecně se fragment používá k odkazování uvnitř dokumentu, tedy lokálně na straně uživatele, naproti tomu parametry bývají odesílány na server pro účely parametrizace požadavků. V rozhraní \simplywn je fragment využíván k ukládání identifikátoru zvoleného synsetu.
 
-					Při načtení v prohlížeči aplikace nejprve zjišťuje, zda adresa obsahuje parametry, ze kterých by se měl obnovit stav. Pokud ne (tedy neobsahuje žádné parametry, či se existující parametry neshodují s těmi používanými aplikací), je rozhraní uvedeno do výchozího stavu. V opačném případě proběhne pokus o uvedení rozhraní do stavu odpovídajícího hodnotám parametrů, tedy spustí se vyhledávání podle parametru \texttt{input} ve wordnetu zvoleném podle parametru \texttt{source}. Pokud hledání proběhne úspěšně, zobrazí se v režimu vizualizace podle parametru \texttt{vis} synset, jehož identifikátor odpovídá fragmentu za znakem \texttt{\#}.
+				Při načtení v prohlížeči aplikace nejprve zjišťuje, zda adresa obsahuje parametry, ze kterých by se měl obnovit stav. Pokud ne (tedy neobsahuje žádné parametry, či se existující parametry neshodují s těmi používanými aplikací), je rozhraní uvedeno do výchozího stavu. V opačném případě proběhne pokus o uvedení rozhraní do stavu odpovídajícího hodnotám parametrů, tedy spustí se vyhledávání podle parametru \texttt{input} ve wordnetu zvoleném podle parametru \texttt{source}. Pokud hledání proběhne úspěšně, zobrazí se v režimu vizualizace podle parametru \texttt{vis} synset, jehož identifikátor odpovídá fragmentu za znakem \texttt{\#}.
+
+		\chapter{Možnosti dalšího vývoje}
+
+			Ačkoliv je v rámci této práce vytvořená implementace funkčním rozhraním k datům wordnetů, skýtá zároveň široké možnosti ohledně vylepšení, kterými by mohla být obohacena. Tato kapitola stručně probere ty, které byly identifikovány jako nejzajímavější pro zvýšení reálné použitelnosti rozhraní \simplywn. 
+
+			Jelikož už nyní aplikace umožňuje pracovat s více wordnety, je evidentní, že by bylo vhodné dát uživateli možnost přepnout jazyk rozhraní do jeho vlastního jazyka. Množství textů, které by bylo potřeba lokalizovat, není nijak enormní, navíc jazyk, jenž byl zvolen pro prezentaci textů do doby, než bude lokalizace implementována, je angličtina jakožto lingua franca, přesto by však lokalizace i těch několika řetězců, jež se v rozhraní vyskytují, mohla mít potenciál zvýšit komfort uživatele při používání rozhraní.
+
+			Dalším směrem, kterým by se budoucí vývoj mohl ubírat, je rozšíření podpory více jazyků. V současné implementaci sice existuje možnost přepínat jazyky hledání (pomocí přepínání zdrojů dat) a je i možné díky identifikátorům synsetů jednotným přes více jazyků vyhledávat jeden koncept v různých jazycích, bylo by však vhodné umožnit jednodušší a rychlejší cestu, jak nahlížet na významy slov v mezijazykovém kontextu.
+
+			V neposlední řadě jsou možnosti rozvoje i v detailech týkajících se uživatelské zkušenosti s rozhraním. V tomto ohledu se naskýtají možnosti rozšíření schopností aplikace obsloužit uživatele různými způsoby znevýhodněnými, ať už jde o jejich fyzické znevýhodnění (například poškození zraku) či znevýhodnění v oblasti programového vybavení jejich počítače (tedy omezená podpora technologií vyžadovaných pro správný běh aplikace, zejména JavaScriptu). Nutno podotknout, že co se prvého týče, byla během návrhu grafické stránky rozhraní snaha o co nejvyšší přístupnost ve smyslu vysokého kontrastu kontur či co možná nejdůslednější eliminace prvků závislých na pohybu kursoru myši po obrazovce. 
+
+		\chapter*{Závěr}\label{zaver}
+
+		\addcontentsline{toc}{chapter}{Závěr}
+
+			Cílem praktické části této práce bylo vytvořit funkční uživatelské rozhraní k sémantickým sítím typu wordnet. Vlastnosti, které by mělo takové rozhraní mít, byly rozebrány v kapitolách XY [dodělat ref] v přehledové části a určeny na základě podrobného empirického rozboru některých existujících rozhraní. Byly určeny klíčové nedostatky těchto rozhraní vzhledem k rozvoji technologií a trendům v oblasti způsobu využívání rozhraní zpřístupňujících data. Jako nejrozšířenější nedostatek existujících rozhraní byla identifikována jejich nedostatečná univerzalita, tedy schopnost obsloužit uživatele bez ohledu na to, jestli právě pro přístup k danému rozhraní chce použít mobilní zařízení s relativně malou obrazovkou, tablet či počítač či který operační systém na svém zařízení používá. Přitom nezávislost na zařízení a platformě je z dnešního hlediska klíčovou vlastností, ježto poměr uživatelů, kteří pracují na mobilním zařízení a těch, kteří pracují na klasickém počítači, se stále výrazněji posouvá ve prospěch těch prvních.
+
+			Na základě zhodnocení potřebných parametrů rozhraní, které by nebylo zatíženo vyvstavšími nedostatky testovaných rozhraní, bylo definováno, že nové rozhraní by mělo být tzv. webové, tedy zobrazitelné ve standardních prohlížečích určených k procházení sítě WWW. To jednak eliminuje potřebu uživatele přesvědčit k instalaci přídavného programového vybavení na jeho počítač, aby rozhraní mohl používat, a jednak je tím zajištěna nezávislost na platformě (operačním systému), kterou uživatel používá. Aby byla splněna podmínka vyžadující možnost užívat rozhraní na zařízení (téměř) jakékoliv velikosti, bylo rozhraní vyvinuto za použití moderních technologií a koncipováno jako tzv. responsivní, tedy schopné se dynamicky přizpůsobit velikosti zobrazovací plochy beze ztráty čitelnosti obsahu a jednoduchosti navigace v něm.
+
+			Další podstatnou vlastností související s univerzalitou, které by nové rozhraní mělo mít, aby přineslo oproti existujícím rozhraním přidanou hodnotu, je schopnost pracovat s více zdroji informací (wordnety) a mít otevřený kód. Schopnost práce s více zdroji informací implikuje univerzální formát vstupních dat, což je v kombinaci s otevřeným kódem důležité proto, aby bylo možné rozhraní nasadit nezávisle na již existujících instalacích, modifikovat podle konkrétních potřeb a ideálně též vylepšovat. Všechny komponenty rozhraní, kterých je pro jeho funkci využíváno (jQuery, vis.js, etc.) používají licenci MIT, což umožňuje rozhraní vytvořené v rámci této práce v případě bez omezení redistribuovat a modifikovat. 
+
+			Jako každý projekt, který se zabývá vývojem aplikace, ani tento není bez možností dalšího pokračování. Možné směry dalšího vývoje naznačené v kapitole [dodat ref] bezpochyby nejsou jediné, kterými by se další vývoj aplikace mohl ubírat. Jedním z vedlejších cílů naznačeným v úvodu této práce bylo vytvořit rozhraní, které by bylo použitelné pro výuku. V tomto kontextu a vzhledem k tomu, že již nyní aplikace umožňuje práci s různojazyčnými sémantickými sítěmi, zdá se, že jako nejbližší další vhodný cíl by bylo implementovat lokalizaci rozhraní do dalších jazyků a překlad lingvistickým pojmů do termínů srozumitelných laickými uživateli.
+
+			Jak bylo rozebráno v teoretické části této práce, wordnety navzdory svému původnímu určení mohou sloužit i jiným účelům než napomáhání strojovému zpracování přirozeného jazyka, jako je například zmíněná výuka jazyka. K tomu ovšem potřebují rozhraní, které bude použitelné i pro širší masy uživatelů a bude odpovídat současným trendům naznačeným v odstavcích výše. Praktická část této práce dokázala navrhnout a realizovat takové rozhraní, jež je vhodným základem pro další kroky směrem ke zpřístupnění wordnetu širšímu spektru uživatelů, zejména z řad studentů.
 
 
 
