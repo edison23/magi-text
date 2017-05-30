@@ -9,10 +9,27 @@
 \usepackage{todonotes}
 \usepackage{xunicode}
 \usepackage{graphicx}
+\usepackage[pagestyles,medium]{titlesec}
+\usepackage{setspace}
 % \usepackage{tikz-qtree}
 \usepackage{tikz}
 \graphicspath{ {imgs/} }
 \usepackage{verbatimbox}
+
+\setmainfont{Vollkorn}
+\linespread{1.2}
+\setlength\emergencystretch{1em}
+\setlength\headheight{14pt}
+% \setstretch{1.5}
+\setcounter{secnumdepth}{4}
+
+\widowpenalty10000
+\clubpenalty10000
+
+\newpagestyle{sensible}{
+	\headrule\sethead{}{}{\MakeUppercase{\chaptertitle}}
+	\setfoot{}{\thepage}{}
+}
 
 \def\verbarg{{\scriptsize\makebox[2ex]{\arabic{VerbboxLineNo}}}\hspace{2ex}}
 
@@ -85,9 +102,18 @@
 
 	\addcontentsline{toc}{chapter}{Úvod}
 
+		Tato práce se zabývá sémantickými sítěmi typu wordnet především z pohledu lidského uživatele. Sémantická síť princetonský WordNet a další sítě z ní vycházející byly projektovány se záměrem napomoci zejména počítačovému zpracování přirozeného jazyka. Díky své struktuře založené na psycholingvistických poznatcích jsou však potenciálně užitečné i pro lidského uživatele. Tento potenciál společně s vědními základy, které se staly formanty struktury wordnetů, práce rozebere ve své části \ref{part:eins}.
+
+		Aby však sémantická síť byla pro lidského uživatele použitelná, je nutné mu umožnit přístup pomocí rozhraní, jež mu zobrazí relevantní data. Takových rozhraní bylo vytvořeno za dobu vývoje sémantických sítí značné množství; vytvořená rozhraní se liší uživateli, na něž jsou zaměřena, platformami, které podporují, způsoby prezentace dat wordnetů a mnohým dalším. Jejich společným rysem však bývá jistá neaktuálnost návrhu uživatelského rozhraní, a to především v kontextu jednoho z trendů poslední dekády, kterým je přesun uživatelů z klasických stolních počítačů a laptopů na mobilní zařízení.
+
+		V části \ref{part:zwei} se práce bude věnovat právě těmto existujícím rozhraním, rozebere jejich funkcionalitu, positiva a negativa a zhodnotí jejich přínos a použitelnost pro koncového uživatele. Hodnocená rozhraní je nutno brát pouze jako zástupce většího množství dostupných rozhraní (a možná ještě většího těch nedostupných), jelikož cílem této práce není představit co nejúplnější přehled existujících rozhraní, ale spíše ukázat menší množství těch prominentnějších a podrobněji je rozebrat. Cílem této části je identifikovat nejvýraznější nedostatky těchto rozhraní a vyvodit z jejich zhodnocení některé vlastnosti, kterými by se mělo rozhraní z pohledu současnosti moderní vyznačovat. 
+
+		Praktickým cílem této práce pak je vytvořit rozhraní nové, jehož návrh bude vycházet z empiricky získaných poznatků při hodnocení existujících rozhraní v části \ref{part:zwei}. Popisu tohoto nového rozhraní se bude věnovat část \ref{part:drei}.
+
 	\newpage
 
-	\part{K sémantickým sítím}
+	\part{Sémantické sítě}
+	\label{part:eins}
 
 		Sémantické sítě, neboli wordnety, jsou lexikální databáze vytvořené s rozličnými záměry, mezi něž patří například i strojová inference informací v počítačovém zpracování přirozeného jazyka. Ve wordnetu jsou slova slučována podle významů do synonymických okruhů a tyto okruhy propojovány sémantickými vztahy, čímž dostávají svému označení sémantické sítě.
 
@@ -391,6 +417,7 @@
 				% neco psat o Balkanetu?
 
 	\part{Přehled a porovnání existujících vizualizací sémantických sítí}
+	\label{part:zwei}
 
 		Tato část textu bude zaměřena na zmapování existujících dostupných rozhraní a jejich zhodnocení. Výčet jednotlivých rozhraní rozhodně není vyčerpávající, jelikož některé vědecké instituce mohou vyvíjet své nástroje pro práci se sémantickými sítěmi neveřejně, některé nástroje už nejsou dostupné, etc. Nástroje pro vizualizaci\footnote{Terminologická poznámka: v této práci je vizualizací dat wordnetů míněna vizualizace jak textová reprezentace, tak grafická.} dat wordnetů byly vybírány pro přehled v této práci podle několika kritérií relevantních především pro koncového uživatele, avšak i pro případné vývojáře dalších wordnetů (tedy zda dané rozhraní mohou použít pro svá data).
 
@@ -407,7 +434,7 @@
 					\end{itemize}
 
 				% mozna vypsat vysledky a zaradit ten seznam sem? plus nejak exaktneji algoritmus filtrovani?
-				Z přehledu byly samozřejmě vyřazeny implementace, které k době hledání\footnote{duben 2017} už nebyly dostupné. Také nebyla zahrnuta rozhraní, která jsou funkčně podobná jiným. Ačkoliv většina existujících rozhraní zřejmě pracuje buďto výhradně s princetonským WordNetem, či jej jako zdroj dat nabízí jako jednu z možností, nebyl zdroj dat brán v potaz. Do přehledu byla zahrnována především rozhraní, která jsou dostupná z webového prohlížeče, jelikož je to pro koncového uživatele nejpohodlnější způsob přístupu k aplikaci (není nucen instalovat žádný přídavný software na svůj počítač). Jelikož však i rozhraní určená pro stolní počítače\footnote{terminologická poznámka: stolním počítačem je myšleno všeobecně zařízení typu stolních počítačů, laptopů, případně tabletů etc., na nichž je provozován operační systém nikoliv určený pro mobilní zařízení} jsou hojně rozšířena a mohou také poskytnout cennou inspiraci i při vývoji webového rozhraní, byla některá z nich zahrnuta též. Jsou však popisována pouze povrchněji a měla by při interpretaci hodnocení být automaticky značně penalizována, jelikož je uživatel mající zájem takové rozhraní použít nucen instalovat aplikační rozhraní Java, pokud jej nemá. Dalším důvodem k penalizaci je také fakt, tyto aplikace nejsou přímo spustitelné na mobilních zařízeních\footnote{Pro Android existuje několik cest, jak aplikaci napsanou v Javě spustit (\url{http://www.wikihow.com/Get-Java-on-Android}), lze však předpokládat, že použitelnost vizualizací wordnetu bude na zařízení s malou obrazovkou poněkud omezená.} \parencite{gronli2014mobile} a jejich portabilita do formy nativních aplikací může omezená a obtížná.
+				Z přehledu byly samozřejmě vyřazeny implementace, které k době hledání\footnote{duben 2017} už nebyly dostupné. Také nebyla zahrnuta rozhraní, která jsou funkčně podobná jiným. Ačkoliv většina existujících rozhraní zřejmě pracuje buďto výhradně s princetonským WordNetem, či jej jako zdroj dat nabízí jako jednu z možností, nebyl zdroj dat brán v potaz. Do přehledu byla zahrnována především rozhraní, která jsou dostupná z webového prohlížeče, jelikož je to pro koncového uživatele nejpohodlnější způsob přístupu k aplikaci (není nucen instalovat žádný přídavný software na svůj počítač). Jelikož však i rozhraní určená pro klasické počítače\footnote{terminologická poznámka: klasickým počítačem je myšleno všeobecně zařízení typu stolních počítačů, laptopů, případně tabletů etc., na nichž je provozován operační systém určený pro klasické počítače} jsou hojně rozšířena a mohou také poskytnout cennou inspiraci i při vývoji webového rozhraní, byla některá z nich zahrnuta též. Jsou však popisována pouze povrchněji a měla by při interpretaci hodnocení být automaticky značně penalizována, jelikož je uživatel mající zájem takové rozhraní použít nucen instalovat aplikační rozhraní Java, pokud jej nemá. Dalším důvodem k penalizaci je také fakt, tyto aplikace nejsou přímo spustitelné na mobilních zařízeních\footnote{Pro Android existuje několik cest, jak aplikaci napsanou v Javě spustit (\url{http://www.wikihow.com/Get-Java-on-Android}), lze však předpokládat, že použitelnost vizualizací wordnetu bude na zařízení s malou obrazovkou poněkud omezená.} \parencite{gronli2014mobile} a jejich portabilita do formy nativních aplikací může omezená a obtížná.
 
 				Podstatná z hlediska hodnocení je také univerzalita, tedy zda je zdrojový kód rozhraní otevřený a je možné jej použít i pro vizualizaci jiné sémantické sítě, než pro kterou bylo rozhraní vyvinuto. Je ovšem dlužno podotknout, že tato informace bývá často nedostupná; potom se v rámci této práce předpokládá, že kód otevřený není.
 
@@ -504,7 +531,7 @@
 					\label{fig:wnsearch}
 				\end{figure}
 
-				Podobnou jako WordNet Search splňují i některá další rozhraní. Za zmínku stojí například WNSearch\footnote{\url{http://www.golovchenko.org/cgi-bin/wnsearch}}, což je minimalistické čiště textové rozhraní, které díky absenci jakýchkoliv stylů je responsivní a dobře použitelné na mobilních zařízeních s libovolně velkým displeje. Mezi další rozhraní s podobnou funkcionalitou patří URCS Wordnet Browser (pro Javu)\footnote{\url{http://www.cs.rochester.edu/research/cisd/wordnet/}} či GoldenDict (rozhraní pro stolní počítače)\footnote{\url{http://goldendict.org/}}.
+				Podobnou jako WordNet Search splňují i některá další rozhraní. Za zmínku stojí například WNSearch\footnote{\url{http://www.golovchenko.org/cgi-bin/wnsearch}}, což je minimalistické čiště textové rozhraní, které díky absenci jakýchkoliv stylů je responsivní a dobře použitelné na mobilních zařízeních s libovolně velkým displeje. Mezi další rozhraní s podobnou funkcionalitou patří URCS Wordnet Browser (pro Javu)\footnote{\url{http://www.cs.rochester.edu/research/cisd/wordnet/}} či GoldenDict (rozhraní pro klasické počítače)\footnote{\url{http://goldendict.org/}}.
 
 		\chapter{Vizualizace s webovým rozhraním}
 
@@ -761,15 +788,16 @@
 
 		\chapter{Shrnutí přehledu rozhraní a vyplývající závěry o vhodném rozhraní k sémantickým sítím}
 		\label{cha:shrnuti-prehledu}
+		\chaptermark{Shrnutí přehledu}
 
 			% z hlediska pouzitelnosti byva lepsi webovy rozhrani, bo to uzivatel nemusi instalovat (some fuken links for that)
 			% java je sice kchul, ale porad ji musi mit uzivatele nainstalovanou, asi lidi moc nemaji (applety jsou uplne k nicemu uz, FF to prestal podporovat)
 			% drtiva vetsina rozhrani neni responsivni, coz je problem, kdyz vetsina lidi pouziva web z mobilu: http://bgr.com/2016/11/02/internet-usage-desktop-vs-mobile/
 			% je potreba rozhrani, ktery bude webovy, vypadat konsistentne na vsech zarizenich a bude splnovat, co se od nej ocekava (designove) - co se ocekava od WN browseru? dunno, but it's important - https://conversionxl.com/why-simple-websites-are-scientifically-better/
 
-			Rozhraní v přehledu prezentovaném v této práci byla hodnocena dle různých aspektů odpovídajícím účelu a provedení dané třídy rozhraní. Nejpodrobněji byla hodnocena webová rozhraní. U těch byla jako největší společný nedostatek identifikována nedostatečná responsivita, což vede k tomu, že uživatel dané rozhraní nemůže (nebo může velmi omezeně) používat na mobilním zařízení. To v době, kdy počet uživatelů přistupujících k webovým službám přes mobilní zařízení je vyšší než počet těch, kteří k nim přistupují pomocí klasických stolních počítačů \parencite{Heisler2016}, aplikaci značně diskriminuje. Z podobného důvodu jsou v nevýhodě také rozhraní vytvořená pro aplikační prostředí Java a v ještě větší míře aplikace vytvořené přímo pro operační systémy stolních počítačů. 
+			Rozhraní v přehledu prezentovaném v této práci byla hodnocena dle různých aspektů odpovídajícím účelu a provedení dané třídy rozhraní. Nejpodrobněji byla hodnocena webová rozhraní. U těch byla jako největší společný nedostatek identifikována nedostatečná responsivita, což vede k tomu, že uživatel dané rozhraní nemůže (nebo může velmi omezeně) používat na mobilním zařízení. To v době, kdy počet uživatelů přistupujících k webovým službám přes mobilní zařízení je vyšší než počet těch, kteří k nim přistupují pomocí klasických počítačů \parencite{Heisler2016}, aplikaci značně diskriminuje. Z podobného důvodu jsou v nevýhodě také rozhraní vytvořená pro aplikační prostředí Java a v ještě větší míře aplikace vytvořené přímo pro operační systémy klasických počítačů. 
 
-			Aplikace vytvořené v Javě jsou sice teoreticky spustitelné i na některých mobilních operačních systémech (zejména Android\footnote{\url{https://android.stackexchange.com/questions/63710/can-you-run-normal-java-programs-on-android}}, u ostatních je podpora omezená či žádná\footnote{\url{http://stackoverflow.com/questions/15501477/can-windows-phone-support-java}, \url{http://www.iphonefaq.org/archives/9731}, \url{http://stackoverflow.com/questions/1193524/can-we-run-java-applictions-on-iphone} inter alia}), prakticky je jejich použitelnost vzhledem k jejich designu grafického rozhraní omezena ale také výhradně na stolní počítače. 
+			Aplikace vytvořené v Javě jsou sice teoreticky spustitelné i na některých mobilních operačních systémech (zejména Android \parencite{SX92854}, u ostatních je podpora omezená či žádná (\textcite{SX15501535}, \textcite{SX1193541} inter alia), prakticky je jejich použitelnost vzhledem k jejich designu grafického rozhraní omezena ale také výhradně na klasické počítače. 
 
 			Pro některé aplikace vyvinuté v Javě byly vytvořeny tzv. aplety Java\footnote{\url{https://nlp.fi.muni.cz/projekty/visualbrowser/applet/index.html}}, ale vzhledem k tomu, že některé silně rozšířené webové prohlížeče tento druh zásuvných modulů už vůbec nepodporují \parencite{MozzilaFoundation2017}, je jejich použití značně omezené a do budoucnosti lze předpokládat plošnou nepoužitelnost. 
 
@@ -780,6 +808,7 @@
 			Kýžené rozhraní by také mělo splňovat požadavky na vizuální atraktivitu, aby se uživatelé cítili komfortně při práci s takovým rozhraním. Aspekty vizuálně komfortního rozhraní jsou do značné míry subjektivní, zdá se však, že uživatelé očekávají jistou prototypičnost designového konceptu od webové stránky s určitým účelem \parencite{walker2013simple, tuch2012role}. Studie \parencite{tuch2012role} také potvrzuje, že uživatelé pozitivně vnímají webové stránky s nízkou komplexitou, což může u implementace rozhraní wordnetu být problémem, jelikož takové rozhraní inherentně musí poskytovat velké množství informací. Cílem tedy je zobrazované informace vhodně strukturovat tak, aby uživatel měl pocit, že danou stránku zná a ví, kde na ní co najde, a necítil se zahlcen množstvím informací. Detaily designu takové aplikace jsou rozebrány v kapitole \ref{cha:navrh} a následujících.
 
 	\part{Praktická část: rozhraní k sémantické síti}
+	\label{part:drei}
 
 		\chapter{Návrh rozhraní}
 		\label{cha:navrh}
@@ -789,15 +818,15 @@
 
 			\section{Východiska}
 
-				Cílem praktické části této práce bylo vytvořit rozhraní k sémantickým sítím typu wordnet, které by nebylo zatíženo nedostatky, jež byly pozorovány u rozhraní testovaných v předchozí části práce. Zřejmě nejrozšířenějším problémem u existujících rozhraní pro webové prohlížeče je jejich do různé míry problematická použitelnost na mobilních zařízeních s malým displejem (u některých naprostá nepoužitelnost). Rozhraní implementovaná ve formě aplikace pro stolní počítače jsou na mobilní zařízení nepřenositelná již ze své podstaty a nemohou být proto z pohledu použitelnosti na mobilních zařízeních být hodnocena vůbec, faktem ale zůstává, že je jejich nepřenositelnost v porovnání s webovými rozhraními diskriminuje. 
+				Cílem praktické části této práce bylo vytvořit rozhraní k sémantickým sítím typu wordnet, které by nebylo zatíženo nedostatky, jež byly pozorovány u rozhraní testovaných v předchozí části práce. Zřejmě nejrozšířenějším problémem u existujících rozhraní pro webové prohlížeče je jejich do různé míry značná problematičnost použitelnosti na mobilních zařízeních s malým displejem (u některých naprostá nepoužitelnost). Rozhraní implementovaná ve formě aplikace pro klasické počítače jsou na mobilní zařízení nepřenositelná již ze své podstaty a jejich použitelnost na těchto zařízeních nemůže být hodnocena vůbec, faktem však zůstává, že je jejich nepřenositelnost v porovnání s webovými rozhraními diskriminuje. 
 
-				Rozhraní, které je výstupem této práce si tedy klade za cíl umožnit uživatelům přístup k datům wordnetů odkudkoliv, bez ohledu na to, zda pracují na mobilním telefonu, tabletu, laptopu či stolním počítači. Jeho návrh se snaží být technologicky nadčasový, ačkoliv v tomto aspektu budou ve světě webových technologií, jenž se neustále vyvíjí, pravděpodobně vždy existovat jisté limity. Pro rozhraní vytvořené v rámci této práce to jsou především požadavky na webový prohlížeč koncového uživatele. Uživatelův prohlížeč musí podporovat technologie ECMAScript verze 6\footnote{také známý jako ECMAScript 2015}\td{mozna jen 5, ale zatim to na nem nefunguje} (k němuž je všeobecně referováno jako k JavaScriptu), HTML verze 5 a CSS verze 3. Podrobněji se vysvětlení požadavků na verze bude věnovat kapitola [casem...]. 
+				Rozhraní, které je výstupem této práce si tedy klade za cíl umožnit uživatelům přístup k datům wordnetů odkudkoliv, bez ohledu na to, zda pracují na mobilním telefonu, tabletu či klasickém počítači. Jeho návrh se snaží být technologicky nadčasový, ačkoliv v tomto aspektu budou ve světě webových technologií, jenž se neustále vyvíjí, pravděpodobně vždy existovat jisté limity. Pro rozhraní vytvořené v rámci této práce to jsou však v podstatě pouze požadavky na webový prohlížeč koncového uživatele. Uživatelův prohlížeč musí podporovat technologie ECMAScript verze 6\td{mozna jen 5, ale zatim to na nem nefunguje}\footnote{také známý jako ECMAScript 2015; všeobecně označován jako JavaScript, čehož se bude nadále držet i tato práce}, HTML verze 5 a CSS verze 3. Podrobněji se vysvětlení požadavků na verze věnuje kapitola \ref{cha:techno} na straně \pageref{cha:techno}. 
 
-				Rozhraní bylo v rámci této práce tedy navrženo tak, aby umožňovalo zobrazení dat jak textové, tak grafické. Textové zobrazení je vhodné pro zobrazení synsetů, které obsahují velké množství potomků (hyponyma, meronyma, etc.), a mohou v grafickém rozhraní být nepřehledné. Také se textové rozhraní spíše hodí k použití na mobilních zařízeních, jelikož se lépe přizpůsobuje velikost obrazovky. Grafické zobrazení je naopak vhodné pro rychlý přehled míry komplexity synsetu a jeho vztahů. Může sloužit především jako ilustrace daného slovního významu. Textové a grafické zobrazení se vzájemně nedoplňují, ale jsou různým zobrazením týchž dat, a v zásadě dávají uživateli na výběr, které ze zobrazení je pro něj komfortnější či užitečnější.
+				Rozhraní bylo v rámci této práce navrženo tak, aby umožňovalo zobrazení dat jak textové, tak grafické. Textové zobrazení je vhodné pro zobrazení synsetů, které obsahují velké množství potomků (hyponyma, meronyma, etc.), a mohou v grafickém rozhraní být nepřehledné. Také se textové rozhraní spíše hodí k použití na mobilních zařízeních, jelikož se lépe přizpůsobuje velikosti obrazovky. Grafické zobrazení je naopak vhodné pro rychlý přehled míry komplexity synsetu a jeho vztahů. Může sloužit především jako ilustrace daného slovního významu. Textové a grafické zobrazení se vzájemně nedoplňují, ale jsou různým zobrazením týchž dat a je na uživateli, které ze zobrazení je pro něj komfortnější či užitečnější.
 
 			\section{Cíle nového rozhraní}
 
-				Přesto, že existujících rozhraní je dostupných mnoho, žádné z nich nesplňuje požadavky moderní platformně nezávislé aplikace, jak bylo ukázáno v hodnotící části. Proto vznikl záměr vytvořit takové rozhraní, které by tyto požadavky (do co největší míry) splňovalo. Vzhledem k původním záměrům samotného WordNetu (a na něj navazujících projektů), mezi nimiž byly například edukativní účely, je nutné, aby rozhraní k těmto projektům bylo intuitivní, vizuálně přitažlivé a snadno přístupné. Snadná přístupnost například minimalizuje nutnost správné přípravy školních počítačů k použití takového rozhraní, což opět zvyšuje šance, že aplikace bude skutečně použita.
+				Přesto, že existujících rozhraní je dostupných mnoho, žádné z nich nesplňuje požadavky moderní platformně nezávislé aplikace, jak bylo ukázáno v části \ref{part:zwei}. Proto vznikl záměr vytvořit takové rozhraní, které by tyto požadavky (do co největší míry) splňovalo. Vzhledem k původním záměrům samotného WordNetu (a na něj navazujících projektů), mezi nimiž byly například edukativní účely, je nutné, aby rozhraní k těmto projektům bylo intuitivní, vizuálně přitažlivé a snadno přístupné. Snadná přístupnost například minimalizuje nutnost správné přípravy školních počítačů k použití takového rozhraní, což opět zvyšuje šance, že aplikace bude skutečně použita.
 
 				S touto vizí tedy byla vytvořena webová aplikace \simplywn, která ja v dalších částech této práce prezentována.
 
@@ -806,9 +835,9 @@
 
 			\section{Základní představení}
 
-				Rozhraní \simplywn uživateli při prvním otevření prezentuje prázdnou stránku s vyhledávacím formulářem v levém sloupci a nápovědou, jak začít s rozhraním pracovat, v pravém prostoru určeném k následné prezentaci dat.\footnote{Při zobrazení rozhraní na displeji užším než 768 pixelů se z levého sloupce stane horní část stránky, k pravém prostoru se pak uživatel dostane sjetím po stránce dolů. Při popisu rozhraní bude k těmto částem nadále referováno jako k levé a pravé z důvodu přehlednosti.}
+				Rozhraní \simplywn uživateli při prvním otevření prezentuje prázdnou stránku s vyhledávacím formulářem v levém sloupci a nápovědou, jak začít s rozhraním pracovat, v pravém prostoru určeném k následné prezentaci dat.\footnote{Při zobrazení rozhraní na displeji užším než 768 pixelů se z levého sloupce stane horní část stránky, k pravému prostoru se pak uživatel dostane rolováním po stránce dolů. Při popisu rozhraní bude k těmto částem nadále referováno jako k levé a pravé z důvodu přehlednosti.}
 
-				Vyhledávací formulář sestává jednak ze samotného pole pro vložení hledaného výrazu a tlačítka na spuštění vyhledávání, a jednak z rozbalovací nabídky, v níž může uživatel vybrat wordnet, v němž chce vyhledávat. Nad polem pro vkládání jsou také tlačítka určená k volbě reprezentace synsetu.
+				Vyhledávací formulář sestává jednak ze samotného pole pro vložení hledaného výrazu a tlačítka na spuštění vyhledávání, a jednak z rozbalovací nabídky, v níž může uživatel vybrat zdroj dat vyhledávání (typicky různojazyčné wordnety). Nad polem pro vkládání jsou také tlačítka určená k volbě reprezentace synsetu.
 
 				Pokud je zadané slovo po spuštění vyhledávání úspěšně nalezeno, zobrazí se uživateli v levém sloupci pod vyhledávacím formulářem nabídka synsetů, v nichž se hledaný výraz vyskytoval, a v pravém prostoru podle zvolené reprezentace buďto textová data o zvoleném (případně prvním) synsetu, či jeho reprezentace grafem.
 
@@ -820,11 +849,11 @@
 
 				Textový režim reprezentace dat je až na několik odchylek relativně konservativní a snaží se uživateli přinést přehledný a zároveň komplexní výpis nalezených informací. 
 
-				Hlavní nadpis tvoří výpis slov patřících do zobrazeného synsetu, pod je zobrazena jeho definice, cesta ke němu a další informace, jako například slovní druh či číslo základního konceptu (BCS)\td{tuhle zkratku jsem mel nekde blbe nahore}. Cestou k synsetu je míněn seřazený seznam synsetů, přes něž je možnost se ze zobrazeného synsetu možno nejkratší cestou dostat ke kořenovému synsetu. Pod tímto blokem s informacemi o daném synsetu uživatel nalezne výpis synsetů, s nimiž je zobrazený synset provázán sémantickými relacemi. Jednotlivé vztahy jsou rozděleny do sloupců, což přispívá k lepšímu škálovaní reprezentace sémantických relací. Uživateli v této sekci není zobrazena jedna důležitá sémantická relace, a to hyperonymie; synsety k zobrazenému synsetu nadřazené jsou totiž zobrazeny ve zmíněné cestě k synsetu.
+				Hlavní nadpis tvoří výpis slov patřících do zobrazeného synsetu, pod ním je zobrazena definice významu, cesta a další informace, jako například slovní druh či číslo základního konceptu (BCS). Cestou k synsetu je míněn seřazený seznam synsetů, přes něž je možnost se ze zobrazeného synsetu po relacích hyperonymie dostat ke kořenovému synsetu. Pod tímto blokem s informacemi uživatel nalezne výpis synsetů, s nimiž je ten zobrazený provázán sémantickými relacemi. Jednotlivé vztahy jsou rozděleny do sloupců, což přispívá k lepšímu škálovaní reprezentace sémantických relací. Uživateli v této sekci není zobrazena jedna důležitá sémantická relace, a to hyperonymie; synsety k zobrazenému synsetu nadřazené jsou totiž zobrazeny ve zmíněné cestě.
 
-				Aby byla zvýšena interaktivita rozhraní, jsou zobrazené synsety vypisovány uživateli jako hyperodkazy, neboli hypertextové odkazy. Přes tyto odkazy je možné přejít na příslušný synset, čímž je umožněno procházení wordnetu přes vztahy jako jsou hyponymie, meronymie, hyperonymie etc. V textovém zobrazení se vyskytují dva druhy hypertextových odkazů. První jsou v levém sloupci v seznamu synsetů nalezených při vyhledávání a slouží volbě zobrazeného synsetu. Vzhledem k tomu, že server po vyhledávání vrací soubor všech nalezených synsetů, nevyvolává přechod po těchto odkazech nové hledání. Druhým druhem odkazů jsou zde takové, které vedou na konkrétní synsety. Vyskytují se pravé části textového rozhraní, a to v cestě k zobrazenému synsetu a v sémantických relacích, do nichž tento náleží. Pokud na ně uživatel klikne, spustí se nové vyhledávání podle identifikačního řetězce synsetu, na nějž uživatel klikl. Výsledkem tohoto hledání je jeden konkrétní synset.
+				Aby byla zvýšena interaktivita rozhraní, jsou slovní formy v hlavním nadpisu a synsety v sekci sémantických relací uživateli vypisovány jako hypertextové odkazy. Přes tyto odkazy je možné vyhledat dané slovo či přejít na příslušný synset, čímž je umožněno procházení wordnetu přes vztahy jako jsou hyponymie, meronymie, hyperonymie etc. V textovém zobrazení se vyskytují dva druhy hypertextových odkazů. První jsou v levém sloupci v seznamu synsetů nalezených při vyhledávání a slouží k volbě zobrazeného synsetu. Vzhledem k tomu, že server po vyhledávání vrací soubor všech nalezených synsetů, nevyvolává přechod po těchto odkazech nové hledání. Druhým druhem odkazů jsou zde takové, které neodkazují na data načtená po posledním vyhledávání. Vyskytují se pravé části textového rozhraní, a to v hlavním nadpisu, v cestě k zobrazenému synsetu a v sémantických relacích, do nichž tento náleží. Pokud na ně uživatel klikne, spustí se nové vyhledávání podle slovní formy nebo identifikačního řetězce synsetu, na nějž uživatel klikl. Výsledkem hledání dle identifikačního řetězce jeden konkrétní synset.
 
-				Jednou z odchylek od tradičních postupů v textové reprezentaci dat z wordnetu je udávání příslušnosti slovní formy ke konkrétnímu významu. Tuto příslušnost se tradičně reprezentuje číslem za slovní formou, jež je této odděleno od dvojtečkou. To však může pro uživatele neznalého tradic v reprezentaci wordnetů být matoucí, a tak bylo v rámci zlepšení přístupnosti nového rozhraní \simplywn přistoupeno k zobrazení čísla významu dané slovní formy jako čísla v horním indexu za ní. To by mělo umožnit neznalému uživateli tento pro něj pravděpodobně bezvýznamný údaj snáze ignorovat.
+				Jednou z odchylek od tradičních postupů v textové reprezentaci dat z wordnetu je udávání příslušnosti slovní formy k významu. Tato příslušnost je tradičně reprezentována číslem za slovní formou odděleným dvojtečkou. To však může pro uživatele neznalého tradic v reprezentaci wordnetů být matoucí, a tak bylo v rámci zlepšení přístupnosti nového rozhraní \simplywn přistoupeno k zobrazení čísla významu jako horního indexu za slovní formou. To by mělo údaj učinit méně obtrusivní a intuitivně snáze pochopitelný, jelikož na horní indexy bude uživatel alespoň vizuálně spíše zvyklý než na čísla za dvojtečkou.
 
 			\section{Grafická reprezentace}
 
@@ -841,12 +870,13 @@
 
 
 		\chapter{Použité technologie}
+		\label{cha:techno}
 
 			Rozhraní \simplywn je vytvořeno jako aplikace pro webové prohlížeče (k nimž se všeobecně referuje jako k webovým stránkám), přesněji řečeno jde o dokument v HTML\footnote{HyperText Markup Language}, jenž je dynamicky generovaný na straně klienta pomocí skriptovacího jazyka JavaScript a jím zpracovávaných dat ze serveru posílaných ve formátu JSON\footnote{JavaScript Object Notation}. Vzhled dokumentu je definován pomocí jazyka CSS\footnote{Cascading Style Sheets}. Jednotlivé role uvedených technologií budou rozebrány v následujících kapitolách.
 
 			\section{HTML}
 
-				Značkovací jazyk HTML je základním stavebním prvkem většiny aplikací pro webové prohlížeče. Jako značkovací jazyk umožňuje HTML strukturalizaci textového dokumentu do částí, definici významů jednotlivých částí (například označení nadpisu) a do jisté míry jej lze užívat i pro definici vzhledu textu (tučný řez písma, etc.). Poskytuje také prostředky pro tzv. hyperodkazy, jimiž lze provázat různé dokumenty či části jednoho dokumentu. Nezřídka se tyto odkazy v dnešní době používají jako ovládací prvky k řízení změn obsahu dynamicky generovaného dokumentu, kterým je například zde popisované rozhraní \simplywn. 
+				Značkovací jazyk HTML je základním stavebním prvkem většiny aplikací pro webové prohlížeče. Jako značkovací jazyk umožňuje HTML strukturalizaci textového dokumentu do částí, definici významů jednotlivých částí (například označení nadpisu) a do jisté míry jej lze užívat i pro definici vzhledu textu (tučný řez písma, etc.). Poskytuje také prostředky pro tzv. hypertextové odkazy, jimiž lze provázat různé dokumenty či části jednoho dokumentu. Nezřídka se tyto odkazy v dnešní době používají jako ovládací prvky k řízení změn obsahu dynamicky generovaného dokumentu, kterým je například zde popisované rozhraní \simplywn. 
 
 				V rozhraní \simplywn HTML slouží k definici struktury zobrazené webové stránky, jejímu rozdělení na jednotlivé sekce (levý sloupec, pravá plocha, záhlaví, etc.) a ke strukturalizaci posléze zobrazovaných informací. Příkladem může být výpis sémantických relací, v nichž je zobrazovaný synset přítomen. Jednotlivé relace jsou rozděleny do bloků (jež jsou později pomocí CSS nastaveny tak, aby se zobrazovaly jako sloupce) a jednotlivé synsety svázané se zobrazovaným příslušným vztahem jsou vypsány v seznamu. 
 
@@ -857,11 +887,13 @@
 					\label{fig:html3d}
 				\end{figure}
 
+				Pátá verze HTML je v aplikaci využita jakožto nejnovější s ohledem na to, že je podporované ve všech moderních prohlížečích. \parencite{html5support} Důležitou motivací pro použití této verze je také podpora prvku \texttt{<canvas>}, který umožňuje vykreslovat do dokumentu grafiku. \parencite{w3schools2017htmlcanvas}
+
 			\section{JavaScript}
 
 				JavaScript je vysokoúrovňový\footnote{silně abstrahovaný od nízkoúrovňových instrukcí procesoru a nezávislý (či méně závislý) na technickém vybavení počítače} dynamický\footnote{úkony, jež jsou u statických jazyků prováděny při kompilaci, jsou prováděny za běhu programu} netypovaný\footnote{kterékoliv operace jsou povoleny nad jakýmikoliv daty, nekontroluje se typ proměnných} a interpretovaný\footnote{program spouštěný bez předchozí statické kompilace, interpretem následně rozložený na kompilované podrutiny} programovací jazyk používaný vedle HTML a CSS jako jedna ze tří základních technologií pro tvorbu webových aplikací. Jeho funkce spočívá v zásadě v ovládání obsahu stránky na základě událostí, kterými mohou být například akce uživatele jako kliknutí na odkaz či akce serveru jako je dokončení požadavku a navrácení jeho výsledků.% [cit] wikipedia
 
-				Popisované rozhraní JavaScript využívá na sledování akcí uživatele (inicializace hledání a přepínání zobrazeného synsetu či vizualizace), odesílání požadavků uživatele serveru (hledání), přijímání odpovědí na tyto požadavky a následné zpracování odpovědi a aktualizace HTML dokumentu%tady si stojim za "html dokument", bo je to "htmlovy dokument", nikoliv neco jako "jazyk html" (cf. "webovy dokument" vs. "prostredi web(u)")
+				Popisované rozhraní momentálně vyžaduje JavaScript (resp. ECMAScript) ve verzi 6 a využívá jej na sledování akcí uživatele (inicializace hledání a přepínání zobrazeného synsetu či vizualizace), odesílání požadavků uživatele serveru (hledání), přijímání odpovědí na tyto požadavky a následné zpracování odpovědi a aktualizace HTML dokumentu%tady si stojim za "html dokument", bo je to "htmlovy dokument", nikoliv neco jako "jazyk html" (cf. "webovy dokument" vs. "prostredi web(u)")
 				, tedy zobrazení výsledků hledání uživateli. %history api?
 
 				\subsection{JSON}
@@ -905,7 +937,7 @@
 
 				CSS, neboli kaskádové styly, jsou systém definování vzhledu prvků (obvykle náležejících do HTML dokumentu). Pojem kaskádový má tento jazyk proto, že vlastnosti prvků jsou děděny od rodičů a podle dědičnosti prvky možné i vybírat. Prvotním smyslem užívání CSS bylo oddělení obsahu webové stránky od jejího vzhledu. To je podstatné jednak pro udržitelnou správu stránky, a~jednak pro větší flexibilitu. Použití CSS umožňuje zobrazit jednu stránku různými způsoby, jedním z~nichž může být například vzhled přizpůsobený pro tisk či pro barvoslepé uživatele.
 
-				Kaskádové styly jsou v \simplywn tedy využity k tomu, aby byla stránka s aplikací uživatelsky přívětivá, atraktivní a vhodně zobrazena na zařízeních různých velikostí (částečně je využito stylování podmíněného šířkou obrazovky).
+				Kaskádové styly jsou v \simplywn tedy využity k tomu, aby byla stránka s aplikací uživatelsky přívětivá, atraktivní a vhodně zobrazena na zařízeních různých velikostí (částečně je využito stylování podmíněného šířkou obrazovky). Třetí verze CSS je využita proto, že je nejnovější, je vyžadována pro kvalitní implementaci responsivity rozhraní a také ji jako takovou využívá Bootstrap. 
 
 				\subsection{Bootstrap}
 
