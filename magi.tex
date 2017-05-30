@@ -21,7 +21,8 @@
 \setlength\emergencystretch{1em}
 \setlength\headheight{14pt}
 % \setstretch{1.5}
-\setcounter{secnumdepth}{4}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{1}
 
 \widowpenalty10000
 \clubpenalty10000
@@ -31,7 +32,7 @@
 	\setfoot{}{\thepage}{}
 }
 
-\def\verbarg{{\scriptsize\makebox[2ex]{\arabic{VerbboxLineNo}}}\hspace{2ex}}
+\def\verbarg{\setstretch{0.79}{\scriptsize\makebox[2ex]{\arabic{VerbboxLineNo}}}\hspace{2ex}}
 
 % https://github.com/michal-h21/biblatex-iso690
 % unzip to ~/texmf/tex/latex and use as style=iso-*
@@ -94,7 +95,9 @@
 
 	\newpage
 
-	\tableofcontents
+	{\setstretch{1.12}
+		\tableofcontents
+	}
 
 	\newpage
 
@@ -857,26 +860,26 @@
 
 			\section{Grafická reprezentace}
 
-				Grafická reprezentace nalezených dat je alternativou k textové a jejím cílem je uživateli především vizualizovat vztahy, jichž je prohlížený synset členem. Podobně jako textová reprezentace se snaží příliš se neodchylovat způsobem zobrazení od již existujících zobrazení a zároveň eliminovat nedostatky v použitelnosti, jimiž se většina existujících implementací vyznačuje. Jmenovitě grafické zobrazení v \simplywn vůbec nepoužívá interaktivní prvky typu informačních bublin, jež se zobrazují při přejetí myší\footnote{tyto bývají anglicky označovány jako \textit{popup tooltip}}. Tyto bubliny jsou velmi oblíbené zřejmě proto, že umožňují bez ztráty přehlednosti celého grafu uživateli přístup k podrobnějším informacím. Jejich zásadní nevýhoda ovšem tkví v tom, že na dotykových obrazovkách, jimiž bývají vybavena současná mobilní zařízení, koncept přejetí myší po prvky neexistuje. To je z toho důvodu, že grafické rozhraní na těchto zařízení nebývá ovládáno externím technickým vybavením počítače typu myš, které pohybuje po obrazovce kursorem, ale uživatel používá dotyku svých prstů či stylu a dotek na určitém místě obrazovky znamená obvykle kliknutí. Nelze tedy tak jako u klasických počítačů rozlišit přejetí kursorem myši a kliknutí a funkcionalita zmíněných informačních bublin je tedy buďto zcela nepřístupná či přístupná jen velmi omezeně. 
+				Grafická reprezentace nalezených dat je alternativou k textové a jejím cílem je uživateli především vizualizovat vztahy, jichž je prohlížený synset členem. Podobně jako textová reprezentace se snaží příliš se neodchylovat způsobem zobrazení od již existujících zobrazení, ale zároveň eliminovat nedostatky v použitelnosti, jimiž se většina existujících implementací vyznačuje. Jmenovitě grafické zobrazení v \simplywn vůbec nepoužívá interaktivní prvky typu informačních bublin, jež se zobrazují při přejetí myší\footnote{tyto bývají anglicky označovány jako \textit{popup tooltip}}. Tyto bubliny jsou velmi oblíbené zřejmě proto, že umožňují bez ztráty přehlednosti celého grafu uživateli přístup k podrobnějším informacím. Jejich zásadní nevýhoda ovšem tkví v tom, že na dotykových obrazovkách, jimiž bývají vybavena současná mobilní zařízení, koncept přejetí myší přes prvek neexistuje. To je z toho důvodu, že grafické rozhraní na těchto zařízení nebývá ovládáno externím technickým vybavením počítače typu myš, které pohybuje po obrazovce kursorem, ale uživatel používá dotyku svých prstů či stylu a dotek na určitém místě obrazovky znamená obvykle kliknutí. Nelze tedy tak jako u klasických počítačů rozlišit přejetí kursorem myši a kliknutí a funkcionalita zmíněných informačních bublin je tedy buďto zcela nepřístupná či přístupná jen velmi omezeně. 
 
-				Další interaktivita značně rozšířená u existujících vizualizací je možnost přetažením uzlu myší přeuspořádat graf. U některých z vizualizací může taková možnost být užitečná proto, že při větším počtu uzlů překryjí jejich popisky a přetažením lze takový překryv eliminovat (většinou však na úkor vniku jiného překryvu). Obecně však při správném nastavení zobrazení by taková funkcionalita neměla být potřebná, a proto nebyla zavedena ani do vizualizace v \simplywn.  
+				Další interaktivita značně rozšířená u existujících vizualizací je možnost přetažením uzlu myší přeuspořádat graf. U některých z vizualizací může taková možnost být užitečná proto, že při větším počtu uzlů se některé uzly překrývají a přetažením lze takový překryv eliminovat (většinou však na úkor rozložení jiné části grafu). Obecně by však při správném nastavení zobrazení taková funkcionalita neměla být potřebná, a proto nebyla zavedena ani do vizualizace v \simplywn.  
 				% zminit se, ze tam nejsou ani linky, jezto to neumime zaimplementovat asi.. ale mozna jo: http://visjs.org/examples/network/events/interactionEvents.html
 
-				Koncept zobrazení grafem spočívá v použití tří druhů uzlů s odlišným významem, které jsou spojeny hranami, jejichž význam je závislý na tom, které uzly spojují. Prvním druhem uzlů jsou ty, jež reprezentují synsety. Takový uzel se v grafu vždy vyskytuje minimálně jeden kořenový, což je v tomto případě ten synset, jehož detaily jsou otevřeny. Další jsou pak členové případných sémantických relací, jichž je kořenový členem. Z kořenového uzlu vedou hrany ke dvěma zbývajícím druhům uzlů, jimiž jsou slovní formy a sémantické relace. Uzly reprezentující slovní formy náležející k danému synsetu jsou tímto propojeny hranou pojmenovanou \textit{member word}, tedy členské slovo, a žádné další hrany z nich nevedou. 
+				Koncept zobrazení grafem spočívá v použití tří druhů uzlů s odlišným významem, které jsou spojeny hranami, jejichž význam je závislý na tom, které uzly spojují. Prvním druhem uzlů jsou ty, jež reprezentují synsety. Takový uzel se v grafu vždy vyskytuje minimálně jeden kořenový, což je v tomto případě ten synset, jehož detaily jsou otevřeny. Další jsou pak členové případných sémantických relací, jichž je kořenový členem. Z kořenového uzlu vedou hrany ke dvěma zbývajícím druhům uzlů, jimiž jsou slovní formy a sémantické relace. Uzly reprezentující slovní formy jsou se synsetem, k němuž náležejí, propojeny hranou pojmenovanou \ex{member word}, tedy členské slovo, a žádné další hrany z nich nevedou. 
 
-				Co se uzlů reprezentujících sémantické relace týče, tam může význam jejich přítomnosti v grafu být na první pohled poněkud obskurnější, důvody k jeho použití jsou však jednoduché. Intuitivně by sémantická relace měla být hrana, jež vede mezi synsety spojenými touto relací. Pojmenování hrany by se pak odvíjelo od druhu relace, již reprezentuje. Problémem s tímto způsobem zobrazení tkví v tom, že značně centralizuje zobrazení do hvězdicovitého obrazce okolo centrálního uzlu, což zobrazované uzly vizuálně uspořádá do hierarchicky ploché struktury a sníží přehlednost grafu. Z tohoto důvodu byly do vizualizace grafem zavedeny uzly reprezentující sémantické relace, které synsety svázané s kořenovým uzlem stejným vztahem sdružují do jednoho podstromu. Díky tomu je dosaženo rozčlenění grafu na jednotlivé sekce podle těchto sémantických relací a uživatel není nucen zkoumat význam každé hrany mezi synsety (cf. vizualizace v rozhraní Cornetto, kapitola \ref{wnvis:cornetto} na straně \pageref{wnvis:cornetto}).
+				Co se uzlů reprezentujících sémantické relace týče, tam může význam jejich přítomnosti v grafu být na první pohled poněkud obskurnější, důvody k jeho použití jsou však jednoduché. Intuitivně by sémantická relace měla být hrana, jež vede mezi synsety spojenými touto relací. Pojmenování hrany by se pak odvíjelo od druhu relace, již reprezentuje. Problémem s tímto způsobem zobrazení tkví v tom, že značně centralizuje zobrazení do hvězdicovitého obrazce okolo kořenového uzlu, což zobrazované uzly vizuálně uspořádá do hierarchicky ploché struktury a sníží přehlednost grafu. Z tohoto důvodu byly do vizualizace grafem zavedeny uzly reprezentující sémantické relace, které synsety svázané s kořenovým uzlem stejným vztahem sdružují do jednoho podstromu. Díky tomu je dosaženo rozčlenění grafu na jednotlivé sekce podle těchto sémantických relací a uživatel není nucen zkoumat význam každé hrany mezi synsety (cf. vizualizace v rozhraní Cornetto, ilustrace \ref{fig:wncorplant} na straně \pageref{fig:wncorplant}).
 
-				Responsivita této vizualizace je inherentně omezena tím, že se graf byť i nepříliš komplexního synsetu nemůže na malou obrazovku mobilního zařízení vejít, zvláště mají-li být textové popisy uzlů čitelné. Tím, že vizualizace umožňuje přibližování a oddalování, je však tento problém do jisté míry eliminován, protože uživatel může graf přiblížit a přejíždět po něm podobně, jako to umožňují například aplikace na zobrazování elektronických map\footnote{\url{https://www.mapy.cz}}. Toto řešení samozřejmě zavádí na dotykových obrazovkách problém s tím, aby nebylo znemožněno rolování po zbytku stránky. To bylo vyřešeno pomocí zachování okrajů po stranách kolem plochy s grafem, kde se běžně vyskytují rolovací ovládací lišty a uživatel tak tohoto okraje může využít k rolování stránky namísto posouvání grafu.
+				Responsivita vizualizace je inherentně omezena tím, že se graf byť i nepříliš komplexního synsetu nemůže na malou obrazovku mobilního zařízení vejít, zvláště mají-li být textové popisy uzlů čitelné. Tím, že vizualizace umožňuje přibližování a oddalování, je však tento problém do jisté míry eliminován, protože uživatel může graf přiblížit a přejíždět po něm podobně, jako to umožňují například aplikace na zobrazování elektronických map\footnote{\url{https://www.mapy.cz} inter alia}. Toto řešení samozřejmě zavádí na dotykových obrazovkách problém s tím, aby nebylo znemožněno rolování po zbytku stránky. To bylo vyřešeno v \simplywn zachováním okrajů po stranách kolem plochy s grafem, kde se běžně vyskytují rolovací ovládací lišty, a uživatel tak tohoto okraje může využít k rolování stránky namísto posouvání grafu.
 
 
 		\chapter{Použité technologie}
 		\label{cha:techno}
 
-			Rozhraní \simplywn je vytvořeno jako aplikace pro webové prohlížeče (k nimž se všeobecně referuje jako k webovým stránkám), přesněji řečeno jde o dokument v HTML\footnote{HyperText Markup Language}, jenž je dynamicky generovaný na straně klienta pomocí skriptovacího jazyka JavaScript a jím zpracovávaných dat ze serveru posílaných ve formátu JSON\footnote{JavaScript Object Notation}. Vzhled dokumentu je definován pomocí jazyka CSS\footnote{Cascading Style Sheets}. Jednotlivé role uvedených technologií budou rozebrány v následujících kapitolách.
+			Rozhraní \simplywn je vytvořeno jako aplikace pro webové prohlížeče, přesněji řečeno jde o dokument v HTML\footnote{HyperText Markup Language} (k čemuž se všeobecně referuje jako k webové stránce), jenž je dynamicky generovaný na straně klienta pomocí skriptovacího jazyka JavaScript a jím zpracovávaných dat ze serveru posílaných ve formátu JSON\footnote{JavaScript Object Notation}. Vzhled dokumentu je definován pomocí jazyka CSS\footnote{Cascading Style Sheets}. Jednotlivé role uvedených technologií budou rozebrány v následujících sekcích.
 
 			\section{HTML}
 
-				Značkovací jazyk HTML je základním stavebním prvkem většiny aplikací pro webové prohlížeče. Jako značkovací jazyk umožňuje HTML strukturalizaci textového dokumentu do částí, definici významů jednotlivých částí (například označení nadpisu) a do jisté míry jej lze užívat i pro definici vzhledu textu (tučný řez písma, etc.). Poskytuje také prostředky pro tzv. hypertextové odkazy, jimiž lze provázat různé dokumenty či části jednoho dokumentu. Nezřídka se tyto odkazy v dnešní době používají jako ovládací prvky k řízení změn obsahu dynamicky generovaného dokumentu, kterým je například zde popisované rozhraní \simplywn. 
+				Značkovací jazyk HTML je základním stavebním prvkem většiny aplikací pro webové prohlížeče. Jako značkovací jazyk umožňuje HTML strukturalizaci textového dokumentu do částí, definici významů jednotlivých částí (například označení nadpisu) a do jisté míry jej lze užívat, byť se to nedoporučuje, i pro definici vzhledu textu (tučný řez písma, etc.). Poskytuje také prostředky pro tzv. hypertextové odkazy, jimiž lze provázat různé dokumenty či části jednoho dokumentu. Nezřídka se tyto odkazy v dnešní době používají jako ovládací prvky k řízení změn obsahu dynamicky generovaného dokumentu, kterým je například zde popisované rozhraní \simplywn. 
 
 				V rozhraní \simplywn HTML slouží k definici struktury zobrazené webové stránky, jejímu rozdělení na jednotlivé sekce (levý sloupec, pravá plocha, záhlaví, etc.) a ke strukturalizaci posléze zobrazovaných informací. Příkladem může být výpis sémantických relací, v nichž je zobrazovaný synset přítomen. Jednotlivé relace jsou rozděleny do bloků (jež jsou později pomocí CSS nastaveny tak, aby se zobrazovaly jako sloupce) a jednotlivé synsety svázané se zobrazovaným příslušným vztahem jsou vypsány v seznamu. 
 
@@ -887,7 +890,7 @@
 					\label{fig:html3d}
 				\end{figure}
 
-				Pátá verze HTML je v aplikaci využita jakožto nejnovější s ohledem na to, že je podporované ve všech moderních prohlížečích. \parencite{html5support} Důležitou motivací pro použití této verze je také podpora prvku \texttt{<canvas>}, který umožňuje vykreslovat do dokumentu grafiku. \parencite{w3schools2017htmlcanvas}
+				Pátá verze HTML je v aplikaci využita jakožto nejnovější s ohledem na to, že je podporovaná ve všech moderních prohlížečích. \parencite{html5support} Důležitou motivací pro použití této verze je také podpora prvku \texttt{<canvas>}, který umožňuje vykreslovat do dokumentu grafiku \parencite{w3schools2017htmlcanvas} a je pomocí něho implementována grafická reprezentace dat. 
 
 			\section{JavaScript}
 
@@ -895,25 +898,24 @@
 
 				Popisované rozhraní momentálně vyžaduje JavaScript (resp. ECMAScript) ve verzi 6 a využívá jej na sledování akcí uživatele (inicializace hledání a přepínání zobrazeného synsetu či vizualizace), odesílání požadavků uživatele serveru (hledání), přijímání odpovědí na tyto požadavky a následné zpracování odpovědi a aktualizace HTML dokumentu%tady si stojim za "html dokument", bo je to "htmlovy dokument", nikoliv neco jako "jazyk html" (cf. "webovy dokument" vs. "prostredi web(u)")
 				, tedy zobrazení výsledků hledání uživateli. %history api?
+				Zjednodušený vývojový diagram této logiky je ukázán na ilustraci \ref{fig:wordnet-ui-diag} na straně \pageref{fig:wordnet-ui-diag}.
 
 				\subsection{JSON}
 				\label{cha:json}
 
-					JSON je formát určený pro výměnu dat a je zároveň strojově i lidsky čitelný (jedná se o čistý text). Strukturálně se podobá objektům například v JavaScriptu, tedy sestává z párů \texttt{klíč:hodnota}. Klíčem bývá řetězec znaků, hodnotou může například v JavaScriptu být cokoliv, co je objekt (což je v JavaScriptu v podstatě cokoliv).% [cit] http://www.json.org/
+					JSON je formát určený pro výměnu dat a je zároveň strojově i lidsky čitelný (jedná se o čistý text). Strukturálně se podobá objektům v JavaScriptu, tedy sestává z párů \texttt{klíč:hodnota}. Klíčem bývá řetězec znaků, hodnotou může být cokoliv, co je serializovatelné. \parencite{jsonDoc}
 
-					Tento formát je vhodný na přenos informací, jakými jsou data z wordnetu, jelikož se jedná o strukturovaná, čistě textová data. Další možností pro přenos takových dat je například formát XML\footnote{eXtensible Markup Language}. Ten oproti formátu JSON umožňuje přesnější specifikace typů hodnot a validaci dat, avšak pro dané množství informací je datově větší (má větší režii na značkování). XML je navíc oproti formátu JSON méně pohodlně zpracovatelné v JavaScriptu, jelikož syntax formátu JSON reflektuje strukturu objektů v JavaScriptu. Vzhledem k tomu, že data z wordnetů bývají krátké řetězce, je evidentní, že při použití XML by bylo přenášeno zbytečně velké množství strukturních informací v podobě značkování. To v kombinaci s jednoduchostí zpracování formátu JSON v JavaScriptu přispělo k rozhodnutí použít v aplikaci \simplywn k přenosu dat JSON.
-
-					% ukazka kodu
+					Tento formát je vhodný na přenos informací, jakými jsou data z wordnetu, jelikož se jedná o strukturovaná, čistě textová data. Další možností pro přenos takových dat je například formát XML\footnote{eXtensible Markup Language}. Ten oproti formátu JSON umožňuje přesnější specifikace typů hodnot a validaci dat, avšak pro stejné množství informací je datově větší (má větší režii na značkování). XML je navíc oproti formátu JSON méně pohodlně zpracovatelné v JavaScriptu, jelikož syntax formátu JSON reflektuje strukturu objektů v JavaScriptu. Vzhledem k tomu, že data z wordnetů bývají krátké řetězce, je evidentní, že při použití XML by bylo přenášeno zbytečně velké množství strukturních informací v podobě značkování. To v kombinaci s jednoduchostí zpracování formátu JSON v JavaScriptu přispělo k rozhodnutí použít v aplikaci \simplywn k přenosu dat JSON. Ukázka formátu JSON je v kapitole \ref{cha:answerStruct} na straně \pageref{cha:answerStruct}
 
 				\subsection{Ajax}
 
-					Ajax\footnote{Asynchronous JavaScript And XML} je souhrnné označení pro asynchronní přenosu dat ve formátu XML pomocí JavaScriptu používá se pro komunikaci webových aplikací se serverem. Rozdílem oproti tradičnímu přenosu informací mezi serverem a webovou stránkou načtenou u klienta tkví v tom, že bez použití Ajaxu je nutné pro zpracování odpovědi na požadavek načíst stránku znova. Hlavním využitím Ajaxu bývají právě aplikace, jejichž funkčnost je závislá na komunikaci se vzdáleným serverem bez nutnosti načítat celou webovou stránku znovu. \parencite{garrett2005ajax}
+					Ajax\footnote{Asynchronous JavaScript And XML} je souhrnné označení pro asynchronní přenos dat ve formátu XML pomocí JavaScriptu a používá se pro komunikaci webových aplikací se serverem. Rozdílem oproti tradičnímu přenosu informací mezi serverem a webovou stránkou načtenou u klienta tkví v tom, že bez použití Ajaxu je nutné pro zpracování odpovědi na požadavek načíst stránku znova. Hlavním využitím Ajaxu bývají právě aplikace, jejichž funkčnost je závislá na komunikaci se vzdáleným serverem bez nutnosti načítat celou webovou stránku znovu. \parencite{garrett2005ajax}
 
-					Vzhledem k tomu, že u komplexních webových aplikací může být načítání celé stránky znova nevýhodné z mnoha důvodů. Jedním ze scénářů může být například potřeba obnovit data na části stránky, zatímco uživatel vkládá data (například komentář) na jiné části\footnote{Existuje možnost toto obejít pomocí rámců, ale ty mají mnoho zásadních nevýhod}. Úplným znovunačtením by byla uživatelova vložená data ztracena, takže je nutné obnovovat jen její část, k čemuž je výhodné využít Ajax.
+					U komplexních webových aplikací může být načítání celé stránky znova nevýhodné z mnoha důvodů. Jedním ze scénářů může být například potřeba obnovit data na části stránky, zatímco uživatel vkládá data (například komentář) na jiné části\footnote{Existuje jistě možnost toto obejít pomocí rámců, ale ty mají mnoho zásadních nevýhod.}. Úplným znovunačtením by byla uživatelova vložená data ztracena, takže je nutné obnovovat jen její část, k čemuž je výhodné využít Ajax.
 
 					Dalším poměrně jednoduchým důvodem k využívání Ajaxu je uživatelův komfort -- je možné během načítání zobrazovat indikátor načítání, při výpadku spojení zobrazit uživatelsky přívětivou zprávu, etc.
 
-					Asynchronní výměna dat se serverem probíhá pomocí aplikačního rozhraní XMLHttpRequest (XHR), které skriptovacím jazykům na straně klienta, jako je například JavaScript, umožňuje odesílat data na vzdálený server. Po přijetí odpovědi se pak stará o dodání dat zpět do skriptu. [cit klement?]
+					Asynchronní výměna dat se serverem probíhá pomocí aplikačního rozhraní XMLHttpRequest (XHR), které skriptovacím jazykům na straně klienta, jako je například JavaScript, umožňuje odesílat data na vzdálený server. Po přijetí odpovědi se pak stará o dodání dat zpět do skriptu. \parencite{Klement2016thesis}
 
 				\subsection{Historie v prohlížeči}
 
@@ -963,14 +965,14 @@
 
 			\begin{figure}[h]
 				\centering
-				\includegraphics[width=1.0\textwidth]{wordnet-ui-diag_v1.eps}
+				\includegraphics[width=1.0\textwidth]{wordnet-ui-diag_v2.eps}
 				\caption{Zjednodušený vývojový diagram logiky rozhraní}
-				\label{fig:wordnet-ui-diag_v1}
+				\label{fig:wordnet-ui-diag}
 			\end{figure}
 
 			\section{Získávání dat}
 
-				Data, jež jsou ve výsledku zobrazována uživateli, jsou načítána ze serveru v závislosti na vstupu, který uživatel tím či oním způsobem zadal. Vstup uživatele může být dvojího druhu (byť z hlediska výsledného zpracování se nijak neliší). Jednak uživatel zadává kýžené slovo do vyhledávacího pole, a jednak může kliknout na odkaz vedoucí na jiný synset. Druhý případ se potom od prvního liší pouze v tom, že text ve vyhledávacím poli není slovo z přirozeného jazyka, ale identifikátor synsetu, na nějž bylo kliknuto. Kliknutí na synset je přitom pouze zkratka, během níž se automaticky zadá identifikátor daného synsetu do vyhledávacího pole a spustí se vyhledávání.
+				Data, jež jsou ve výsledku zobrazována uživateli, jsou načítána ze serveru v závislosti na vstupu, který uživatel tím či oním způsobem zadal. Vstup uživatele může být dvojího druhu (byť z hlediska výsledného zpracování se nijak neliší). Jednak uživatel zadává kýžené slovo do vyhledávacího pole, a jednak může kliknout na odkaz vedoucí na jiný synset. Druhý případ se potom od prvního liší pouze v tom, že text ve vyhledávacím poli je buď identifikátor, nebo členské slovo synsetu\footnote{podrobněji o tomto rozdílu v [KDE O TOM KURVA PISU?! nemuzu to najit]}, na nějž bylo kliknuto. Kliknutí na synset je přitom pouze zkratka, během níž se automaticky zadá identifikátor daného synsetu do vyhledávacího pole a spustí se vyhledávání.
 
 				\subsection{Vyhledávání}
 
@@ -987,6 +989,7 @@
 					V tomto řetězci jsou dvě hodnoty, které se mění s uživatelovým vstupem. V ukázce výše jimi podřetězce \texttt{ZDROJ} a \texttt{SLOVO}, které reprezentují prohledávaný wordnet a vyhledávané slovo, v tomto pořadí.
 
 				\subsection{Struktura odpovědi serveru}
+				\label{cha:answerStruct}
 
 					V případě úspěšného vyhledávání je ze serveru přijata odpověď ve formátu JSON (bližší popis formátu v kapitole \ref{cha:json} na straně \pageref{cha:json}). Jeho strukturu lze popsat jako pole objektů\footnote{V terminologii jiných jazyků by tento datový typ byl nazýván slovníkem (\textit{dictionary}), asociativním polem (\textit{associative array}), etc.}, kde každý z těchto objektů reprezentuje jeden nalezený synset. Objekty synsetů pak obsahují jednak řetězce jako identifikátor, slovní druh či definici, a jednak další pole. Pole pod klíčem \texttt{paths} slouží k ukládání cesty k danému synsetu, pole pod klíčem \texttt{synset} obsahuje členská slova a jejich významy a pole s klíčem \texttt{children} pak obsahuje sémantické relace daného synsetu. 
 
