@@ -16,6 +16,7 @@
 \graphicspath{ {imgs/} }
 \usepackage{verbatimbox}
 \usepackage{nameref}
+\usepackage{enumitem}
 
 \setmainfont{Vollkorn}
 \linespread{1.2}
@@ -27,6 +28,8 @@
 
 \widowpenalty10000
 \clubpenalty10000
+
+\setlist{noitemsep}
 
 \newpagestyle{sensible}{
 	\headrule\sethead{}{}{\MakeUppercase{\chaptertitle}}
@@ -94,7 +97,44 @@
 \begin{document}
 	
 	% \pagestyle{empty}
-	\maketitle
+	\begin{titlepage}
+		\begin{center}
+			{\Large\uppercase{Masarykova univerzita}}
+
+			\vspace{1em}
+
+			\includegraphics[width=0.24\textwidth]{logo-muni.png}
+			
+			\vspace{2em}
+
+			{\Large Filozofická fakulta}
+
+			\vspace{1em}
+
+			{\large Ústav českého jazyka}
+
+			\vspace{1em}
+
+			{\large Český jazyk se specializací počítačová lingvistika}
+
+			\vspace{7em}
+
+			{\large David Klement}
+			
+			\vspace{3em}
+			
+			{\LARGE\bf Vizualizace sémantické sítě}
+
+			\vspace{1.5em}
+
+			{\Large Magisterská diplomová práce}
+
+			\vfill
+		\end{center}
+		\begin{flushleft}
+			Vedoucí práce: RNDr. Adam Rambousek, Ph.D. \hfill 2017
+		\end{flushleft}
+	\end{titlepage}
 
 	\newpage
 
@@ -181,6 +221,8 @@
 				Pokus, kterým podpořili \textcite{collins1969retrieval} druhý, neredundantní, způsob ukládání příznaků v paměti, spočíval v tom, že testovací subjekty, dobrovolníci z řad zaměstnanců společnosti Bolt Beranek and Newman, měly určovat, zda je jim předložený výrok pravdivý, či nepravdivý. Měli tak činit co nejpřesněji a v co nejkratším čase, přičemž byla měřena rychlost jejich reakce. Ukázalo se, reakční doba při určování pravdivosti výroku \ex{Kanárek umí létat}\footnote{angl. \ex{A canary can fly}} je delší než při určování pravdivosti výroku \ex{Kanárek umí zpívat}\footnote{angl. \ex{A canary can sing}} a ještě delší při určování výroku \ex{Kanárek má kůži}\footnote{angl. \ex{A canary has skin}}. Důvodem pro tyto progresivní prodlevy podle nich právě byla zvětšující se vzdálenost od významu \ex{kanárka} ke významu, u něhož byl uložen příslušný příznak, tedy \ex{umí zpívat}, \ex{umí létat}, resp. \ex{má kůži}. Příznak \ex{umí zpívat} totiž je pravděpodobně uložen přímo u \ex{kanárka}, jelikož jej odlišuje od ostatních ptáků, zatímco příznak \ex{umí létat} je obecným znakem ptáků, tudíž je uložen u významu \ex{pták}. V poslední řadě pak příznak \ex{má kůži} bude patrně uložen u významu \ex{zvíře}, který je oněch tří v hierarchii nejvýše, a ze všech tudíž od významu \ex{kanárek} nejdále.
 
 				WordNet se svou hierarchickou organizací substantiv a verb pravděpodobně konceptuálně blíží organizaci lexika v lidské paměti.
+
+				Navzdory tomu, že je WordNet (a všeobecně wordnety) využíván převážně k úkolům počítačového zpracování jazyka, zdá se být pro svou podobnost v uspořádání informací vhodný i v jiných oblastech. Na příkladech již bylo ukázáno, že zkoumání významů a propojenosti konceptů v jazyce, s nímž není uživatel zcela obeznámen, by mohlo ve WordNetu být snazší než v klasickém slovníku. V podobném duchu využili při svých kursech WordNet například \textcite{lemnitzer2003using}.
 			
 
 			\section{Organizace WordNetu}
@@ -431,7 +473,7 @@
 
 			\section{Výběr rozhraní}
 
-				Hlavním kritériem pro zařazení do rozhraní do výběru byla jeho dohledatelnost, ať již podle seznamu příbuzných projektů na oficiálních webových stránkách princetonského WordNetu\footnote{\url{https://wordnet.princeton.edu/}} (jenž je, dlužno podotknout, velice neaktuální v tom smyslu, že uvádí velké množství rozhraní, která již nejsou dostupná) či podle vyhledávacího dotazu na indexovací a vyhledávací webové stránce Google\footnote{\url{https://www.google.com}}:
+				Hlavním kritériem pro zařazení do rozhraní do výběru byla jeho dohledatelnost, ať již podle seznamu příbuzných projektů na oficiálních webových stránkách princetonského WordNetu\footnote{\url{https://wordnet.princeton.edu/}} (jenž je, dlužno podotknout, velice neaktuální v tom smyslu, že uvádí velké množství rozhraní, která již nejsou dostupná) či podle dotazu na vyhledávači Google\footnote{\url{https://www.google.com}}:
 
 					\begin{itemize}
 						\item wordnet visualization
@@ -449,17 +491,17 @@
 				Do přehledu byla tedy zahrnuta následující rozhraní:
 
 					\begin{itemize}
-						\item An interactive visualization of the Princeton WordNet database (\url{http://mateogianolio.com/wordnet-visualization/})
-						\item Artha (\url{http://artha.sourceforge.net/wiki/index.php/Home})
-						\item BabelNet (\url{http://babelnet.org})
-						\item Cornetto Demo (\url{http://cornetto.clarin.inl.nl/wordnet.xql?ssID=&word_form=&pos=&sense_pos=1})
-						\item GoldenDict (\url{http://goldendict.org/})
-						\item sloWTool (\url{http://nl.ijs.si/slowtool/})
-						\item Treebolic (\url{http://treebolic.sourceforge.net/})
-						\item Visual Browser (\url{https://nlp.fi.muni.cz/projekty/visualbrowser/})
-						\item wnbroswer\footnote{sic erat scriptum} (\url{http://homepages.inf.ed.ac.uk/adubey/software/wnbrowser/index.html})
-						\item WordNET Editor (\url{http://wordventure.eti.pg.gda.pl/wne/wne.html})
-						\item WordVis (\url{http://wordvis.com/})
+						\item An interactive visualization of the Princeton WordNet database \par\hspace{2em}{\small \url{http://mateogianolio.com/wordnet-visualization/}}
+						\item Artha \par\hspace{2em}{\small \url{http://artha.sourceforge.net/wiki/index.php/Home}}
+						\item BabelNet \par\hspace{2em}{\small \url{http://babelnet.org}}
+						\item Cornetto Demo \par\hspace{2em}{\small \url{http://cornetto.clarin.inl.nl/wordnet.xql}}
+						\item GoldenDict \par\hspace{2em}{\small \url{http://goldendict.org/}}
+						\item sloWTool \par\hspace{2em}{\small \url{http://nl.ijs.si/slowtool/}}
+						\item Treebolic \par\hspace{2em}{\small \url{http://treebolic.sourceforge.net/}}
+						\item Visual Browser \par\hspace{2em}{\small \url{https://nlp.fi.muni.cz/projekty/visualbrowser/}}
+						\item wnbroswer\footnote{sic erat scriptum} \par\hspace{2em}{\small \url{http://homepages.inf.ed.ac.uk/adubey/software/wnbrowser/index.html}}
+						\item WordNET Editor \par\hspace{2em}{\small \url{http://wordventure.eti.pg.gda.pl/wne/wne.html}}
+						\item WordVis \par\hspace{2em}{\small \url{http://wordvis.com/}}
 						% \item GRAPH WORDS online thesaurus (\url{http://graphwords.com/})
 					\end{itemize}
 
@@ -1146,9 +1188,9 @@
 
 			Po analýze všech těchto požadavků bylo vytvořeno rozhraní určené pro webové prohlížeče, které na zařízení uživatele neklade žádné nestandardní požadavky ani po stránce technického, ani programového vybavení. Aby byla splněna podmínka vyžadující možnost užívat uživatelské rozhraní aplikace na zařízení (téměř) jakékoliv velikosti, bylo toto vyvinuto za použití moderních technologií a koncipováno jako tzv. responsivní, tedy schopné se dynamicky přizpůsobit velikosti zobrazovací plochy beze ztráty čitelnosti obsahu a jednoduchosti navigace v něm. Vzhled rozhraní je minimalistický, aby se uživatel mohl zaměřit na obsah. Zároveň se však snaží být elegantní a nadčasový.
 
-			Jako každý projekt, který se zabývá programovým vývojem, ani tento není bez možností dalšího pokračování. Možné směry v tomto ohledu naznačené v kapitole \itNameRef{cha:co-se-nestihlo} bezpochyby nejsou jediné, kterými by se rozvoj aplikace mohl ubírat. Jedním z vedlejších cílů naznačeným v úvodu této práce bylo vytvořit rozhraní, které by bylo použitelné pro výuku. V tomto kontextu a vzhledem k tomu, že již nyní aplikace umožňuje práci s různojazyčnými sémantickými sítěmi, se zdá nejbližším dalším vhodným cílem být implementace lokalizace rozhraní do dalších jazyků a překlad lingvistických termínů do pojmů laickými uživateli srozumitelných.
+			Jako každý projekt, který se zabývá programovým vývojem, ani tento není bez možností dalšího pokračování. Možné směry v tomto ohledu naznačené v kapitole \itNameRef{cha:co-se-nestihlo} bezpochyby nejsou jediné, kterými by se rozvoj aplikace mohl ubírat. Vzhledem k tomu, že již nyní aplikace umožňuje práci s různojazyčnými sémantickými sítěmi, se zdá nejbližším dalším vhodným cílem být implementace lokalizace rozhraní do dalších jazyků a překlad lingvistických termínů do pojmů laickými uživateli srozumitelných.
 
-			Jak bylo naznačeno v teoretické části této práce, wordnety navzdory svému původnímu určení mohou sloužit i jiným účelům než napomáhání strojovému zpracování přirozeného jazyka, jako je například zmíněná výuka jazyka. K tomu ovšem potřebují rozhraní, které bude použitelné i pro širší masy uživatelů a bude odpovídat současným trendům naznačeným v odstavcích výše. Praktická část této práce dokázala navrhnout a realizovat takové rozhraní, jež je vhodným základem pro další kroky směrem ke zpřístupnění wordnetu širšímu spektru uživatelů, zejména z řad studentů.
+			Jak bylo naznačeno v teoretické části této práce, wordnety navzdory svému původnímu určení mohou teoreticky sloužit lidským uživatelům. K tomu je ovšem potřebné rozhraní, které bude použitelné nejen pro lingvisticky vzdělané uživatele a bude odpovídat současným trendům technologickým i vizuálním. Praktická část této práce dokázala navrhnout a realizovat takové rozhraní, jež je vhodným základem pro další kroky směrem ke zpřístupnění wordnetů lidským uživatelům, zejména z řad studentů.
 
 
 
