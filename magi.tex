@@ -45,12 +45,12 @@
 \usepackage[
    backend=biber
   % ,style=alphabetic
-  ,style=iso-alphabetic
+  % ,style=iso-alphabetic
   ,sortlocale=cs_CZ
   ,autocite=footnote
   ,maxnames=2
   ,minnames=1
-  ,urldate=long
+  % ,urldate=long
   % ,spacecolon=false
   ]
   {biblatex}
@@ -119,11 +119,11 @@
 
 			\vspace{7em}
 
-			{\large David Klement}
+			{\Large David Klement}
 			
-			\vspace{3em}
+			\vspace{5em}
 			
-			{\LARGE\bf Vizualizace sémantické sítě}
+			{\huge\bf Vizualizace sémantické sítě}
 
 			\vspace{1.5em}
 
@@ -150,28 +150,28 @@
 
 		Tato práce se zabývá sémantickými sítěmi typu wordnet především z pohledu lidského uživatele. Sémantická síť princetonský WordNet a další sítě z ní vycházející byly projektovány se záměrem napomoci zejména počítačovému zpracování přirozeného jazyka. Díky své struktuře založené na psycholingvistických poznatcích jsou však potenciálně užitečné i pro lidského uživatele. Tento potenciál společně s vědními základy, které se staly formanty struktury wordnetů, práce rozebere ve své části \ref{part:eins}.
 
-		Aby však sémantická síť byla pro lidského uživatele použitelná, je nutné mu umožnit přístup pomocí rozhraní, jež mu zobrazí relevantní data. Takových rozhraní bylo vytvořeno za dobu vývoje sémantických sítí značné množství; vytvořená rozhraní se liší uživateli, na něž jsou zaměřena, platformami, které podporují, způsoby prezentace dat wordnetů a mnohým dalším. Jejich společným rysem však bývá jistá neaktuálnost návrhu uživatelského rozhraní, a to především v kontextu jednoho z trendů poslední dekády, kterým je přesun uživatelů z klasických stolních počítačů a laptopů na mobilní zařízení.
+		Aby však sémantická síť byla pro lidského uživatele použitelná, je nutné umožnit k ní přístup pomocí rozhraní, jež zájemci zobrazí relevantní data. Takových rozhraní bylo vytvořeno za dobu vývoje sémantických sítí značné množství; vytvořená rozhraní se liší uživateli, na něž jsou zaměřena, platformami, které podporují či kupříkladu způsoby prezentace dat wordnetů. Jejich společným rysem však bývá jistá neaktuálnost návrhu uživatelského rozhraní, a to především v kontextu jednoho z trendů poslední dekády, kterým je přesun uživatelů z klasických stolních počítačů a laptopů na mobilní zařízení  \parencite{grace2013mobile}.
 
-		V části \ref{part:zwei} se práce bude věnovat právě těmto existujícím rozhraním, rozebere jejich funkcionalitu, positiva a negativa a zhodnotí jejich přínos a použitelnost pro koncového uživatele. Hodnocená rozhraní je nutno brát pouze jako zástupce většího množství dostupných rozhraní (a možná ještě většího těch nedostupných), jelikož cílem této práce není představit co nejúplnější přehled existujících rozhraní, ale spíše ukázat menší množství těch prominentnějších a podrobněji je rozebrat. Cílem této části je identifikovat nejvýraznější nedostatky těchto rozhraní a vyvodit z jejich zhodnocení některé vlastnosti, kterými by se mělo rozhraní z pohledu současnosti moderní vyznačovat. 
+		V části \ref{part:zwei} se práce bude věnovat právě těmto existujícím rozhraním, rozebere jejich funkcionalitu, positiva a negativa a zhodnotí jejich přínos a použitelnost pro koncového uživatele. Hodnocená rozhraní je nutno brát pouze jako zástupce většího množství dostupných rozhraní (a možná ještě většího těch nedostupných), jelikož cílem této práce není představit co nejúplnější přehled existujících rozhraní, ale spíše ukázat menší množství těch relativně snadno dostupných a podrobněji je rozebrat. Cílem této části je identifikovat nejvýraznější nedostatky těchto rozhraní a vyvodit z jejich zhodnocení některé vlastnosti, kterými by se mělo rozhraní z pohledu současnosti moderní vyznačovat. 
 
-		Praktickým cílem této práce pak je vytvořit rozhraní nové, jehož návrh bude vycházet z empiricky získaných poznatků při hodnocení existujících rozhraní v části \ref{part:zwei}. Popisu tohoto nového rozhraní se bude věnovat část \ref{part:drei}.
+		Praktickým cílem této práce pak bylo vytvořit rozhraní nové, jehož návrh by vycházel z empiricky získaných poznatků při hodnocení existujících rozhraní v části \ref{part:zwei}. V rámci práce bylo takové nové rozhraní vytvořeno, přičemž podrobnějšímu popisu výsledku je věnována \ref{part:drei}. část tohoto textu.
 
 	\newpage
 
 	\part{Sémantické sítě}
 	\label{part:eins}
 
-		Sémantické sítě, neboli wordnety, jsou lexikální databáze vytvořené s rozličnými záměry, mezi něž patří například i strojová inference informací v počítačovém zpracování přirozeného jazyka. Ve wordnetu jsou slova slučována podle významů do synonymických okruhů a tyto okruhy propojovány sémantickými vztahy, čímž dostávají svému označení sémantické sítě.
+		Sémantické sítě, neboli wordnety, jsou lexikální databáze vytvořené s rozličnými záměry, mezi něž patří například i strojová inference informací v počítačovém zpracování přirozeného jazyka. Ve wordnetech jsou slova slučována podle významů do synonymických okruhů a tyto okruhy jsou propojovány sémantickými vztahy \parencite{pala2013vceska, princetonWN}, čímž celek dostává svému označení sémantická síť.
 
 		\chapter{Princetonský WordNet} % (fold)
 		\label{cha:princeton_wn}
 		
-			Princetonský WordNet je prvním wordnet vůbec. Vznikal na univerzitě v Princetonu pod G. A. Millerem od poloviny 80. let 20. století. Vzhledem k tomu, že byl prvním wordnetem, bylo k němu referováno jako k WordNetu, bez přívlastku. Ačkoliv tento stav v podstatě přetrvává dodnes, oproti době jeho vzniku se situace změnila, vzniklo několik dalších wordnetů a nastala tudíž potřeba je rozlišit. V anglickém prostředí se obvykle pojmem wordnet míní ten princetonský a všechny ostatní wordnety mají přívlastek či vlastní jméno. Příkladem nechť je Balkanet či Eurowordnet. Ačkoliv v mezinárodním prostředí je obvyklé přívlastek \uv{princetonský} používat, bude tato práce pracovat s následujícím rozlišením:
+			Princetonský WordNet je prvním wordnet vůbec. Vznikal na univerzitě v Princetonu pod G. A. Millerem od poloviny 80. let 20. století. Vzhledem k tomu, že byl prvním wordnetem, bylo k němu referováno jako k WordNetu, bez přívlastku. Ačkoliv tento stav v podstatě přetrvává dodnes, oproti době jeho vzniku se situace změnila, vzniklo několik dalších wordnetů a nastala tudíž potřeba je rozlišit. V anglickém prostředí se obvykle pojmem wordnet míní ten princetonský a všechny ostatní wordnety mají přívlastek či vlastní jméno. Příkladem nechť jsou evropské wordnety BalkaNet či EuroWordNet\footnote{O jiných wordnetech než tom princetonském WordNetu více v dalších kapitolách}. Ačkoliv v mezinárodním prostředí je obvyklé přívlastek \uv{princetonský} používat, bude tato práce pracovat s následujícím rozlišením:
 
 			\begin{itemize}
-				\item \textit{WordNet} (ve významu princetonský WordNet)
-				\item \textit{wordnet} (ve významu obecné sémantické sítě založené na WordNetu)
-				\item konkrétní wordnety, např. \textit{Balkanet}
+				\item \textit{WordNet} (ve významu princetonského WordNetu)
+				\item \textit{wordnet} (v obecném významu sémantické sítě založené na WordNetu)
+				\item \textit{BalkaNet} (ve významu konkrétního wordnetu, např. \textit{BalkaNet} či \textit{wordnet EuroWordNet})
 			\end{itemize}
 
 			\section{Motivace vzniku}
@@ -374,7 +374,7 @@
 				% - koncept, kterej je co nejvys v sem. hierarchii a ma spoustu vztahu na dalsi koncepty (ale proc?)
 				% - universalita: 
 		
-			Podle vzoru princetonského WordNetu začaly postupně vznikat i další sémantické sítě založené na stejném konceptu. Tyto sémantické sítě se samozřejmě svou strukturou do větší či menší míry liší, hlavním kritériem pro to, aby mohly být považovány za wordnet, je to, aby obsahovaly synsety a hyponyma. \parencite{gwa2013wordnetsworld} % Jelikož se tato práce bude primárně zabývat wordnetem českým, bude pro srovnání uvádět dva hlavní evropské vícejazyčené wordnety, a to Eurowordnet a Balkanet. 
+			Podle vzoru princetonského WordNetu začaly postupně vznikat i další sémantické sítě založené na stejném konceptu. Tyto sémantické sítě se samozřejmě svou strukturou do větší či menší míry liší, hlavním kritériem pro to, aby mohly být považovány za wordnet, je to, aby obsahovaly synsety a hyponyma. \parencite{gwa2013wordnetsworld} % Jelikož se tato práce bude primárně zabývat wordnetem českým, bude pro srovnání uvádět dva hlavní evropské vícejazyčené wordnety, a to EuroWordNet a BalkaNet. 
 
 			\section{EuroWordNet} % (fold)
 			\label{sec:eurowordnet}
@@ -384,7 +384,7 @@
 					% plochy, aby nereflektoval organizaci nejakeho konkretniho WN
 				% odlisne vztahy od PWN
 
-				EuroWordNet je mezinárodní lexikální databáze pro osm evropských jazyků (angličtina, čeština, dánština, francouzština, italština, němčina, španělština). Jde o soubor jednotlivých národních wordnetů, které jsou propojeny takzvaným mezijazykovým indexem (ILI, \textit{inter-lingual-index}). Obecně jsou wordnety Eurowordnetu založené svou strukturou na princetonském WordNetu (verze 1.5), ale z důvodu různorodosti jazyků se v některých aspektech od něj odlišují. EuroWordNet zavádí poněkud odlišené vztahy, navíc je diferencuje jemněji. \parencite{pazienza2008bottom}
+				EuroWordNet je mezinárodní lexikální databáze pro osm evropských jazyků (angličtina, čeština, dánština, francouzština, italština, němčina, španělština). Jde o soubor jednotlivých národních wordnetů, které jsou propojeny takzvaným mezijazykovým indexem (ILI, \textit{inter-lingual-index}). Obecně jsou wordnety EuroWordNetu založené svou strukturou na princetonském WordNetu (verze 1.5), ale z důvodu různorodosti jazyků se v některých aspektech od něj odlišují. EuroWordNet zavádí poněkud odlišené vztahy, navíc je diferencuje jemněji. \parencite{pazienza2008bottom}
 
 				Základní motivací pro vznik EuroWordNetu byla evropská jazyková různorodost a z ní pramenící problémy ve zpracování dat a napomáhání uživateli v přístupu k neanglickým datům. \textcite{vossen1997eurowordnet} argumentuje, že uživatel musí umět anglicky a být obeznámen s tím, jak je zdroj, v němž vyhledává napsán, aby byl schopen v něm účinně hledat. Vytvořením wordnetů pro jiné jazyky si slibuje, že se zlepší možnost přístupu uživatelů k neanglickým datům, možnosti inference znalostí z těchto dat a případně i mezijazykové vyhledávání. Poslední je založeno na faktu, že od počátku byly jednotlivé wordnety EuroWordNetu vytvářeny s tím, že budou propojeny na základě základních konceptů (BCS, \textit{Base Concept Sets}) a mezijazykového indexu.
 
@@ -462,7 +462,7 @@
 
 				% cely Vossen-Eurowordnet.pdf
 				
-				% neco psat o Balkanetu?
+				% neco psat o BalkaNetu?
 
 	\part{Přehled a porovnání existujících vizualizací sémantických sítí}
 	\label{part:zwei}
