@@ -17,6 +17,7 @@
 \usepackage{verbatimbox}
 \usepackage{nameref}
 \usepackage{enumitem}
+\usepackage[czech]{minitoc}
 
 % todo:
 % - reference na kapitoly - itNameRef a ref, vsechno ma byt itNameRef asi?
@@ -107,6 +108,8 @@
 \newcommand\ex{\textsf}
 
 \begin{document}
+	
+	\dominitoc % init of mini table of contents for chapter TOC (see chapt. about comparing WN interfaces)
 	
 	% \pagestyle{empty}
 	\begin{titlepage}
@@ -507,7 +510,7 @@
 
 				Zmiňované hodnocení záměrně není vyčísleno exaktně, jelikož každý uživatel má jiné nároky a tato práce si tedy klade za cíl pouze co nejobjektivněji zhodnotit vlastnosti jednotlivých rozhraní, nikoliv čtenáři vnuknout, že jedno rozhraní je lepší než jiné; to musí případně zhodnotit sám na základě předkládaných faktů a jeho vlastních požadavků na rozhraní.
 
-				Do přehledu byla tedy zahrnuta následující rozhraní:
+				% Do přehledu byla tedy zahrnuta následující rozhraní:
 
 					\begin{itemize}
 						\item An interactive visualization of the Princeton WordNet database \par\hspace{2em}{\small \url{http://mateogianolio.com/wordnet-visualization/}}
@@ -580,6 +583,18 @@
 
 				Testování na mobilním chytrém telefonu bylo prováděno na zařízení Nexus 5 (displej s úhlopříčkou 5 palců a rozlišením 1080 × 1920 px) s operačním systémem Android 6 v prohlížeči Chrome (sestavení 57.0). Možnost \textit{request desktop site} byla nastavena na \textit{vypnuto}.
 
+		\chapter{Porovnání některých rozhraní}
+			
+			Do přehledu byla zahrnuta rozhraní uvedená v následujícím obsahu této kapitoly:
+
+			\minitoc % mini TOC of this chapter
+			% doesnt print sections of right chapter yet, to be fixed
+			% https://tex.stackexchange.com/questions/5944/minitoc-and-memoir/7877#7877
+			% https://tex.stackexchange.com/questions/3001/list-sections-of-chapter-at-beginning-of-that-chapter
+
+			\td{zatim ten TOC sekci v tehle kapitole moc nefgunguje, help please (minitoc)} 
+
+
 			\section{WordNet Search jako základ porovnání}
 			\label{wnvis:wnsearch}
 
@@ -600,240 +615,240 @@
 
 				Podobnou funkcionalitu a způsob zobrazení dat jako WordNet Search mají i některá další rozhraní. Za zmínku stojí například WNSearch\footnote{\url{http://www.golovchenko.org/cgi-bin/wnsearch}}, což je minimalistické čistě textové rozhraní, které díky absenci jakýchkoliv stylů je responsivní a dobře použitelné na mobilních zařízeních s libovolně velkým displejem. Mezi další rozhraní s podobnou funkcionalitou patří URCS Wordnet Browser (spustitelné s Javou)\footnote{\url{http://www.cs.rochester.edu/research/cisd/wordnet/}} či GoldenDict (rozhraní pro klasické počítače především s operačním systémem Windows)\footnote{\url{http://goldendict.org/}}.
 
-		\chapter{Vizualizace s webovým rozhraním}
+			\section{Vizualizace s webovým rozhraním}
 
-			Jako bylo naznačeno v úvodu této části, vizualizací s webovým rozhraním se v této práci míní taková implementace, která ze strany uživatele nevyžaduje instalaci žádných doplňujících aplikací či aplikačních prostředí (např. Javy) kromě samotného webového prohlížeče.
+				Jako bylo naznačeno v úvodu této části, vizualizací s webovým rozhraním se v této práci míní taková implementace, která ze strany uživatele nevyžaduje instalaci žádných doplňujících aplikací či aplikačních prostředí (např. Javy) kromě samotného webového prohlížeče.
 
-			\section{An interactive visualization of the Princeton WordNet database}
-			\label{wnvis:intviswn}
+				\subsection{An interactive visualization of the Princeton WordNet database}
+				\label{wnvis:intviswn}
 
-				Jeden z projektů programátora jménem Mateo Gianolio z Lundské univerzity (Švédsko)\footnote{\url{https://www.linkedin.com/in/mateo-gianolio-a89558b6/?trk=profile-badge-name}}\td{je v poradku to linkovat takhle jako link na linkedin? nebo to mam napsat jako zdroj do citaci?}. Jde o jednoduché rozhraní napojené na princetonský WordNet, které po zadání hledaného výrazu zobrazí synsety obsahující daný výraz. Jednotlivé synsety jsou barevně odlišeny podle syntaktických kategorií (slovních druhů), k nimž náležejí, a uspořádány kruhově kolem hledaného výrazu. Z každého synsetu je vždy zobrazena jen první slovní forma. Pokud uživatel najede kursorem myši na některý ze synsetů, zobrazí se další případné slovní formy náležející do daného synsetu a jeho glosa (definice), je-li dostupná.
+					Jeden z projektů programátora jménem Mateo Gianolio z Lundské univerzity (Švédsko)\footnote{\url{https://www.linkedin.com/in/mateo-gianolio-a89558b6/?trk=profile-badge-name}}\td{je v poradku to linkovat takhle jako link na linkedin? nebo to mam napsat jako zdroj do citaci?}. Jde o jednoduché rozhraní napojené na princetonský WordNet, které po zadání hledaného výrazu zobrazí synsety obsahující daný výraz. Jednotlivé synsety jsou barevně odlišeny podle syntaktických kategorií (slovních druhů), k nimž náležejí, a uspořádány kruhově kolem hledaného výrazu. Z každého synsetu je vždy zobrazena jen první slovní forma. Pokud uživatel najede kursorem myši na některý ze synsetů, zobrazí se další případné slovní formy náležející do daného synsetu a jeho glosa (definice), je-li dostupná.
 
-				Další slovní formy v nalezených synsetech jsou klikatelné, což umožňuje dostat se přes ně na synsety obsahující onu slovní formu, na níž bylo uživatelem kliknuto (s identickým výsledkem, jako kdyby dané slovo uživatel zadal do vyhledávacího pole).
+					Další slovní formy v nalezených synsetech jsou klikatelné, což umožňuje dostat se přes ně na synsety obsahující onu slovní formu, na níž bylo uživatelem kliknuto (s identickým výsledkem, jako kdyby dané slovo uživatel zadal do vyhledávacího pole).
 
-				Ačkoliv úvodní odstavec na stránce s rozhraním vybízí uživatele k \uv{prozkoumání desambiguace slov} \parencite{GianolioWN}, zobrazují výsledky hledání pouze synsety a slovní formy do nich náležející, přičemž synsety připojené sémantickými vztahy hyponymie, meronymie etc. nejsou zobrazitelné (jinak než případným náhodným výskytem jedné slovní formy ve více synsetech). To použití WordNetu omezuje na obyčejný thesaurus.
+					Ačkoliv úvodní odstavec na stránce s rozhraním vybízí uživatele k \uv{prozkoumání desambiguace slov} \parencite{GianolioWN}, zobrazují výsledky hledání pouze synsety a slovní formy do nich náležející, přičemž synsety připojené sémantickými vztahy hyponymie, meronymie etc. nejsou zobrazitelné (jinak než případným náhodným výskytem jedné slovní formy ve více synsetech). To použití WordNetu omezuje na obyčejný thesaurus.
 
-				Samotný design grafického rozhraní je řešen poněkud nešťastně a působí dojmem, že cílem autora bylo prokázat své schopnosti používat různé standardní vizuální transformační funkce. Pro indikaci běžícího procesu vyhledávání byl použit efekt animace rotujícího vyhledávacího pole a po dokončení vyhledávání jsou výsledky zobrazeny paprskovitě okolo vyhledávacího pole. To způsobuje, že některé texty jsou zobrazeny pod úhlem až 90 stupňů, což může pro některé uživatele činit jejich přečtení obtížnějším. 
+					Samotný design grafického rozhraní je řešen poněkud nešťastně a působí dojmem, že cílem autora bylo prokázat své schopnosti používat různé standardní vizuální transformační funkce. Pro indikaci běžícího procesu vyhledávání byl použit efekt animace rotujícího vyhledávacího pole a po dokončení vyhledávání jsou výsledky zobrazeny paprskovitě okolo vyhledávacího pole. To způsobuje, že některé texty jsou zobrazeny pod úhlem až 90 stupňů, což může pro některé uživatele činit jejich přečtení obtížnějším. 
 
-				Rozhraní není tzv. responsivní, tedy nepřizpůsobuje se velikosti obrazovky, na níž je zobrazeno. To komplikuje jeho použití na zařízeních s malou obrazovkou, kupříkladu mobilním telefonu.
+					Rozhraní není tzv. responsivní, tedy nepřizpůsobuje se velikosti obrazovky, na níž je zobrazeno. To komplikuje jeho použití na zařízeních s malou obrazovkou, kupříkladu mobilním telefonu.
 
-				Toto rozhraní tedy poskytuje velice omezený přístup k datům WordNetu a neposkytuje žádné výhody oproti základnímu oficiálnímu rozhraní k princetonskému WordNetu. Jeho grafické pojetí je čistě arbitrární, neslouží žádnému účelu a naopak zhoršuje jeho použitelnost.
+					Toto rozhraní tedy poskytuje velice omezený přístup k datům WordNetu a neposkytuje žádné výhody oproti základnímu oficiálnímu rozhraní k princetonskému WordNetu. Jeho grafické pojetí je čistě arbitrární, neslouží žádnému účelu a naopak zhoršuje jeho použitelnost.
 
-				\begin{figure}[h]
-					\centering
-					\includegraphics[width=0.8\textwidth]{intviswn.png}
-					\caption{Ukázka rozhraní An interactive visualization of the Princeton WordNet database}
-					\label{fig:intviswn}
-				\end{figure}
+					\begin{figure}[h]
+						\centering
+						\includegraphics[width=0.8\textwidth]{intviswn.png}
+						\caption{Ukázka rozhraní An interactive visualization of the Princeton WordNet database}
+						\label{fig:intviswn}
+					\end{figure}
 
-			\section{WordNET Editor}
-			\label{wnvis:wncoledit}
+				\subsection{WordNET Editor}
+				\label{wnvis:wncoledit}
 
-				Webová aplikace WordNET Editor byla vytvořena s cílem poskytnout internetové komunitě praktický a účinný nástroj pro rozvoj WordNetu. Její autoři, \textcite{szymanski2007cooperative}, argumentují, že vývoj WordNetu vyžaduje velké množství lidské práce, a je proto důležité jej tvořit tak, jako je tvořena například internetová encyklopedie Wikipedie, což znamená spoluprací nezávislých uživatelů. K tomu je však potřeba nástroj, který takovou spolupráci umožní, což podle nich oficiální nástroje princetonského WordNetu nejsou (mimo jiné pravděpodobně proto, že WordNet byl vyvíjen uzavřenou skupinou lidí \parencite{fellbaum2005wordnets}). Vedle editoru vztahů a synsetů však obsahuje WordNET Editor i prohlížeč wordnetu, pro který bylo rozhraní do tohoto přehledu zařazeno. Data, jež aplikace používá, jsou verzí princetonského WordNetu odvětvenou v jeho verzi 2.1. \parencite{szymanski2007cooperative}
+					Webová aplikace WordNET Editor byla vytvořena s cílem poskytnout internetové komunitě praktický a účinný nástroj pro rozvoj WordNetu. Její autoři, \textcite{szymanski2007cooperative}, argumentují, že vývoj WordNetu vyžaduje velké množství lidské práce, a je proto důležité jej tvořit tak, jako je tvořena například internetová encyklopedie Wikipedie, což znamená spoluprací nezávislých uživatelů. K tomu je však potřeba nástroj, který takovou spolupráci umožní, což podle nich oficiální nástroje princetonského WordNetu nejsou (mimo jiné pravděpodobně proto, že WordNet byl vyvíjen uzavřenou skupinou lidí \parencite{fellbaum2005wordnets}). Vedle editoru vztahů a synsetů však obsahuje WordNET Editor i prohlížeč wordnetu, pro který bylo rozhraní do tohoto přehledu zařazeno. Data, jež aplikace používá, jsou verzí princetonského WordNetu odvětvenou v jeho verzi 2.1. \parencite{szymanski2007cooperative}
 
-				Rozhraní je rozděleno do levého sloupce a pravého (většího) \uv{plátna}, jež slouží pro grafické vyobrazení vztahů. Po vyhledání zadaného výrazu nabídne aplikace uživateli seznam synsetů, v nichž se výraz nachází. Nabídka synsetů je klikatelná a uživateli je po zvolení synsetu kliknutím prezentováno grafické vyobrazení daného synsetu se všemi jeho vztahy. V levém sloupci si pak uživatel může vybírat, další synsety, které chce do pravé sekce přidat, může také otevírat dvojklikem již zobrazené synsety a lze i v nastavení filtrovat, které vztahy a slovní druhy se mají zobrazovat. Aplikace však zřejmě neobsahuje intuitivní způsob jak zobrazené synsety z plátna vpravo odebírat a při otevírání dalších synsetů plátno nepřepisuje, ale synsety přidává k již zobrazeným (neprovázaně). To může vést ke značné nepřehlednosti reprezentace, avšak aplikace umožňuje přibližování a oddalování plátna a vizuální přesouvání zobrazení po plátně, což s jistým úsilím uživatele nepřehlednost může eliminovat. Také nutno vytknout absenci textového pojmenování vztahů mezi synsety. Barevné rozlišení je v tomto případě nevhodně zvolené, jelikož vztahů je v rozhraní hodně a některé barvy jsou obtížně odlišitelné.
+					Rozhraní je rozděleno do levého sloupce a pravého (většího) \uv{plátna}, jež slouží pro grafické vyobrazení vztahů. Po vyhledání zadaného výrazu nabídne aplikace uživateli seznam synsetů, v nichž se výraz nachází. Nabídka synsetů je klikatelná a uživateli je po zvolení synsetu kliknutím prezentováno grafické vyobrazení daného synsetu se všemi jeho vztahy. V levém sloupci si pak uživatel může vybírat, další synsety, které chce do pravé sekce přidat, může také otevírat dvojklikem již zobrazené synsety a lze i v nastavení filtrovat, které vztahy a slovní druhy se mají zobrazovat. Aplikace však zřejmě neobsahuje intuitivní způsob jak zobrazené synsety z plátna vpravo odebírat a při otevírání dalších synsetů plátno nepřepisuje, ale synsety přidává k již zobrazeným (neprovázaně). To může vést ke značné nepřehlednosti reprezentace, avšak aplikace umožňuje přibližování a oddalování plátna a vizuální přesouvání zobrazení po plátně, což s jistým úsilím uživatele nepřehlednost může eliminovat. Také nutno vytknout absenci textového pojmenování vztahů mezi synsety. Barevné rozlišení je v tomto případě nevhodně zvolené, jelikož vztahů je v rozhraní hodně a některé barvy jsou obtížně odlišitelné.
 
-				Grafické zobrazení vztahů mezi koncepty je řešeno hvězdicovitě, přičemž ve středu je zvolený synset, jenž byl výsledkem hledání, nebo na něj bylo kliknuto, a od něj jsou vedeny hrany představující vztahy k příbuzným synsetům. Zajímavý je originální koncept zobrazení synsetů příbuzných k hledanému (otevřenému) synsetu. Ten je v grafu reprezentován svými členskými slovními formami, ale příbuzné koncepty jsou reprezentovány svými definicemi. Trochu na závadu však je, že se zřejmě nedá (minimálně v prohlížecím režimu) zobrazit detail příbuzného synsetu a uživatel se dozví pouze jeho definici, nikoliv slovní formy do něj náležející. Jediný detail, který je uživateli dostupný, je u některých synsetů obrázek (o jeho zdroji se však v rozhraní nepíše).
+					Grafické zobrazení vztahů mezi koncepty je řešeno hvězdicovitě, přičemž ve středu je zvolený synset, jenž byl výsledkem hledání, nebo na něj bylo kliknuto, a od něj jsou vedeny hrany představující vztahy k příbuzným synsetům. Zajímavý je originální koncept zobrazení synsetů příbuzných k hledanému (otevřenému) synsetu. Ten je v grafu reprezentován svými členskými slovními formami, ale příbuzné koncepty jsou reprezentovány svými definicemi. Trochu na závadu však je, že se zřejmě nedá (minimálně v prohlížecím režimu) zobrazit detail příbuzného synsetu a uživatel se dozví pouze jeho definici, nikoliv slovní formy do něj náležející. Jediný detail, který je uživateli dostupný, je u některých synsetů obrázek (o jeho zdroji se však v rozhraní nepíše).
 
-				\begin{figure}[h]
-					\centering
-					\includegraphics[width=1.0\textwidth]{wneditor.png}
-					\caption{Ukázka rozhraní WordNET Editor: zvolený synset ve středu grafu a zobrazený obrázek k příbuznému synsetu}
-					\label{fig:wneditor}
-				\end{figure}
+					\begin{figure}[h]
+						\centering
+						\includegraphics[width=1.0\textwidth]{wneditor.png}
+						\caption{Ukázka rozhraní WordNET Editor: zvolený synset ve středu grafu a zobrazený obrázek k příbuznému synsetu}
+						\label{fig:wneditor}
+					\end{figure}
 
-				Test chování tohoto rozhraní na mobilním zařízení nebyl proveden, jelikož je zjevné, že je určeno především k editacím a podle toho je také navrženo. Rozhraní poskytuje grafický náhled na strukturu dat, ale pro nevhodné kódování vztahů do barev a nezobrazovaní dostatečného množství informací je jeho ovládání neintuitivní. Nutno podotknout, že rozhraní tak, jak je vyobrazeno v \textcite{szymanski2007cooperative}, vypadá značně odlišně a například obsahuje pojmenované vztahy.
+					Test chování tohoto rozhraní na mobilním zařízení nebyl proveden, jelikož je zjevné, že je určeno především k editacím a podle toho je také navrženo. Rozhraní poskytuje grafický náhled na strukturu dat, ale pro nevhodné kódování vztahů do barev a nezobrazovaní dostatečného množství informací je jeho ovládání neintuitivní. Nutno podotknout, že rozhraní tak, jak je vyobrazeno v \textcite{szymanski2007cooperative}, vypadá značně odlišně a například obsahuje pojmenované vztahy.
 
-				Podle webové stránky projektu\footnote{\url{http://wordventure.eti.pg.gda.pl}} je rozhraní vyvinuto s otevřeným zdrojem, pro jeho obdržení je však nutno kontaktovat vývojáře. Lze ale předpokládat jeho použitelnost i pro ostatní wordnety.
+					Podle webové stránky projektu\footnote{\url{http://wordventure.eti.pg.gda.pl}} je rozhraní vyvinuto s otevřeným zdrojem, pro jeho obdržení je však nutno kontaktovat vývojáře. Lze ale předpokládat jeho použitelnost i pro ostatní wordnety.
 
-			\section{Cornetto Demo}
-			\label{wnvis:cornetto}
+				\subsection{Cornetto Demo}
+				\label{wnvis:cornetto}
 
-				Cornetto Demo je prohlížeč pro nizozemský wordnet a jako jedno z mála dostupných webových aplikací kombinuje grafickou a textovou vizualizaci dat. To je dáno zřejmě mimo jiné tím, že Cornetto Demo není pouze rozhraním pro wordnet, ale kombinuje data ze dvou zdrojů. Jednak z Referentie Bestand Nederlands \parencite{martin2005referentie}, a jednak z nizozemského wordnetu. Referentie Bestand Nederlands je slovník obsahující informace podobně strukturované jako FrameNet \parencite{fillmore2004framenet} spolu s rozšířením o kombinatorickém chování slov v určitém významu \parencite{horak2008development}. 
+					Cornetto Demo je prohlížeč pro nizozemský wordnet a jako jedno z mála dostupných webových aplikací kombinuje grafickou a textovou vizualizaci dat. To je dáno zřejmě mimo jiné tím, že Cornetto Demo není pouze rozhraním pro wordnet, ale kombinuje data ze dvou zdrojů. Jednak z Referentie Bestand Nederlands \parencite{martin2005referentie}, a jednak z nizozemského wordnetu. Referentie Bestand Nederlands je slovník obsahující informace podobně strukturované jako FrameNet \parencite{fillmore2004framenet} spolu s rozšířením o kombinatorickém chování slov v určitém významu \parencite{horak2008development}. 
 
-				Rozhraní je rozděleno na tři moduly, základní vyhledávání, pokročilé vyhledávání a vizualizace synsetů. 
+					Rozhraní je rozděleno na tři moduly, základní vyhledávání, pokročilé vyhledávání a vizualizace synsetů. 
 
-				Základní vyhledávání slouží k prostému vyhledávání lexikálních jednotek. Dotaz je možné základním způsobem omezovat či rozšiřovat, a to pomocí zástupných znaků (\ex{*}, \ex{?}\footnote{přičemž \ex{*} zastupuje posloupnost kterýchkoliv znaků, \ex{?} zastupuje jeden kterýkoliv znak}) a volby slovních druhů, v jakých se má výhledávat. \parencite{cornettoGettingStarted}
+					Základní vyhledávání slouží k prostému vyhledávání lexikálních jednotek. Dotaz je možné základním způsobem omezovat či rozšiřovat, a to pomocí zástupných znaků (\ex{*}, \ex{?}\footnote{přičemž \ex{*} zastupuje posloupnost kterýchkoliv znaků, \ex{?} zastupuje jeden kterýkoliv znak}) a volby slovních druhů, v jakých se má výhledávat. \parencite{cornettoGettingStarted}
 
-				Pokročilé vyhledávání umožňuje v nizozemském wordnetu najít lexikální jednotky, které mají společné specifické parametry. Jako kritéria pro vyhledávání lze zvolit kterékoliv kombinace všech příznaků, jež jsou ve wordnetu u lexikálních jednotek přítomny. Takto je možné například vyhledat všechna slovesa, která jsou řazena do domény tance a jsou označena jako archaická.  
+					Pokročilé vyhledávání umožňuje v nizozemském wordnetu najít lexikální jednotky, které mají společné specifické parametry. Jako kritéria pro vyhledávání lze zvolit kterékoliv kombinace všech příznaků, jež jsou ve wordnetu u lexikálních jednotek přítomny. Takto je možné například vyhledat všechna slovesa, která jsou řazena do domény tance a jsou označena jako archaická.  
 
-				Pokud hledaný výraz či zvolená kritéria odpovídají některým slovům vyskytujícím se v databázi, je uživateli prezentován seznam nalezených jednotek, přes nějž se kliknutím na konkrétní jednotku lze dostat na její detail. Tyto podrobnosti jsou textovou reprezentací dostupných dat, tedy syntaktických a sémantických informací o vyhledaném slově (nutno podotknout, že značná část informací v této části zřejmě pochází spíše Referentie Bestand Nederlands, nikoliv z wordnetu) a hierarchického zařazení konceptu, do nějž slovo patří, ve wordnetu. Hierarchické zařazení je vyvedeno ve formě podobné tradičnímu znázornění adresářového stromu a obsahuje, zřejmě z úsporných důvodů, pouze přímé nadřazené a přímé podřazené koncepty a v rozhraní chybí úplné zobrazení cesty od kořene wordnetu k zobrazenému synsetu. I tak může strom být relativné dlouhý vzhledem k tomu, že u obecných hyperonym bývá seznam hyponym rozsáhlý. 
+					Pokud hledaný výraz či zvolená kritéria odpovídají některým slovům vyskytujícím se v databázi, je uživateli prezentován seznam nalezených jednotek, přes nějž se kliknutím na konkrétní jednotku lze dostat na její detail. Tyto podrobnosti jsou textovou reprezentací dostupných dat, tedy syntaktických a sémantických informací o vyhledaném slově (nutno podotknout, že značná část informací v této části zřejmě pochází spíše Referentie Bestand Nederlands, nikoliv z wordnetu) a hierarchického zařazení konceptu, do nějž slovo patří, ve wordnetu. Hierarchické zařazení je vyvedeno ve formě podobné tradičnímu znázornění adresářového stromu a obsahuje, zřejmě z úsporných důvodů, pouze přímé nadřazené a přímé podřazené koncepty a v rozhraní chybí úplné zobrazení cesty od kořene wordnetu k zobrazenému synsetu. I tak může strom být relativné dlouhý vzhledem k tomu, že u obecných hyperonym bývá seznam hyponym rozsáhlý. 
 
-				\begin{figure}[h]
-					\centering
-					\includegraphics[width=1.0\textwidth]{cornetto-text1.png}
-					\caption{Ukázka rozhraní Cornetto Demo: textová reprezentace dat}
-					\label{fig:cornetto-text1}
-				\end{figure}
+					\begin{figure}[h]
+						\centering
+						\includegraphics[width=1.0\textwidth]{cornetto-text1.png}
+						\caption{Ukázka rozhraní Cornetto Demo: textová reprezentace dat}
+						\label{fig:cornetto-text1}
+					\end{figure}
 
-				Z odkazů v hierarchii lze kliknutím na ikonu wordnetu u synsetu přejít do vizualizačního režimu, čímž se zobrazí grafické znázornění daného synsetu. 
+					Z odkazů v hierarchii lze kliknutím na ikonu wordnetu u synsetu přejít do vizualizačního režimu, čímž se zobrazí grafické znázornění daného synsetu. 
 
-				Modul vizualizace synsetů je v praxi pouze zobrazovací nadstavbou zbytku rozhraní, jelikož jeho vyhledávání se od základního vyhledávání liší pouze tím, že vybírá jeden nalezený výsledek a rovnou jej zobrazí graficky. Který výsledek se má vybrat, je možné zvolit při inicializaci hledání. Je tak eliminována nutnost zvolit synset, otevřít jeho detaily a kliknout na výše zmíněnou ikonu, aby se uživatel dostal na grafické znázornění daného synset, jedná se však pouze o zkratku v rozhraní, jež nezavádání nic nového.
+					Modul vizualizace synsetů je v praxi pouze zobrazovací nadstavbou zbytku rozhraní, jelikož jeho vyhledávání se od základního vyhledávání liší pouze tím, že vybírá jeden nalezený výsledek a rovnou jej zobrazí graficky. Který výsledek se má vybrat, je možné zvolit při inicializaci hledání. Je tak eliminována nutnost zvolit synset, otevřít jeho detaily a kliknout na výše zmíněnou ikonu, aby se uživatel dostal na grafické znázornění daného synset, jedná se však pouze o zkratku v rozhraní, jež nezavádání nic nového.
 
-				Samotná vizualizace je realizovaná pomocí javascriptové knihovny D3.js\footnote{\url{https://d3js.org}} \parencite{BostockD3} \td{nejsem si jist tou citaci - jak jsem prisel zrovna na tenhle dokument a zda neni lepsi dat jen link na D3.js do footnote} a umožňuje uživateli prohlížet všechny synsety svázané některým vztahem s vyhledaným synsetem. Zobrazení rozlišuje syntaktické kategorie i sémantické vztahy barevně, přičemž vztahy jsou navíc ještě popsány slovně. Autoři použili rozšířený model vizualizace synsetů tak, že synset je představován uzlem, k němuž vede sémantický vztah, a z tohoto uzlu pak vedou nepojmenované hrany představující vazbu slovní formy na daný synset (tedy v zásadě vztah synonymie). Tento způsob je alternativní k zobrazení, v němž sémantické vztahy vedou k jednotlivým slovním formám\td{asi prepsat, tohle nejspis (uz?) neni pravda, viz obrazek dole, plus pripsat pozn. o popiskach} a není tak na první pohled zřejmé, které navázané formy jsou součástí kterých synsetů. Zde použité zobrazení vhodně omezuje množství hran, které jsou nutné k vykreslení grafu, byť možná na úkor srozumitelnosti pro neznalého uživatele, jelikož body označující synset a hrany označující synonymii nejsou nijak označeny v grafu (pouze v legendě a při přejetí myší). Všechny uzly mají přiřazenou i vlastní legendu ve formě informační bubliny, která obsahuje například definici, příklady, slovní druh či identifikátory. Vizualizaci je možné kolečkem myši přibližovat a oddalovat a tažením myší se po zvětšeném grafu přesouvat. Funkčnost přibližování je možná poněkud diskutabilní, jelikož se při jejím použití nemění proporce zobrazovaných informací (cf. elektronické mapy na WWW, které při přiblížení sice zvětšují detail struktur, ale zachovávají velikost písmen v nápisech). Její smysl by v opačném případě tkvěl například v použití při vyhledání slov jako je \ex{plant}\footnote{niz. \ex{rostlina}}, které mají velké množství hyponym, a tudíž jejich graf je nepřehledný až do rozměrů naprosté nepoužitelnosti (obrázek \ref{fig:wncorplant} na straně \pageref{fig:wncorplant}). Ovládání klávesnicí možné není.
+					Samotná vizualizace je realizovaná pomocí javascriptové knihovny D3.js\footnote{\url{https://d3js.org}} \parencite{BostockD3} \td{nejsem si jist tou citaci - jak jsem prisel zrovna na tenhle dokument a zda neni lepsi dat jen link na D3.js do footnote} a umožňuje uživateli prohlížet všechny synsety svázané některým vztahem s vyhledaným synsetem. Zobrazení rozlišuje syntaktické kategorie i sémantické vztahy barevně, přičemž vztahy jsou navíc ještě popsány slovně. Autoři použili rozšířený model vizualizace synsetů tak, že synset je představován uzlem, k němuž vede sémantický vztah, a z tohoto uzlu pak vedou nepojmenované hrany představující vazbu slovní formy na daný synset (tedy v zásadě vztah synonymie). Tento způsob je alternativní k zobrazení, v němž sémantické vztahy vedou k jednotlivým slovním formám\td{asi prepsat, tohle nejspis (uz?) neni pravda, viz obrazek dole, plus pripsat pozn. o popiskach} a není tak na první pohled zřejmé, které navázané formy jsou součástí kterých synsetů. Zde použité zobrazení vhodně omezuje množství hran, které jsou nutné k vykreslení grafu, byť možná na úkor srozumitelnosti pro neznalého uživatele, jelikož body označující synset a hrany označující synonymii nejsou nijak označeny v grafu (pouze v legendě a při přejetí myší). Všechny uzly mají přiřazenou i vlastní legendu ve formě informační bubliny, která obsahuje například definici, příklady, slovní druh či identifikátory. Vizualizaci je možné kolečkem myši přibližovat a oddalovat a tažením myší se po zvětšeném grafu přesouvat. Funkčnost přibližování je možná poněkud diskutabilní, jelikož se při jejím použití nemění proporce zobrazovaných informací (cf. elektronické mapy na WWW, které při přiblížení sice zvětšují detail struktur, ale zachovávají velikost písmen v nápisech). Její smysl by v opačném případě tkvěl například v použití při vyhledání slov jako je \ex{plant}\footnote{niz. \ex{rostlina}}, které mají velké množství hyponym, a tudíž jejich graf je nepřehledný až do rozměrů naprosté nepoužitelnosti (obrázek \ref{fig:wncorplant} na straně \pageref{fig:wncorplant}). Ovládání klávesnicí možné není.
 
-				\begin{figure}[h]
-					\centering
-					\includegraphics[width=1.0\textwidth]{wncorplant.png}
-					\caption{Ukázka rozhraní Cornetto Demo: ilustrace přeplnění grafické reprezentace hyponymy u slova \ex{plant}}
-					\label{fig:wncorplant}
-				\end{figure}
+					\begin{figure}[h]
+						\centering
+						\includegraphics[width=1.0\textwidth]{wncorplant.png}
+						\caption{Ukázka rozhraní Cornetto Demo: ilustrace přeplnění grafické reprezentace hyponymy u slova \ex{plant}}
+						\label{fig:wncorplant}
+					\end{figure}
 
-				Rozhraní je neresponsivní, takže je na mobilním zařízení poněkud nepohodlné jej používat, byť to není nemožné. Šířka bloku s informacemi je natolik velká, že je nutné horizontálního rolování při čtení textu, což se považuje z hlediska použitelnosti webové stránky za velmi negativní \parencite{nn2005scrollbar, richards2004web}. Reprezentace grafem je vzhledem k ovládání, které používá, ještě hůře použitelná. Dotyk prstem do plochy s vykresleným grafem je totiž zároveň interpretován jako rolování celé stránky a zároveň jako tažení plátna s grafem do stran, které je běžně prováděno tažením myší po plátně. Přibližování a oddalování grafu, nikoliv celé stránky, v testovacím prostředí nebylo možné vůbec, ale vzhledem k vlastnostem této funkce popsaným výše to použitelnost nijak neomezuje. Co v mobilním testovacím prostředí v podstatě nefungovalo, byly informační bubliny u slov, jež se normálně zobrazují nad slovy; zde se zobrazovaly zcela mimo inkriminované slovo a částečně mimo zobrazovanou plochu.
+					Rozhraní je neresponsivní, takže je na mobilním zařízení poněkud nepohodlné jej používat, byť to není nemožné. Šířka bloku s informacemi je natolik velká, že je nutné horizontálního rolování při čtení textu, což se považuje z hlediska použitelnosti webové stránky za velmi negativní \parencite{nn2005scrollbar, richards2004web}. Reprezentace grafem je vzhledem k ovládání, které používá, ještě hůře použitelná. Dotyk prstem do plochy s vykresleným grafem je totiž zároveň interpretován jako rolování celé stránky a zároveň jako tažení plátna s grafem do stran, které je běžně prováděno tažením myší po plátně. Přibližování a oddalování grafu, nikoliv celé stránky, v testovacím prostředí nebylo možné vůbec, ale vzhledem k vlastnostem této funkce popsaným výše to použitelnost nijak neomezuje. Co v mobilním testovacím prostředí v podstatě nefungovalo, byly informační bubliny u slov, jež se normálně zobrazují nad slovy; zde se zobrazovaly zcela mimo inkriminované slovo a částečně mimo zobrazovanou plochu.
 
-				Oproti základnímu rozhraní WordNet Search 3.1 přináší toto rozhraní přehlednější textovou reprezentaci dat spojenou s vizualizací vztahů vyhledaného synsetu. Textové rozhraní však zobrazuje poněkud omezené množství informací z wordnetu a soustřeďuje se především na data ze slovníku Referentie Bestand Nederlands. Vztahy mezi slovy jsou zobrazovány pouze v grafické reprezentaci dat, což vzhledem k její nepříliš vysoké použitelnosti na mobilních zařízeních s menší obrazovkou může být omezující. Rozhraní uchovává svůj stav podrobně v URL a umožňuje jej z ní plně obnovit.
+					Oproti základnímu rozhraní WordNet Search 3.1 přináší toto rozhraní přehlednější textovou reprezentaci dat spojenou s vizualizací vztahů vyhledaného synsetu. Textové rozhraní však zobrazuje poněkud omezené množství informací z wordnetu a soustřeďuje se především na data ze slovníku Referentie Bestand Nederlands. Vztahy mezi slovy jsou zobrazovány pouze v grafické reprezentaci dat, což vzhledem k její nepříliš vysoké použitelnosti na mobilních zařízeních s menší obrazovkou může být omezující. Rozhraní uchovává svůj stav podrobně v URL a umožňuje jej z ní plně obnovit.
 
 
-			\section{WordVis}
-			\label{vis:wordvis}
+				\subsection{WordVis}
+				\label{vis:wordvis}
 
-				WordVis je rozhraní zaměřené na vizualizaci dat princetonského WordNetu grafem. Sestává z vyhledávacího pole, levého sloupce s výběrem synsetů a z plátna, na němž je vykreslen graf vztahů zvoleného synsetu nebo slovní formy. 
+					WordVis je rozhraní zaměřené na vizualizaci dat princetonského WordNetu grafem. Sestává z vyhledávacího pole, levého sloupce s výběrem synsetů a z plátna, na němž je vykreslen graf vztahů zvoleného synsetu nebo slovní formy. 
 
-				Ačkoliv to na první pohled uživateli nemusí být zřejmé, vizualizace funguje ve dvou režimech. Prvním je zobrazení slovní formy a synsetů, v nichž se tato slovní forma vyskytuje, druhé je zobrazení synsetu jako centrální jednotky a vztahů a slovních forem, které k danému synsetu patří. První zobrazení je užíváno například při prvotním zobrazení výsledků hledání. Vizualizace zobrazí ve středu grafu vyhledanou slovní formu a připojí k ní nepojmenovanými hranami synsety, jež danou slovní formu obsahují. Pokud pak uživatel zvolí kliknutím myší některý konkrétní synset, zobrazí se ve středu vizualizace jeho značka, k níž jsou připojeny pojmenovanými hranami představujícími sémantické vztahy další synsety. Stejně jako v prvním zobrazení, i v tomto se slovní formy náležející k určitému synsetu připojují nepojmenovanými hranami jako textové uzly. Pokud jedna slovní forma náleží k více synsetům (např. substantivum \ex{bicycle} a sloveso \ex{bicycle}), je v grafu její textový uzel pouze jednou a vedou od něj dvě nepojmenované hrany k náležitým synsetům. 
+					Ačkoliv to na první pohled uživateli nemusí být zřejmé, vizualizace funguje ve dvou režimech. Prvním je zobrazení slovní formy a synsetů, v nichž se tato slovní forma vyskytuje, druhé je zobrazení synsetu jako centrální jednotky a vztahů a slovních forem, které k danému synsetu patří. První zobrazení je užíváno například při prvotním zobrazení výsledků hledání. Vizualizace zobrazí ve středu grafu vyhledanou slovní formu a připojí k ní nepojmenovanými hranami synsety, jež danou slovní formu obsahují. Pokud pak uživatel zvolí kliknutím myší některý konkrétní synset, zobrazí se ve středu vizualizace jeho značka, k níž jsou připojeny pojmenovanými hranami představujícími sémantické vztahy další synsety. Stejně jako v prvním zobrazení, i v tomto se slovní formy náležející k určitému synsetu připojují nepojmenovanými hranami jako textové uzly. Pokud jedna slovní forma náleží k více synsetům (např. substantivum \ex{bicycle} a sloveso \ex{bicycle}), je v grafu její textový uzel pouze jednou a vedou od něj dvě nepojmenované hrany k náležitým synsetům. 
 
-				Hrany mezi synsety jsou orientované (znázorněné jako šipky) a k jejich pojmenování zvolil autor sémantické významy daných vztahů, tedy např. hyperonymie je značena slovem \textit{is}\footnote{angl. je}; např. \ex{apple tree \textit{is} fruit tree}\footnote{angl. \ex{jabloň \textit{je} ovocný strom}}.
+					Hrany mezi synsety jsou orientované (znázorněné jako šipky) a k jejich pojmenování zvolil autor sémantické významy daných vztahů, tedy např. hyperonymie je značena slovem \textit{is}\footnote{angl. je}; např. \ex{apple tree \textit{is} fruit tree}\footnote{angl. \ex{jabloň \textit{je} ovocný strom}}.
 
-				Vyhledávací formulář umožňuje filtrování výsledků hledání podle slovních druhů a typů vztahu. Graf je navíc aktualizován v reálném čase podle toho, jak jsou podmínky filtrování uživatelem měněny. Nevýhodou však je absence funkcí \textit{vybrat vše} a \textit{nevybrat nic}, která je citelná zvláště v případě, že uživatel chce vybrat pouze jeden druh relace (kterých je mnoho, tudíž odebrání všech relací z výběru kromě jedné může být časově náročné). Hledání také nabízí funkci napovídání poté, co uživatel zadá několik znaků z počátku slova. To umožňuje vybrat hledané slovo z nabídky a ušetřit několik úhozů, což je zvláště užitečné u delších slov či pro uživatele, který nevyhledává ve svém rodném jazyce a není si jist pravopisem hledaného slova.
+					Vyhledávací formulář umožňuje filtrování výsledků hledání podle slovních druhů a typů vztahu. Graf je navíc aktualizován v reálném čase podle toho, jak jsou podmínky filtrování uživatelem měněny. Nevýhodou však je absence funkcí \textit{vybrat vše} a \textit{nevybrat nic}, která je citelná zvláště v případě, že uživatel chce vybrat pouze jeden druh relace (kterých je mnoho, tudíž odebrání všech relací z výběru kromě jedné může být časově náročné). Hledání také nabízí funkci napovídání poté, co uživatel zadá několik znaků z počátku slova. To umožňuje vybrat hledané slovo z nabídky a ušetřit několik úhozů, což je zvláště užitečné u delších slov či pro uživatele, který nevyhledává ve svém rodném jazyce a není si jist pravopisem hledaného slova.
 
-				\begin{figure}[h]
-					\centering
-					\includegraphics[width=1.0\textwidth]{wordvis.png}
-					\caption{Ukázka rozhraní WordVis (po zvolení konkrétního vyhledaného synsetu)}
-					\label{fig:wordvis}
-				\end{figure}
+					\begin{figure}[h]
+						\centering
+						\includegraphics[width=1.0\textwidth]{wordvis.png}
+						\caption{Ukázka rozhraní WordVis (po zvolení konkrétního vyhledaného synsetu)}
+						\label{fig:wordvis}
+					\end{figure}
 
-				Technologicky je vizualizace řešena javascriptovou knihovnou, jež vykresluje graf na plátně v HTML5, což je metoda generování grafiky na webových stránkách \parencite{w3schools2017htmlcanvas}. Uspořádání prvků na plátně je řešeno modelováním fyzikálních vlastností našeho světa. Jednotlivé uzly na plátně mají zadefinováno, že se navzájem odpuzují (podobně jako elektrony), naopak vazby mezi nimi fungují jako pružiny, jež mají nějakou ideální délku, v níž se snaží setrvávat. Díky těmto dvěma soupeřícím silám jsou body na plátně rozmístěny tak, aby využívaly prostor co nejúčinněji. Hrany navíc mohou mít zadanou preferovanou orientaci, což umožňuje orientovat například hyperonymní synsety směrem nahoru, hyponymní směrem dolů, etc. \parencite{wordvis2010vercruysse} Vzhledem k tomu, že však zřejmě v prostředí neexistuje žádná penalizace za křížení hran, je relativně běžné, že se hrany překříží. To značně snižuje přehlednost výsledného grafu, vzhledem k tomu, že pak není jasné, zda jsou hrany překřízeny z nějakého hlubšího důvodu (například jedna slovní forma náležející k více synsetům), či nikoliv. 
+					Technologicky je vizualizace řešena javascriptovou knihovnou, jež vykresluje graf na plátně v HTML5, což je metoda generování grafiky na webových stránkách \parencite{w3schools2017htmlcanvas}. Uspořádání prvků na plátně je řešeno modelováním fyzikálních vlastností našeho světa. Jednotlivé uzly na plátně mají zadefinováno, že se navzájem odpuzují (podobně jako elektrony), naopak vazby mezi nimi fungují jako pružiny, jež mají nějakou ideální délku, v níž se snaží setrvávat. Díky těmto dvěma soupeřícím silám jsou body na plátně rozmístěny tak, aby využívaly prostor co nejúčinněji. Hrany navíc mohou mít zadanou preferovanou orientaci, což umožňuje orientovat například hyperonymní synsety směrem nahoru, hyponymní směrem dolů, etc. \parencite{wordvis2010vercruysse} Vzhledem k tomu, že však zřejmě v prostředí neexistuje žádná penalizace za křížení hran, je relativně běžné, že se hrany překříží. To značně snižuje přehlednost výsledného grafu, vzhledem k tomu, že pak není jasné, zda jsou hrany překřízeny z nějakého hlubšího důvodu (například jedna slovní forma náležející k více synsetům), či nikoliv. 
 
-				Knihovna vykreslující graf jej umožňuje uživateli modifikovat tažením jednotlivých uzlů myší, prodlužovat či zkracovat hrany a podobně. V aplikaci pro zobrazení dat z WordNetu toto pravděpodobně nehraje příliš zásadní roli a přítomnost této funkcionality je zřejmě dána tím, že knihovna ji zajišťující je určena pro co nejširší použití a snaží se být univerzální. \parencite{wordvis2010vercruysse}
+					Knihovna vykreslující graf jej umožňuje uživateli modifikovat tažením jednotlivých uzlů myší, prodlužovat či zkracovat hrany a podobně. V aplikaci pro zobrazení dat z WordNetu toto pravděpodobně nehraje příliš zásadní roli a přítomnost této funkcionality je zřejmě dána tím, že knihovna ji zajišťující je určena pro co nejširší použití a snaží se být univerzální. \parencite{wordvis2010vercruysse}
 
-				Rozhraní je neresponsivní a na mobilním zařízení je nutné k zajištění čitelnosti textů na stránce obsah přiblížit, což vede k nutnosti rolovaní jak vertikálnímu, tak horizontálnímu. To má opět dopad na použitelnost webové stránky minimálně na mobilních zařízeních s malou obrazovkou \parencite{nn2005scrollbar, richards2004web}. Také není možné využít funkcionality přesouvání prvků na plátně, což ale při použití na vizualizaci dat z wordnetu není velkým omezením funkčnosti. Co se udržování stavu aplikace v URL týče, je implementováno pouze čtení parametru {\tt q}\footnote{odvozeno od \textit{query}, angl. \textit{dotaz}}, zpětně do něj ale už zapisováno není. Odkazy na synsety na levé straně tento parametr obsahují, stejně tak jej lze zkopírovat přes kontextové menu pro každý uzel v rozhraní, takže teoreticky je možné obnovit kterýkoliv stav aplikace, byť dostupnost této funkcionality není příliš intuitivní.
+					Rozhraní je neresponsivní a na mobilním zařízení je nutné k zajištění čitelnosti textů na stránce obsah přiblížit, což vede k nutnosti rolovaní jak vertikálnímu, tak horizontálnímu. To má opět dopad na použitelnost webové stránky minimálně na mobilních zařízeních s malou obrazovkou \parencite{nn2005scrollbar, richards2004web}. Také není možné využít funkcionality přesouvání prvků na plátně, což ale při použití na vizualizaci dat z wordnetu není velkým omezením funkčnosti. Co se udržování stavu aplikace v URL týče, je implementováno pouze čtení parametru {\tt q}\footnote{odvozeno od \textit{query}, angl. \textit{dotaz}}, zpětně do něj ale už zapisováno není. Odkazy na synsety na levé straně tento parametr obsahují, stejně tak jej lze zkopírovat přes kontextové menu pro každý uzel v rozhraní, takže teoreticky je možné obnovit kterýkoliv stav aplikace, byť dostupnost této funkcionality není příliš intuitivní.
 
-				Přínos tohoto rozhraní tkví především v relativně přehledné vizualizaci dat princetonského WordNetu, nutno však podotknout, že pro některé své vlastnosti nemusí pro nezkušeného uživatele být zpočátku zcela jednoduše použitelné a dobře přehledné (např. pro zmíněné křížení hran).
+					Přínos tohoto rozhraní tkví především v relativně přehledné vizualizaci dat princetonského WordNetu, nutno však podotknout, že pro některé své vlastnosti nemusí pro nezkušeného uživatele být zpočátku zcela jednoduše použitelné a dobře přehledné (např. pro zmíněné křížení hran).
 
-				Na knihovně, na níž je toto rozhraní postaveno, stojí ještě některá další rozhraní k princetonskému WordNetu, například VisuWords\footnote{\url{http://www.visuwords.com/}, \url{https://www.linux.com/news/visuwords-wordnet-goes-graphical}} či Visual Thesaurus\footnote{\url{https://www.visualthesaurus.com}}. Ta nebyla do hodnocení v této práci zahrnuta, protože jsou funkčně podobná rozhraní WordVis.
+					Na knihovně, na níž je toto rozhraní postaveno, stojí ještě některá další rozhraní k princetonskému WordNetu, například VisuWords\footnote{\url{http://www.visuwords.com/}, \url{https://www.linux.com/news/visuwords-wordnet-goes-graphical}} či Visual Thesaurus\footnote{\url{https://www.visualthesaurus.com}}. Ta nebyla do hodnocení v této práci zahrnuta, protože jsou funkčně podobná rozhraní WordVis.
 
-			\section{sloWTool}
-			\label{vis:slowtool}
+				\subsection{sloWTool}
+				\label{vis:slowtool}
 
-				Rozhraní sloWTool bylo vyvinuto pro potřeby slovinského wordnetu, jenž je založen na princetonském WordNetu a vznikl skombinováním několika zdrojů, například Wikipedie, dvojjazyčných slovníků či paralelních korpusů. Je víceúčelovým nástrojem, který umožňuje textovou reprezentaci, vizualizaci a editaci dat z wordnetu. V době psaní této práce v něm bylo podle rozbalovací nabídky vedle vyhledávacího pole možno pracovat s anglickým, francouzským, polským a slovinským wordnetem, testováno bylo rozhraní s anglickým. Tvůrcům rozhraní sloužilo k revizím slovinského wordnetu po jeho rozšiřování automatickými nástroji. \parencite{fivser2012slownet} Cílem při vývoji tohoto rozhraní podle \textcite{fivser2011visualizing} bylo překonat nevýhody tehdejších dostupných rozhraní a vyvinout nástroj, který by mezi jiným umožňoval prohlížení i editaci, spolupráci mnoha autorů včetně anonymních editací (záměr tvůrců byl využít náhodných návštěvníků k opravování chyb, jež ve wordnetu naleznou) či možnost jednoduché registrace uživatelů. Mezi dalšími podmínkami byla možnost přidávání dalších wordnetů do systému a s tím spojená schopnost rozhraní zobrazovat vícejazyčná data. V neposlední řadě se autoři v kontextu tehdejších nástrojů také snažili zaměřit na platformní nezávislost a přenositelnost rozhraní. 
+					Rozhraní sloWTool bylo vyvinuto pro potřeby slovinského wordnetu, jenž je založen na princetonském WordNetu a vznikl skombinováním několika zdrojů, například Wikipedie, dvojjazyčných slovníků či paralelních korpusů. Je víceúčelovým nástrojem, který umožňuje textovou reprezentaci, vizualizaci a editaci dat z wordnetu. V době psaní této práce v něm bylo podle rozbalovací nabídky vedle vyhledávacího pole možno pracovat s anglickým, francouzským, polským a slovinským wordnetem, testováno bylo rozhraní s anglickým. Tvůrcům rozhraní sloužilo k revizím slovinského wordnetu po jeho rozšiřování automatickými nástroji. \parencite{fivser2012slownet} Cílem při vývoji tohoto rozhraní podle \textcite{fivser2011visualizing} bylo překonat nevýhody tehdejších dostupných rozhraní a vyvinout nástroj, který by mezi jiným umožňoval prohlížení i editaci, spolupráci mnoha autorů včetně anonymních editací (záměr tvůrců byl využít náhodných návštěvníků k opravování chyb, jež ve wordnetu naleznou) či možnost jednoduché registrace uživatelů. Mezi dalšími podmínkami byla možnost přidávání dalších wordnetů do systému a s tím spojená schopnost rozhraní zobrazovat vícejazyčná data. V neposlední řadě se autoři v kontextu tehdejších nástrojů také snažili zaměřit na platformní nezávislost a přenositelnost rozhraní. 
 
-				Rozložení stránky je vzdáleně podobné tomu u základního oficiálního rozhraní k princetonskému WordNetu, a to v tom smyslu, že neobsahuje relativně rozšířený levý sloupec na výběr synsetů, ale jednotlivé významy, které jsou nalezeny po zadaní hledané slovní formy do vyhledávacího pole, seskupuje do sekcí v hlavním bloku spolu s textovou reprezentací dat. Vyhledávací pole podporuje napovídání v databázi existujících slovních forem, podobně jako je to zařízeno v rozhraní WordVis, což může usnadnit práci s vyhledáváním. V textové reprezentaci rozhraní zobrazuje zřejmě všechny dostupné informace o synsetech, tedy se chová podobně jako základní rozhraní princetonského WordNetu, je-li nastaveno tak, aby nefiltrovalo žádné informce. U jednotlivých vztahů, v nichž je daný synset přítomen, pak je možné kliknutím na ikonu šipky otevřít synset nacházející se pomyslně na druhé straně daného vztahu (např. \ex{bicykle}\footnote{angl. \ex{cyklistické kolo}} má meronymum \ex{saddle}\footnote{angl. \ex{sedlo}}, takže lze otevřít detail synsetu \ex{saddle}). To trpí stejným neduhem, jako základní rozhraní princetonského WordNetu, to jest, že lze ve smyčce otevírat nadřazený a podřazený synset a stále se zanořovat do smyčky hlouběji. To je nejen nesmyslné, ale zároveň to v implementaci tohoto rozhraní postupně může začít zpomalovat rychlost reakcí prohlížeče pro nadměrné množství uzlů v DOM\footnote{document object model, model objektů v dokumentu}.
+					Rozložení stránky je vzdáleně podobné tomu u základního oficiálního rozhraní k princetonskému WordNetu, a to v tom smyslu, že neobsahuje relativně rozšířený levý sloupec na výběr synsetů, ale jednotlivé významy, které jsou nalezeny po zadaní hledané slovní formy do vyhledávacího pole, seskupuje do sekcí v hlavním bloku spolu s textovou reprezentací dat. Vyhledávací pole podporuje napovídání v databázi existujících slovních forem, podobně jako je to zařízeno v rozhraní WordVis, což může usnadnit práci s vyhledáváním. V textové reprezentaci rozhraní zobrazuje zřejmě všechny dostupné informace o synsetech, tedy se chová podobně jako základní rozhraní princetonského WordNetu, je-li nastaveno tak, aby nefiltrovalo žádné informce. U jednotlivých vztahů, v nichž je daný synset přítomen, pak je možné kliknutím na ikonu šipky otevřít synset nacházející se pomyslně na druhé straně daného vztahu (např. \ex{bicykle}\footnote{angl. \ex{cyklistické kolo}} má meronymum \ex{saddle}\footnote{angl. \ex{sedlo}}, takže lze otevřít detail synsetu \ex{saddle}). To trpí stejným neduhem, jako základní rozhraní princetonského WordNetu, to jest, že lze ve smyčce otevírat nadřazený a podřazený synset a stále se zanořovat do smyčky hlouběji. To je nejen nesmyslné, ale zároveň to v implementaci tohoto rozhraní postupně může začít zpomalovat rychlost reakcí prohlížeče pro nadměrné množství uzlů v DOM\footnote{document object model, model objektů v dokumentu}.
 
-				Po levé straně se nachází lišta s ikonami odkazujícími na dalšími moduly, které se otevírají v emulaci nových oken (v témže panelu webového prohlížeče). Mezi tyto moduly patří mimo jiné i pokročilé hledání, vizualizace dat a nápověda. 
+					Po levé straně se nachází lišta s ikonami odkazujícími na dalšími moduly, které se otevírají v emulaci nových oken (v témže panelu webového prohlížeče). Mezi tyto moduly patří mimo jiné i pokročilé hledání, vizualizace dat a nápověda. 
 
-				Pokročilé hledání funguje podobně jako u ostatních rozhraní, tedy umožňuje používat zástupné znaky (\ex{*} a \ex{?}), filtrovat slovní druhy, nebo vyhledávat v jiných polích než jsou slovní formy patřící do synsetů (například v definicích či podle identifikátoru synsetu). 
+					Pokročilé hledání funguje podobně jako u ostatních rozhraní, tedy umožňuje používat zástupné znaky (\ex{*} a \ex{?}), filtrovat slovní druhy, nebo vyhledávat v jiných polích než jsou slovní formy patřící do synsetů (například v definicích či podle identifikátoru synsetu). 
 
-				Vizualizace, modul z hlediska této práce nejpodstatnější, je určen k zobrazení grafické interpretace vztahů vyhledanýho synsetů. Na rozdíl od ostatních rozhraní tato vizualizace zobrazuje všechny vyhledané synsety (s kořenem grafu označeným červeně a s textem hledaného výrazu) a neumožňuje jejich další filtrování v zobrazení. Také nepodporuje kromě přesouvání prvků na plátně a zvýraznění příslušného synsetu v hlavním bloku textové reprezentace poté, co je na něj ve vizualizaci kliknuto, zřejmě žádnou formu interakce. Pro srovnání, u ostatních vizualizací lze narazit například na informační bubliny, jež zobrazí podrobnosti jednoho prvku. Pokud uživatel potřebuje zobrazit vizualizaci jednoho konkrétního synsetu, je nucen použít pokročilé vyhledávání a vyhledat daný synset nejlépe podle jeho identifikátoru, který je vždy unikátní. Vizualizace je zatížena také dalšími problémy, jako jsou nedostatečné možnosti přizpůsobování velikosti zobrazovací plochy (zvětšování okna je podporováno, ale plátno s grafem zůstává konstantně velké), občasnou desynchronizací obsahu vizualizace s výsledky hledání, náročností na uživatelovo technické vybavení počítače (především výpočetní jednotku) a značnou nepřehledností způsobenou nedostatečně či nevhodně řešenou penalizací překrývání prvků na zobrazovací ploše. 
+					Vizualizace, modul z hlediska této práce nejpodstatnější, je určen k zobrazení grafické interpretace vztahů vyhledanýho synsetů. Na rozdíl od ostatních rozhraní tato vizualizace zobrazuje všechny vyhledané synsety (s kořenem grafu označeným červeně a s textem hledaného výrazu) a neumožňuje jejich další filtrování v zobrazení. Také nepodporuje kromě přesouvání prvků na plátně a zvýraznění příslušného synsetu v hlavním bloku textové reprezentace poté, co je na něj ve vizualizaci kliknuto, zřejmě žádnou formu interakce. Pro srovnání, u ostatních vizualizací lze narazit například na informační bubliny, jež zobrazí podrobnosti jednoho prvku. Pokud uživatel potřebuje zobrazit vizualizaci jednoho konkrétního synsetu, je nucen použít pokročilé vyhledávání a vyhledat daný synset nejlépe podle jeho identifikátoru, který je vždy unikátní. Vizualizace je zatížena také dalšími problémy, jako jsou nedostatečné možnosti přizpůsobování velikosti zobrazovací plochy (zvětšování okna je podporováno, ale plátno s grafem zůstává konstantně velké), občasnou desynchronizací obsahu vizualizace s výsledky hledání, náročností na uživatelovo technické vybavení počítače (především výpočetní jednotku) a značnou nepřehledností způsobenou nedostatečně či nevhodně řešenou penalizací překrývání prvků na zobrazovací ploše. 
 
-				\begin{figure}[h]
-					\centering
-					\includegraphics[width=1.0\textwidth]{slowtool.png}
-					\caption{Ukázka rozhraní sloWTool (s otevřenou grafickou vizualizací)}
-					\label{fig:slowtool}
-				\end{figure}
+					\begin{figure}[h]
+						\centering
+						\includegraphics[width=1.0\textwidth]{slowtool.png}
+						\caption{Ukázka rozhraní sloWTool (s otevřenou grafickou vizualizací)}
+						\label{fig:slowtool}
+					\end{figure}
 
-				Rozhraní je svými možnostmi zprostředkování informací z wordnetu poměrně inovativní, reálná použitelnost ovšem trpí zmíněnými nedostatky a odchyluje jej tím od původního záměru autorů, který minimálně zčásti zůstává nenaplněn. Je sice pravdou, že \textit{s aplikací je možné pracovat v každém moderním přihlížeči, ať už na počítači, tabletu, či dokonce mobilním telefonu} \parencite{fivser2011visualizing}, nutno ale podotknout, že rozhraní je zcela neresponsivní a jeho ovládací prvky jsou zcela nevhodné pro ovládání na menší obrazovce a dotykem.
+					Rozhraní je svými možnostmi zprostředkování informací z wordnetu poměrně inovativní, reálná použitelnost ovšem trpí zmíněnými nedostatky a odchyluje jej tím od původního záměru autorů, který minimálně zčásti zůstává nenaplněn. Je sice pravdou, že \textit{s aplikací je možné pracovat v každém moderním přihlížeči, ať už na počítači, tabletu, či dokonce mobilním telefonu} \parencite{fivser2011visualizing}, nutno ale podotknout, že rozhraní je zcela neresponsivní a jeho ovládací prvky jsou zcela nevhodné pro ovládání na menší obrazovce a dotykem.
 
-				Stav aplikace lze do \td{prepsat cast o obnovovani obsahu, je to uz cele trochu slozitejsi}jisté míry uložit pomocí odkazu \textit{Link}, který vede na adresu, z níž lze obnovit hledané slovo (konfiguraci otevřených nástrojů však už nikoliv).
+					Stav aplikace lze do \td{prepsat cast o obnovovani obsahu, je to uz cele trochu slozitejsi}jisté míry uložit pomocí odkazu \textit{Link}, který vede na adresu, z níž lze obnovit hledané slovo (konfiguraci otevřených nástrojů však už nikoliv).
 
-				Navzdory všem nedostatkům této aplikace je dlužno uznat, že se svou univerzalitou a funkcionalitou značně přibližuje rozhraní, které je praktickým cílem i této práce.
+					Navzdory všem nedostatkům této aplikace je dlužno uznat, že se svou univerzalitou a funkcionalitou značně přibližuje rozhraní, které je praktickým cílem i této práce.
 
-				SloWtool bylo vytvořeno pod licencí Creative Commons\footnote{\url{https://creativecommons.org/licenses/by-nc-sa/3.0/}} a jeho zdrojový kód je dostupný na platformě pro aplikace s otevřeným zdrojem Launchpad\footnote{\url{https://launchpad.net/slowtool}}.
+					SloWtool bylo vytvořeno pod licencí Creative Commons\footnote{\url{https://creativecommons.org/licenses/by-nc-sa/3.0/}} a jeho zdrojový kód je dostupný na platformě pro aplikace s otevřeným zdrojem Launchpad\footnote{\url{https://launchpad.net/slowtool}}.
 
-			\section{BabelNetXplorer}
-			\label{vis:babel}
+				\subsection{BabelNetXplorer}
+				\label{vis:babel}
 
-				BabelNet je rozsáhlý projekt vícejazykové sémantické sítě, který čerpá data z více zdrojů. Záměrem autorů bylo při tvorbě této sémantické sítě 
-				% poskytnout vědecké komunitě i široké veřejnosti volně dostupný multilinguální zdroj provázaných informací a soubor nástrojů, které umožní s těmito informacemi pracovat. 
-				eliminovat základní faktory definující nevýhody tehdejších (a potažmo i aktuálních) mezinárodních projektů zabývajících se sémantickými sítěmi. Těmi jsou manuální tvorba dat, které sítě konstituují, a s tím související nerovnoměrnost množství dat přes jednotlivé jazyky. Jazyky s vysokou hustotou zdrojů, jakým je například angličtina, tak ve výsledku mají více dat i v sémantické síti. Autoři BabelNetu se pokusili tento problém překonat kombinací několika metod, jejichž společným prvkem je automatizace. Informace o významech jsou v BabelNetu doplňovány z Wikipedie, která je podle autorů díky mnohačetným zásahům expertů z různých oborů ve výsledku přesným a informačně bohatým zdrojem. Druhá důležitá metoda, zaměřující se především na nerovnoměrnost dat v různých jazycích, je automatický překlad zdrojů. \parencite{navigli2010babelnet}
+					BabelNet je rozsáhlý projekt vícejazykové sémantické sítě, který čerpá data z více zdrojů. Záměrem autorů bylo při tvorbě této sémantické sítě 
+					% poskytnout vědecké komunitě i široké veřejnosti volně dostupný multilinguální zdroj provázaných informací a soubor nástrojů, které umožní s těmito informacemi pracovat. 
+					eliminovat základní faktory definující nevýhody tehdejších (a potažmo i aktuálních) mezinárodních projektů zabývajících se sémantickými sítěmi. Těmi jsou manuální tvorba dat, které sítě konstituují, a s tím související nerovnoměrnost množství dat přes jednotlivé jazyky. Jazyky s vysokou hustotou zdrojů, jakým je například angličtina, tak ve výsledku mají více dat i v sémantické síti. Autoři BabelNetu se pokusili tento problém překonat kombinací několika metod, jejichž společným prvkem je automatizace. Informace o významech jsou v BabelNetu doplňovány z Wikipedie, která je podle autorů díky mnohačetným zásahům expertů z různých oborů ve výsledku přesným a informačně bohatým zdrojem. Druhá důležitá metoda, zaměřující se především na nerovnoměrnost dat v různých jazycích, je automatický překlad zdrojů. \parencite{navigli2010babelnet}
 
-				BabelNetXplorer je webové grafické rozhraní vytvořené pro vizualizaci dat z BabelNetu. \textcite{navigli2012babelnetxplorer} uvádějí, že rozhraní slouží k vizualizaci vztahů pro slova nalezená v BabelNetu a ilustrují vzhled rozhraní dvěma snímky obrazovky. V době vzniku tohoto textu však rozhraní BabelNetXploreru už vypadá výrazně odlišně, což je vzhledem k tomu, že od vzniku práce \textcite{navigli2012babelnetxplorer} uběhlo pět let, pochopitelné. V této práci bude z evidentních důvodů rozebrána použitelnost a funkcionalita současné verze.
+					BabelNetXplorer je webové grafické rozhraní vytvořené pro vizualizaci dat z BabelNetu. \textcite{navigli2012babelnetxplorer} uvádějí, že rozhraní slouží k vizualizaci vztahů pro slova nalezená v BabelNetu a ilustrují vzhled rozhraní dvěma snímky obrazovky. V době vzniku tohoto textu však rozhraní BabelNetXploreru už vypadá výrazně odlišně, což je vzhledem k tomu, že od vzniku práce \textcite{navigli2012babelnetxplorer} uběhlo pět let, pochopitelné. V této práci bude z evidentních důvodů rozebrána použitelnost a funkcionalita současné verze.
 
-				Rozhraní obsahuje klasicky vyhledávací pole, vedle něhož se nacházejí rozbalovací nabídky, v nichž si uživatel může vybrat jazyk, v němž chce vyhledávat, a do kterého jazyke chce slovo případně přeložit. Po úspěšném dokončení vyhledávání jsou uživateli zobrazeny odkazy na jednotlivé synsety v seznamu, který není nepodobný ostatním rozhraním. Podstatným rozdílem však je, že se v něm zobrazují i ilustrační obrázky, které, byť nejsouce vždy velmi informativní, mohou napomoci uživateli v orientaci, který synset jej zajímá. 
+					Rozhraní obsahuje klasicky vyhledávací pole, vedle něhož se nacházejí rozbalovací nabídky, v nichž si uživatel může vybrat jazyk, v němž chce vyhledávat, a do kterého jazyke chce slovo případně přeložit. Po úspěšném dokončení vyhledávání jsou uživateli zobrazeny odkazy na jednotlivé synsety v seznamu, který není nepodobný ostatním rozhraním. Podstatným rozdílem však je, že se v něm zobrazují i ilustrační obrázky, které, byť nejsouce vždy velmi informativní, mohou napomoci uživateli v orientaci, který synset jej zajímá. 
 
-				V detailu synsetu, který se zobrazí po kliknutí na příslušný odkaz (kterým je vždy nadpis každé položky zmíněného seznamu), je uživateli zobrazen seznam slovních forem, které k danému synsetu náleží, jeho definice (s možností zobrazit i jeho definice nejen z daného wordnetu, v němž uživatel vyhledává, ale i z Wikipedie a dalších zdrojů), jeho případný překlad a sémantické vztahy, do nichž tento synset náleží. K disposici má uživatel i možnost zobrazit si daný synset paralelně v dalších jazycích pomocí nabídky pod vyhledávacím polem (viditelné na snímku obrazovky \ref{fig:babelxplorer} na straně \pageref{fig:babelxplorer}). Níže na stránce jsou uživateli prezentovány informace z dalších zdrojů napojených na BabelNet, jako jsou obrázky, překlady, odkazy na Wikipedii, etc. a odkaz na vizuální reprezentaci sémantických vztahů otevřeného synsetu. 
+					V detailu synsetu, který se zobrazí po kliknutí na příslušný odkaz (kterým je vždy nadpis každé položky zmíněného seznamu), je uživateli zobrazen seznam slovních forem, které k danému synsetu náleží, jeho definice (s možností zobrazit i jeho definice nejen z daného wordnetu, v němž uživatel vyhledává, ale i z Wikipedie a dalších zdrojů), jeho případný překlad a sémantické vztahy, do nichž tento synset náleží. K disposici má uživatel i možnost zobrazit si daný synset paralelně v dalších jazycích pomocí nabídky pod vyhledávacím polem (viditelné na snímku obrazovky \ref{fig:babelxplorer} na straně \pageref{fig:babelxplorer}). Níže na stránce jsou uživateli prezentovány informace z dalších zdrojů napojených na BabelNet, jako jsou obrázky, překlady, odkazy na Wikipedii, etc. a odkaz na vizuální reprezentaci sémantických vztahů otevřeného synsetu. 
 
-				\begin{figure}[h]
-					\centering
-					\includegraphics[width=1.0\textwidth]{babelxplorer.png}
-					\caption{Ukázka rozhraní BabelXplorer (detail synsetu v textové reprezentaci)}
-					\label{fig:babelxplorer}
-				\end{figure}
+					\begin{figure}[h]
+						\centering
+						\includegraphics[width=1.0\textwidth]{babelxplorer.png}
+						\caption{Ukázka rozhraní BabelXplorer (detail synsetu v textové reprezentaci)}
+						\label{fig:babelxplorer}
+					\end{figure}
 
-				Vizuální reprezentace je řešena tradičním hvězdicovitým grafem, který má dva režimy. Jeden zobrazuje vedle textových názvů jednotlivých synsetů přítomných v grafu i jejich zástupné obrázky, druhý je čistě textový a, nutno podotknout, značně přehlednější. Uzly reprezentující synsety jsou provázány barevně odlišenými hranami, kde barvy značí druh vztahu, který dva synsety spojuje. Uzly jsou klikatelné, přičemž po kliknutí na některý z příbuzných synsetů se zobrazí tento synset a opět hvězdicovitě další synsety, s nimiž je zkoumaný synset provázán vztahy. Při najetí korsorem myši na určitý synset se zobrazí jeho detail; tyto informační bubliny jsou však vázány na pozici kursoru myši a nelze tak kursorem najet do detailu tak, aby bylo možné kliknout na odkazy, které jsou v informační bublině obsaženy, a dostat se tak na textovou reprezentaci daného synsetu. Zdá se tedy, že není možné přejít z grafické reprezentace do textové.
+					Vizuální reprezentace je řešena tradičním hvězdicovitým grafem, který má dva režimy. Jeden zobrazuje vedle textových názvů jednotlivých synsetů přítomných v grafu i jejich zástupné obrázky, druhý je čistě textový a, nutno podotknout, značně přehlednější. Uzly reprezentující synsety jsou provázány barevně odlišenými hranami, kde barvy značí druh vztahu, který dva synsety spojuje. Uzly jsou klikatelné, přičemž po kliknutí na některý z příbuzných synsetů se zobrazí tento synset a opět hvězdicovitě další synsety, s nimiž je zkoumaný synset provázán vztahy. Při najetí korsorem myši na určitý synset se zobrazí jeho detail; tyto informační bubliny jsou však vázány na pozici kursoru myši a nelze tak kursorem najet do detailu tak, aby bylo možné kliknout na odkazy, které jsou v informační bublině obsaženy, a dostat se tak na textovou reprezentaci daného synsetu. Zdá se tedy, že není možné přejít z grafické reprezentace do textové.
 
-				Poněkud nešťastně je řešen design vizualizace, jelikož jednak je možné graf přibližovat a oddalovat pouze kolečkem myší (které je na mobilních telefonech samozřejmě nedostupné), a jednak pokud uživatel nenajede na konkrétní synset kursorem myši, graf se samovolně neustále otáčí, což ztěžuje orientaci v něm.
+					Poněkud nešťastně je řešen design vizualizace, jelikož jednak je možné graf přibližovat a oddalovat pouze kolečkem myší (které je na mobilních telefonech samozřejmě nedostupné), a jednak pokud uživatel nenajede na konkrétní synset kursorem myši, graf se samovolně neustále otáčí, což ztěžuje orientaci v něm.
 
-				Rozhraní všeobecně responsivní, textová reprezentace je dobře použitelná i na mobilním rozhraní s malou obrazovkou. Grafická reprezentace je však omezena na větší obrazovky, jelikož v ní není možné graf posouvat po obrazovce, a tudíž jeho značná část (byť se částěčně přizpůsobuje zobrazovací ploše zřejmě v závislosti na velikosti obrazovky zařízení) zůstává uživateli skryta. Pro dotyková zařízení také není vhodné spoléhání na přejetí myší přes uzel pro zobrazení informační bubliny, jelikož to na dotykových obrazovkách také není příliš dobře proveditelné (kvůli neschopnosti rozlišit kliknutí a \uv{přejetí kursorem}).
+					Rozhraní všeobecně responsivní, textová reprezentace je dobře použitelná i na mobilním rozhraní s malou obrazovkou. Grafická reprezentace je však omezena na větší obrazovky, jelikož v ní není možné graf posouvat po obrazovce, a tudíž jeho značná část (byť se částěčně přizpůsobuje zobrazovací ploše zřejmě v závislosti na velikosti obrazovky zařízení) zůstává uživateli skryta. Pro dotyková zařízení také není vhodné spoléhání na přejetí myší přes uzel pro zobrazení informační bubliny, jelikož to na dotykových obrazovkách také není příliš dobře proveditelné (kvůli neschopnosti rozlišit kliknutí a \uv{přejetí kursorem}).
 
-				V době vzniku této práce mělo rozhraní dvě verze, z nichž jedna byla označana jako \textit{živá beta}, druhá jako \textit{současná (3.7)}, avšak při testování nebyly zjištěny zásadní rozdíly mezi těmito verzemi. Nutno ovšem podotknout, že v testovacím prohlížeči na klasickém počítači vykazovala verze beta minoritní chyby v rozložení stránky.
+					V době vzniku této práce mělo rozhraní dvě verze, z nichž jedna byla označana jako \textit{živá beta}, druhá jako \textit{současná (3.7)}, avšak při testování nebyly zjištěny zásadní rozdíly mezi těmito verzemi. Nutno ovšem podotknout, že v testovacím prohlížeči na klasickém počítači vykazovala verze beta minoritní chyby v rozložení stránky.
 
-		\chapter{Vizulizace v aplikačním prostředí Java}
+			\section{Vizulizace v aplikačním prostředí Java}
 
-			Java je objektově orientovaný programovací jazyk, který je zaměřený na to, aby měl co nejméně závislostí na konkrétním operačním systému a technickém vybavení počítače, jak jen to je možné. To je výhodné zejména kvůli tzv. konceptu WORA (\textit{write once, run anywhere}, tedy \textit{napsat jednou, spustit kdekoliv}), protože to znamená, že skompilované programy napsané v Javě lze spustit na jakémkoliv stroji, který podporuje Javu. Takto skompilované programy se spouští v aplikačním prostředí zvaném Java Virtual Machine\footnote{angl. virtuální stroj Javy} (JVM), jež vytváří uniformní prostředí pro běh aplikací. Výhodou Javy tedy je velká přenositelnost programů v tomto jazyce napsaných, jelikož jednou skompilovaný kód lze spustit na různých operačních systémech a zařízeních. Nevýhodou je, že si uživatel, který chce program v Javě napsaný spustit, musí nainstalovat aplikační prostředí Javy (JVM). 
+				Java je objektově orientovaný programovací jazyk, který je zaměřený na to, aby měl co nejméně závislostí na konkrétním operačním systému a technickém vybavení počítače, jak jen to je možné. To je výhodné zejména kvůli tzv. konceptu WORA (\textit{write once, run anywhere}, tedy \textit{napsat jednou, spustit kdekoliv}), protože to znamená, že skompilované programy napsané v Javě lze spustit na jakémkoliv stroji, který podporuje Javu. Takto skompilované programy se spouští v aplikačním prostředí zvaném Java Virtual Machine\footnote{angl. virtuální stroj Javy} (JVM), jež vytváří uniformní prostředí pro běh aplikací. Výhodou Javy tedy je velká přenositelnost programů v tomto jazyce napsaných, jelikož jednou skompilovaný kód lze spustit na různých operačních systémech a zařízeních. Nevýhodou je, že si uživatel, který chce program v Javě napsaný spustit, musí nainstalovat aplikační prostředí Javy (JVM). 
 
-			\td{tenhle odstavec nemam ozdrojovan, je to pravda? viz zdroj za chvilku, neco tam o tom malo je}Java je velmi oblíbená pro vývoj aplikací, které fungují podle modelu klient--server, což je uspořádání, v němž data má uložená centrální server, k nemuž se připojují uživatelské klienty, odesílají mu své požadavky a uživatelům zobrazují vrácená data. \parencite[13]{gosling1995java} Na podobném principu může fungovat i rozhraní pro wordnet, pokud jsou data wordnetu uložena na serveru.
+				\td{tenhle odstavec nemam ozdrojovan, je to pravda? viz zdroj za chvilku, neco tam o tom malo je}Java je velmi oblíbená pro vývoj aplikací, které fungují podle modelu klient--server, což je uspořádání, v němž data má uložená centrální server, k nemuž se připojují uživatelské klienty, odesílají mu své požadavky a uživatelům zobrazují vrácená data. \parencite[13]{gosling1995java} Na podobném principu může fungovat i rozhraní pro wordnet, pokud jsou data wordnetu uložena na serveru.
 
-			Vizualizace vytvořené pro prostředí Java nemá příliš smysl hodnotit z hlediska responsivity, jelikož a priori nejsou vytvářena pro mobilní zařízení (až na výjimky, které nebylo možné zhodnotit z důvodu jejich nedostupnosti v době vzniku této práce). Co však bráno v potaz být může, je jejich schopnost přizpůsobit se velikosti obrazovky. Jakkoliv tento parametr může se zdát být samozřejmým, ukázalo se, že ne všechna rozhraní jsou na různé velikosti obrazovek osobních počítačů přizpůsobena.
+				Vizualizace vytvořené pro prostředí Java nemá příliš smysl hodnotit z hlediska responsivity, jelikož a priori nejsou vytvářena pro mobilní zařízení (až na výjimky, které nebylo možné zhodnotit z důvodu jejich nedostupnosti v době vzniku této práce). Co však bráno v potaz být může, je jejich schopnost přizpůsobit se velikosti obrazovky. Jakkoliv tento parametr může se zdát být samozřejmým, ukázalo se, že ne všechna rozhraní jsou na různé velikosti obrazovek osobních počítačů přizpůsobena.
 
-			\section{wnbroswer}
+				\subsection{wnbroswer}
 
-				\begin{figure}[h]
-					\centering
-					\includegraphics[width=1.0\textwidth]{wnwordnetbrowswer.png}
-					\caption{Ukázka rozhraní wnbroswer}
-					\label{fig:wnwordnetbrowswer}
-				\end{figure}
+					\begin{figure}[h]
+						\centering
+						\includegraphics[width=1.0\textwidth]{wnwordnetbrowswer.png}
+						\caption{Ukázka rozhraní wnbroswer}
+						\label{fig:wnwordnetbrowswer}
+					\end{figure}
 
-				Rozhraní wnbroswer\footnote{sic erat scriptum, název rozhraní je psán na různých místech různými způsoby, více v poznámce na konci této sekce a na obrázku \ref{fig:wnbroswerbadwriting} na straně \pageref{fig:wnbroswerbadwriting}} je určeno k prezentaci dat z princetonskému WordNetu, které pracuje pouze s grafovou grafickou reprezentací. Bylo vytvořeno pro reprezentaci dat z WordNetu ve verzi 3.0 a vyšší a vyžaduje lokální instalaci dat. Rozhraní je zřejmě svázáno se vznikem rumunského wordnetu \parencite{fivser2011visualizing}. Sestává z vyhledávacího pole, volby, mezi kterými syntaktickými kategoriemi se má vyhledávat, a selektoru na typy vazeb, jež mají být zobrazeny. Po úspěšném vyhledání konkrétního slova se zobrazí graf konceptuálně podobný grafu z rozhraní sloWTool, tedy ve středu je uzel reprezentující hledaný výraz, z něhož vedou hrany k jednotlivým synsetům, jež danou slovní formu obsahují. 
+					Rozhraní wnbroswer\footnote{sic erat scriptum, název rozhraní je psán na různých místech různými způsoby, více v poznámce na konci této sekce a na obrázku \ref{fig:wnbroswerbadwriting} na straně \pageref{fig:wnbroswerbadwriting}} je určeno k prezentaci dat z princetonskému WordNetu, které pracuje pouze s grafovou grafickou reprezentací. Bylo vytvořeno pro reprezentaci dat z WordNetu ve verzi 3.0 a vyšší a vyžaduje lokální instalaci dat. Rozhraní je zřejmě svázáno se vznikem rumunského wordnetu \parencite{fivser2011visualizing}. Sestává z vyhledávacího pole, volby, mezi kterými syntaktickými kategoriemi se má vyhledávat, a selektoru na typy vazeb, jež mají být zobrazeny. Po úspěšném vyhledání konkrétního slova se zobrazí graf konceptuálně podobný grafu z rozhraní sloWTool, tedy ve středu je uzel reprezentující hledaný výraz, z něhož vedou hrany k jednotlivým synsetům, jež danou slovní formu obsahují. 
 
-				Grafická reprezentace je interaktivní, lze na ní zvolit, jaký druh sémantického vztahu se má zobrazit, a lze tak u každého uzlu postupně zobrazit všechny synsety, které jsou s ním provázány; toho lze docílit buď přes kontextové menu, nebo přes volby vztahů v levém sloupci rozhraní, v němž se mimo jiné nachází i vyhledávací pole. Rozhraní zobrazuje i detaily zvoleného synsetu (po kliknutí na daný synset), takže až na technické informace typu číslo významu a podobně je schopno zobrazovat všechna dostupná data.
+					Grafická reprezentace je interaktivní, lze na ní zvolit, jaký druh sémantického vztahu se má zobrazit, a lze tak u každého uzlu postupně zobrazit všechny synsety, které jsou s ním provázány; toho lze docílit buď přes kontextové menu, nebo přes volby vztahů v levém sloupci rozhraní, v němž se mimo jiné nachází i vyhledávací pole. Rozhraní zobrazuje i detaily zvoleného synsetu (po kliknutí na daný synset), takže až na technické informace typu číslo významu a podobně je schopno zobrazovat všechna dostupná data.
 
-				Jakkoliv velikost okna s aplikace měnit lze, velikost plochy pro vykreslování grafu zůstává neměnné velikosti, lze tedy v terminologii webových aplikací říci, že je neresponsivní, jelikož se nedokáže přizpůsobit velikosti obrazovky zařízení uživatele.
+					Jakkoliv velikost okna s aplikace měnit lze, velikost plochy pro vykreslování grafu zůstává neměnné velikosti, lze tedy v terminologii webových aplikací říci, že je neresponsivní, jelikož se nedokáže přizpůsobit velikosti obrazovky zařízení uživatele.
 
-				Aplikaci je možné používat bez připojení k Interetu, jelikož spoléhá na data WordNetu nainstalovaná lokálně. 
+					Aplikaci je možné používat bez připojení k Interetu, jelikož spoléhá na data WordNetu nainstalovaná lokálně. 
 
-				\textbf{Poznámka:} Poněkud komicky působí fakt, že rozhraní má tři různé názvy: wnbroswer (hlavní nadpis stránky projektu), WordNet Browswer (titulek okna aplikace) a wnbrowser (ostatní výskyty). Ilustruje to obrázek \ref{fig:wnbroswerbadwriting} na straně \pageref{fig:wnbroswerbadwriting} pořízený 7. 8. 2017.
+					\textbf{Poznámka:} Poněkud komicky působí fakt, že rozhraní má tři různé názvy: wnbroswer (hlavní nadpis stránky projektu), WordNet Browswer (titulek okna aplikace) a wnbrowser (ostatní výskyty). Ilustruje to obrázek \ref{fig:wnbroswerbadwriting} na straně \pageref{fig:wnbroswerbadwriting} pořízený 7. 8. 2017.
 
-				\begin{figure}[h]
-					\centering
-					\includegraphics[width=0.7\textwidth]{wnbroswer.png}
-					\caption{Ukázka rozdílného psaní názvu rozhraní na jeho webových stránkách}
-					\label{fig:wnbroswerbadwriting}
-				\end{figure}
+					\begin{figure}[h]
+						\centering
+						\includegraphics[width=0.7\textwidth]{wnbroswer.png}
+						\caption{Ukázka rozdílného psaní názvu rozhraní na jeho webových stránkách}
+						\label{fig:wnbroswerbadwriting}
+					\end{figure}
 
-			\section{Treebolic}
+				\subsection{Treebolic}
 
-				\begin{figure}[ht]
-					\centering
-					\includegraphics[width=1.0\textwidth]{wntreebolic.png}
-					\caption{Ukázka rozhraní Treebolic (se zobrazenou informační bublinou na synsetu)}
-					\label{fig:wntreebolic}
-				\end{figure}
+					\begin{figure}[ht]
+						\centering
+						\includegraphics[width=1.0\textwidth]{wntreebolic.png}
+						\caption{Ukázka rozhraní Treebolic (se zobrazenou informační bublinou na synsetu)}
+						\label{fig:wntreebolic}
+					\end{figure}
 
-				Treebolic je aplikace určená k zobrazování hierarchických dat v hyperobilické reprezentaci, která zajišťuje, že důležitá data v centru obrazovky jsou zobrazena uživateli ve větším měřítku, než data na okrajích grafu. Reprezentaci si lze představit jako plochu zobrazenou přes čočku. \parencite{boutreebolic}
+					Treebolic je aplikace určená k zobrazování hierarchických dat v hyperobilické reprezentaci, která zajišťuje, že důležitá data v centru obrazovky jsou zobrazena uživateli ve větším měřítku, než data na okrajích grafu. Reprezentaci si lze představit jako plochu zobrazenou přes čočku. \parencite{boutreebolic}
 
-				Zobrazení používá model prezentující vše, co je nalezeno k hledanému slovu, tedy při úspěšném vyhledání výsledků se uprostřed vizualizace zobrazí reprezentace vyhledávání, s níž jsou hranami provázáany všechny nalezené synsety. Oproti ostatním zde popisovaným prostředím navíc seskupuje tyto synsety podle slovního druhu, tedy zavádí další metakategorii v zobrazení, což přispívá k přehlednosti. 
+					Zobrazení používá model prezentující vše, co je nalezeno k hledanému slovu, tedy při úspěšném vyhledání výsledků se uprostřed vizualizace zobrazí reprezentace vyhledávání, s níž jsou hranami provázáany všechny nalezené synsety. Oproti ostatním zde popisovaným prostředím navíc seskupuje tyto synsety podle slovního druhu, tedy zavádí další metakategorii v zobrazení, což přispívá k přehlednosti. 
 
-				Co jí naopak ubírá, jsou poněkud kryptické ikony sémantických vztahů, jejichž význam je sice popsán na hraně, kde jsou dané ikony umístěny, popřípadě je možno jej odhalit pomocí nabídky \textit{Info} v kontextovém menu po kliknutí pravým tlačítkem danou ikonu, ale při prvním setkání se toto řešení nezdá být příliš ergonomickým (mimo jiné proto, že duplikuje informace). Ne zcela evidentní jsou také číselné a procentuální údaje v místě uzlů se synsety. Uživatel se sice díky řešení, které používá konexe hranami ze synsetů k členským slovním formám, dozví, o který synset jde (díky oněm členským slovním formám), ale význam zmíněných údajů zůstává skryt. Výhodou je barevné kódování významů jednotlivých hran. Barvy jsou navíc editovatelné v nastavení, takže teoreticky rozhraní vyhoví i osobám se zhoršeným vnímáním barev.
+					Co jí naopak ubírá, jsou poněkud kryptické ikony sémantických vztahů, jejichž význam je sice popsán na hraně, kde jsou dané ikony umístěny, popřípadě je možno jej odhalit pomocí nabídky \textit{Info} v kontextovém menu po kliknutí pravým tlačítkem danou ikonu, ale při prvním setkání se toto řešení nezdá být příliš ergonomickým (mimo jiné proto, že duplikuje informace). Ne zcela evidentní jsou také číselné a procentuální údaje v místě uzlů se synsety. Uživatel se sice díky řešení, které používá konexe hranami ze synsetů k členským slovním formám, dozví, o který synset jde (díky oněm členským slovním formám), ale význam zmíněných údajů zůstává skryt. Výhodou je barevné kódování významů jednotlivých hran. Barvy jsou navíc editovatelné v nastavení, takže teoreticky rozhraní vyhoví i osobám se zhoršeným vnímáním barev.
 
-				Aplikace byla vyvinuta i pro Android (byť tato verze v rámci práce netestována nebyla), tudíž lze říci, že možná jistým zprostředkovaným způsobem splňuje požadavky na responsivitu.
+					Aplikace byla vyvinuta i pro Android (byť tato verze v rámci práce netestována nebyla), tudíž lze říci, že možná jistým zprostředkovaným způsobem splňuje požadavky na responsivitu.
 
-				Aplikaci je možné používat bez připojení k Interetu, jelikož spoléhá na data WordNetu nainstalovaná lokálně.
+					Aplikaci je možné používat bez připojení k Interetu, jelikož spoléhá na data WordNetu nainstalovaná lokálně.
 
-				Teoretický přínos této implementace spočívá v pohledu na stratifikaci důležitosti vizualizovaných dat. Idea hyperbolického zobrazení rozvinutá dále především v oblasti ovladatelnosti by mohla být správným krokem prezentace většího množství dat, než je schopna obrazovka (a potažmo zorné pole) uživatele pojmout.
+					Teoretický přínos této implementace spočívá v pohledu na stratifikaci důležitosti vizualizovaných dat. Idea hyperbolického zobrazení rozvinutá dále především v oblasti ovladatelnosti by mohla být správným krokem prezentace většího množství dat, než je schopna obrazovka (a potažmo zorné pole) uživatele pojmout.
 
-			\section{VisualBrowser}
+				\subsection{VisualBrowser}
 
-				\td{napsat diplomaticteji, nebo se pokusit aplikaci rozjet poradne}Verze aplikace VisualBrowser testovaná v rámci této práce neprokázala dostatečnou intuitivitu a funkčnost, aby její vlastnosti mohly být dále rozebrány. 
+					\td{napsat diplomaticteji, nebo se pokusit aplikaci rozjet poradne}Verze aplikace VisualBrowser testovaná v rámci této práce neprokázala dostatečnou intuitivitu a funkčnost, aby její vlastnosti mohly být dále rozebrány. 
 
-		\chapter{Aplikace pro klasické počítače}
+			\section{Aplikace pro klasické počítače}
 
 			Aplikace pro klasické počítače (jinak také desktopové aplikace) jsou takové aplikace, které jsou určeny pro běh nativně na operačním systému uživatelova počítače. Nativně spouštěná aplikace je, ať už přímo, či nepřímo, závislá na programových vlastnostech operačního systému daného stroje, stejně jako zprostředkovaně na jeho technickém vybavení. Přístupy k distribuci desktopových aplikací jsou v zásadě dva; první, běžný hlavně pro operační systém Windows, spočívá v distribuci již skompilovaných binárních souborů, které zajistí instalaci daného programu do systému a uživateli zbývá jen příslušný program spustit. Druhý způsob, běžný spíše pro různé linuxové distribuce, je založený na distribuci souborů obsahujících zdrojový kód programu, přičemž uživatel je nucen, má-li zájem program používat, si binární spustitelný soubor skompilovat. Druhý způsob pro programátora skýtá zásadní výhodu v tom, že se nemusí zajímat o prostředí, na němž bude koncový uživatel jeho program provozovat, protože kompilace programu pro všechny dostupné konfigurace (kombinace progamového a technickéh vybavení koncového uživatele) je náročná na zdroje. \parencite{Elizabeth2015} Pro onoho koncového uživatele však slyne druhá varianta tou nevýhodou, že kompilace programového vybavení vyžaduje z jeho strany netriviální usilí a znalosti o vlastním systému. 
 
 			V rámci rozhraní určených pro zprostředkování dat z wordnetů jsou desktopové aplikace nejméně zastoupeny. Je tomu pravděpodobně proto, že jsou nejnáročnější na vývoj, zvláště mají-li být dostupné pro všechny majoritní desktopové operační systémy. Dalším důvodem může být fakt, že často bývá zvolen model klient--server, pro který jsou vhodnější spíše aplikace v Javě \td{jinde stranky neuvadim, co s tim? bez ni bych to tam nenasel, je to dlouhy}\parencite[13]{gosling1995java} či webová rozhraní.
 
-			\section{Artha}
+			\subsection{Artha}
 
 				\begin{figure}[h]
 					\centering
@@ -846,7 +861,7 @@
 
 				Artha zobrazuje data čistě textově (v tom smyslu, že nenabízí žádnou formu vizualizace), přičemž se rozhraní dělí na dvě části, a to nalezené synsety s blizšími informacemi a sémantické vztahy, které se k vybranému synsetu vážou (ilustrováno na snímku obrazovky \ref{fig:wnartha-ubuntu} na straně \pageref{fig:wnartha-ubuntu}). 
 
-			\section{GoldenDict}
+			\subsection{GoldenDict}
  		
  				\begin{figure}[h]
 					\centering
