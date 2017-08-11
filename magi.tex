@@ -30,6 +30,9 @@
 % zkontrolovat, ze data pisu ve stejnem formatu, tedy asi D. M. YYYY
 % ramecky kolem vsech obrazku, jak?
 % pisu vsude starym nebo novym pravopisem?
+% pripsat url rozhrani do kazde sekce
+
+% nazev rozhrani: not so fickle/frenzy/??? wordnet viewer
 
 \setmainfont{Vollkorn}
 \linespread{1.2}
@@ -486,7 +489,7 @@
 				
 				% neco psat o BalkaNetu?
 
-	\part{Přehled a porovnání existujících vizualizací sémantických sítí}
+	\part{Přehled a porovnání některých vizualizací sémantických sítí}
 	\label{part:zwei}
 
 		Tato část textu bude zaměřena na zmapování existujících dostupných rozhraní a jejich zhodnocení. Výčet jednotlivých rozhraní rozhodně není vyčerpávající, jelikož některé vědecké instituce mohou vyvíjet své nástroje pro práci se sémantickými sítěmi neveřejně, některé nástroje už nejsou dostupné, etc. Nástroje pro vizualizaci\footnote{Terminologická poznámka: v této práci je vizualizací dat wordnetů míněna jak textová reprezentace, tak v nějaké formě grafická.} dat wordnetů byly vybírány pro přehled v této práci podle několika kritérií relevantních především pro koncového uživatele, avšak i pro případné vývojáře dalších wordnetů (tedy zda dané rozhraní mohou použít pro svá data).
@@ -504,28 +507,30 @@
 					\end{itemize}
 
 				% mozna vypsat vysledky a zaradit ten seznam sem? plus nejak exaktneji algoritmus filtrovani?
-				Z přehledu byly samozřejmě vyřazeny implementace, které k době hledání\footnote{duben 2017} už nebyly dostupné. Také nebyla zahrnuta rozhraní, která jsou funkčně podobná jiným. Ačkoliv většina existujících rozhraní zřejmě pracuje buďto výhradně s princetonským WordNetem, či jej jako zdroj dat nabízí jako jednu z možností, nebyl zdroj dat brán v potaz. Do přehledu byla zahrnována především rozhraní, která jsou dostupná z webového prohlížeče, jelikož je to pro koncového uživatele nejpohodlnější způsob přístupu k aplikaci (není nucen instalovat přídavné programové vybavení na svůj počítač kromě webového prohlížeče, který je vcelku rozšířeným vybavením). Jelikož však i rozhraní určená pro klasické počítače\footnote{Terminologická poznámka: klasickým počítačem je myšleno všeobecně zařízení typu stolních počítačů, laptopů, případně tabletů etc., na nichž je provozován operační systém určený pro klasické počítače.} jsou hojně rozšířena a mohou také poskytnout cennou inspiraci i při vývoji webového rozhraní, byla některá z nich zahrnuta též. Jsou však popisována pouze povrchněji a měla by při interpretaci hodnocení být automaticky značně penalizována, jelikož je uživatel mající zájem takové rozhraní použít nucen instalovat například aplikační rozhraní Java, pokud jej nemá. Dalším důvodem k penalizaci je také fakt, tyto aplikace nejsou přímo spustitelné na mobilních zařízeních\td{dodelat zdroj z toho url v footnote}\footnote{Pro Android existuje několik cest, jak aplikaci napsanou v Javě spustit (\url{http://www.wikihow.com/Get-Java-on-Android}), lze však předpokládat, že použitelnost vizualizací wordnetu bude na zařízení s malou obrazovkou poněkud omezená.} \parencite{gronli2014mobile} a jejich portabilita do formy nativních aplikací může omezená a obtížná.
+				Z přehledu byly samozřejmě vyřazeny implementace, které k době hledání\footnote{duben 2017} už nebyly dostupné. Také nebyla zahrnuta rozhraní, která jsou funkčně podobná jiným. Ačkoliv většina existujících rozhraní zřejmě pracuje buďto výhradně s princetonským WordNetem, či jej jako zdroj dat nabízí jako jednu z možností, nebyl zdroj dat brán v potaz. Do přehledu byla zahrnována především rozhraní, která jsou dostupná z webového prohlížeče, jelikož je to pro koncového uživatele nejpohodlnější způsob přístupu k aplikaci (není nucen instalovat přídavné programové vybavení na svůj počítač kromě webového prohlížeče, který je vcelku rozšířeným vybavením). Jelikož však i rozhraní určená pro klasické \td{ta pozn.pod carou je dost zamotana..jak to lip vysvetlit?} počítače\footnote{Terminologická poznámka: klasickým počítačem je myšleno všeobecně zařízení typu stolních počítačů, laptopů či tabletů s operačním systémem nikoliv určeným pro mobilní zařízení. Nejde například o mobilní telefon. Typicky na klasických počítačích také bývá provozován jiný operační systém než na mobilních zařízeních.} existují a mohou poskytnout cennou inspiraci i při vývoji webového rozhraní, byla některá z nich zahrnuta též. Jsou však popisována pouze povrchněji a měla by při interpretaci hodnocení být automaticky značně penalizována, jelikož je uživatel mající zájem takové rozhraní použít nucen instalovat například aplikační rozhraní Java, pokud jej nemá. Dalším důvodem k penalizaci je také fakt, tyto aplikace nejsou přímo spustitelné na mobilních zařízeních. Pro některé platformy možná existuje několik cest, jak aplikaci napsanou v Javě na některých mobilních operačních systémech spustit (například na Android \parencite{SX92854}, u ostatních je podpora omezená či žádná (\parencite{SX15501535}, \parencite{SX1193541} inter alia)% (\url{http://www.wikihow.com/Get-Java-on-Android})
+				, lze však předpokládat, že použitelnost minimálně grafických vizualizací wordnetu bude na zařízeních s malou obrazovkou poněkud omezená.  Navíc jejich transformace do formy nativních mobilních aplikací může být a obtížná. Jednak kvůli nutnosti rozhraní pro jednotlivé platformy tvořit zvlášť způsobem příslušným konkrétnímu operačnímu systému \parencite{gronli2014mobile}, jednak proto, že mobilní zařízení mají různé menší velikosti obrazovky, k čemuž přirozeně nejsou rozhraní určená pro velké obrazovky klasických počítačů příliš přizpůsobena. Zřejmě nicméně existují nástroje, které mohou proces vývoj multiplatformních aplikací napsaných v Javě usnadnit. \parencite{mafintro}
+				% tady pripsat jeden zdroj z URL v odstavci vyse (http://www.wikihow.com/Get-Java-on-Android), prihodit cite SX92854 (java on android), mozna prihodit jeste xda developers https://forum.xda-developers.com/showthread.php?t=1189303 a idealne neco pro windows phone nebo iphone; checknout sekci s javou, protoze tam by to melo byt spis
 
-				Podstatná z hlediska hodnocení je také univerzalita, tedy zda je zdrojový kód rozhraní otevřený a je možné jej použít i pro vizualizaci jiné sémantické sítě, než pro kterou bylo rozhraní vyvinuto. Je ovšem dlužno podotknout, že tato informace bývá často nedostupná; potom se v rámci této práce předpokládá, že kód otevřený není.\td{je to tak ok?}
+				Podstatná z hlediska hodnocení je také univerzalita, tedy zda je zdrojový kód rozhraní otevřený a je možné jej použít i pro vizualizaci jiné sémantické sítě, než pro kterou bylo rozhraní vyvinuto. Je ovšem dlužno podotknout, že tato informace bývá často nedostupná; potom se v rámci této práce předpokládá, že kód otevřený není. Zmiňována bývá jen explicitní zmínka o otevřenosti kódu.\td{je to tak ok? a je to pravda? xD}
 
 				Zmiňované hodnocení záměrně není vyčísleno exaktně, jelikož každý uživatel má jiné nároky a tato práce si tedy klade za cíl pouze co nejobjektivněji zhodnotit vlastnosti jednotlivých rozhraní, nikoliv čtenáři vnuknout, že jedno rozhraní je lepší než jiné; to musí případně zhodnotit sám na základě předkládaných faktů a jeho vlastních požadavků na rozhraní.
 
 				% Do přehledu byla tedy zahrnuta následující rozhraní:
 
-					\begin{itemize}
-						\item An interactive visualization of the Princeton WordNet database \par\hspace{2em}{\small \url{http://mateogianolio.com/wordnet-visualization/}}
-						\item Artha \par\hspace{2em}{\small \url{http://artha.sourceforge.net/wiki/index.php/Home}}
-						\item BabelNet \par\hspace{2em}{\small \url{http://babelnet.org}}
-						\item Cornetto Demo \par\hspace{2em}{\small \url{http://cornetto.clarin.inl.nl/wordnet.xql}}
-						\item GoldenDict \par\hspace{2em}{\small \url{http://goldendict.org/}}
-						\item sloWTool \par\hspace{2em}{\small \url{http://nl.ijs.si/slowtool/}}
-						\item Treebolic \par\hspace{2em}{\small \url{http://treebolic.sourceforge.net/}}
-						\item Visual Browser \par\hspace{2em}{\small \url{https://nlp.fi.muni.cz/projekty/visualbrowser/}}
-						\item wnbroswer\footnote{sic erat scriptum} \par\hspace{2em}{\small \url{http://homepages.inf.ed.ac.uk/adubey/software/wnbrowser/index.html}}
-						\item WordNET Editor \par\hspace{2em}{\small \url{http://wordventure.eti.pg.gda.pl/wne/wne.html}}
-						\item WordVis \par\hspace{2em}{\small \url{http://wordvis.com/}}
-						% \item GRAPH WORDS online thesaurus (\url{http://graphwords.com/})
-					\end{itemize}
+					% \begin{itemize}
+					% 	\item An interactive visualization of the Princeton WordNet database \par\hspace{2em}{\small \url{http://mateogianolio.com/wordnet-visualization/}}
+					% 	\item Artha \par\hspace{2em}{\small \url{http://artha.sourceforge.net/wiki/index.php/Home}}
+					% 	\item BabelNet \par\hspace{2em}{\small \url{http://babelnet.org}}
+					% 	\item Cornetto Demo \par\hspace{2em}{\small \url{http://cornetto.clarin.inl.nl/wordnet.xql}}
+					% 	\item GoldenDict \par\hspace{2em}{\small \url{http://goldendict.org/}}
+					% 	\item sloWTool \par\hspace{2em}{\small \url{http://nl.ijs.si/slowtool/}}
+					% 	\item Treebolic \par\hspace{2em}{\small \url{http://treebolic.sourceforge.net/}}
+					% 	\item Visual Browser \par\hspace{2em}{\small \url{https://nlp.fi.muni.cz/projekty/visualbrowser/}}
+					% 	\item wnbroswer\footnote{sic erat scriptum} \par\hspace{2em}{\small \url{http://homepages.inf.ed.ac.uk/adubey/software/wnbrowser/index.html}}
+					% 	\item WordNET Editor \par\hspace{2em}{\small \url{http://wordventure.eti.pg.gda.pl/wne/wne.html}}
+					% 	\item WordVis \par\hspace{2em}{\small \url{http://wordvis.com/}}
+					% 	% \item GRAPH WORDS online thesaurus (\url{http://graphwords.com/})
+					% \end{itemize}
 
 					% \begin{table}[]
 					% 	\centering
@@ -561,7 +566,7 @@
 
 			\section{Strukturalizace přehledu a kritéria hodnocení}
 
-				Výše vypsaná rozhraní budou v dalších kapitolách rozdělena podle toho, zda umožňují přístup z webového prohlžeče bez nutnosti instalace doplňků (například pro běh zásuvných modulů napsaných v Javě\footnote{\url{https://docs.oracle.com/javase/tutorial/deployment/applet/}}), budou zhodnocena jejich positiva a negativa z hlediska použitelnosti pro získání informací o hledaném výrazu, komfort zacházení s rozhraním a případná omezení použitelnosti na různých zařízeních. 
+				Rozhraní hodnocená v kapitole \itNameRef{cha:porovnani} na straně \pageref{cha:porovnani} budou rozdělena podle toho, zda umožňují přístup z webového prohlžeče bez nutnosti instalace doplňků (například pro běh zásuvných modulů napsaných v Javě\footnote{\url{https://docs.oracle.com/javase/tutorial/deployment/applet/}}), budou zhodnocena jejich positiva a negativa z hlediska použitelnosti pro získání informací o hledaném výrazu, komfort zacházení s rozhraním a případná omezení použitelnosti na různých zařízeních. 
 
 				K rozdělení podle dostupnosti bylo přistoupeno jednak proto, že v době vzniku této práce je pokročilost webových technologií dostatečná k tomu, aby podobné vizualizace byly tvořeny jako webové stránky, a jednak proto, že cílem této práce je vytvořit všeobecně dostupné a použitelné rozhraní k wordnetům. Všeobecně použitelným je míněna použitelnost nejen na osobních počítačích, ale také na mobilních zařízeních, což v podstatě vyřazuje použití technologií jako jsou zásuvné moduly napsané v Javě či využívající Flash\footnote{\url{http://www.adobe.com/products/flashruntimes.html}} používané k realizaci různých existujících rozhraní (příkladem budiž Visual Editor využívající Javu). 
 
@@ -584,6 +589,7 @@
 				Testování na mobilním chytrém telefonu bylo prováděno na zařízení Nexus 5 (displej s úhlopříčkou 5 palců a rozlišením 1080 × 1920 px) s operačním systémem Android 6 v prohlížeči Chrome (sestavení 57.0). Možnost \textit{request desktop site} byla nastavena na \textit{vypnuto}.
 
 		\chapter{Porovnání některých rozhraní}
+		\label{cha:porovnani}
 			
 			Do přehledu byla zahrnuta rozhraní uvedená v následujícím obsahu této kapitoly:
 
@@ -787,7 +793,7 @@
 
 				Java je objektově orientovaný programovací jazyk, který je zaměřený na to, aby měl co nejméně závislostí na konkrétním operačním systému a technickém vybavení počítače, jak jen to je možné. To je výhodné zejména kvůli tzv. konceptu WORA (\textit{write once, run anywhere}, tedy \textit{napsat jednou, spustit kdekoliv}), protože to znamená, že skompilované programy napsané v Javě lze spustit na jakémkoliv stroji, který podporuje Javu. Takto skompilované programy se spouští v aplikačním prostředí zvaném Java Virtual Machine\footnote{angl. virtuální stroj Javy} (JVM), jež vytváří uniformní prostředí pro běh aplikací. Výhodou Javy tedy je velká přenositelnost programů v tomto jazyce napsaných, jelikož jednou skompilovaný kód lze spustit na různých operačních systémech a zařízeních. Nevýhodou je, že si uživatel, který chce program v Javě napsaný spustit, musí nainstalovat aplikační prostředí Javy (JVM). 
 
-				\td{tenhle odstavec nemam ozdrojovan, je to pravda? viz zdroj za chvilku, neco tam o tom malo je}Java je velmi oblíbená pro vývoj aplikací, které fungují podle modelu klient--server, což je uspořádání, v němž data má uložená centrální server, k nemuž se připojují uživatelské klienty, odesílají mu své požadavky a uživatelům zobrazují vrácená data. \parencite[13]{gosling1995java} Na podobném principu může fungovat i rozhraní pro wordnet, pokud jsou data wordnetu uložena na serveru.
+				Java je se občas používá pro vývoj aplikací, které fungují podle modelu klient--server, což je uspořádání, v němž data má uložená centrální server, k nemuž se připojují uživatelské klienty, odesílají mu své požadavky a uživatelům zobrazují vrácená data. \parencite[13]{gosling1995java} Na podobném principu může fungovat i rozhraní pro wordnet, pokud jsou data wordnetu uložena na serveru.
 
 				Vizualizace vytvořené pro prostředí Java nemá příliš smysl hodnotit z hlediska responsivity, jelikož a priori nejsou vytvářena pro mobilní zařízení (až na výjimky, které nebylo možné zhodnotit z důvodu jejich nedostupnosti v době vzniku této práce). Co však bráno v potaz být může, je jejich schopnost přizpůsobit se velikosti obrazovky. Jakkoliv tento parametr může se zdát být samozřejmým, ukázalo se, že ne všechna rozhraní jsou na různé velikosti obrazovek osobních počítačů přizpůsobena.
 
@@ -800,7 +806,7 @@
 						\label{fig:wnwordnetbrowswer}
 					\end{figure}
 
-					Rozhraní wnbroswer\footnote{sic erat scriptum, název rozhraní je psán na různých místech různými způsoby, více v poznámce na konci této sekce a na obrázku \ref{fig:wnbroswerbadwriting} na straně \pageref{fig:wnbroswerbadwriting}} je určeno k prezentaci dat z princetonskému WordNetu, které pracuje pouze s grafovou grafickou reprezentací. Bylo vytvořeno pro reprezentaci dat z WordNetu ve verzi 3.0 a vyšší a vyžaduje lokální instalaci dat. Rozhraní je zřejmě svázáno se vznikem rumunského wordnetu \parencite{fivser2011visualizing}. Sestává z vyhledávacího pole, volby, mezi kterými syntaktickými kategoriemi se má vyhledávat, a selektoru na typy vazeb, jež mají být zobrazeny. Po úspěšném vyhledání konkrétního slova se zobrazí graf konceptuálně podobný grafu z rozhraní sloWTool, tedy ve středu je uzel reprezentující hledaný výraz, z něhož vedou hrany k jednotlivým synsetům, jež danou slovní formu obsahují. 
+					Rozhraní wnbroswer\footnote{sic erat scriptum, název rozhraní je psán na různých místech různými způsoby, více v poznámce na konci této kapitoly a na obrázku \ref{fig:wnbroswerbadwriting} na straně \pageref{fig:wnbroswerbadwriting}} je určeno k prezentaci dat z princetonskému WordNetu, které pracuje pouze s grafovou grafickou reprezentací. Bylo vytvořeno pro reprezentaci dat z WordNetu ve verzi 3.0 a vyšší a vyžaduje lokální instalaci dat. Rozhraní je zřejmě svázáno se vznikem rumunského wordnetu \parencite{fivser2011visualizing}. Sestává z vyhledávacího pole, volby, mezi kterými syntaktickými kategoriemi se má vyhledávat, a selektoru na typy vazeb, jež mají být zobrazeny. Po úspěšném vyhledání konkrétního slova se zobrazí graf konceptuálně podobný grafu z rozhraní sloWTool, tedy ve středu je uzel reprezentující hledaný výraz, z něhož vedou hrany k jednotlivým synsetům, jež danou slovní formu obsahují. 
 
 					Grafická reprezentace je interaktivní, lze na ní zvolit, jaký druh sémantického vztahu se má zobrazit, a lze tak u každého uzlu postupně zobrazit všechny synsety, které jsou s ním provázány; toho lze docílit buď přes kontextové menu, nebo přes volby vztahů v levém sloupci rozhraní, v němž se mimo jiné nachází i vyhledávací pole. Rozhraní zobrazuje i detaily zvoleného synsetu (po kliknutí na daný synset), takže až na technické informace typu číslo významu a podobně je schopno zobrazovat všechna dostupná data.
 
@@ -888,7 +894,7 @@
 
 			Rozhraní v přehledu prezentovaném v této práci byla hodnocena dle různých aspektů odpovídajícím účelu a provedení dané třídy rozhraní. Nejpodrobněji byla hodnocena webová rozhraní. U těch byla jako největší společný nedostatek identifikována nedostatečná responsivita, což vede k tomu, že uživatel dané rozhraní nemůže (nebo může velmi omezeně) používat na mobilním zařízení. To v době, kdy počet uživatelů přistupujících k webovým službám přes mobilní zařízení je vyšší než počet těch, kteří k nim přistupují pomocí klasických počítačů \parencite{Heisler2016}, aplikaci značně diskriminuje. Z podobného důvodu jsou v nevýhodě také rozhraní vytvořená pro aplikační prostředí Java a v ještě větší míře aplikace vytvořené přímo pro operační systémy klasických počítačů. 
 
-			Aplikace vytvořené v Javě jsou sice teoreticky spustitelné i na některých mobilních operačních systémech (zejména Android \parencite{SX92854}, u ostatních je podpora omezená či žádná (\textcite{SX15501535}, \textcite{SX1193541} inter alia), prakticky je jejich použitelnost vzhledem k jejich designu grafického rozhraní omezena ale také výhradně na klasické počítače. 
+			Aplikace vytvořené v Javě jsou sice teoreticky spustitelné i na některých mobilních operačních systémech (ja bylo zmíněno v reference1, prakticky je jejich použitelnost vzhledem k jejich designu grafického rozhraní omezena ale také výhradně na klasické počítače. 
 
 			Pro některé aplikace vyvinuté v Javě byly vytvořeny tzv. aplety Java\footnote{\url{https://nlp.fi.muni.cz/projekty/visualbrowser/applet/index.html}}, ale vzhledem k tomu, že některé silně rozšířené webové prohlížeče tento druh zásuvných modulů už vůbec nepodporují \parencite{MozzilaFoundation2017}, je jejich použití značně omezené a do budoucnosti lze předpokládat plošnou nepoužitelnost. 
 
