@@ -958,6 +958,7 @@
 				Zadá-li uživatel výraz, který se v daném wordnetu nevyskytuje, je mu po neúspěšném dokončení vyhledávání prezentována zpráva o negativním výsledku hledání. 
 
 			\section{Textová reprezentace}
+			\label{cha:textovarepres}
 
 				Textový režim reprezentace dat je až na několik odchylek relativně konservativní a snaží se uživateli přinést přehledný a zároveň komplexní výpis nalezených informací. 
 
@@ -968,6 +969,7 @@
 				Jednou z odchylek od tradičních postupů v textové reprezentaci dat z wordnetu je udávání příslušnosti slovní formy k významu. Tato příslušnost je tradičně reprezentována číslem za slovní formou odděleným dvojtečkou. To však může pro uživatele neznalého tradic v reprezentaci wordnetů být matoucí, a tak bylo v rámci zlepšení přístupnosti nového rozhraní \simplywn přistoupeno k zobrazení čísla významu jako horního indexu za slovní formou. To by mělo údaj učinit méně obtrusivní a intuitivně snáze pochopitelný, jelikož na horní indexy bude uživatel alespoň vizuálně spíše zvyklý než na čísla za dvojtečkou.
 
 			\section{Grafická reprezentace}
+			\label{cha:graphui}
 
 				\begin{figure}[h]
 					\centering
@@ -1076,18 +1078,18 @@
 
 			\section{Získávání dat}
 				
-				Data, jež jsou ve výsledku zobrazována uživateli, jsou načítána ze serveru v závislosti na vstupu, který uživatel tím či oním způsobem zadal. Vstup uživatele může být dvojího druhu (byť z hlediska výsledného zpracování se nijak neliší). Prvním je, že uživatel zadává kýžené slovo do vyhledávacího pole, druhým, že klikne na odkaz vedoucí na jiný synset. Druhý případ se potom od prvního liší pouze v tom, že text ve vyhledávacím poli je buď identifikátor, nebo členské slovo synsetu\footnote{podrobněji o tomto rozdílu v [KDE O TOM KURVA PISU?! nemuzu to najit]}, na nějž bylo kliknuto. Jde tedy o jistou zkratku, během níž se automaticky zadá identifikátor daného synsetu do vyhledávacího pole a spustí se vyhledávání.
+				Data, jež jsou ve výsledku zobrazována uživateli, jsou načítána ze serveru v závislosti na vstupu, který uživatel tím či oním způsobem zadal. Vstup uživatele může být dvojího druhu (byť z hlediska výsledného zpracování se nijak neliší). Prvním je, že uživatel zadává kýžené slovo do vyhledávacího pole, druhým, že klikne na odkaz vedoucí na jiný synset (tedy nikoliv odkaz, který pouze přepíná mezi již nalezenými synsety, ale ten, který spouští vyhledávání). Druhý případ se potom od prvního liší pouze v tom, že text ve vyhledávacím poli je buď identifikátor, nebo členské slovo synsetu\footnote{podrobněji o tomto rozdílu v kapitole \itNameRef{cha:textovarepres} na straně \pageref{cha:textovarepres}}, na nějž bylo kliknuto. Jde tedy o jistou zkratku, během níž se automaticky zadá dané členské slovo identifikátor daného synsetu do vyhledávacího pole a spustí se vyhledávání.
 
 				\subsection{Parametry vyhledávání}
 				
-					Aby bylo možno vyhledávání spustit se správnými parametry, je nutno získat od uživatele dva údaje. Jedním je vyhledávané slovo, které je extrahováno z vyhledávacího pole, druhým je zdroj dat, v němž se má vyhledávat. Pro výběr druhého slouží rozbalovací nabídka pod vyhledávacím polem, která obsahuje seznam zdrojů dat, v nichž je možno vyhledávat.
+					Aby bylo možno vyhledávání spustit se správnými parametry, je nutno získat od uživatele dva údaje. Jedním je vyhledávané slovo nebo identifikátor synsetu, což je extrahováno z vyhledávacího pole, druhým je zdroj dat, v němž se má vyhledávat. Pro výběr druhého slouží rozbalovací nabídka pod vyhledávacím polem, která obsahuje seznam zdrojů dat, v nichž je možno vyhledávat.
 
 					Zde je na místě podotknout, že schopnost aplikačního rozhraní, jež zajišťuje samotné vyhledávání, vyhledávat jak podle slovní formy, tak dle identifikátoru, otevírá možnost vyhledávat konkrétní synset napříč dostupnými wordnety. 
 
 					Po spuštění vyhledávání je na server s aplikačním rozhraním odeslán požadavek složený ze vstupních dat. Jeho forma je následující:
 
 					\medskip
-					\url{https://nlp.fi.muni.cz/~xrambous/fw/abulafia/ZDROJ?action=jsonvis&query=SLOVO}\hspace{1em},
+					\url{https://nlp.fi.muni.cz/~xrambous/fw/abulafia/ZDROJ?action=jsonvis&query=SLOVO}\hspace{1em},\td{bude se tohle jeste menit? melo by to tam byt aktualni v dobe obhajoby xD}
 					\medskip
 
 					kde \texttt{ZDROJ} zastupuje prohledávaný wordnet a \texttt{SLOVO} zastupuje vyhledávaný výraz.
@@ -1095,45 +1097,44 @@
 				\subsection{Struktura odpovědi serveru}
 				\label{cha:answerStruct}
 
-					V případě úspěšného hledání je ze serveru přijata odpověď ve formátu JSON (bližší popis formátu v kapitole \itNameRef{cha:json} na straně \pageref{cha:json}). Jeho strukturu lze popsat jako pole\footnote{Seřazená množina prvků, v terminologii jiných jazyků například seznam (\textit{list})} objektů\footnote{Objekt je množina dvojic \texttt{klíč:hodnota}, v terminologii jiných jazyků je tento datový typ nazýván slovníkem (\textit{dictionary}), asociativním polem (\textit{associative array}), etc.}, kde každý z těchto objektů reprezentuje jeden nalezený synset. Objekty synsetů pak obsahují jednak řetězce jako identifikátor, slovní druh či definici, a jednak další pole. Pole pod klíčem \texttt{paths} slouží k ukládání cesty k danému synsetu, pole pod klíčem \texttt{synset} obsahuje jeho členská slova a pole s klíčem \texttt{children}\footnote{Klíč \texttt{children} se užívá všeobecně k označení pole s potomky.} pak obsahuje sémantické relace daného synsetu. 
+					V případě úspěšného hledání je ze serveru přijata odpověď ve formátu JSON (bližší popis formátu v kapitole \itNameRef{cha:json} na straně \pageref{cha:json}). Jeho strukturu lze popsat jako pole\footnote{seřazená množina prvků, v terminologii jiných jazyků například seznam (\textit{list})} objektů\footnote{Objekt je množina dvojic \texttt{klíč:hodnota}, v terminologii jiných jazyků je tento datový typ nazýván například slovníkem (\textit{dictionary}) či asociativním polem (\textit{associative array}).}, kde každý z těchto objektů reprezentuje jeden nalezený synset. Objekty synsetů pak obsahují jednak řetězce jako identifikátor, slovní druh či definici, a jednak další pole. Pole pod klíčem \texttt{paths} slouží k ukládání cesty k danému synsetu, pole pod klíčem \texttt{synset} obsahuje jeho členská slova a pole s klíčem \texttt{children}\footnote{Klíč \texttt{children} se užívá všeobecně k označení pole s potomky.} pak obsahuje sémantické relace daného synsetu. 
 
-					Struktura odpovědi může být ilustrována následujícím zjednodušenou ukázkou:
+					Struktura odpovědi může být ilustrována následující zjednodušenou ukázkou (řetězce za dvojicí lomítek jsou komentáře do ilustrace vložené pro účely této práce):
 
 					\begin{verbnobox}[\verbarg\small]
 [
-    { // hlavní synset:
+    { // hlavní synset
         "id": "ENG20-02759263-n",
         "pos": "n",
         "def": "definice synsetu",
-        "synset": [
+        "synset": [ // detaily synsetu
             {
                 "name": "kotouč",
                 "meaning": "2"
             },
-            ... // další členská slova synsetu
-        ], // cesty k synsetu:
-        "paths": [
-            {
+            // ... další členská slova synsetu
+        ],
+        "paths": [ // cesty k synsetu
+            { // první cesta
                 "name": "path-1",
                 "breadcrumbs": [
-                    {
+                    { // nejvyšší synset v cestě
                         "id": "ENG20-00020486-n",
                         "def": "",
                         "synset": [
                             {
                                 "name": "abstrakce",
                                 "meaning": "1"
-                            },
-                            ... // další členská slova synsetu
+                            }
                         ]
                     },
-                    ... // další části cesty
-                ]
+                    // ... další synsety v cestě
+                ],
             },
-            ... // alternativní cesty
+            // ... další alternativní cesty
         ],
-        "children": [
-            { // sémantické relace synsetu
+        "children": [ // sémantické relace synsetu
+            { // relace hyponymie
                 "name": "hyponym",
                 "children": [
                     {
@@ -1144,13 +1145,12 @@
                                 "name": "člunek",
                                 "meaning": "1"
                             },
-                            ... // další členská slova synsetu
                         ]
                     },
-                    ... // další synsety v dané relaci
-                ]
+                    // ... další synsety v dané relaci
+                ],
             },
-            ... // další sémantické relace
+            // ... další sémantické relace
         ]
     },
     ... // další nalezené synsety
@@ -1208,21 +1208,21 @@
 
 				\paragraph{Textové zobrazení} dat je řešeno jednoduchým naplňováním částečně předpřipraveného HTML dokumentu očekávanými daty. Rozhraní počítá s neúplností dat, takže není v tomto ohledu striktní a pokud se požadované informace v datech nevyskytují (typicky definice je hodnota, která u nezanedbatelného počtu konceptů v českém wordnetu chybí), je daná struktura naplněna prázdným řetězcem a nezobrazuje se. Kromě informací, jejichž existence je v datech nejistá, se v nich vyskytují i informace s předem neznámou délkou. Mezi takové patří například počet synsetů odpovídajících hledanému výrazu, pro každý z nich pak počet relací, jichž jsou členem, počet dalších synsetů v dané relaci či počet členských slov jednotlivých zobrazených synsetů. Zobrazení takových informací je v rozhraní řešeno cykly a z hlediska struktury HTML to bývají seznamy, jakožto prvky nejvhodnější pro výpis položek. Výjimkou jsou členská slova synsetů, ta jsou vypisována jako řetězce znaků rozdělené čárkami (pomocí funkce \texttt{synString()}).
 
-				\paragraph{Grafické zobrazení} realizuje knihovna Vis.js, které jsou vstupem data vytvořená ze serverové odpovědi (struktura a tvorba těchto dat je popsána v kapitole \itNameRef{cha:zpracovani} na straně \pageref{cha:zpracovani}). Nastavení vykreslovací funkce je upraveno tak, aby výsledný graf byl statický a s jeho uzly nebylo možné tažením myší hýbat. Důvody k tomuto nastavení jsou rozebrány v kapitole \itNameRef{cha:navrh} na straně \pageref{cha:shrnuti-prehledu}. Mezi dalšími nastaveními jsou například parametry zajišťující penalizaci překryvu uzlů (nutno podotknout, že jakkoliv vysoká tato penalizace může být, nepodařilo se najít taková nastavení, aby k ní za žádných okolností -- zejména na velkých synsetech -- s jistotou nedošlo), vzhled jednotlivých druhů uzlů\footnote{vzhled prvků grafu není možné definovat externími pravidly v CSS} či parametry stabilizace grafu. Stabilizace grafu je proces, který probíhá poté, co jsou knihovnou vytvořeny na vykreslovacím plátně všechny uzly a hrany mezi nimi. Vykreslovací funkce využívá emulace fyzikálních zákonů mezi jednotlivými prvky, takže uzly se odpuzují podobně, jako v reálném světě se odpuzují elektrony, a hrany se chovají jako pružiny, které mají svou ideální délku. Kombinace odpudivých a přitažlivých sil zajišťuje tendenci k rovnoměrnému rozmístění prvků na ploše.
+				\paragraph{Grafické zobrazení} realizuje knihovna Vis.js, které jsou vstupem data vytvořená ze serverové odpovědi (struktura a tvorba těchto dat je popsána v kapitolách \itNameRef{cha:answerStruct} na straně \pageref{cha:answerStruct} a \itNameRef{cha:zpracovani} na straně \pageref{cha:zpracovani}). Nastavení vykreslovací funkce je upraveno tak, aby výsledný graf byl statický a s jeho uzly nebylo možné tažením myší hýbat. Důvody k tomuto nastavení jsou rozebrány v kapitole \itNameRef{cha:graphui} na straně \pageref{cha:graphui}. Mezi dalšími nastaveními jsou například parametry zajišťující penalizaci překryvu uzlů (nutno podotknout, že jakkoliv vysoká tato penalizace může být, nepodařilo se najít taková nastavení, aby k ní za žádných okolností -- zejména na velkých synsetech -- s jistotou nedošlo), vzhled jednotlivých druhů uzlů\footnote{vzhled prvků grafu není možné definovat externími pravidly v CSS} či parametry stabilizace grafu. Stabilizace grafu je proces, který probíhá poté, co jsou knihovnou vytvořeny na vykreslovacím plátně všechny uzly a hrany mezi nimi. Vykreslovací funkce využívá emulace fyzikálních zákonů mezi jednotlivými prvky, takže uzly se odpuzují podobně, jako v reálném světě se odpuzují elektrony, a hrany se chovají jako pružiny, které mají svou ideální délku. Kombinace odpudivých a přitažlivých sil zajišťuje tendenci k rovnoměrnému rozmístění prvků na ploše.
 
 			\section{Uchovávání stavu v URL}
 
-				Aplikace svůj stav reflektuje v URL a umožňuje tak případné pozdější obnovení do identického stavu, v jakém se v libovolném okamžiku právě nachází. Aby bylo toto dosažitelné, je nutné uchovávat zvolený zdroj dat, obsah hledacího pole, zvolenou část výsledků pro zobrazení (levý sloupec) a aktivní režim zobrazení dat. 
+				Aplikace svůj stav reflektuje v URL a umožňuje tak případné pozdější obnovení do identického stavu, v jakém se v téměř\footnote{adresa samozřejmě nereflektuje například průběh vyhledávání, tudíž stránku nelze do jeho procesu obnovit, pouze na jeho spuštění} libovolném okamžiku právě nachází. Aby bylo toto dosažitelné, je nutné uchovávat zvolený zdroj dat, obsah hledacího pole, zvolenou část výsledků pro zobrazení (levý sloupec) a aktivní režim zobrazení dat. 
 
-				Vzhledem k tomu, že se ve všech případech jedná o relativně krátké textové informace, lze je pohodlně ukládat jako parametry URL\footnote{běžně označované jako query strings}. Ty jsou nepovinnou částí adresy a mohou obsahovat data ve formátu \texttt{klíč:hodnota}, například \url{http://www.example.org/index.html?klic=hodnota}. \parencite{berners2005uniform} Ačkoliv \textcite{berners2005uniform} nespecifikuje použití více dvojic \texttt{klíč:hodnota} v parametrech URL, běžně se toto implementuje oddělováním jednotlivých dvojic znakem ampersand (\texttt{\&}). Tak je řešena problematika ukládání více údajů i rozhraní \simplywn: 
+				Vzhledem k tomu, že se ve všech případech jedná o relativně krátké textové informace, lze je pohodlně ukládat jako parametry URL\footnote{běžně označované jako \textit{query strings}}. Ty jsou nepovinnou částí adresy a mohou obsahovat data ve formátu \texttt{klíč:hodnota}, například \url{http://www.example.org/index.html?klic=hodnota}. \parencite{berners2005uniform} Ačkoliv \textcite{berners2005uniform} nespecifikuje použití více dvojic \texttt{klíč:hodnota} v parametrech URL, běžně se toto implementuje oddělováním jednotlivých dvojic znakem ampersand (\texttt{\&}). Tak je řešena problematika ukládání více údajů i v rozhraní \simplywn: 
 
 				\medskip
 				\url{...wordnet-ui.html?input=kolo&source=wncz&vis=graph#ENG20-03403613-n}
 				\medskip
 
-				Další částí adresy obsahující informace o stavu aplikace je fragment, tedy řetězec znaků za znakem křížku (\texttt{\#}). Fragment je podobně jako parametry nepovinná část adresy, která se využívá na bližší identifikaci informace v dokumentu, tedy může být kupříkladu odkazem na podsekci v dokumentu. \parencite{berners2005uniform} Všeobecně se fragment používá k odkazování uvnitř dokumentu lokálně na straně uživatele, naproti tomu parametry bývají odesílány na server pro účely parametrizace požadavků. V rozhraní \simplywn je fragment využíván k ukládání identifikátoru zvoleného synsetu, jeho změna tedy nevyvolává proces hledání a komunikace se serverem.
+				Další částí adresy obsahující informace o stavu aplikace je fragment, tedy řetězec znaků za znakem křížku (\texttt{\#}). Fragment je podobně jako parametry nepovinná část adresy, která se využívá na bližší identifikaci informace v dokumentu, tedy může být kupříkladu odkazem na podsekci v dokumentu. \parencite{berners2005uniform} Všeobecně se fragment používá k odkazování uvnitř dokumentu lokálně na straně uživatele, naproti tomu parametry bývají odesílány na server pro účely parametrizace požadavků. V rozhraní \simplywn je fragment využíván k ukládání identifikátoru jednoho zvoleného synsetu, který má být uživateli zobrazen.
 
-				Při načtení v prohlížeči aplikace nejprve zjišťuje, zda adresa obsahuje parametry, ze kterých by se měl obnovit stav. Pokud ne (tedy neobsahuje žádné parametry, či se existující parametry neshodují s těmi používanými aplikací), je rozhraní uvedeno do výchozího stavu. V opačném případě proběhne pokus o uvedení rozhraní do stavu odpovídajícího hodnotám parametrů, tedy spustí se vyhledávání podle parametru \texttt{input} ve wordnetu zvoleném podle parametru \texttt{source}. Pokud hledání proběhne úspěšně, zobrazí se v režimu vizualizace podle parametru \texttt{vis} synset, jehož identifikátor odpovídá fragmentu.
+				Při načtení v prohlížeči aplikace nejprve zjišťuje, zda adresa obsahuje parametry, ze kterých by se měl obnovit stav. Pokud ne (tedy neobsahuje žádné parametry, či se existující parametry neshodují s těmi používanými aplikací), je rozhraní uvedeno do výchozího stavu. V opačném případě proběhne pokus o uvedení rozhraní do stavu odpovídajícího hodnotám parametrů, tedy spustí se vyhledávání podle parametru \texttt{input} ve wordnetu zvoleném podle parametru \texttt{source}. Pokud hledání proběhne úspěšně, zobrazí se v režimu vizualizace podle parametru \texttt{vis} synset, jehož identifikátor odpovídá fragmentu. Pokud některý z parametrů chybí nebo neobsahuje platná data, použijí se výchozí pevně nastavené parametry.\td{tohle je nutne doimplementovat do rozhraní, nedela to}
 
 		\chapter{Možnosti dalšího vývoje}
 		\label{cha:co-se-nestihlo}
@@ -1237,9 +1237,9 @@
 
 			Pokud by rozhraní mělo být využito jako výukového materiálu, nebylo by od věci uvažovat o jeho propojení například s Internetovou jazykovou příručkou\footnote{\url{http://prirucka.ujc.cas.cz}}, z níž by bylo možné čerpat definice či slovní formy.
 
-			Dalším směrem, kterým by se budoucí vývoj mohl ubírat, je rozšíření podpory více jazyků. V současné implementaci sice již existuje možnost přepínat jazyky hledání (pomocí přepínání zdrojů dat) a je i možné díky identifikátorům synsetů jednotným přes více jazyků vyhledávat jeden koncept v různých jazycích, bylo by však vhodné umožnit jednodušší a rychlejší cestu, jak procházet významy slov v mezijazykovém kontextu.
+			Dalším směrem, kterým by se budoucí vývoj mohl ubírat, je rozšíření podpory více jazyků. V současné implementaci sice již existuje možnost přepínat jazyky hledání (pomocí přepínání zdrojů dat) a je i možné díky identifikátorům synsetů jednotným přes více jazyků vyhledávat jeden koncept v různých jazycích. Bylo by však vhodné umožnit jednodušší a rychlejší cestu, jak procházet významy slov ve vícejazyčném kontextu.
 
-			V neposlední řadě jsou možnosti rozvoje i v detailech týkajících se uživatelské zkušenosti s rozhraním. V tomto ohledu se naskýtají možnosti rozšíření schopností aplikace obsloužit uživatele různými způsoby znevýhodněnými, ať už jde o jejich fyzické znevýhodnění (například poškození zraku) či znevýhodnění v oblasti programového vybavení jejich zařízení (tedy omezená podpora technologií vyžadovaných pro správný běh aplikace, zejména JavaScriptu). Nutno podotknout, že co se prvého týče, byla během návrhu grafické stránky rozhraní snaha o co nejvyšší přístupnost, takže byl zvolen vzhled s vysokým kontrastem kontur a nezaváděly se ani žádné prvky závislé na pohybu kursoru myši po obrazovce. 
+			V neposlední řadě jsou možnosti rozvoje i v detailech týkajících se uživatelské zkušenosti s rozhraním. V tomto ohledu se naskýtají možnosti rozšíření schopností aplikace obsloužit uživatele různými způsoby znevýhodněnými, ať už jde o jejich fyzické znevýhodnění (například poškození zraku) či znevýhodnění v oblasti programového vybavení jejich zařízení (tedy omezená podpora technologií vyžadovaných pro správný běh aplikace, zejména JavaScriptu). Nutno podotknout, že co se prvého týče, byla během návrhu grafické stránky rozhraní snaha o co nejvyšší přístupnost, takže byl zvolen vzhled s vysokým kontrastem kontur a zavádělo se co nejméně prvků závislých na pohybu kursoru myši po obrazovce (dlužno podotknout, že většina věcí je na stránce rozhraní stejně ovladatelná klávesnicí, byť méně pohodlně). 
 
 		\chapter*{Závěr}\label{zaver}
 
@@ -1247,15 +1247,15 @@
 
 			Cílem praktické části této práce bylo vytvořit funkční uživatelské rozhraní k sémantickým sítím typu wordnet. Vlastnosti, které by mělo takové rozhraní mít, byly určeny na základě podrobného empirického rozboru některých existujících rozhraní a rozebrány v kapitole \itNameRef{cha:navrh}. Byly určeny klíčové nedostatky testovaných rozhraní vzhledem k rozvoji technologií a trendům v oblasti způsobu využívání rozhraní zpřístupňujících data. Jako nejrozšířenější nedostatek existujících rozhraní byla identifikována jejich nedostatečná univerzalita, tedy schopnost obsloužit uživatele bez ohledu na to, zda právě pro přístup k danému rozhraní chtějí použít mobilní zařízení s relativně malou obrazovkou, tablet či klasický počítač a bez ohledu na to, který operační systém na svém zařízení používají. Přitom nezávislost na zařízení a platformě je z dnešního hlediska klíčovou vlastností, ježto poměr uživatelů, kteří pracují na mobilním zařízení a těch, kteří pracují na klasickém počítači, se stále posouvá ve prospěch těch prvních.
 
-			Na základě zhodnocení potřebných parametrů rozhraní, které by nebylo zatíženo vyvstavšími nedostatky testovaných rozhraní, bylo definováno, že nové rozhraní by mělo být tzv. webové, tedy zobrazitelné ve standardních prohlížečích určených k procházení sítě WWW. To jednak eliminuje potřebu uživatele přesvědčit k instalaci přídavného programového vybavení na jeho počítač, a jednak je tím zajištěna nezávislost na platformě (operačním systému), kterou uživatel používá. 
+			Na základě zhodnocení potřebných parametrů rozhraní, které by nebylo zatíženo vyvstavšími nedostatky testovaných rozhraní, bylo definováno, že nové rozhraní by mělo být tzv. webové, tedy zobrazitelné ve standardních prohlížečích určených k procházení sítě WWW. To jednak eliminuje potřebu uživatele přesvědčit k instalaci přídavného programového vybavení na svůj počítač, a jednak je tím zajištěna nezávislost na operačním systému, který uživatel používá. 
 
-			Další podstatnou vlastností související s univerzalitou, které by nové rozhraní mělo mít, aby přineslo oproti existujícím rozhraním přidanou hodnotu, je schopnost pracovat s více zdroji informací (wordnety) a mít otevřený kód. Schopnost práce s více zdroji informací implikuje univerzální formát vstupních dat, což je v kombinaci s otevřeným kódem důležité proto, aby bylo možné rozhraní nasadit nezávisle na již existujících instalacích, modifikovat podle konkrétních potřeb a ideálně též vylepšovat. Všechny komponenty rozhraní, kterých je pro jeho funkci využíváno (jQuery, vis.js, etc.) používají licenci MIT, což umožňuje rozhraní vytvořené v rámci této práce bez omezení redistribuovat a modifikovat. 
+			Další podstatnou vlastností související s univerzalitou, kterou by nové rozhraní mělo mít, aby přineslo oproti existujícím rozhraním přidanou hodnotu, je schopnost pracovat s více zdroji informací (wordnety) a mít otevřený kód. Schopnost práce s více zdroji informací implikuje univerzální formát vstupních dat, což je v kombinaci s otevřeným kódem důležité proto, aby bylo možné rozhraní nasadit nezávisle na již existujících instalacích, modifikovat podle konkrétních potřeb a ideálně též vylepšovat. Všechny komponenty rozhraní, kterých je pro jeho funkci využíváno (jQuery, vis.js, etc.) používají licenci MIT, což umožňuje rozhraní vytvořené v rámci této práce bez omezení redistribuovat a modifikovat. 
 
-			Po analýze všech těchto požadavků bylo vytvořeno rozhraní určené pro webové prohlížeče, které na zařízení uživatele neklade žádné nestandardní požadavky ani po stránce technického, ani programového vybavení. Aby byla splněna podmínka vyžadující možnost užívat uživatelské rozhraní aplikace na zařízení (téměř) jakékoliv velikosti, bylo toto vyvinuto za použití moderních technologií a koncipováno jako tzv. responsivní, tedy schopné se dynamicky přizpůsobit velikosti zobrazovací plochy beze ztráty čitelnosti obsahu a jednoduchosti navigace v něm. Vzhled rozhraní je minimalistický, aby se uživatel mohl zaměřit na obsah. Zároveň se však snaží být elegantní a nadčasový.
+			Po analýze všech těchto požadavků bylo vytvořeno rozhraní určené pro webové prohlížeče, které na zařízení uživatele neklade žádné nestandardní požadavky ani po stránce technického, ani programového vybavení. Aby byla splněna podmínka vyžadující možnost užívat uživatelské rozhraní na zařízení (téměř) jakékoliv velikosti, bylo toto vyvinuto za použití moderních technologií a koncipováno jako tzv. responsivní, tedy schopné se dynamicky přizpůsobit velikosti zobrazovací plochy beze ztráty čitelnosti obsahu a jednoduchosti navigace v něm. Vzhled rozhraní je minimalistický, aby se uživatel mohl zaměřit na obsah. Zároveň se však snaží být elegantní a nadčasový.
 
 			Jako každý projekt, který se zabývá programovým vývojem, ani tento není bez možností dalšího pokračování. Možné směry v tomto ohledu naznačené v kapitole \itNameRef{cha:co-se-nestihlo} bezpochyby nejsou jediné, kterými by se rozvoj aplikace mohl ubírat. Vzhledem k tomu, že již nyní aplikace umožňuje práci s různojazyčnými sémantickými sítěmi, se zdá nejbližším dalším vhodným cílem být implementace lokalizace rozhraní do dalších jazyků a překlad lingvistických termínů do pojmů laickými uživateli srozumitelných.
 
-			Jak bylo naznačeno v teoretické části této práce, wordnety navzdory svému původnímu určení mohou teoreticky sloužit lidským uživatelům. K tomu je ovšem potřebné rozhraní, které bude použitelné nejen pro lingvisticky vzdělané uživatele a bude odpovídat současným trendům technologickým i vizuálním. Praktická část této práce dokázala navrhnout a realizovat takové rozhraní, jež je vhodným základem pro další kroky směrem ke zpřístupnění wordnetů lidským uživatelům, zejména z řad studentů.
+			Jak bylo naznačeno v teoretické části této práce, wordnety navzdory svému původnímu určení mohou sloužit lidským uživatelům. K tomu je ovšem potřebné rozhraní, které bude použitelné nejen pro lingvisticky vzdělané uživatele a bude odpovídat současným trendům technologickým i vizuálním. Praktická část této práce dokázala navrhnout a realizovat takové rozhraní, jež je vhodným základem pro další kroky směrem ke zpřístupnění wordnetů lidským uživatelům, zejména z řad studentů.
 
 
 
