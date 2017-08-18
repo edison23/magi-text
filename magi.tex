@@ -19,6 +19,9 @@
 \usepackage{enumitem}
 \usepackage[czech]{minitoc}
 
+\addto{\captionsczech}{%
+\renewcommand{\mtctitle}{}
+}
 % 
 % - vsechny reference na kapitoly a casti by mely byt kursivou pres \itNameRef{}
 
@@ -114,9 +117,10 @@
 
 \newcommand\ex{\textsf}
 
+\dominitoc % init of mini table of contents for chapter TOC (see chapt. about comparing WN interfaces)
+
 \begin{document}
 	
-	\dominitoc % init of mini table of contents for chapter TOC (see chapt. about comparing WN interfaces)
 	
 	% \pagestyle{empty}
 	\begin{titlepage}
@@ -162,6 +166,8 @@
 
 	{\setstretch{1.12}
 		\tableofcontents
+
+		\adjustmtc % to make minitoc print right chapter 
 	}
 
 	\newpage
@@ -324,7 +330,7 @@
 
 				Struktura těchto vztahů není, jak by se na první pohled mohlo zdát, plochá, ale organizovaná podle syntaktické kategorie významů, jež jsou jimi propojeny. Substantiva mají své vlastní vztahy, stejně tak adjektiva, verba a adverbia. Pojmenování těchto vztahů vychází z lingvistických termínu k nim relevantních (např. hyperonymie), ale v některých případech se pojmenování napříč různými syntaktickými kategoriemi překrývá, ačkoliv jde o vztahy různé. Například angl. sloveso \ex{run}\footnote{čes. \ex{běžet}} má ve WordNetu jako hyperonymum uveden synset s významem \ex{pohybovat se velmi rychle} obsahující slovesa \ex{travel rapidly, speed, hurry, zip}\footnote{čes. \ex{cestovat rychle, uhánět, ...}}. Je evidentní, že tento vztah hyperonymie není identický se vztahem hyperonymie u substantiv, kde \ex{house}\footnote{čes. \ex{dům}} má jako přímé hyperonymum uveden synset \ex{building, edifice}\footnote{čes. \ex{budova, stavba}}. Z činnosti \ex{běžet} vyplývá činnost \ex{rychle se pohybovat}, ale \ex{budova} je pro \ex{dům} nadřazenou třídou. Jde tedy o vztah nikoliv nepodobný, ale ne identický. \parencite{princetonWN}
 
-				Vzhledem k vlastnostem sémantických vztahů, jimiž jsou synsety WordNetu provázány, tvoří tyto orientovaný graf (což je v rozporu s obecně značně rozšířenou vizualizací WordNetu jako stromové struktury). Pokud se v tomto grafu vyskytnout anomálie (chyby), může se stát i cyklickým grafem (pokud by například synset měl za hyperonymum sám sebe). To je však zřejmě ojedinělý jev. \parencite{richens2008anomalies} Zdánlivé cykly ve vizualizaci však nastat mohou, jelikož jeden koncept může mít více hyperonym (více v kapitole \itNameRef{cha:hyperohyp} na straně \pageref{cha:hyperohyp}), která v určitém bodě budou mít opět společné hyperonymum, jelikož má WordNet jeden kořen.
+				Vzhledem k vlastnostem sémantických vztahů, jimiž jsou synsety WordNetu provázány, tvoří tyto orientovaný graf (což je v rozporu s obecně značně rozšířenou vizualizací WordNetu jako stromové struktury). Pokud se v tomto grafu vyskytnout anomálie (chyby), může se stát i cyklickým grafem (pokud by například synset měl za hyperonymum sám sebe). To je však zřejmě ojedinělý jev. \parencite{richens2008anomalies} Zdánlivé cykly ve reprezentaci však nastat mohou, jelikož jeden koncept může mít více hyperonym (více v kapitole \itNameRef{cha:hyperohyp} na straně \pageref{cha:hyperohyp}), která v určitém bodě budou mít opět společné hyperonymum, jelikož má WordNet jeden kořen.
 
 				% Tato kapitola tedy bude primárně organizována podle slovních druhů a sekundárně podle jednotlivých sémantických vztahů.
 
@@ -498,7 +504,7 @@
 
 			\section{Výběr rozhraní}
 
-				Hlavním kritériem pro zařazení do rozhraní do výběru byla jeho dohledatelnost, ať již podle seznamu příbuzných projektů na oficiálních webových stránkách princetonského WordNetu\footnote{\url{https://wordnet.princeton.edu/}} (jenž je, dlužno podotknout, velice neaktuální v tom smyslu, že uvádí velké množství rozhraní, která již nejsou dostupná) či podle dotazu na vyhledávači Google\footnote{\url{https://www.google.com}}:
+				Hlavním kritériem pro zařazení do rozhraní do výběru byla jeho dohledatelnost, ať již podle seznamu příbuzných projektů na oficiálních webových stránkách princetonského WordNetu (\textcite{princetonWN}) jenž je, dlužno podotknout, dosti neaktuální v tom smyslu, že uvádí velké množství rozhraní, která již nejsou dostupná, či podle dotazů na vyhledávači Google\footnote{\url{https://www.google.com}}:
 
 					\begin{itemize}
 						\item wordnet visualization
@@ -567,7 +573,7 @@
 					% 	\label{tab:my-label}
 					% \end{table}
 
-				Pro účely porovnání (určení východiska, baseline) bude do popisu zahrnuto ještě jedno rozhraní, a to oficiální vyhledávací rozhraní princetonského WordNetu (\url{http://wordnetweb.princeton.edu/perl/webwn}). 
+				Pro účely porovnání (určení východiska, baseline) bude do popisu zahrnuto ještě jedno rozhraní, a to oficiální vyhledávací rozhraní princetonského WordNetu \footnote{\url{http://wordnetweb.princeton.edu/perl/webwn}}.
 
 			\section{Strukturalizace přehledu a kritéria hodnocení}
 			\label{cha:structhodnoc}
@@ -608,12 +614,9 @@
 			Do přehledu byla zahrnuta rozhraní uvedená v následujícím obsahu této kapitoly:
 
 			\minitoc % mini TOC of this chapter
-			% doesnt print sections of right chapter yet, to be fixed
 			% https://tex.stackexchange.com/questions/5944/minitoc-and-memoir/7877#7877
 			% https://tex.stackexchange.com/questions/3001/list-sections-of-chapter-at-beginning-of-that-chapter
-
-			\td{zatim ten TOC sekci v tehle kapitole moc nefgunguje, help please (minitoc)} 
-
+			% https://tex.stackexchange.com/questions/312979/removing-renaming-the-title-of-minitoc
 
 			\section{WordNet Search jako základ porovnání}
 			\label{wnvis:wnsearch}
