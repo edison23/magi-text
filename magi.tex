@@ -22,14 +22,11 @@
 \addto{\captionsczech}{%
 \renewcommand{\mtctitle}{}
 }
-% 
-% - vsechny reference na kapitoly a casti by mely byt kursivou pres \itNameRef{}
 
 % todo:
 % todo notes!
 % napsat, ze prace vznikala delsi dobu, takze rozhrani nebyla testovana v jednu chvili a v prubehu byla nektera updatovana?
 % pisu vsude starym nebo novym pravopisem? --novym, ale ne vsude!
-% pripsat url rozhrani do kazde sekce
 % vymyslet, jak rozjet VisualBrowser nebo jeho nefunkcnost popsat diplomaticky (a smazat pak teda příkladem budiž Visual Browser zde rozebíraný)
 % dopsat do popisu NSFW rozhrani, ze vizualizaci je mozne ovladat klavesnici
 
@@ -611,7 +608,7 @@
 					% 	\label{tab:my-label}
 					% \end{table}
 
-				Pro účely porovnání (určení východiska, baseline) bude do popisu zahrnuto ještě jedno rozhraní, a to oficiální vyhledávací rozhraní princetonského WordNetu \footnote{\url{http://wordnetweb.princeton.edu/perl/webwn}}.
+				Pro účely porovnání (určení východiska, baseline) bude do popisu zahrnuto ještě jedno rozhraní, a to oficiální vyhledávací rozhraní princetonského WordNetu.
 
 			\section{Strukturalizace přehledu a kritéria hodnocení}
 			\label{cha:structhodnoc}
@@ -656,34 +653,36 @@
 			% https://tex.stackexchange.com/questions/3001/list-sections-of-chapter-at-beginning-of-that-chapter
 			% https://tex.stackexchange.com/questions/312979/removing-renaming-the-title-of-minitoc
 
-			\section{WordNet Search jako základ porovnání}
-			\label{wnvis:wnsearch}
-
-				Oficiální rozhraní k~princetonskému WordNetu je koncipováno jako textová reprezentace dat, přičemž, byť volitelně, umožňuje zobrazovat veškeré k~hledanému výrazu relevantní informace, jež WordNet obsahuje. Data jsou vizualizována jako soubor seznamů.
-
-				Po vyhledání zadaného výrazu jsou uživateli prezentovány v bodech jednotlivé synsety obsahující hledanou slovní formu rozdělené podle slovních druhů, k~nimž přináležejí. V základním nastavení každý bod sestává ze slovních forem tvořících daný synset, jeho definice, případnýho příkladu užití a odkazu na detaily synsetu. Kliknutím na tento odkaz se zobrazí v podseznamu sémantické a lexikální relace, v nichž je daný synset přítomen. Samotné relace jsou opět odkazy, jejichž otevřením je uživateli prezentován seznam synsetů, které jsou spolu s~daným synsetem v dané relaci přítomny. Postupným otevíráním detailů synsetů v podseznamech se lze zanořovat hlouběji a hlouběji do struktury, resp. se ve struktuře vzdalovat původnímu synsetu po hranách relací.
-
-				Uživatel má možnost si zvolit množství informací, jež jsou mu prezentovány, a to od úplného minima (pouze slovní formy nalezených synsetů a jejich syntaktické kategorie) až po vše, co se ve WordNetu vyskytuje, včetně identifikátorů a dalších technických detailů. Rozhraní svůj stav ukládá jako parametry URL\footnote{unikátní adresa stránky (\textit{Uniform Resource Locator}), obvykle se zobrazuje v adresním řádku prohlížeče}, takže je možné jej později obnovit z~adresy.
-
-				Rozhraní není responzivní, ale vzhledem k~tomu, že je v základu relativně úzké (pod 700 px), je na chytrém telefonu použitelné.
-
-				\begin{figure}[h]
-					\centering
-					\includegraphics[width=1.0\textwidth]{wnsearch.png}
-					\caption{Ukázka rozhraní: WordNet Search 3.1 v základním nastavení a s~některými otevřenými detaily u synsetu}
-					\label{fig:wnsearch}
-				\end{figure}
-
-				Podobnou funkcionalitu a způsob zobrazení dat jako WordNet Search mají i některá další rozhraní. Za zmínku stojí například WNSearch\footnote{\url{http://www.golovchenko.org/cgi-bin/wnsearch}}, což je minimalistické čistě textové rozhraní, které díky absenci jakýchkoliv stylů je responzivní a dobře použitelné na mobilních zařízeních s~libovolně velkým displejem. Mezi další rozhraní s~podobnou funkcionalitou patří URCS Wordnet Browser (spustitelné s~Javou)\footnote{\url{http://www.cs.rochester.edu/research/cisd/wordnet/}} či GoldenDict (rozhraní pro klasické počítače především s~operačním systémem Windows)\footnote{\url{http://goldendict.org/}}.
+			
 
 			\section{Vizualizace s~webovým rozhraním}
 
 				Jako bylo naznačeno v úvodu této části, vizualizací s~webovým rozhraním se v této práci míní taková implementace, která ze strany uživatele nevyžaduje instalaci žádných doplňujících aplikací či aplikačních prostředí (např. Javy) kromě samotného webového prohlížeče.
 
+				\subsection{WordNet Search jako základ porovnání}
+				\label{wnvis:wnsearch}
+
+					Oficiální rozhraní k~princetonskému WordNetu, dostupné z \url{http://wordnetweb.princeton.edu/perl/webwn} je koncipováno jako textová reprezentace dat, přičemž, byť volitelně, umožňuje zobrazovat veškeré k~hledanému výrazu relevantní informace, jež WordNet obsahuje. Data jsou vizualizována jako soubor seznamů.
+
+					Po vyhledání zadaného výrazu jsou uživateli prezentovány v bodech jednotlivé synsety obsahující hledanou slovní formu rozdělené podle slovních druhů, k~nimž přináležejí. V základním nastavení každý bod sestává ze slovních forem tvořících daný synset, jeho definice, případnýho příkladu užití a odkazu na detaily synsetu. Kliknutím na tento odkaz se zobrazí v podseznamu sémantické a lexikální relace, v nichž je daný synset přítomen. Samotné relace jsou opět odkazy, jejichž otevřením je uživateli prezentován seznam synsetů, které jsou spolu s~daným synsetem v dané relaci přítomny. Postupným otevíráním detailů synsetů v podseznamech se lze zanořovat hlouběji a hlouběji do struktury, resp. se ve struktuře vzdalovat původnímu synsetu po hranách relací.
+
+					Uživatel má možnost si zvolit množství informací, jež jsou mu prezentovány, a to od úplného minima (pouze slovní formy nalezených synsetů a jejich syntaktické kategorie) až po vše, co se ve WordNetu vyskytuje, včetně identifikátorů a dalších technických detailů. Rozhraní svůj stav ukládá jako parametry URL\footnote{unikátní adresa stránky (\textit{Uniform Resource Locator}), obvykle se zobrazuje v adresním řádku prohlížeče}, takže je možné jej později obnovit z~adresy.
+
+					Rozhraní není responzivní, ale vzhledem k~tomu, že je v základu relativně úzké (pod 700 px), je na chytrém telefonu použitelné.
+
+					\begin{figure}[h]
+						\centering
+						\includegraphics[width=1.0\textwidth]{wnsearch.png}
+						\caption{Ukázka rozhraní: WordNet Search 3.1 v základním nastavení a s~některými otevřenými detaily u synsetu}
+						\label{fig:wnsearch}
+					\end{figure}
+
+					Podobnou funkcionalitu a způsob zobrazení dat jako WordNet Search mají i některá další rozhraní. Za zmínku stojí například WNSearch\footnote{\url{http://www.golovchenko.org/cgi-bin/wnsearch}}, což je minimalistické čistě textové rozhraní, které díky absenci jakýchkoliv stylů je responzivní a dobře použitelné na mobilních zařízeních s~libovolně velkým displejem. Mezi další rozhraní s~podobnou funkcionalitou patří URCS Wordnet Browser (spustitelné s~Javou)\footnote{\url{http://www.cs.rochester.edu/research/cisd/wordnet/}} či GoldenDict (rozhraní pro klasické počítače především s~operačním systémem Windows)\footnote{\url{http://goldendict.org/}}.
+
 				\subsection{An interactive visualization of the Princeton WordNet database}
 				\label{wnvis:intviswn}
 
-					Jeden z~projektů programátora jménem Mateo Gianolio z~Lundské univerzity (Švédsko)\footnote{\url{https://www.linkedin.com/in/mateo-gianolio-a89558b6}}\td{je v poradku to linkovat takhle jako link na linkedin? nebo to mam napsat jako zdroj do citaci?}. Jde o jednoduché rozhraní napojené na princetonský WordNet, které po zadání hledaného výrazu zobrazí synsety obsahující daný výraz. Jednotlivé synsety jsou barevně odlišeny podle syntaktických kategorií (slovních druhů), k~nimž náležejí, a uspořádány kruhově kolem hledaného výrazu. Z~každého synsetu je vždy zobrazena jen první slovní forma. Pokud uživatel najede kursorem myši na některý ze synsetů, zobrazí se další případné slovní formy náležející do daného synsetu a jeho glosa (definice), je-li dostupná.
+					An interactive visualization of the Princeton WordNet database, dostupný z \url{http://mateogianolio.com/wordnet-visualization/}, je jeden z~projektů programátora jménem Mateo Gianolio z~Lundské univerzity (Švédsko)\footnote{\url{https://www.linkedin.com/in/mateo-gianolio-a89558b6}}\td{je v poradku to linkovat takhle jako link na linkedin? nebo to mam napsat jako zdroj do citaci?}. Jde o jednoduché rozhraní napojené na princetonský WordNet, které po zadání hledaného výrazu zobrazí synsety obsahující daný výraz. Jednotlivé synsety jsou barevně odlišeny podle syntaktických kategorií (slovních druhů), k~nimž náležejí, a uspořádány kruhově kolem hledaného výrazu. Z~každého synsetu je vždy zobrazena jen první slovní forma. Pokud uživatel najede kursorem myši na některý ze synsetů, zobrazí se další případné slovní formy náležející do daného synsetu a jeho glosa (definice), je-li dostupná.
 
 					Další slovní formy v nalezených synsetech jsou klikatelné, což umožňuje dostat se přes ně na synsety obsahující onu slovní formu, na níž bylo uživatelem kliknuto (s identickým výsledkem, jako kdyby dané slovo uživatel zadal do vyhledávacího pole).
 
@@ -705,7 +704,7 @@
 				\subsection{WordNET Editor}
 				\label{wnvis:wncoledit}
 
-					Webová aplikace WordNET Editor byla vytvořena s~cílem poskytnout internetové komunitě praktický a účinný nástroj pro rozvoj WordNetu. Její autoři, \textcite{szymanski2007cooperative}, argumentují, že vývoj WordNetu vyžaduje velké množství lidské práce, a je proto důležité jej tvořit tak, jako je tvořena například internetová encyklopedie Wikipedie, což znamená spoluprací nezávislých uživatelů. K~tomu je však potřeba nástroj, který takovou spolupráci umožní, což podle nich oficiální nástroje princetonského WordNetu nejsou (mimo jiné pravděpodobně proto, že WordNet byl vyvíjen uzavřenou skupinou lidí \parencite{fellbaum2005wordnets}). Vedle editoru vztahů a synsetů však obsahuje WordNET Editor i prohlížeč wordnetu, pro který bylo rozhraní do tohoto přehledu zařazeno. Data, jež aplikace používá, jsou verzí princetonského WordNetu odvětvenou v jeho verzi 2.1. \parencite{szymanski2007cooperative}
+					Webová aplikace WordNET Editor, dostupná z \url{http://wordventure.eti.pg.gda.pl/wne/wne.html}, byla vytvořena s~cílem poskytnout internetové komunitě praktický a účinný nástroj pro rozvoj WordNetu. Její autoři, \textcite{szymanski2007cooperative}, argumentují, že vývoj WordNetu vyžaduje velké množství lidské práce, a je proto důležité jej tvořit tak, jako je tvořena například internetová encyklopedie Wikipedie, což znamená spoluprací nezávislých uživatelů. K~tomu je však potřeba nástroj, který takovou spolupráci umožní, což podle nich oficiální nástroje princetonského WordNetu nejsou (mimo jiné pravděpodobně proto, že WordNet byl vyvíjen uzavřenou skupinou lidí \parencite{fellbaum2005wordnets}). Vedle editoru vztahů a synsetů však obsahuje WordNET Editor i prohlížeč wordnetu, pro který bylo rozhraní do tohoto přehledu zařazeno. Data, jež aplikace používá, jsou verzí princetonského WordNetu odvětvenou v jeho verzi 2.1. \parencite{szymanski2007cooperative}
 
 					Rozhraní je rozděleno do levého sloupce a pravého (většího) \uv{plátna}, jež slouží pro grafické vyobrazení vztahů. Po vyhledání zadaného výrazu nabídne aplikace uživateli seznam synsetů, v nichž se výraz nachází. Nabídka synsetů je klikatelná a uživateli je po zvolení synsetu kliknutím prezentováno grafické vyobrazení daného synsetu se všemi jeho vztahy. V levém sloupci si pak uživatel může vybírat, další synsety, které chce do pravé sekce přidat, může také otevírat dvojklikem již zobrazené synsety a lze i v nastavení filtrovat, které vztahy a slovní druhy se mají zobrazovat. Aplikace však zřejmě neobsahuje intuitivní způsob jak zobrazené synsety z~plátna vpravo odebírat a při otevírání dalších synsetů plátno nepřepisuje, ale synsety přidává k~již zobrazeným (neprovázaně). To může vést ke značné nepřehlednosti reprezentace, avšak aplikace umožňuje přibližování a oddalování plátna a vizuální přesouvání zobrazení po plátně, což s~jistým úsilím uživatele nepřehlednost může eliminovat. Také nutno vytknout absenci textového pojmenování vztahů mezi synsety. Barevné rozlišení je v tomto případě nevhodně zvolené, jelikož vztahů je v rozhraní hodně a některé barvy jsou obtížně odlišitelné.
 
@@ -725,7 +724,7 @@
 				\subsection{Cornetto Demo}
 				\label{wnvis:cornetto}
 
-					Cornetto Demo je prohlížeč pro nizozemský wordnet a jako jedno z~mála dostupných webových aplikací kombinuje grafickou a textovou vizualizaci dat. To je dáno zřejmě mimo jiné tím, že Cornetto Demo není pouze rozhraním pro wordnet, ale kombinuje data ze dvou zdrojů. Jednak z~Referentie Bestand Nederlands \parencite{martin2005referentie}, a jednak z~nizozemského wordnetu. Referentie Bestand Nederlands je slovník obsahující informace podobně strukturované jako FrameNet \parencite{fillmore2004framenet} spolu s~rozšířením o kombinatorickém chování slov v určitém významu \parencite{horak2008development}. 
+					Cornetto Demo, dostupný z \url{http://cornetto.clarin.inl.nl/wordnet.xql}, je prohlížeč pro nizozemský wordnet a jako jedno z~mála dostupných webových aplikací kombinuje grafickou a textovou vizualizaci dat. To je dáno zřejmě mimo jiné tím, že Cornetto Demo není pouze rozhraním pro wordnet, ale kombinuje data ze dvou zdrojů. Jednak z~Referentie Bestand Nederlands \parencite{martin2005referentie}, a jednak z~nizozemského wordnetu. Referentie Bestand Nederlands je slovník obsahující informace podobně strukturované jako FrameNet \parencite{fillmore2004framenet} spolu s~rozšířením o kombinatorickém chování slov v určitém významu \parencite{horak2008development}. 
 
 					Rozhraní je rozděleno na tři moduly, základní vyhledávání, pokročilé vyhledávání a vizualizace synsetů. 
 
@@ -763,7 +762,7 @@
 				\subsection{WordVis}
 				\label{vis:wordvis}
 
-					WordVis je rozhraní zaměřené na vizualizaci dat princetonského WordNetu grafem. Sestává z~vyhledávacího pole, levého sloupce s~výběrem synsetů a z~plátna, na němž je vykreslen graf vztahů zvoleného synsetu nebo slovní formy. 
+					WordVis, dostupné z \url{http://wordvis.com}, je rozhraní zaměřené na vizualizaci dat princetonského WordNetu grafem. Sestává z~vyhledávacího pole, levého sloupce s~výběrem synsetů a z~plátna, na němž je vykreslen graf vztahů zvoleného synsetu nebo slovní formy. 
 
 					Ačkoliv to na první pohled uživateli nemusí být zřejmé, vizualizace funguje ve dvou režimech. Prvním je zobrazení slovní formy a synsetů, v nichž se tato slovní forma vyskytuje, druhé je zobrazení synsetu jako centrální jednotky a vztahů a slovních forem, které k~danému synsetu patří. První zobrazení je užíváno například při prvotním zobrazení výsledků hledání. Vizualizace zobrazí ve středu grafu vyhledanou slovní formu a připojí k~ní nepojmenovanými hranami synsety, jež danou slovní formu obsahují. Pokud pak uživatel zvolí kliknutím myší některý konkrétní synset, zobrazí se ve středu vizualizace jeho značka, k~níž jsou připojeny pojmenovanými hranami představujícími sémantické vztahy další synsety. Stejně jako v prvním zobrazení, i v tomto se slovní formy náležející k~určitému synsetu připojují nepojmenovanými hranami jako textové uzly. Pokud jedna slovní forma náleží k~více synsetům (např. substantivum \ex{bicycle} a sloveso \ex{bicycle}), je v grafu její textový uzel pouze jednou a vedou od něj dvě nepojmenované hrany k~náležitým synsetům. 
 
@@ -791,7 +790,7 @@
 				\subsection{sloWTool}
 				\label{vis:slowtool}
 
-					Rozhraní sloWTool bylo vyvinuto pro potřeby slovinského wordnetu, jenž je založen na princetonském WordNetu a vznikl skombinováním několika zdrojů, například Wikipedie, dvojjazyčných slovníků či paralelních korpusů. Je víceúčelovým nástrojem, který umožňuje textovou reprezentaci, vizualizaci a editaci dat z~wordnetu. V době psaní této práce v něm bylo podle rozbalovací nabídky vedle vyhledávacího pole možno pracovat s~anglickým, francouzským, polským a slovinským wordnetem, testováno bylo rozhraní s~anglickým. Tvůrcům rozhraní sloužilo k~revizím slovinského wordnetu po jeho rozšiřování automatickými nástroji. \parencite{fivser2012slownet} Cílem při vývoji tohoto rozhraní podle \textcite{fivser2011visualizing} bylo překonat nevýhody tehdejších dostupných rozhraní a vyvinout nástroj, který by mezi jiným umožňoval prohlížení i editaci, spolupráci mnoha autorů včetně anonymních editací (záměr tvůrců byl využít náhodných návštěvníků k~opravování chyb, jež ve wordnetu naleznou) či možnost jednoduché registrace uživatelů. Mezi dalšími podmínkami byla možnost přidávání dalších wordnetů do systému a s~tím spojená schopnost rozhraní zobrazovat vícejazyčná data. V neposlední řadě se autoři v kontextu tehdejších nástrojů také snažili zaměřit na platformní nezávislost a přenositelnost rozhraní. 
+					Rozhraní sloWTool, dostupné z \url{http://nl.ijs.si/slowtool}, bylo vyvinuto pro potřeby slovinského wordnetu, jenž je založen na princetonském WordNetu a vznikl skombinováním několika zdrojů, například Wikipedie, dvojjazyčných slovníků či paralelních korpusů. Je víceúčelovým nástrojem, který umožňuje textovou reprezentaci, vizualizaci a editaci dat z~wordnetu. V době psaní této práce v něm bylo podle rozbalovací nabídky vedle vyhledávacího pole možno pracovat s~anglickým, francouzským, polským a slovinským wordnetem, testováno bylo rozhraní s~anglickým. Tvůrcům rozhraní sloužilo k~revizím slovinského wordnetu po jeho rozšiřování automatickými nástroji. \parencite{fivser2012slownet} Cílem při vývoji tohoto rozhraní podle \textcite{fivser2011visualizing} bylo překonat nevýhody tehdejších dostupných rozhraní a vyvinout nástroj, který by mezi jiným umožňoval prohlížení i editaci, spolupráci mnoha autorů včetně anonymních editací (záměr tvůrců byl využít náhodných návštěvníků k~opravování chyb, jež ve wordnetu naleznou) či možnost jednoduché registrace uživatelů. Mezi dalšími podmínkami byla možnost přidávání dalších wordnetů do systému a s~tím spojená schopnost rozhraní zobrazovat vícejazyčná data. V neposlední řadě se autoři v kontextu tehdejších nástrojů také snažili zaměřit na platformní nezávislost a přenositelnost rozhraní. 
 
 					Rozložení stránky je vzdáleně podobné tomu u základního oficiálního rozhraní k~princetonskému WordNetu, a to v tom smyslu, že neobsahuje relativně rozšířený levý sloupec na výběr synsetů, ale jednotlivé významy, které jsou nalezeny po zadaní hledané slovní formy do vyhledávacího pole, seskupuje do sekcí v hlavním bloku spolu s~textovou reprezentací dat. Vyhledávací pole podporuje napovídání v databázi existujících slovních forem, podobně jako je to zařízeno v rozhraní WordVis, což může usnadnit práci s~vyhledáváním. V textové reprezentaci rozhraní zobrazuje zřejmě všechny dostupné informace o synsetech, tedy se chová podobně jako základní rozhraní princetonského WordNetu, je-li nastaveno tak, aby nefiltrovalo žádné informce. U jednotlivých vztahů, v nichž je daný synset přítomen, pak je možné kliknutím na ikonu šipky otevřít synset nacházející se pomyslně na druhé straně daného vztahu (např. \ex{bicykle}\footnote{angl. \ex{cyklistické kolo}} má meronymum \ex{saddle}\footnote{angl. \ex{sedlo}}, takže lze otevřít detail synsetu \ex{saddle}). To trpí stejným neduhem, jako základní rozhraní princetonského WordNetu, to jest, že lze ve smyčce otevírat nadřazený a podřazený synset a stále se zanořovat do smyčky hlouběji. To je nejen nesmyslné, ale zároveň to v implementaci tohoto rozhraní postupně může začít zpomalovat rychlost reakcí prohlížeče pro nadměrné množství uzlů v DOM\footnote{document object model, model objektů v dokumentu}.
 
@@ -819,9 +818,9 @@
 				\subsection{BabelNetXplorer}
 				\label{vis:babel}
 
-					BabelNet je rozsáhlý projekt vícejazykové sémantické sítě, který čerpá data z~více zdrojů. Záměrem autorů bylo při tvorbě této sémantické sítě 
+					BabelNet, dostupný z \url{http://babelnet.org} je rozsáhlý projekt vícejazykové sémantické sítě, který čerpá data z~více zdrojů. Záměrem autorů bylo při tvorbě této sémantické sítě 
 					% poskytnout vědecké komunitě i široké veřejnosti volně dostupný multilinguální zdroj provázaných informací a soubor nástrojů, které umožní s~těmito informacemi pracovat. 
-					eliminovat základní faktory definující nevýhody tehdejších (a potažmo i aktuálních) mezinárodních projektů zabývajících se sémantickými sítěmi. Těmi jsou manuální tvorba dat, které sítě konstituují, a s~tím související nerovnoměrnost množství dat přes jednotlivé jazyky. Jazyky s~vysokou hustotou zdrojů, jakým je například angličtina, tak ve výsledku mají více dat i v sémantické síti. Autoři BabelNetu se pokusili tento problém překonat kombinací několika metod, jejichž společným prvkem je automatizace. Informace o významech jsou v BabelNetu doplňovány z~Wikipedie, která je podle autorů díky mnohačetným zásahům expertů z~různých oborů ve výsledku přesným a informačně bohatým zdrojem. Druhá důležitá metoda, zaměřující se především na nerovnoměrnost dat v různých jazycích, je automatický překlad zdrojů. \parencite{navigli2010babelnet}
+					eliminovat základní faktory definující nevýhody tehdejších (a potažmo i aktuálních) mezinárodních projektů zabývajících se sémantickými sítěmi. Těmi jsou manuální tvorba dat, která sítě konstituují, a s~tím související nerovnoměrnost množství dat přes jednotlivé jazyky. Jazyky s~vysokou hustotou zdrojů, jakým je například angličtina, tak ve výsledku mají více dat i v sémantické síti. Autoři BabelNetu se pokusili tento problém překonat kombinací několika metod, jejichž společným prvkem je automatizace. Informace o významech jsou v BabelNetu doplňovány z~Wikipedie, která je podle autorů díky mnohačetným zásahům expertů z~různých oborů ve výsledku přesným a informačně bohatým zdrojem. Druhá důležitá metoda, zaměřující se především na nerovnoměrnost dat v různých jazycích, je automatický překlad zdrojů. \parencite{navigli2010babelnet}
 
 					BabelNetXplorer je webové grafické rozhraní vytvořené pro vizualizaci dat z~BabelNetu. \textcite{navigli2012babelnetxplorer} uvádějí, že rozhraní slouží k~vizualizaci vztahů pro slova nalezená v BabelNetu a ilustrují vzhled rozhraní dvěma snímky obrazovky. V době vzniku tohoto textu však rozhraní BabelNetXploreru už vypadá výrazně odlišně, což je vzhledem k~tomu, že od vzniku práce \textcite{navigli2012babelnetxplorer} uběhlo pět let, pochopitelné. V této práci bude z~evidentních důvodů rozebrána použitelnost a funkcionalita současné verze.
 
@@ -861,7 +860,7 @@
 						\label{fig:wnwordnetbrowswer}
 					\end{figure}
 
-					Rozhraní wnbroswer\footnote{sic erat scriptum, název rozhraní je psán na různých místech různými způsoby, více v poznámce na konci této kapitoly na straně \pageref{note:wnbroswer} a na obrázku \ref{fig:wnbroswerbadwriting} na straně \pageref{fig:wnbroswerbadwriting}} je určeno k~prezentaci dat z~princetonskému WordNetu, které pracuje pouze s~grafovou grafickou reprezentací. Bylo vytvořeno pro reprezentaci dat z~WordNetu ve verzi 3.0 a vyšší a vyžaduje lokální instalaci dat. Rozhraní je zřejmě svázáno se vznikem rumunského wordnetu \parencite{fivser2011visualizing}. Sestává z~vyhledávacího pole, volby, mezi kterými syntaktickými kategoriemi se má vyhledávat, a selektoru na typy vazeb, jež mají být zobrazeny. Po úspěšném vyhledání konkrétního slova se zobrazí graf konceptuálně podobný grafu z~rozhraní sloWTool, tedy ve středu je uzel reprezentující hledaný výraz, z~něhož vedou hrany k~jednotlivým synsetům, jež danou slovní formu obsahují. 
+					Rozhraní wnbroswer\footnote{sic erat scriptum, název rozhraní je psán na různých místech různými způsoby, více v poznámce na konci této kapitoly na straně \pageref{note:wnbroswer} a na obrázku \ref{fig:wnbroswerbadwriting} na straně \pageref{fig:wnbroswerbadwriting}}, dostupné z \url{http://homepages.inf.ed.ac.uk/adubey/software/wnbrowser/index.html} je určeno k~prezentaci dat z~princetonskému WordNetu, které pracuje pouze s~grafovou grafickou reprezentací. Bylo vytvořeno pro reprezentaci dat z~WordNetu ve verzi 3.0 a vyšší a vyžaduje lokální instalaci dat. Rozhraní je zřejmě svázáno se vznikem rumunského wordnetu \parencite{fivser2011visualizing}. Sestává z~vyhledávacího pole, volby, mezi kterými syntaktickými kategoriemi se má vyhledávat, a selektoru na typy vazeb, jež mají být zobrazeny. Po úspěšném vyhledání konkrétního slova se zobrazí graf konceptuálně podobný grafu z~rozhraní sloWTool, tedy ve středu je uzel reprezentující hledaný výraz, z~něhož vedou hrany k~jednotlivým synsetům, jež danou slovní formu obsahují. 
 
 					Grafická reprezentace je interaktivní, lze na ní zvolit, jaký druh sémantického vztahu se má zobrazit, a lze tak u každého uzlu postupně zobrazit všechny synsety, které jsou s~ním provázány; toho lze docílit buď přes kontextové menu, nebo přes volby vztahů v levém sloupci rozhraní, v němž se mimo jiné nachází i vyhledávací pole. Rozhraní zobrazuje i detaily zvoleného synsetu (po kliknutí na daný synset), takže až na technické informace typu číslo významu a podobně je schopno zobrazovat všechna dostupná data.
 
@@ -887,7 +886,7 @@
 						\label{fig:wntreebolic}
 					\end{figure}
 
-					Treebolic je aplikace určená k~zobrazování hierarchických dat v hyperobilické reprezentaci, která zajišťuje, že důležitá data v centru obrazovky jsou zobrazena uživateli ve větším měřítku, než data na okrajích grafu. Reprezentaci si lze představit jako plochu zobrazenou přes čočku. \parencite{boutreebolic}
+					Treebolic, dostupná z \url{http://treebolic.sourceforge.net}, je aplikace určená k~zobrazování hierarchických dat v hyperobilické reprezentaci, která zajišťuje, že důležitá data v centru obrazovky jsou zobrazena uživateli ve větším měřítku, než data na okrajích grafu. Reprezentaci si lze představit jako plochu zobrazenou přes čočku. \parencite{boutreebolic}
 
 					Zobrazení používá model prezentující vše, co je nalezeno k~hledanému slovu, tedy při úspěšném vyhledání výsledků se uprostřed vizualizace zobrazí reprezentace vyhledávání, s~níž jsou hranami provázáany všechny nalezené synsety. Oproti ostatním zde popisovaným prostředím navíc seskupuje tyto synsety podle slovního druhu, tedy zavádí další metakategorii v zobrazení, což přispívá k~přehlednosti. 
 
@@ -901,7 +900,7 @@
 
 				\subsection{VisualBrowser}
 
-					\td{napsat diplomaticteji, nebo se pokusit aplikaci rozjet poradne}Verze aplikace VisualBrowser testovaná v rámci této práce neprokázala dostatečnou intuitivitu a funkčnost, aby její vlastnosti mohly být dále rozebrány. 
+					\td{napsat diplomaticteji, nebo se pokusit aplikaci rozjet poradne}Verze aplikace VisualBrowser, dostupná z \url{https://nlp.fi.muni.cz/projekty/visualbrowser}, testovaná v rámci této práce neprokázala dostatečnou intuitivitu a funkčnost, aby její vlastnosti mohly být dále rozebrány. 
 
 			\section{Aplikace pro klasické počítače}
 
@@ -918,7 +917,7 @@
 					\label{fig:wnartha-ubuntu}
 				\end{figure}
 
-				Artha je multiplatformí tezaurus založený na WordNetu 3.0 \parencite{ramaswamy2012}. Grafické prostředí aplikace je vytvořeno v GTK\footnote{multiplatformní soubor nástrojů pro tvorbu grafických rozhraní (\url{https://www.gtk.org/})}, takže umožňuje (minimálně na testovací konfiguraci, tedy operační systém Ubuntu 16.04) komfortní práci. Je možno ji nainstalovat z~repozitářů (tedy nevyžaduje náročnou kompilaci\footnote{podobně jako při distribuci skompilovaných binárních souborů}), což je pro koncového uživatele velmi pozitivní. Dle dokumentace je k~disposici instalátor i na operační systém Windows\footnote{\url{https://www.microsoft.com/en-us/windows/}}. O Apple macOS\footnote{\url{https://www.apple.com/lae/macos}} se dokumentace nezmiňuje. Funguje bez připojení k~Internetu a zobrazení je zaměřeno především na zobrazení významů synsetů (význam je reprezentován definicemi). Problémem je ukládání stavů aplikace, který se projevuje na nepříliš propracované funkcionalitě možnosti kroku zpět (na předchozí vyhledávání). Pokud například uživatel klikne dvojklikem na vybrané slovo v definici, Artha se jej pokusí\footnote{selže, pokud uživatel vybere před dvojklikem více slov} přesměrovat na definici tohoto slova ve WordNetu, ale při kroku zpět už mu zobrazí slovo, jež hledal \textit{před} slovem, z~nějž se dostal na \textit{současnou} definici. Oproti základnímu rozhraní WordNetu nabízí Artha větší pohodlí v podobě desktopové offline aplikace, což pro uživatele znamená, že není při používání tohoto rozhraní závislý na připojení k~Internetu.
+				Artha, dostupný z \url{http://artha.sourceforge.net/wiki/index.php/Home}, je multiplatformí tezaurus založený na WordNetu 3.0 \parencite{ramaswamy2012}. Grafické prostředí aplikace je vytvořeno v GTK\footnote{multiplatformní soubor nástrojů pro tvorbu grafických rozhraní (\url{https://www.gtk.org/})}, takže umožňuje (minimálně na testovací konfiguraci, tedy operační systém Ubuntu 16.04) komfortní práci. Je možno ji nainstalovat z~repozitářů (tedy nevyžaduje náročnou kompilaci\footnote{podobně jako při distribuci skompilovaných binárních souborů}), což je pro koncového uživatele velmi pozitivní. Dle dokumentace je k~disposici instalátor i na operační systém Windows\footnote{\url{https://www.microsoft.com/en-us/windows/}}. O Apple macOS\footnote{\url{https://www.apple.com/lae/macos}} se dokumentace nezmiňuje. Funguje bez připojení k~Internetu a zobrazení je zaměřeno především na zobrazení významů synsetů (význam je reprezentován definicemi). Problémem je ukládání stavů aplikace, který se projevuje na nepříliš propracované funkcionalitě možnosti kroku zpět (na předchozí vyhledávání). Pokud například uživatel klikne dvojklikem na vybrané slovo v definici, Artha se jej pokusí\footnote{selže, pokud uživatel vybere před dvojklikem více slov} přesměrovat na definici tohoto slova ve WordNetu, ale při kroku zpět už mu zobrazí slovo, jež hledal \textit{před} slovem, z~nějž se dostal na \textit{současnou} definici. Oproti základnímu rozhraní WordNetu nabízí Artha větší pohodlí v podobě desktopové offline aplikace, což pro uživatele znamená, že není při používání tohoto rozhraní závislý na připojení k~Internetu.
 
 				Artha zobrazuje data čistě textově (v tom smyslu, že nenabízí žádnou formu vizualizace), přičemž se rozhraní dělí na dvě části, a to nalezené synsety s~blizšími informacemi a sémantické vztahy, které se k~vybranému synsetu vážou (ilustrováno na snímku obrazovky \ref{fig:wnartha-ubuntu} na straně \pageref{fig:wnartha-ubuntu}). 
 
@@ -931,7 +930,7 @@
 					\label{fig:wngoldendick-ubuntu}
 				\end{figure}
 
-				Podobně jako Artha funguje GoldenDict, který, jsa univerzálnějším rozhraním pro více lexikografických zdrojů, byl testován jen ve své verzi pro WordNet. GoldenDict zobrazuje čistě textovou reprezentaci umožňující kliknutím zobrazit detaily jednotlivých synsetů. Slovníková data si obstarává aplikace sama, takže uživatel nemusí podstupovat instalaci dat princetonského WordNetu (která může být netriviální, protože například pro Windows neposkytují oficiální webové stránky instalátor pro data WordNetu ve verzi 3). Zároveň však rozhraní umožňuje přidávat další slovníky a v základu umožňuje zobrazovat výsledky hledání z~Wikipedie. 
+				Podobně jako Artha funguje GoldenDict, dostupný z \url{http://goldendict.org}, který, jsa univerzálnějším rozhraním pro více lexikografických zdrojů, byl testován jen ve své verzi pro WordNet. GoldenDict zobrazuje čistě textovou reprezentaci umožňující kliknutím zobrazit detaily jednotlivých synsetů. Slovníková data si obstarává aplikace sama, takže uživatel nemusí podstupovat instalaci dat princetonského WordNetu (která může být netriviální, protože například pro Windows neposkytují oficiální webové stránky instalátor pro data WordNetu ve verzi 3). Zároveň však rozhraní umožňuje přidávat další slovníky a v základu umožňuje zobrazovat výsledky hledání z~Wikipedie. 
 
 				Rozhraní obsahuje levý sloupec pro zobrazování výsledků hledání a společně s~hlavní plochou pro zobrazování detailů synsetu se chová podobně jako ostatní rozhraní (ilustrováno na snímku obrazovky \ref{fig:wngoldendick-ubuntu} na straně \pageref{fig:wngoldendick-ubuntu}). Aplikace udržuje historii hledání, umožňuje hledat slova z~definic synsetů pomocí dvojkliku kursorem myši a dává uživateli k~disposici relativně široké možnosti konfigurovatelnosti. Její rozhraní se dobře přizpůsobuje velikosti obrazovky (potažmo okna).
 
