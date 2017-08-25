@@ -5,7 +5,7 @@
 \usepackage{lmodern}
 \usepackage[english,czech]{babel}
 \usepackage{csquotes}
-\usepackage{url}
+\usepackage[hyphens]{url}
 \usepackage{todonotes}
 \usepackage{xunicode}
 \usepackage{graphicx}
@@ -24,11 +24,8 @@
 }
 
 % todo:
-% todo notes!
-% napsat, ze prace vznikala delsi dobu, takze rozhrani nebyla testovana v jednu chvili a v prubehu byla nektera updatovana?
 % pisu vsude starym nebo novym pravopisem? --novym, ale ne vsude!
 % vymyslet, jak rozjet VisualBrowser nebo jeho nefunkcnost popsat diplomaticky (a smazat pak teda příkladem budiž Visual Browser zde rozebíraný)
-% dopsat do popisu NSFW rozhrani, ze vizualizaci je mozne ovladat klavesnici
 
 % nazev rozhrani: not so fickle/frenzy/??? wordnet viewer
 % doimplementovat, aby rozhrani kontrolovalo, jestli parametry v url zna
@@ -113,6 +110,17 @@
 \dominitoc % init of mini table of contents for chapter TOC (see chapt. about comparing WN interfaces)
 
 \begin{document}
+
+\todo[inline]{TODO tady v textu:}
+	\todo[inline,backgroundcolor=red!25]{kontrola, ze pisu novym pravopisem ("responzivní místo responzivní") -- když narazíš na něco starým, prosím, flaguj to}
+	\todo[inline,backgroundcolor=red!25]{pomoc, jak rozjet Visual Browser, nefunguje mi ani s RDF z adresy na jeho webu}
+	\todo[inline,backgroundcolor=red!25]{název rozhraní ještě není finální, nějaké nápady, jako ho vylepšit? (Not So Fickle Wordnet viewer)}
+
+\par
+\todo[inline]{TODO v samotném rozhraní:}
+	\todo[inline,backgroundcolor=red!25]{doimplementovat, aby rozhrani kontrolovalo, jestli parametry v url zna}
+	\todo[inline,backgroundcolor=red!25]{udelat v kodu konfigurovatelnou abulafiu (dotazy na server)}
+
 	
 	
 	% \pagestyle{empty}
@@ -294,14 +302,14 @@
 
 				WordNet se svou hierarchickou organizací slovní zásoby tedy pravděpodobně konceptuálně blíží organizaci lexika v lidské paměti.
 
-				Navzdory tomu, že je WordNet (a všeobecně wordnety) využíván převážně k~úkolům počítačového zpracování jazyka\td{mam tohle tvrzeni nekde ocitovane? chtelo by to ho mit, nejaky napad pripadne pls?}, zdá se být pro svou podobnost v uspořádání informací vhodný i v jiných oblastech. V souladu s~příklady, jež byly předloženy výše, se zdá, že zkoumání významů a propojenosti konceptů v jazyce, s~nímž není uživatel zcela obeznámen, by mohlo ve WordNetu být snazší než v klasickém slovníku. V podobném duchu využili při svých kursech WordNet například \textcite{lemnitzer2003using}.
+				Navzdory tomu, že je WordNet (a všeobecně wordnety) využíván převážně k~úkolům počítačového zpracování jazyka\td{nedari se mi k tomu najit citaci, jen to tusim, any help?}, zdá se být pro svou podobnost v uspořádání informací vhodný i v jiných oblastech. V souladu s~příklady, jež byly předloženy výše, se zdá, že zkoumání významů a propojenosti konceptů v jazyce, s~nímž není uživatel zcela obeznámen, by mohlo ve WordNetu být snazší než v klasickém slovníku. V podobném duchu využili při svých kursech WordNet například \textcite{lemnitzer2003using}.
 			
 
 			\section{Organizace WordNetu}
 
 				Ve WordNetu lze nalézt informace autosémantikách, slovech plnovýznamových, tedy substantivech, adjektivech, slovesech a příslovcích \parencite{vossen1998introduction}. Synsémantika (např. předložky, spojky etc.) nebyla zahrnuta, jelikož se zdá, že jsou uložena odděleně od slov plnovýznamových. Teorii, že jsou funkční slova uchovávána jako součást syntaktikonu, podpořil kupříkladu \textcite{garrett1982production} při svém pozorování afatických pacientů. 
 
-				Vůbec první podnět k~uvědomění, že různé slovní druhy podléhají různé strukturalizaci v paměti, vyvolal asociační test, který provedli \textcite{fillenbaum1965grammatical}. Tomuto asociačnímu testu byly podrobeny anglicky mluvící subjekty, které měly za úkol uvést první slovo, které je napadne při myšlence na předložené slovo. Předkládána jim byla dobře známá a často používaná slova náležející k~různým slovním druhům. Ukázalo se, že ve většině případů náleží asociované slovo ke stejnému slovnímu druhu jako slovo, které asociaci vyvolalo. Substantiva vyvolala asociaci na substantivum v 79 \% případů, adjektiva v 65 \% případů a slovesa v 43 \% případů.\td{zkontrolovat procenta, nesedi. spis to melo byt, adj->adj, apod.} 
+				Vůbec první podnět k~uvědomění, že různé slovní druhy podléhají různé strukturalizaci v paměti, vyvolal asociační test, který provedli \textcite{fillenbaum1965grammatical}. Tomuto asociačnímu testu byly podrobeny anglicky mluvící subjekty, které měly za úkol uvést první slovo, které je napadne při myšlence na předložené slovo. Předkládána jim byla dobře známá a často používaná slova náležející k~různým slovním druhům. Ukázalo se, že ve většině případů náleží asociované slovo ke stejnému slovnímu druhu jako slovo, které asociaci vyvolalo. Substantivum vyvolalo asociaci na substantivum v 79 \% případů, adjektivum na adjektivum v 65 \% případů a verbum na verbum v 43 \% případů. 
 
 				Ačkoliv není zřejmé, jak je znalost o slovním druhu určitého slova získávána, lze z~uvedených dat předpokládat, že slovní druh je vskutku primární organizační vlastností lexikálního materiálu v lidském mozku a informace o něm je snadno dostupná (alespoň intuitivně). Jelikož správné tvoření vět vyžaduje minimálně podvědomé ponětí o tom, které slovo náleží do které syntaktické kategorie, není s~podivem, že tato informace je dostupná lidskému uvažování velmi jednoduše. Jelikož se však slova stejného slovního druhu příliš často nevyskytují pohromadě, není evidentní, jak tyto znalosti člověk získává. \parencite{fillenbaum1965grammatical, miller1990introduction}
 
@@ -409,7 +417,7 @@
 
 					Bylo by nanejvýš přirozené považovat synonymii za vztah diskrétní, tedy že dvě formy buďto synonymní jsou, či nejsou. Z~logického hlediska to nepochybně z~již uvedeného vyplývá, ovšem lingvisticko-filosofický náhled výcházející z~poznatků reálného jazyka na tuto problematiku nahlíží poněkud odlišně. Synonymie v striktním slova smyslu je velice vzácná. Její volnější interpretace je značně častější, ale také výrazně vágnější -- kontext, v němž dvě formy synonymní jsou, může být velmi široký, či naopak velice úzký. Záměna některých dvojic (či spíše obecně n-tic, volné synonymní řady mohou být vcelku dlouhé -- \ex{textil:1, látka:1, textilie:2, plena:1, tkanina:1} \parencite{pala2004building}) může měnit stylistiku a význam výpovědi více či méně, přičemž ony dvě formy stále dle daných kritérií lze považovat za synonymní. Nelze tedy než vyvodit, že synonymie, minimálně z~pohledu přirozeného jazyka, je jevem graduálním, a některé n-tice forem jsou tak svázány silnějším vztahem synonymie než jiné (laicky řečeno jsou \textit{synonymnější} než jiné). \parencite{miller1990introduction}
 
-					Zaměnitelnost forem podporuje ještě jeden koncept, na němž je WordNet postaven, a to fakt, že jednotlivé významy jsou seskupovány podle slovních druhů. Tento systém vede k~jisté redundantnosti, jelikož zvláště v syntetických\td{manko, nekecam?} jazycích, jako je kupříkladu angličtina, lze nalézt mnoho případů, kdy identická slovní forma zastupuje více slovních druhů. Významy, které taková slovní forma zastupuje (napříč slovními druhy), mohou být velice blízké, nikdy však nebudou stejné (nelze říci, že význam slovesa \ex{run}\footnote{čes. \ex{běžet}} a substantiva \ex{run}\footnote{čes. \ex{běh}} je identický). Jejich záměnou by se sice nestalo vůbec nic, jelikož čtenář či posluchač textu, v němž taková záměna nastala, by automaticky formu interpretoval ve prospěch správného slovního druhu, avšak pokud by slovní druh byl nějakým způsobem \uv{vynucen} (nechť nyní čtenář pomine úvahy, jakým způsobem lze \textit{vynutit} slovní druh formy), stala by se výpověď zcela negramatickou a nesmyslnou. 
+					Zaměnitelnost forem podporuje ještě jeden koncept, na němž je WordNet postaven, a to fakt, že jednotlivé významy jsou seskupovány podle slovních druhů. Tento systém vede k~jisté redundantnosti, jelikož především v analytických jazycích, jako je kupříkladu angličtina\td{manko, nekecam?}, lze nalézt mnoho případů, kdy identická slovní forma zastupuje více slovních druhů. Významy, které taková slovní forma zastupuje (napříč slovními druhy), mohou být velice blízké, nikdy však nebudou stejné (nelze říci, že význam slovesa \ex{run}\footnote{čes. \ex{běžet}} a substantiva \ex{run}\footnote{čes. \ex{běh}} je identický). Jejich záměnou by se sice nestalo vůbec nic, jelikož čtenář či posluchač textu, v němž taková záměna nastala, by automaticky formu interpretoval ve prospěch správného slovního druhu, avšak pokud by slovní druh byl nějakým způsobem \uv{vynucen} (nechť nyní čtenář pomine úvahy, jakým způsobem lze \textit{vynutit} slovní druh formy), stala by se výpověď zcela negramatickou a nesmyslnou. 
 
 					Jakkoliv to není přímo svázané se synonymií, je na místě\td{ne, neni, ale nechtelo se mi mazat 2k napsanych znaku xD} poznámka o výskytu stejné formy v různých synstetech. Slovo je kombinací slovní formy a významu, nebo slovního významu. Slovní forma je projevem \uv{fyzickým}, tedy je to vyřčená či napsaná instance významu. Jak je zjevné z~přirozeného jazyka, nelze počítat s~tím, že by zobrazení významu na formu bylo bijektivní, tedy každý význam byl namapován jedna ku jedné na slovní formu. V přirozeném jazyce může jedna forma zastupovat více významů a jeden význam může být vyjádřen více formami. Příkladem budiž slovní forma \ex{koruna}, která může zastupovat význam měny, vrcholku stromu, vladařského odznaku, etc. Druhým příkladem může být forma \ex{kolej}, již lze interpretovat jako referenci ke stopě po voze, případně dvojici kolejnic sloužících jako vodící dráha pro dopravní prostředky a zároveň jako zařízení vysoké školy pro ubytování studentů. \parencite{Havranek1989} Toto zobrazení jedné formy na více významů se nazývá polysémií nebo homonymií. (Obojí znamená totožnost formy pro různé významy, u polysémie však ony významy mají společný základ (byť může být velmi vzdálený), u homonymie je podobnost zcela nahodilá. \parencite{klepousniotou2002processing}) Uvedené příklady poslouží i k~ilustraci rozdílu mezi homonymií a polysémií. U významů formy \ex{koruna} lze vypozorovat nějaký společný prvek v tom, že bývají nahoře. \ex{Koruna} stromu je nahoře, panovnickou \ex{korunu} má panovník na hlavě, tedy nahoře, \ex{koruna} jako mince zase pravděpodobně získala své pojmenování díky faktu, že na mincích bývá vyobrazen panovník s~\ex{korunou} na hlavě). Formy \ex{kolej} jsou odlišného základu -- \ex{kolej} jako ubytovací zařízení pochází z~latinského \ex{collegium}, kdežto výraz pro dráhu je odvozen od českého \ex{kolo}. \parencite{Rejzek2012}
 
@@ -500,16 +508,17 @@
 					% 	\item \ex{hledat}\hskip 3em \textit{vyústí v}\hskip 3em \ex{najít} \texttt{non-factive}
 					% \end{itemize}
 
-					\begin{table}[h]
-					\centering
-					% \caption{My caption}
-					\label{tab:wnlabels}
-					\begin{tabular}{lllcc}
-						příčina	& vztah & následek & non-factive? & nutně vyplývá? \\ \hline
-						\ex{zabít}  & vyústí v & \ex{zemřít} & – & ano                       \\
-						\ex{hledat} & vyústí v & \ex{najít} & \texttt{non-factive} & ne
-					\end{tabular}
-					\end{table}\td{tahle tabulka by byla vhodna ke zkrasneni tak, aby bylo jasne, ze "nutne vyplyva" je muj vysvetlujici dodatek ke stitku non-factive (sedive?)}
+					\begin{table}[h!]
+						\centering
+						% \caption{My caption}
+						\label{tab:wnlabels}
+						\begin{tabular}{lllc|c}
+							příčina	& vztah  & non-factive? & následek & nutně vyplývá? \\ \hline
+							\ex{zabít}  & vyústí v & –  & \ex{zemřít} & ano                       \\
+							\ex{hledat} & vyústí v & \texttt{non-factive} & \ex{najít}  & ne
+						\end{tabular}
+						\caption{Rozdíl významů relace při použití a nepoužití příznaku \ex{non-factive}}
+					\end{table}
 
 				Podobně lze upřesnit pomocí štítků další relace tak, že jsou ve výsledku jednoznačnější a wordnet, v němž jsou takto označené vztahy obsaženy, může poskytovat více informací. Jejich použití v praxi je však značně omezené. \parencite{rambousek2017Ustni}
 
@@ -528,7 +537,14 @@
 
 				% cely Vossen-Eurowordnet.pdf
 				
-				% neco psat o BalkaNetu?
+			\section{BalkaNet}
+			\label{cha:balkanet}
+
+				BalkaNet je projekt zaštítěný Evropskou komisí, který začal být vyvíjen v roce 2001. Cílem BalkaNetu je vytvořit ucelený lingvistický zdroj pro méně studované balkánské jazyky. Jde o soubor jednotlivých wordnetů pro jazyky bulharština, rumunština, řečtina, srbština a turečtina. Do projektu spadá také rozšíření českého wordnetu vytvořeného v rámci projektu EuroWordNet, a to zejména o slovesa. Při vzniku BalkaNetu byli pozváni účastníci vzniku EuroWordNetu z Čech a Francie, aby mohli být nápomocni s vytvořením struktury dat takové, jaká by byla kompatibilní s existujícími daty EuroWordNetu. \parencite{tufis2004balkanet}
+
+				Nejvyšším cílem BalkaNetu je vytvořit online reprezentaci sémantických relací v jazycích balkánských států a poskytnout tak zdroj pokrývající běžnou slovní zásobu těchto jazyků. BalkaNet je tvořen wordnety, jež mají stejnou strukturu jako wordnety EuroWordNetu, aby bylo možné jej považovat díky kompatibilitě s ním za rozšíření existující práce. 
+
+				Stejně jako EuroWordNet používá BalkaNet za účelem provázání jednotlivých svých wordnetů tzv. mezijazykový index. Na rozdíl od EuroWordNetu jej však používá mírně jinak v tom ohledu, že jsou koncepty označkovány doménovými štítky\footnote{\textit{domain labels}}. Koncepty jsou tedy mezi národním wordnetem a mezijazykovým konceptem provázány tak, aby zůstala zachována významová doména a předešlo se tak svazování konceptů z různých domén přes tento index. Pokud by tedy BalkaNet byl použit jako překladový nástroj mezi dvěma obsaženými jazyky, výsledné překladové koncepty nemusí nutně být přímé překlady zdrojových, ale budou alespoň náležet do stejné konceptuální domény. \parencite{christodoulakis2002balkanet} Celkově je mezijazykový index strukturalizován na rozdíl od toho v EuroWordNetu jako princetonský WordNet právě proto, aby bylo možné svazek wordnetů v BalkaNetu lépe užívat k lingvistickým úkolům. \parencite{tufis2004balkanet}
 
 	\part{Přehled a porovnání některých vizualizací sémantických sítí}
 	\label{part:zwei}
@@ -557,7 +573,7 @@
 				% mozna vypsat vysledky a zaradit ten seznam sem? plus nejak exaktneji algoritmus filtrovani?
 				Z přehledu byly samozřejmě vyřazeny implementace, které k~době hledání\footnote{duben 2017} už nebyly dostupné. Také nebyla zahrnuta rozhraní, která jsou funkčně podobná jiným. Do přehledu byla zahrnována především rozhraní, která jsou dostupná z~webového prohlížeče, jelikož je to pro koncového uživatele nejpohodlnější způsob přístupu k~aplikaci (není nucen instalovat přídavné programové vybavení na svůj počítač kromě webového prohlížeče, který lze považovat za vcelku rozšířenou součást uživatelského vybavení). Jelikož však i rozhraní určená pro klasické \td{ta pozn.pod carou je dost zamotana..jak to lip vysvetlit?} počítače\footnote{Terminologická poznámka: klasickým počítačem je myšleno všeobecně zařízení typu stolních počítačů, laptopů či tabletů s~operačním systémem nikoliv určeným pro mobilní zařízení. Nejde například o mobilní telefon. Typicky na klasických počítačích také bývá provozován jiný operační systém než na mobilních zařízeních.} existují a mohou poskytnout cennou inspiraci i při vývoji webového rozhraní, byla některá z~nich zahrnuta též. 
 
-				Podstatná z~hlediska hodnocení je také univerzalita, tedy zda je zdrojový kód rozhraní otevřený a je možné jej použít i pro vizualizaci jiné sémantické sítě, než pro kterou bylo rozhraní vyvinuto. Je ovšem dlužno podotknout, že tato informace bývá často nedostupná; potom se v rámci této práce předpokládá, že kód otevřený není. Zmiňována bývá jen explicitní zmínka o otevřenosti kódu.\td{je to tak ok? a je to pravda? xD}
+				Podstatná z~hlediska hodnocení je také univerzalita, tedy zda je zdrojový kód rozhraní otevřený a je možné jej použít i pro vizualizaci jiné sémantické sítě, než pro kterou bylo rozhraní vyvinuto. Je ovšem dlužno podotknout, že tato informace bývá často nedostupná; potom se v rámci této práce předpokládá, že kód otevřený není. Zmiňována bývá jen explicitní zmínka o otevřenosti kódu.
 
 				Zmiňované hodnocení záměrně není vyčísleno exaktně, jelikož každý uživatel má jiné nároky a tato práce si tedy klade za cíl pouze co nejobjektivněji zhodnotit vlastnosti jednotlivých rozhraní, nikoliv čtenáři vnuknout, že jedno rozhraní je lepší než jiné; to musí případně zhodnotit sám na základě předkládaných faktů a jeho vlastních požadavků na rozhraní.
 
@@ -682,7 +698,7 @@
 				\subsection{An interactive visualization of the Princeton WordNet database}
 				\label{wnvis:intviswn}
 
-					An interactive visualization of the Princeton WordNet database, dostupný z \url{http://mateogianolio.com/wordnet-visualization/}, je jeden z~projektů programátora jménem Mateo Gianolio z~Lundské univerzity (Švédsko)\footnote{\url{https://www.linkedin.com/in/mateo-gianolio-a89558b6}}\td{je v poradku to linkovat takhle jako link na linkedin? nebo to mam napsat jako zdroj do citaci?}. Jde o jednoduché rozhraní napojené na princetonský WordNet, které po zadání hledaného výrazu zobrazí synsety obsahující daný výraz. Jednotlivé synsety jsou barevně odlišeny podle syntaktických kategorií (slovních druhů), k~nimž náležejí, a uspořádány kruhově kolem hledaného výrazu. Z~každého synsetu je vždy zobrazena jen první slovní forma. Pokud uživatel najede kursorem myši na některý ze synsetů, zobrazí se další případné slovní formy náležející do daného synsetu a jeho glosa (definice), je-li dostupná.
+					An interactive visualization of the Princeton WordNet database, dostupný z \url{http://mateogianolio.com/wordnet-visualization/}, je jeden z~projektů programátora jménem Mateo Gianolio. Jde o jednoduché rozhraní napojené na princetonský WordNet, které po zadání hledaného výrazu zobrazí synsety obsahující daný výraz. Jednotlivé synsety jsou barevně odlišeny podle syntaktických kategorií (slovních druhů), k~nimž náležejí, a uspořádány kruhově kolem hledaného výrazu. Z~každého synsetu je vždy zobrazena jen první slovní forma. Pokud uživatel najede kursorem myši na některý ze synsetů, zobrazí se další případné slovní formy náležející do daného synsetu a jeho glosa (definice), je-li dostupná.
 
 					Další slovní formy v nalezených synsetech jsou klikatelné, což umožňuje dostat se přes ně na synsety obsahující onu slovní formu, na níž bylo uživatelem kliknuto (s identickým výsledkem, jako kdyby dané slovo uživatel zadal do vyhledávacího pole).
 
@@ -934,7 +950,7 @@
 
 				Rozhraní obsahuje levý sloupec pro zobrazování výsledků hledání a společně s~hlavní plochou pro zobrazování detailů synsetu se chová podobně jako ostatní rozhraní (ilustrováno na snímku obrazovky \ref{fig:wngoldendick-ubuntu} na straně \pageref{fig:wngoldendick-ubuntu}). Aplikace udržuje historii hledání, umožňuje hledat slova z~definic synsetů pomocí dvojkliku kursorem myši a dává uživateli k~disposici relativně široké možnosti konfigurovatelnosti. Její rozhraní se dobře přizpůsobuje velikosti obrazovky (potažmo okna).
 
-				Grafické rozhraní aplikace GoldenDict je postaveno na Qt\footnote{multiplatformní soubor nástrojů pro tvorbu grafických rozhraní (\url{https://www.qt.io/ui/})} a pro zobrazování dat z~webu používá WebKit\footnote{vykreslovací jádro pro webové prohlížeče (\url{https://webkit.org/})}. \parencite{goldendict2016}\td{tady by to chtelo dopsat vic, aby to bylo konsistentni se zbytkem, nejaky zkusenosti z~pouzivani}
+				Grafické rozhraní aplikace GoldenDict je postaveno na Qt\footnote{multiplatformní soubor nástrojů pro tvorbu grafických rozhraní (\url{https://www.qt.io/ui/})} a pro zobrazování dat z~webu používá WebKit\footnote{vykreslovací jádro pro webové prohlížeče (\url{https://webkit.org/})}. \parencite{goldendict2016}
 
 
 		\chapter{Shrnutí přehledu rozhraní a vyplývající závěry o vhodném rozhraní k~sémantickým sítím}
@@ -979,7 +995,7 @@
 
 				Přesto, že existujících rozhraní je dostupných mnoho, žádné z~nich nesplňuje požadavky moderní platformně nezávislé aplikace, jak bylo ukázáno v části \itNameRef{part:zwei}. Proto vznikl záměr vytvořit takové rozhraní, které by tyto požadavky (do co největší míry) splňovalo. Vzhledem k~původním záměrům samotného WordNetu (a na něj navazujících projektů), mezi nimiž byly například edukativní účely, je nutné, aby rozhraní k~těmto projektům bylo intuitivní, vizuálně přitažlivé a snadno přístupné. Snadná přístupnost například minimalizuje nutnost správné přípravy školních počítačů k~použití takového rozhraní, což opět zvyšuje šance, že aplikace bude skutečně použita.
 
-				S touto vizí tedy byla vytvořena webová aplikace \simplywn, která ja v dalších částech této práce prezentována.
+				S touto vizí tedy byla vytvořena webová aplikace \simplywn (Not So Fickle Wordnet viewer), která ja v dalších částech této práce prezentována.
 
 		\chapter{Prezentace vytvořeného rozhraní}
 		\label{cha:ui}
@@ -1019,8 +1035,10 @@
 
 				Grafická reprezentace nalezených dat je alternativou k~textové a jejím cílem je uživateli především vizualizovat vztahy, jichž je prohlížený synset členem. Podobně jako textová reprezentace se snaží příliš se neodchylovat způsobem zobrazení od již existujících zobrazení, ale zároveň eliminovat nedostatky v použitelnosti, jimiž se většina existujících implementací vyznačuje. Jmenovitě grafické zobrazení v \simplywn vůbec nepoužívá interaktivní prvky typu informačních bublin, jež se zobrazují při přejetí myší\footnote{tyto bývají anglicky označovány jako \textit{popup tooltip}}. Tyto bubliny jsou velmi oblíbené zřejmě proto, že umožňují bez ztráty přehlednosti celého grafu uživateli přístup k~podrobnějším informacím. Jejich zásadní nevýhoda ovšem tkví v tom, že na dotykových obrazovkách, jimiž bývají vybavena současná mobilní zařízení, koncept přejetí myší přes prvek neexistuje. To je z~toho důvodu, že grafické rozhraní na těchto zařízení nebývá ovládáno externím technickým vybavením počítače typu myš, které pohybuje po obrazovce kursorem, ale uživatel používá dotyku svých prstů či stylu a dotek na určitém místě obrazovky znamená obvykle kliknutí. Nelze tedy tak jako u klasických počítačů rozlišit přejetí kursorem myši a kliknutí a funkcionalita zmíněných informačních bublin je tedy buďto zcela nepřístupná či přístupná jen velmi omezeně. 
 
-				Další interaktivita značně rozšířená u existujících vizualizací je možnost tažením uzlu myší přeuspořádat graf. U některých z~vizualizací může taková možnost být užitečná proto, že při větším počtu uzlů se některé uzly překrývají a přetažením lze takový překryv eliminovat (většinou však na úkor rozložení jiné části grafu). Obecně by však při správném nastavení zobrazení taková funkcionalita neměla být potřebná, a proto nebyla zavedena ani do vizualizace v \simplywn, které se o správnou nastavenost snaží. Uzly také nejsou odkazy s~podobnou funkcí jako jsou odkazy v textové reprezentaci proto, aby bylo možné nerušené graf táhnout a tím se pohybovat po zvětšeném grafu v zájmu bližšího prozkoumání jeho částí. Klikatelné uzly by mohly takovouto funkcionalitou uživatele rušit, jelikož by jeho tažení mohlo neúmyslně vyvolat nové hledání místo přechodu na jinou část grafu. 
-				% zminit se, ze tam nejsou ani linky, jezto to neumime zaimplementovat asi.. ale mozna jo: http://visjs.org/examples/network/events/interactionEvents.html ... spis to nechceme implementovat, jak bylo zmineno nove vyse
+				Další interaktivita značně rozšířená u existujících vizualizací je možnost tažením uzlu myší přeuspořádat graf. U některých z~vizualizací může taková možnost být užitečná proto, že při větším počtu uzlů se některé uzly překrývají a přetažením lze takový překryv eliminovat (většinou však na úkor rozložení jiné části grafu). Obecně by však při správném nastavení zobrazení taková funkcionalita neměla být potřebná, a proto nebyla zavedena ani do vizualizace v \simplywn, které se o správnou nastavenost snaží. Uzly také nejsou odkazy s~podobnou funkcí jako jsou odkazy v textové reprezentaci proto, aby bylo možné nerušené graf táhnout a tím se pohybovat po zvětšeném grafu v zájmu bližšího prozkoumání jeho částí. Klikatelné uzly by mohly takovouto funkcionalitou uživatele rušit, jelikož by jeho tažení mohlo neúmyslně vyvolat nové hledání místo přechodu na jinou část grafu.
+
+				Zobrazení grafem je vedle myší či dotykem možné ovládat také klávesnicí. Podporováno je zvětšování a zmenšování grafu, přičemž zvětšování je řešeno klávesami \ex{+} či \ex{]}, zmenšit graf lze buď klávesou \ex{-} či \ex{[}. Přejíždění zvětšeným grafem po zobrazovací ploše je také podporováno, a to pomocí kláves se šipkami, tedy \ex{←}, {→}, {↑} a {↓}.
+
 
 				Koncept zobrazení grafem spočívá v použití tří druhů uzlů s~odlišným významem (například slovní forma, koncept, etc.), které jsou propojeny hranami, jejichž význam je závislý na tom, které uzly spojují. Prvním druhem uzlů jsou ty, jež reprezentují synsety. Takový uzel se v grafu vždy vyskytuje minimálně jeden kořenový, což je v tomto případě ten synset, jehož detaily jsou otevřeny. Další jsou pak členové případných sémantických relací, jichž je kořenový členem. Z~kořenového uzlu vedou hrany ke dvěma zbývajícím druhům uzlů, jimiž jsou slovní formy a sémantické relace. Uzly reprezentující slovní formy jsou se synsetem, k~němuž náležejí, propojeny hranou pojmenovanou \ex{member word}, tedy členské slovo, a žádné další hrany z~nich nevedou. 
 
