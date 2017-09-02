@@ -18,6 +18,7 @@
 \usepackage{nameref}
 \usepackage{enumitem}
 \usepackage[czech]{minitoc}
+\usepackage{multirow}
 
 \addto{\captionsczech}{%
 \renewcommand{\mtctitle}{}
@@ -112,9 +113,9 @@
 \begin{document}
 
 \todo[inline]{TODO tady v textu:}
-	\todo[inline,backgroundcolor=red!25]{kontrola, ze pisu novym pravopisem ("responzivní místo responzivní") -- když narazíš na něco starým, prosím, flaguj to}
-	\todo[inline,backgroundcolor=red!25]{pomoc, jak rozjet Visual Browser, nefunguje mi ani s RDF z adresy na jeho webu}
-	\todo[inline,backgroundcolor=red!25]{název rozhraní ještě není finální, nějaké nápady, jako ho vylepšit? (Not So Fickle Wordnet viewer)}
+	\todo[inline,backgroundcolor=red!25]{kontrola, ze pisu novym pravopisem ("responzivní místo responsivní") -- když narazíš na něco starým, prosím, flaguj to}
+	\todo[inline,backgroundcolor=red!25]{(christofe,) pomoc, jak rozjet Visual Browser, nefunguje mi ani s RDF z adresy na jeho webu}
+	\todo[inline,backgroundcolor=red!25]{název rozhraní ještě není finální, nějaké nápady, jako ho vylepšit? (původní nápad Not So Fickle Wordnet viewer, momentálně Not Safe For Work wordnet viewer)}
 
 \par
 \todo[inline]{TODO v samotném rozhraní:}
@@ -182,34 +183,33 @@
 			\label{tab:seznamzkratek}
 
 				\begin{tabular}{l | l}
-					zkratka & význam \\\hline
-					Ajax & asynchronous JavaScript and XML \\
-					BCS & base concept sets \\
-					BFS & breadth first search \\
-					CBC & common base concept \\
+					\textbf{zkratka} & \textbf{význam} \\\hline
+					AJAX & Asynchronous JavaScript And XML \\
+					BCS & Base Concept Set \\
+					BFS & Breadth First Search \\
+					CBC & Common Base Concept \\
 					cf. & confer (srovnejte) \\
-					CSS & cascading style sheets \\
-					DFS & depth	first search \\
-					DOM & document object model \\
+					CSS & Cascading Style Sheets \\
+					DFS & Depth	First Search \\
+					DOM & Document Object Model \\
 					etc. & et cetera (a tak dále) \\
-					GBC & global base concept \\
-					HTML & hypertext markup language \\
-					ILI & inter-lingual-index \\
-					JSON & JavaScript and XML \\
-					JSON & JavaScript object notation \\
-					JVM & Java virtual machine \\
-					LBC & local base concept \\
-					LTS & long term support \\
-					MIT & Massachusetts institute of technology \\
-					NLP & natural Language processing \\
+					GBC & Global Base Concept \\
+					HTML & HyperText Markup Language \\
+					ILI & InterLingual Index \\
+					JSON & JavaScript Object Notation \\
+					JVM & Java Virtual Machine \\
+					LBC & Local Base Concept \\
+					LTS & Long Term Support \\
+					MIT & Massachusetts Institute of Technology \\
+					NLP & Natural Language Processing \\
 					SSJČ & Slovník spisovného jazyka českého \\
 					SSČ & Slovník spisovné češtiny \\
-					URL & uniform resource locator \\
-					WN & wordnet \\
-					WORA & write once, run anywhere \\ 
-					WWW & World wide web \\
+					URL & Uniform Resource Locator \\
+					WN & WordNet \\
+					WORA & Write Once, Run Anywhere \\ 
+					WWW & World Wide Web \\
 					XHR & XMLHttpRequest \\
-					XML & extensible markup language \\
+					XML & eXtensible Markup Language \\
 				\end{tabular}
 			\end{table}
 
@@ -246,7 +246,7 @@
 			\end{itemize}
 
 			\section{Motivace vzniku}
-				Od počátků snah o zpracování přirozeného jazyka\footnote{angl. \textit{natural language processing}, zkráceně NLP} bylo nutné poskytnout programu data o lexiku ve zpracovávaném textu, ať už ona data byla jakákoliv. Kupříkladu v začátcích strojového překladu se mělo za to, že stačí ekvivalentní dvojice slov ve zdrojovém a cílovém jazyce, později byla implementována i pravidla, jež měla eliminovat problémy s~pořádkem slov ve větách, ale výsledné překlady stále nebyly po kvalitativní stránce uspokojivé, neboť vyžadovaly značné množství editací po zpracování automatickým systémem. \parencite{hutchins1982evolution}
+				Od počátků snah o zpracování přirozeného jazyka\footnote{angl. \textit{Natural Language Processing}, zkráceně NLP} bylo nutné poskytnout programu data o lexiku ve zpracovávaném textu, ať už ona data byla jakákoliv. Kupříkladu v začátcích strojového překladu se mělo za to, že stačí ekvivalentní dvojice slov ve zdrojovém a cílovém jazyce, později byla implementována i pravidla, jež měla eliminovat problémy s~pořádkem slov ve větách, ale výsledné překlady stále nebyly po kvalitativní stránce uspokojivé, neboť vyžadovaly značné množství editací po zpracování automatickým systémem. \parencite{hutchins1982evolution}
 
 				Tradičně se lexikální materiál ukládal způsobem nikoliv diametrálně odlišným od papírových slovníků určených pro lidské uživatele. Ty obvykle obsahují lexikální záznamy seřazené podle abecedy a s~potřebnými informacemi o daných slovech, z~nichž pak program může čerpat při zpracování textu.
 
@@ -264,7 +264,7 @@
 
 				\subsection{Strojově čitelné slovníky}
 
-					V zájmu automatizace vyhledávání ve slovníku vznikaly tzv. strojově čitelné slovníky\footnote{angl. \textit{machine readable dictionary}}, což je pojem souhrnně označující lexikální databáze. Podle množství informací, které taková databáze obsahuje, pak lze tyto dělit na slovníky, taxonomie a ontologie\td{mam tady tu zminku vubec nechavat, nebo to mam jeste nejak rozvest.. je to duezite, ale nevim, jak moc pro tuhle praci}. Běžně obyčejný slovník neobsahuje oproti tradičnímu papírovému slovníku navíc žádné metainformace, takže je počítač při jeho užívání v podstatě omezen na elektronický listovač \parencite{miller1990introduction}. 
+					V zájmu automatizace vyhledávání ve slovníku vznikaly tzv. strojově čitelné slovníky\footnote{angl. \textit{machine readable dictionary}}, což je pojem souhrnně označující lexikální databáze. Podle množství informací, které taková databáze obsahuje, pak lze tyto dělit na slovníky, taxonomie a ontologie. Běžně obyčejný slovník neobsahuje oproti tradičnímu papírovému slovníku navíc žádné metainformace, takže je počítač při jeho užívání v podstatě omezen na elektronický listovač \parencite{miller1990introduction}. 
 
 					Míru, jakou se strojově čitelný slovník odliší od pouhé zdigitalizované formy papírového slovníku a přiblíží se k~pokročilé lexikální databázi, lze vyjádřit v několika stupních. V případě, že slovník má jednotlivé významy uspořádány v hierarchii dle nadřazenosti--podřazenosti, lze jej označit za taxonomii, tedy systém s~hlubší strukturou než pouze abecedním řazením hesel. 
 
@@ -302,7 +302,7 @@
 
 				WordNet se svou hierarchickou organizací slovní zásoby tedy pravděpodobně konceptuálně blíží organizaci lexika v lidské paměti.
 
-				Navzdory tomu, že je WordNet (a všeobecně wordnety) využíván převážně k~úkolům počítačového zpracování jazyka\td{nedari se mi k tomu najit citaci, jen to tusim, any help?}, zdá se být pro svou podobnost v uspořádání informací vhodný i v jiných oblastech. V souladu s~příklady, jež byly předloženy výše, se zdá, že zkoumání významů a propojenosti konceptů v jazyce, s~nímž není uživatel zcela obeznámen, by mohlo ve WordNetu být snazší než v klasickém slovníku. V podobném duchu využili při svých kursech WordNet například \textcite{lemnitzer2003using}.
+				WordNet se pro svou podobnost s lidskou pamětí v uspořádání informací zdá být vhodný nejen k úkolům počítačového zpracování jazyka, ale i k činnostem v jiných oblastech. V souladu s~příklady, jež byly předloženy výše, se zdá, že zkoumání významů a propojenosti konceptů v jazyce, s~nímž není uživatel zcela obeznámen, by mohlo ve WordNetu být snazší než v klasickém slovníku. V podobném duchu využili při svých kursech WordNet například \textcite{lemnitzer2003using}.
 			
 
 			\section{Organizace WordNetu}
@@ -419,7 +419,7 @@
 
 					Zaměnitelnost forem podporuje ještě jeden koncept, na němž je WordNet postaven, a to fakt, že jednotlivé významy jsou seskupovány podle slovních druhů. Tento systém vede k~jisté redundantnosti, jelikož především v analytických jazycích, jako je kupříkladu angličtina\td{manko, nekecam?}, lze nalézt mnoho případů, kdy identická slovní forma zastupuje více slovních druhů. Významy, které taková slovní forma zastupuje (napříč slovními druhy), mohou být velice blízké, nikdy však nebudou stejné (nelze říci, že význam slovesa \ex{run}\footnote{čes. \ex{běžet}} a substantiva \ex{run}\footnote{čes. \ex{běh}} je identický). Jejich záměnou by se sice nestalo vůbec nic, jelikož čtenář či posluchač textu, v němž taková záměna nastala, by automaticky formu interpretoval ve prospěch správného slovního druhu, avšak pokud by slovní druh byl nějakým způsobem \uv{vynucen} (nechť nyní čtenář pomine úvahy, jakým způsobem lze \textit{vynutit} slovní druh formy), stala by se výpověď zcela negramatickou a nesmyslnou. 
 
-					Jakkoliv to není přímo svázané se synonymií, je na místě\td{ne, neni, ale nechtelo se mi mazat 2k napsanych znaku xD} poznámka o výskytu stejné formy v různých synstetech. Slovo je kombinací slovní formy a významu, nebo slovního významu. Slovní forma je projevem \uv{fyzickým}, tedy je to vyřčená či napsaná instance významu. Jak je zjevné z~přirozeného jazyka, nelze počítat s~tím, že by zobrazení významu na formu bylo bijektivní, tedy každý význam byl namapován jedna ku jedné na slovní formu. V přirozeném jazyce může jedna forma zastupovat více významů a jeden význam může být vyjádřen více formami. Příkladem budiž slovní forma \ex{koruna}, která může zastupovat význam měny, vrcholku stromu, vladařského odznaku, etc. Druhým příkladem může být forma \ex{kolej}, již lze interpretovat jako referenci ke stopě po voze, případně dvojici kolejnic sloužících jako vodící dráha pro dopravní prostředky a zároveň jako zařízení vysoké školy pro ubytování studentů. \parencite{Havranek1989} Toto zobrazení jedné formy na více významů se nazývá polysémií nebo homonymií. (Obojí znamená totožnost formy pro různé významy, u polysémie však ony významy mají společný základ (byť může být velmi vzdálený), u homonymie je podobnost zcela nahodilá. \parencite{klepousniotou2002processing}) Uvedené příklady poslouží i k~ilustraci rozdílu mezi homonymií a polysémií. U významů formy \ex{koruna} lze vypozorovat nějaký společný prvek v tom, že bývají nahoře. \ex{Koruna} stromu je nahoře, panovnickou \ex{korunu} má panovník na hlavě, tedy nahoře, \ex{koruna} jako mince zase pravděpodobně získala své pojmenování díky faktu, že na mincích bývá vyobrazen panovník s~\ex{korunou} na hlavě). Formy \ex{kolej} jsou odlišného základu -- \ex{kolej} jako ubytovací zařízení pochází z~latinského \ex{collegium}, kdežto výraz pro dráhu je odvozen od českého \ex{kolo}. \parencite{Rejzek2012}
+					Jakkoliv to není přímo svázané se synonymií, je na místě poznámka o výskytu stejné formy v různých synstetech. Slovo je kombinací slovní formy a významu, nebo slovního významu. Slovní forma je projevem \uv{fyzickým}, tedy je to vyřčená či napsaná instance významu. Jak je zjevné z~přirozeného jazyka, nelze počítat s~tím, že by zobrazení významu na formu bylo bijektivní, tedy každý význam byl namapován jedna ku jedné na slovní formu. V přirozeném jazyce může jedna forma zastupovat více významů a jeden význam může být vyjádřen více formami. Příkladem budiž slovní forma \ex{koruna}, která může zastupovat význam měny, vrcholku stromu, vladařského odznaku, etc. Druhým příkladem může být forma \ex{kolej}, již lze interpretovat jako referenci ke stopě po voze, případně dvojici kolejnic sloužících jako vodící dráha pro dopravní prostředky a zároveň jako zařízení vysoké školy pro ubytování studentů. \parencite{Havranek1989} Toto zobrazení jedné formy na více významů se nazývá polysémií nebo homonymií. (Obojí znamená totožnost formy pro různé významy, u polysémie však ony významy mají společný základ (byť může být velmi vzdálený), u homonymie je podobnost zcela nahodilá. \parencite{klepousniotou2002processing}) Uvedené příklady poslouží i k~ilustraci rozdílu mezi homonymií a polysémií. U významů formy \ex{koruna} lze vypozorovat nějaký společný prvek v tom, že bývají nahoře. \ex{Koruna} stromu je nahoře, panovnickou \ex{korunu} má panovník na hlavě, tedy nahoře, \ex{koruna} jako mince zase pravděpodobně získala své pojmenování díky faktu, že na mincích bývá vyobrazen panovník s~\ex{korunou} na hlavě). Formy \ex{kolej} jsou odlišného základu -- \ex{kolej} jako ubytovací zařízení pochází z~latinského \ex{collegium}, kdežto výraz pro dráhu je odvozen od českého \ex{kolo}. \parencite{Rejzek2012}
 
 					Seskupování významů podle slovních druhů a seskupování forem dle vztahu synonymie se tedy zdá v případě lexikální databáze určené pro strojové zpracování jazyka jako vhodným konceptem. Oproti tradičním slovníkům se totiž počítačově zpracovávaná lexikální databáze nemusí potýkat s~problémem lidského faktoru -- jednotlivé synonymické řady je stroj schopen prohledávat, na rozdíl od člověka, vcelku účinně, a nahradí tak v případě, že WordNet používá člověk, neúčinné lidské procházení restříkového obsahu.
 
@@ -466,29 +466,32 @@
 					% plochy, aby nereflektoval organizaci nejakeho konkretniho WN
 				% odlisne vztahy od PWN
 
-				EuroWordNet je mezinárodní lexikální databáze pro sedm evropských jazyků (angličtina, čeština, dánština, francouzština, italština, němčina, španělština). Jde o soubor jednotlivých národních wordnetů, které jsou propojeny takzvaným mezijazykovým indexem (ILI, \textit{inter-lingual-index}). Obecně jsou wordnety EuroWordNetu založené svou strukturou na princetonském WordNetu (verze 1.5), ale z~důvodu různorodosti jazyků se v některých aspektech od něj odlišují. EuroWordNet zavádí poněkud odlišené vztahy, navíc je diferencuje jemněji. \parencite{pazienza2008bottom}
+				EuroWordNet je mezinárodní lexikální databáze pro sedm evropských jazyků (angličtina, čeština, dánština, francouzština, italština, němčina, španělština). Jde o soubor jednotlivých národních wordnetů, které jsou propojeny takzvaným mezijazykovým indexem (ILI\footnote{InterLingual Index}). Obecně jsou wordnety EuroWordNetu založené svou strukturou na princetonském WordNetu (verze 1.5), ale z~důvodu různorodosti jazyků se v některých aspektech od něj odlišují. EuroWordNet zavádí poněkud odlišené vztahy, navíc je diferencuje jemněji. \parencite{pazienza2008bottom}
 
-				Základní motivací pro vznik EuroWordNetu byla evropská jazyková různorodost a z~ní pramenící problémy ve zpracování dat a napomáhání uživateli v přístupu k~neanglickým datům. \textcite{vossen1997eurowordnet} argumentuje, že uživatel musí umět anglicky a být obeznámen s~tím, jak je zdroj, v němž vyhledává, napsán, aby byl schopen v něm účinně hledat. Vytvořením wordnetů pro jiné jazyky si slibuje, že se zlepší možnost přístupu uživatelů k~neanglickým datům, možnosti inference znalostí z~těchto dat a případně i mezijazykové vyhledávání. Poslední je založeno na faktu, že od počátku byly jednotlivé wordnety EuroWordNetu vytvářeny s~tím, že budou propojeny na základě základních konceptů (BCS, \textit{Base Concept Sets}) a mezijazykového indexu.
+				Základní motivací pro vznik EuroWordNetu byla evropská jazyková různorodost a z~ní pramenící problémy ve zpracování dat a napomáhání uživateli v přístupu k~neanglickým datům. \textcite{vossen1997eurowordnet} argumentuje, že uživatel musí umět anglicky a být obeznámen s~tím, jak je zdroj, v němž vyhledává, napsán, aby byl schopen v něm účinně hledat. Vytvořením wordnetů pro jiné jazyky si slibuje, že se zlepší možnost přístupu uživatelů k~neanglickým datům, možnosti inference znalostí z~těchto dat a případně i mezijazykové vyhledávání. Poslední je založeno na faktu, že od počátku byly jednotlivé wordnety EuroWordNetu vytvářeny s~tím, že budou propojeny na základě základních konceptů (BCS\textit{Base Concept Set}) a mezijazykového indexu.
 
 				Jelikož se jednotlivé jazyky zapojené v projektu EuroWordNetu značně odlišují ve struktuře své slovní zásoby, jsou jednotlivé wordnety nezávislé. To znamená, že se mohou odlišovat například svou hierarchizací. Stejný koncept tak může ve dvou různých wordnetech mít různá hyperonyma, meronyma, etc., protože například anglické označení pro \ex{prst} je odlišené, pokud jde o \ex{prst na noze} (angl. \ex{toe}), či o prst na ruce (angl. \ex{finger}). Podobně má v jiném příkladu dánština odlišené označení \ex{hlavy u zvířat}, tedy dán. \ex{kof}, a hlavy lidské (dán. \ex{hoofd}). \parencite{vossen1997eurowordnet}
 
-				Národní wordnety jsou vzájemně propojené přes mezijazykový index s~anglickým wordnetem, který je obsahově založený na princetonském WordNetu, ale není identický. Anglický wordnet byl přizpůsoben strukturně tak, aby byl použitelný v EuroWordNetu, tedy byly přidány dodatečné metainformace a druhy vztahů (podrobněji dále). V národních wordnetech existuje několik druhů konceptů, které jsou rozlišeny podle příbuznosti s~koncepty v ostatních národních wordnetech. Pokud je koncept přítomen ve všech wordnetech EuroWordNetu, jde o koncept tzv. globální koncept\footnote{Global Base Concept (GBC)}. Koncept, jenž jen přítomen v alespoň dvou národních wordnetech, je označován jako obecný koncept\footnote{Common Base Concept (CBC)} a v poslední řadě koncept, který se vyskytuje pouze v jednom národním wordnetu, nese označení lokální koncept\footnote{Local Base Concept (LBC)}. \parencite{gwa2013baseconcepts} Propojení konceptů společných pro více jazyků je zajištěno pomocí jednotných identifikátorů a mezijazykového indexu, který je nadmnožinou všech konceptů v EuroWordNetu. ILI je hierarchicky plochá struktura (proto \textit{index}, nejde o další \uv{všejazykový} wordnet). \parencite{vossen1997eurowordnet}
+				Národní wordnety jsou vzájemně propojené přes mezijazykový index s~anglickým wordnetem, který je obsahově založený na princetonském WordNetu, ale není identický. Anglický wordnet byl přizpůsoben strukturně tak, aby byl použitelný v EuroWordNetu, tedy byly přidány dodatečné metainformace a druhy vztahů (podrobněji dále). V národních wordnetech existuje několik druhů konceptů, které jsou rozlišeny podle příbuznosti s~koncepty v ostatních národních wordnetech. Pokud je koncept přítomen ve všech wordnetech EuroWordNetu, jde o koncept tzv. globální koncept (GBC\footnote{Global Base Concept}). Koncept, jenž jen přítomen v alespoň dvou národních wordnetech, je označován jako obecný koncept (CBC\footnote{Common Base Concept}) a v poslední řadě koncept, který se vyskytuje pouze v jednom národním wordnetu, nese označení lokální koncept (LBC\footnote{Local Base Concept}). \parencite{gwa2013baseconcepts} Propojení konceptů společných pro více jazyků je zajištěno pomocí jednotných identifikátorů a mezijazykového indexu, který je nadmnožinou všech konceptů v EuroWordNetu. ILI je hierarchicky plochá struktura (proto \textit{index}, nejde o další \uv{všejazykový} wordnet). \parencite{vossen1997eurowordnet}
 
 				Jelikož v době, kdy EuroWordNet vznikal, byl princetonský WordNet poněkud omezený mimo jiné co se vztahů sémantických týče, vznikly pro EuroWordNet speciální vztahy umožňující úplnější práci s~významy. Základní vztahy přejaté z~princetonského WordNetu 1.5 jsou uvedeny v tabulce \ref{tab:wn-rels} na straně \pageref{tab:wn-rels}.
 
 				\begin{table}[t]
 					\centering
 					\label{tab:wn-rels}
-					\begin{tabular}{l l l}
-					Relace                           & Slovnědruhové kombinace & Příklad                          \\\hline
-					antonymie                        & A-A, V-V                & \ex{open:close}                  \\\hline
-					hyponymie                        & N-N, V-V                & \ex{car:vehicle}, \ex{walk:move} \\\hline
-					meronymie                        & N-N                     & \ex{head:nose}                   \\\hline
-					vyplývání\footnote{entailment}   & V-V                     & \ex{buy:pay}                     \\\hline
-					následek                         & V-V                     & \ex{kill:die}               
+					\begin{tabular}{l c l}
+					\multirow{ 2}{*}{\textbf{Relace}}       & \textbf{Slovnědruhové} & \multirow{ 2}{*}{\textbf{Příklad}}        \\
+					                               & \textbf{kombinace}     &                                  \\ \hline
+					antonymie                      & A-A, V-V      & \ex{open:close}                  \\ \hline
+					hyponymie                      & N-N, V-V      & \ex{car:vehicle}, \ex{walk:move} \\ \hline
+					meronymie                      & N-N           & \ex{nose:head}                   \\ \hline
+					vyplývání\protect\footnotemark & V-V           & \ex{buy:pay}                     \\ \hline
+					následek                       & V-V           & \ex{kill:die}               
 					\end{tabular}
 					\caption{Vztahy přejaté z~princetonského WN (N: substantivum, A: adjektivum, V: verbum)}
 				\end{table}
+
+				\footnotetext{angl. entailment}
 
 				Navíc k~těmto vztahům byly přidány štítky (\textit{labels}), jež relaci konkretizují. Byly použity následující štítky:
 
@@ -512,10 +515,10 @@
 						\centering
 						% \caption{My caption}
 						\label{tab:wnlabels}
-						\begin{tabular}{lllc|c}
-							příčina	& vztah  & non-factive? & následek & nutně vyplývá? \\ \hline
+						\begin{tabular}{llcc|c}
+							\textbf{příčina}	& \textbf{vztah}  & \textbf{non-factive?} & \textbf{následek} & \textbf{nutně vyplývá?} \\ \hline
 							\ex{zabít}  & vyústí v & –  & \ex{zemřít} & ano                       \\
-							\ex{hledat} & vyústí v & \texttt{non-factive} & \ex{najít}  & ne
+							\ex{hledat} & vyústí v & ano & \ex{najít}  & ne
 						\end{tabular}
 						\caption{Rozdíl významů relace při použití a nepoužití příznaku \ex{non-factive}}
 					\end{table}
@@ -566,12 +569,12 @@
 					 Ačkoliv většina existujících rozhraní zřejmě pracuje buďto výhradně s~princetonským WordNetem, či jej jako zdroj dat nabízí jako jednu z~možností, nebyl zdroj dat brán v potaz.
 
 				 Jsou však popisována pouze povrchněji a měla by při interpretaci hodnocení být automaticky značně penalizována, jelikož je uživatel mající zájem takové rozhraní použít nucen instalovat například aplikační rozhraní Java, pokud jej nemá. Dalším důvodem k~penalizaci je také fakt, tyto aplikace nejsou přímo spustitelné na mobilních zařízeních. Pro některé platformy možná existuje několik cest, jak aplikaci napsanou v Javě na některých mobilních operačních systémech spustit (například na Android \parencite{SX92854}, u ostatních je podpora omezená či žádná (\parencite{SX15501535,SX1193541} inter alia)% (\url{http://www.wikihow.com/Get-Java-on-Android})
-				, lze však předpokládat, že použitelnost minimálně grafických vizualizací wordnetu bude na zařízeních s~malou obrazovkou poněkud omezená.  Navíc jejich transformace do formy nativních mobilních aplikací může být a obtížná. Jednak kvůli nutnosti rozhraní pro jednotlivé platformy tvořit zvlášť způsobem příslušným konkrétnímu operačnímu systému \parencite{gronli2014mobile}, jednak proto, že mobilní zařízení mají různé menší velikosti obrazovky, k~čemuž přirozeně nejsou rozhraní určená pro velké obrazovky klasických počítačů příliš přizpůsobena. Zřejmě nicméně existují nástroje, které mohou proces vývoj multiplatformních aplikací napsaných v Javě usnadnit. \parencite{mafintro}
+				, lze však předpokládat, že použitelnost minimálně grafických vizualizací wordnetu bude na zařízeních s~malou obrazovkou poněkud omezená.  Navíc jejich transformace do formy nativních mobilních aplikací může být a obtížná. Jednak kvůli nutnosti rozhraní pro jednotlivé platformy tvořit zvlášť způsobem příslušným konkrétnímu operačnímu systému \parencite{gronli2014mobile}, jednak proto, že mobilní zařízení mají různé menší velikosti obrazovky, k~čemuž přirozeně nejsou rozhraní určená pro velké obrazovky klasických počítačů\footnote{Terminologická poznámka: klasickým počítačem je myšleno všeobecně zařízení typu stolních počítačů, laptopů či tabletů s~operačním systémem nikoliv určeným pro mobilní zařízení. Nejde například o mobilní telefon, protože typicky na klasických počítačích bývá provozován jiný operační systém než na těch mobilních.} příliš přizpůsobena. Zřejmě nicméně existují nástroje, které mohou proces vývoj multiplatformních aplikací napsaných v Javě usnadnit. \parencite{mafintro}
 				% tady pripsat jeden zdroj z~URL v odstavci vyse (http://www.wikihow.com/Get-Java-on-Android), prihodit cite SX92854 (java on android), mozna prihodit jeste xda developers https://forum.xda-developers.com/showthread.php?t=1189303 a idealne neco pro windows phone nebo iphone; checknout sekci s~javou, protoze tam by to melo byt spis
 
 
 				% mozna vypsat vysledky a zaradit ten seznam sem? plus nejak exaktneji algoritmus filtrovani?
-				Z přehledu byly samozřejmě vyřazeny implementace, které k~době hledání\footnote{duben 2017} už nebyly dostupné. Také nebyla zahrnuta rozhraní, která jsou funkčně podobná jiným. Do přehledu byla zahrnována především rozhraní, která jsou dostupná z~webového prohlížeče, jelikož je to pro koncového uživatele nejpohodlnější způsob přístupu k~aplikaci (není nucen instalovat přídavné programové vybavení na svůj počítač kromě webového prohlížeče, který lze považovat za vcelku rozšířenou součást uživatelského vybavení). Jelikož však i rozhraní určená pro klasické \td{ta pozn.pod carou je dost zamotana..jak to lip vysvetlit?} počítače\footnote{Terminologická poznámka: klasickým počítačem je myšleno všeobecně zařízení typu stolních počítačů, laptopů či tabletů s~operačním systémem nikoliv určeným pro mobilní zařízení. Nejde například o mobilní telefon. Typicky na klasických počítačích také bývá provozován jiný operační systém než na mobilních zařízeních.} existují a mohou poskytnout cennou inspiraci i při vývoji webového rozhraní, byla některá z~nich zahrnuta též. 
+				Z přehledu byly samozřejmě vyřazeny implementace, které k~době hledání\footnote{duben 2017} už nebyly dostupné. Také nebyla zahrnuta rozhraní, která jsou funkčně podobná jiným. Do přehledu byla zahrnována především rozhraní, která jsou dostupná z~webového prohlížeče, jelikož je to pro koncového uživatele nejpohodlnější způsob přístupu k~aplikaci (není nucen instalovat přídavné programové vybavení na svůj počítač kromě webového prohlížeče, který lze považovat za vcelku rozšířenou součást uživatelského vybavení). Jelikož však i desktopová rozhraní (tedy rozhraní určená pro klasické počítače) existují a mohou poskytnout cennou inspiraci i při vývoji webového rozhraní, byla některá z~nich zahrnuta též. 
 
 				Podstatná z~hlediska hodnocení je také univerzalita, tedy zda je zdrojový kód rozhraní otevřený a je možné jej použít i pro vizualizaci jiné sémantické sítě, než pro kterou bylo rozhraní vyvinuto. Je ovšem dlužno podotknout, že tato informace bývá často nedostupná; potom se v rámci této práce předpokládá, že kód otevřený není. Zmiňována bývá jen explicitní zmínka o otevřenosti kódu.
 
@@ -684,7 +687,7 @@
 
 					Uživatel má možnost si zvolit množství informací, jež jsou mu prezentovány, a to od úplného minima (pouze slovní formy nalezených synsetů a jejich syntaktické kategorie) až po vše, co se ve WordNetu vyskytuje, včetně identifikátorů a dalších technických detailů. Rozhraní svůj stav ukládá jako parametry URL\footnote{unikátní adresa stránky (\textit{Uniform Resource Locator}), obvykle se zobrazuje v adresním řádku prohlížeče}, takže je možné jej později obnovit z~adresy.
 
-					Rozhraní není responzivní, ale vzhledem k~tomu, že je v základu relativně úzké (pod 700 px), je na chytrém telefonu použitelné.
+					Rozhraní není responzivní, ale vzhledem k~tomu, že je v základu relativně úzké (pod 700 px), je na chytrém telefonu použitelné. Vzhled rozhraní je ilustrován na obrázku \ref{fig:wnsearch} na straně \pageref{fig:wnsearch}.
 
 					\begin{figure}[h]
 						\centering
@@ -698,7 +701,7 @@
 				\subsection{An interactive visualization of the Princeton WordNet database}
 				\label{wnvis:intviswn}
 
-					An interactive visualization of the Princeton WordNet database, dostupný z \url{http://mateogianolio.com/wordnet-visualization/}, je jeden z~projektů programátora jménem Mateo Gianolio. Jde o jednoduché rozhraní napojené na princetonský WordNet, které po zadání hledaného výrazu zobrazí synsety obsahující daný výraz. Jednotlivé synsety jsou barevně odlišeny podle syntaktických kategorií (slovních druhů), k~nimž náležejí, a uspořádány kruhově kolem hledaného výrazu. Z~každého synsetu je vždy zobrazena jen první slovní forma. Pokud uživatel najede kursorem myši na některý ze synsetů, zobrazí se další případné slovní formy náležející do daného synsetu a jeho glosa (definice), je-li dostupná.
+					An interactive visualization of the Princeton WordNet database, dostupný z \url{http://mateogianolio.com/wordnet-visualization/}, je jeden z~projektů programátora jménem Mateo Gianolio. Jde o jednoduché rozhraní napojené na princetonský WordNet, které po zadání hledaného výrazu zobrazí synsety obsahující daný výraz. Jednotlivé synsety jsou barevně odlišeny podle syntaktických kategorií (slovních druhů), k~nimž náležejí, a uspořádány kruhově kolem hledaného výrazu. Z~každého synsetu je vždy zobrazena jen první slovní forma. Pokud uživatel najede kursorem myši na některý ze synsetů, zobrazí se další případné slovní formy náležející do daného synsetu a jeho glosa (definice), je-li dostupná. Vzhled rozhraní je ilustrován na obrázku \ref{fig:intviswn} na straně \pageref{fig:intviswn}
 
 					Další slovní formy v nalezených synsetech jsou klikatelné, což umožňuje dostat se přes ně na synsety obsahující onu slovní formu, na níž bylo uživatelem kliknuto (s identickým výsledkem, jako kdyby dané slovo uživatel zadal do vyhledávacího pole).
 
@@ -724,7 +727,7 @@
 
 					Rozhraní je rozděleno do levého sloupce a pravého (většího) \uv{plátna}, jež slouží pro grafické vyobrazení vztahů. Po vyhledání zadaného výrazu nabídne aplikace uživateli seznam synsetů, v nichž se výraz nachází. Nabídka synsetů je klikatelná a uživateli je po zvolení synsetu kliknutím prezentováno grafické vyobrazení daného synsetu se všemi jeho vztahy. V levém sloupci si pak uživatel může vybírat, další synsety, které chce do pravé sekce přidat, může také otevírat dvojklikem již zobrazené synsety a lze i v nastavení filtrovat, které vztahy a slovní druhy se mají zobrazovat. Aplikace však zřejmě neobsahuje intuitivní způsob jak zobrazené synsety z~plátna vpravo odebírat a při otevírání dalších synsetů plátno nepřepisuje, ale synsety přidává k~již zobrazeným (neprovázaně). To může vést ke značné nepřehlednosti reprezentace, avšak aplikace umožňuje přibližování a oddalování plátna a vizuální přesouvání zobrazení po plátně, což s~jistým úsilím uživatele nepřehlednost může eliminovat. Také nutno vytknout absenci textového pojmenování vztahů mezi synsety. Barevné rozlišení je v tomto případě nevhodně zvolené, jelikož vztahů je v rozhraní hodně a některé barvy jsou obtížně odlišitelné.
 
-					Grafické zobrazení vztahů mezi koncepty je řešeno hvězdicovitě, přičemž ve středu je zvolený synset, jenž byl výsledkem hledání, nebo na něj bylo kliknuto, a od něj jsou vedeny hrany představující vztahy k~příbuzným synsetům. Zajímavý je originální koncept zobrazení synsetů příbuzných k~hledanému (otevřenému) synsetu. Ten je v grafu reprezentován svými členskými slovními formami, ale příbuzné koncepty jsou reprezentovány svými definicemi. Trochu na závadu však je, že se zřejmě nedá (minimálně v prohlížecím režimu) zobrazit detail příbuzného synsetu a uživatel se dozví pouze jeho definici, nikoliv slovní formy do něj náležející. Jediný detail, který je uživateli dostupný, je u některých synsetů obrázek (o jeho zdroji se však v rozhraní nepíše).
+					Grafické zobrazení vztahů mezi koncepty je řešeno hvězdicovitě, přičemž ve středu je zvolený synset, jenž byl výsledkem hledání, nebo na něj bylo kliknuto, a od něj jsou vedeny hrany představující vztahy k~příbuzným synsetům. Zajímavý je originální koncept zobrazení synsetů příbuzných k~hledanému (otevřenému) synsetu. Ten je v grafu reprezentován svými členskými slovními formami, ale příbuzné koncepty jsou reprezentovány svými definicemi. Trochu na závadu však je, že se zřejmě nedá (minimálně v prohlížecím režimu) zobrazit detail příbuzného synsetu a uživatel se dozví pouze jeho definici, nikoliv slovní formy do něj náležející. Jediný detail, který je uživateli dostupný, je u některých synsetů obrázek (o jeho zdroji se však v rozhraní nepíše). Vzhled rozhraní je ilustrován na obrázku \ref{fig:wneditor} na straně \pageref{fig:wneditor}
 
 					\begin{figure}[h]
 						\centering
@@ -784,6 +787,8 @@
 
 					Hrany mezi synsety jsou orientované (znázorněné jako šipky) a k~jejich pojmenování zvolil autor sémantické významy daných vztahů, tedy např. hyperonymie je značena slovem \ex{is}\footnote{angl. \ex{je}}; např. \ex{apple tree \textit{is} fruit tree}\footnote{angl. \ex{jabloň \textit{je} ovocný strom}}.
 
+					Vzhled rozhraní je ilustrován na obrázku \ref{fig:wordvis} na straně \pageref{fig:wordvis}
+
 					Vyhledávací formulář umožňuje filtrování výsledků hledání podle slovních druhů a typů vztahu. Graf je navíc aktualizován v reálném čase podle toho, jak jsou podmínky filtrování uživatelem měněny. Nevýhodou však je absence funkcí \textit{vybrat vše} a \textit{nevybrat nic}, která je citelná zvláště v případě, že uživatel chce vybrat pouze jeden druh relace (kterých je mnoho, tudíž odebrání všech relací z~výběru kromě jedné může být časově náročné). Hledání také nabízí funkci napovídání poté, co uživatel zadá několik znaků z~počátku slova. To umožňuje vybrat hledané slovo z~nabídky a ušetřit několik úhozů, což je zvláště užitečné u delších slov či pro uživatele, který nevyhledává ve svém rodném jazyce a není si jist pravopisem hledaného slova.
 
 					\begin{figure}[h]
@@ -808,13 +813,13 @@
 
 					Rozhraní sloWTool, dostupné z \url{http://nl.ijs.si/slowtool}, bylo vyvinuto pro potřeby slovinského wordnetu, jenž je založen na princetonském WordNetu a vznikl skombinováním několika zdrojů, například Wikipedie, dvojjazyčných slovníků či paralelních korpusů. Je víceúčelovým nástrojem, který umožňuje textovou reprezentaci, vizualizaci a editaci dat z~wordnetu. V době psaní této práce v něm bylo podle rozbalovací nabídky vedle vyhledávacího pole možno pracovat s~anglickým, francouzským, polským a slovinským wordnetem, testováno bylo rozhraní s~anglickým. Tvůrcům rozhraní sloužilo k~revizím slovinského wordnetu po jeho rozšiřování automatickými nástroji. \parencite{fivser2012slownet} Cílem při vývoji tohoto rozhraní podle \textcite{fivser2011visualizing} bylo překonat nevýhody tehdejších dostupných rozhraní a vyvinout nástroj, který by mezi jiným umožňoval prohlížení i editaci, spolupráci mnoha autorů včetně anonymních editací (záměr tvůrců byl využít náhodných návštěvníků k~opravování chyb, jež ve wordnetu naleznou) či možnost jednoduché registrace uživatelů. Mezi dalšími podmínkami byla možnost přidávání dalších wordnetů do systému a s~tím spojená schopnost rozhraní zobrazovat vícejazyčná data. V neposlední řadě se autoři v kontextu tehdejších nástrojů také snažili zaměřit na platformní nezávislost a přenositelnost rozhraní. 
 
-					Rozložení stránky je vzdáleně podobné tomu u základního oficiálního rozhraní k~princetonskému WordNetu, a to v tom smyslu, že neobsahuje relativně rozšířený levý sloupec na výběr synsetů, ale jednotlivé významy, které jsou nalezeny po zadaní hledané slovní formy do vyhledávacího pole, seskupuje do sekcí v hlavním bloku spolu s~textovou reprezentací dat. Vyhledávací pole podporuje napovídání v databázi existujících slovních forem, podobně jako je to zařízeno v rozhraní WordVis, což může usnadnit práci s~vyhledáváním. V textové reprezentaci rozhraní zobrazuje zřejmě všechny dostupné informace o synsetech, tedy se chová podobně jako základní rozhraní princetonského WordNetu, je-li nastaveno tak, aby nefiltrovalo žádné informce. U jednotlivých vztahů, v nichž je daný synset přítomen, pak je možné kliknutím na ikonu šipky otevřít synset nacházející se pomyslně na druhé straně daného vztahu (např. \ex{bicykle}\footnote{angl. \ex{cyklistické kolo}} má meronymum \ex{saddle}\footnote{angl. \ex{sedlo}}, takže lze otevřít detail synsetu \ex{saddle}). To trpí stejným neduhem, jako základní rozhraní princetonského WordNetu, to jest, že lze ve smyčce otevírat nadřazený a podřazený synset a stále se zanořovat do smyčky hlouběji. To je nejen nesmyslné, ale zároveň to v implementaci tohoto rozhraní postupně může začít zpomalovat rychlost reakcí prohlížeče pro nadměrné množství uzlů v DOM\footnote{document object model, model objektů v dokumentu}.
+					Rozložení stránky je vzdáleně podobné tomu u základního oficiálního rozhraní k~princetonskému WordNetu, a to v tom smyslu, že neobsahuje relativně rozšířený levý sloupec na výběr synsetů, ale jednotlivé významy, které jsou nalezeny po zadaní hledané slovní formy do vyhledávacího pole, seskupuje do sekcí v hlavním bloku spolu s~textovou reprezentací dat. Vyhledávací pole podporuje napovídání v databázi existujících slovních forem, podobně jako je to zařízeno v rozhraní WordVis, což může usnadnit práci s~vyhledáváním. V textové reprezentaci rozhraní zobrazuje zřejmě všechny dostupné informace o synsetech, tedy se chová podobně jako základní rozhraní princetonského WordNetu, je-li nastaveno tak, aby nefiltrovalo žádné informce. U jednotlivých vztahů, v nichž je daný synset přítomen, pak je možné kliknutím na ikonu šipky otevřít synset nacházející se pomyslně na druhé straně daného vztahu (např. \ex{bicykle}\footnote{angl. \ex{cyklistické kolo}} má meronymum \ex{saddle}\footnote{angl. \ex{sedlo}}, takže lze otevřít detail synsetu \ex{saddle}). To trpí stejným neduhem, jako základní rozhraní princetonského WordNetu, to jest, že lze ve smyčce otevírat nadřazený a podřazený synset a stále se zanořovat do smyčky hlouběji. To je nejen nesmyslné, ale zároveň to v implementaci tohoto rozhraní postupně může začít zpomalovat rychlost reakcí prohlížeče pro nadměrné množství uzlů v DOM\footnote{Document Object Model, model objektů v dokumentu}.
 
 					Po levé straně se nachází lišta s~ikonami odkazujícími na dalšími moduly, které se otevírají v emulaci nových oken (v témže panelu webového prohlížeče). Mezi tyto moduly patří mimo jiné i pokročilé hledání, vizualizace dat a nápověda. 
 
 					Pokročilé hledání funguje podobně jako u ostatních rozhraní, tedy umožňuje používat zástupné znaky (\ex{*} a \ex{?}), filtrovat slovní druhy, nebo vyhledávat v jiných polích než jsou slovní formy patřící do synsetů (například v definicích či podle identifikátoru synsetu). 
 
-					Vizualizace, modul z~hlediska této práce nejpodstatnější, je určen k~zobrazení grafické interpretace vztahů vyhledanýho synsetů. Na rozdíl od ostatních rozhraní tato vizualizace zobrazuje všechny vyhledané synsety (s kořenem grafu označeným červeně a s~textem hledaného výrazu) a neumožňuje jejich další filtrování v zobrazení. Také nepodporuje kromě přesouvání prvků na plátně a zvýraznění příslušného synsetu v hlavním bloku textové reprezentace poté, co je na něj ve vizualizaci kliknuto, zřejmě žádnou formu interakce. Pro srovnání, u ostatních vizualizací lze narazit například na informační bubliny, jež zobrazí podrobnosti jednoho prvku. Pokud uživatel potřebuje zobrazit vizualizaci jednoho konkrétního synsetu, je nucen použít pokročilé vyhledávání a vyhledat daný synset nejlépe podle jeho identifikátoru, který je vždy unikátní. Vizualizace je zatížena také dalšími problémy, jako jsou nedostatečné možnosti přizpůsobování velikosti zobrazovací plochy (zvětšování okna je podporováno, ale plátno s~grafem zůstává konstantně velké), občasnou desynchronizací obsahu vizualizace s~výsledky hledání, náročností na uživatelovo technické vybavení počítače (především výpočetní jednotku) a značnou nepřehledností způsobenou nedostatečně či nevhodně řešenou penalizací překrývání prvků na zobrazovací ploše. 
+					Vizualizace, modul z~hlediska této práce nejpodstatnější, je určen k~zobrazení grafické interpretace vztahů vyhledanýho synsetů. Na rozdíl od ostatních rozhraní tato vizualizace zobrazuje všechny vyhledané synsety (s kořenem grafu označeným červeně a s~textem hledaného výrazu) a neumožňuje jejich další filtrování v zobrazení. Také nepodporuje kromě přesouvání prvků na plátně a zvýraznění příslušného synsetu v hlavním bloku textové reprezentace poté, co je na něj ve vizualizaci kliknuto, zřejmě žádnou formu interakce. Pro srovnání, u ostatních vizualizací lze narazit například na informační bubliny, jež zobrazí podrobnosti jednoho prvku. Pokud uživatel potřebuje zobrazit vizualizaci jednoho konkrétního synsetu, je nucen použít pokročilé vyhledávání a vyhledat daný synset nejlépe podle jeho identifikátoru, který je vždy unikátní. Vizualizace je zatížena také dalšími problémy, jako jsou nedostatečné možnosti přizpůsobování velikosti zobrazovací plochy (zvětšování okna je podporováno, ale plátno s~grafem zůstává konstantně velké), občasnou desynchronizací obsahu vizualizace s~výsledky hledání, náročností na uživatelovo technické vybavení počítače (především výpočetní jednotku) a značnou nepřehledností způsobenou nedostatečně či nevhodně řešenou penalizací překrývání prvků na zobrazovací ploše. Vzhled rozhraní je ilustrován na obrázku \ref{fig:slowtool} na straně \pageref{fig:slowtool}
 
 					\begin{figure}[h]
 						\centering
@@ -861,7 +866,7 @@
 
 			\section{Vizulizace v aplikačním prostředí Java}
 
-				Java je objektově orientovaný programovací jazyk, který je zaměřený na to, aby měl co nejméně závislostí na konkrétním operačním systému a technickém vybavení počítače, jak jen to je možné. To je výhodné zejména kvůli tzv. konceptu WORA (\textit{write once, run anywhere}, tedy \textit{napsat jednou, spustit kdekoliv}), protože to znamená, že skompilované programy napsané v Javě lze spustit na jakémkoliv stroji, který podporuje Javu. Takto skompilované programy se spouští v aplikačním prostředí zvaném Java Virtual Machine\footnote{angl. virtuální stroj Javy} (JVM), jež vytváří uniformní prostředí pro běh aplikací. Výhodou Javy tedy je velká přenositelnost programů v tomto jazyce napsaných, jelikož jednou skompilovaný kód lze spustit na různých operačních systémech a zařízeních. Nevýhodou je, že si uživatel, který chce program v Javě napsaný spustit, musí nainstalovat aplikační prostředí Javy (JVM). 
+				Java je objektově orientovaný programovací jazyk, který je zaměřený na to, aby měl co nejméně závislostí na konkrétním operačním systému a technickém vybavení počítače, jak jen to je možné. To je výhodné zejména kvůli konceptu zvanému WORA\footnote{Write Once, Run Anywhere, tedy napsat jednou, spustit kdekoliv}, protože to znamená, že skompilované programy napsané v Javě lze spustit na jakémkoliv stroji, který podporuje Javu. Takto skompilované programy se spouští v aplikačním prostředí zvaném Java Virtual Machine\footnote{angl. virtuální stroj Javy} (JVM), jež vytváří uniformní prostředí pro běh aplikací. Výhodou Javy tedy je velká přenositelnost programů v tomto jazyce napsaných, jelikož jednou skompilovaný kód lze spustit na různých operačních systémech a zařízeních. Nevýhodou je, že si uživatel, který chce program v Javě napsaný spustit, musí nainstalovat JVM. 
 
 				Java je se občas používá pro vývoj aplikací, které fungují podle modelu klient--server, což je uspořádání, v němž data má uložená centrální server, k~nemuž se připojují uživatelské klienty, odesílají mu své požadavky a uživatelům zobrazují vrácená data. \parencite[13]{gosling1995java} Na podobném principu může fungovat i rozhraní pro wordnet, pokud jsou data wordnetu uložena na serveru.
 
@@ -876,7 +881,7 @@
 						\label{fig:wnwordnetbrowswer}
 					\end{figure}
 
-					Rozhraní wnbroswer\footnote{sic erat scriptum, název rozhraní je psán na různých místech různými způsoby, více v poznámce na konci této kapitoly na straně \pageref{note:wnbroswer} a na obrázku \ref{fig:wnbroswerbadwriting} na straně \pageref{fig:wnbroswerbadwriting}}, dostupné z \url{http://homepages.inf.ed.ac.uk/adubey/software/wnbrowser/index.html} je určeno k~prezentaci dat z~princetonskému WordNetu, které pracuje pouze s~grafovou grafickou reprezentací. Bylo vytvořeno pro reprezentaci dat z~WordNetu ve verzi 3.0 a vyšší a vyžaduje lokální instalaci dat. Rozhraní je zřejmě svázáno se vznikem rumunského wordnetu \parencite{fivser2011visualizing}. Sestává z~vyhledávacího pole, volby, mezi kterými syntaktickými kategoriemi se má vyhledávat, a selektoru na typy vazeb, jež mají být zobrazeny. Po úspěšném vyhledání konkrétního slova se zobrazí graf konceptuálně podobný grafu z~rozhraní sloWTool, tedy ve středu je uzel reprezentující hledaný výraz, z~něhož vedou hrany k~jednotlivým synsetům, jež danou slovní formu obsahují. 
+					Rozhraní wnbroswer\footnote{sic erat scriptum, název rozhraní je psán na různých místech různými způsoby, více v poznámce na konci této kapitoly na straně \pageref{note:wnbroswer} a na obrázku \ref{fig:wnbroswerbadwriting} na straně \pageref{fig:wnbroswerbadwriting}}, dostupné z \url{http://homepages.inf.ed.ac.uk/adubey/software/wnbrowser/index.html} je určeno k~prezentaci dat z~princetonskému WordNetu, které pracuje pouze s~grafovou grafickou reprezentací. Bylo vytvořeno pro reprezentaci dat z~WordNetu ve verzi 3.0 a vyšší a vyžaduje lokální instalaci dat. Rozhraní je zřejmě svázáno se vznikem rumunského wordnetu \parencite{fivser2011visualizing}. Sestává z~vyhledávacího pole, volby, mezi kterými syntaktickými kategoriemi se má vyhledávat, a selektoru na typy vazeb, jež mají být zobrazeny. Po úspěšném vyhledání konkrétního slova se zobrazí graf konceptuálně podobný grafu z~rozhraní sloWTool, tedy ve středu je uzel reprezentující hledaný výraz, z~něhož vedou hrany k~jednotlivým synsetům, jež danou slovní formu obsahují. Vzhled rozhraní je ilustrován na obrázku \ref{fig:wnwordnetbrowswer} na straně \pageref{fig:wnwordnetbrowswer}
 
 					Grafická reprezentace je interaktivní, lze na ní zvolit, jaký druh sémantického vztahu se má zobrazit, a lze tak u každého uzlu postupně zobrazit všechny synsety, které jsou s~ním provázány; toho lze docílit buď přes kontextové menu, nebo přes volby vztahů v levém sloupci rozhraní, v němž se mimo jiné nachází i vyhledávací pole. Rozhraní zobrazuje i detaily zvoleného synsetu (po kliknutí na daný synset), takže až na technické informace typu číslo významu a podobně je schopno zobrazovat všechna dostupná data.
 
@@ -902,7 +907,7 @@
 						\label{fig:wntreebolic}
 					\end{figure}
 
-					Treebolic, dostupná z \url{http://treebolic.sourceforge.net}, je aplikace určená k~zobrazování hierarchických dat v hyperobilické reprezentaci, která zajišťuje, že důležitá data v centru obrazovky jsou zobrazena uživateli ve větším měřítku, než data na okrajích grafu. Reprezentaci si lze představit jako plochu zobrazenou přes čočku. \parencite{boutreebolic}
+					Treebolic, dostupná z \url{http://treebolic.sourceforge.net}, je aplikace určená k~zobrazování hierarchických dat v hyperobilické reprezentaci, která zajišťuje, že důležitá data v centru obrazovky jsou zobrazena uživateli ve větším měřítku, než data na okrajích grafu. Reprezentaci si lze představit jako plochu zobrazenou přes čočku. \parencite{boutreebolic} Její vzhled je ilustrován na obrázku \ref{fig:wntreebolic} na straně \pageref{fig:wntreebolic}
 
 					Zobrazení používá model prezentující vše, co je nalezeno k~hledanému slovu, tedy při úspěšném vyhledání výsledků se uprostřed vizualizace zobrazí reprezentace vyhledávání, s~níž jsou hranami provázáany všechny nalezené synsety. Oproti ostatním zde popisovaným prostředím navíc seskupuje tyto synsety podle slovního druhu, tedy zavádí další metakategorii v zobrazení, což přispívá k~přehlednosti. 
 
@@ -916,11 +921,13 @@
 
 				\subsection{VisualBrowser}
 
-					\td{napsat diplomaticteji, nebo se pokusit aplikaci rozjet poradne}Verze aplikace VisualBrowser, dostupná z \url{https://nlp.fi.muni.cz/projekty/visualbrowser}, testovaná v rámci této práce neprokázala dostatečnou intuitivitu a funkčnost, aby její vlastnosti mohly být dále rozebrány. 
+					\todo[inline]{napsat diplomaticteji, nebo se pokusit aplikaci rozjet poradne}
+
+					Verze aplikace VisualBrowser, dostupná z \url{https://nlp.fi.muni.cz/projekty/visualbrowser}, testovaná v rámci této práce neprokázala dostatečnou intuitivitu a funkčnost, aby její vlastnosti mohly být dále rozebrány. 
 
 			\section{Aplikace pro klasické počítače}
 
-			Aplikace pro klasické počítače (jinak také desktopové aplikace) jsou takové aplikace, které jsou určeny pro běh nativně na operačním systému uživatelova počítače. Nativně spouštěná aplikace je, ať už přímo, či nepřímo, závislá na programových vlastnostech operačního systému daného stroje, stejně jako zprostředkovaně na jeho technickém vybavení. Přístupy k~distribuci desktopových aplikací jsou v zásadě dva; první, běžný hlavně pro operační systém Windows, spočívá v distribuci již skompilovaných binárních souborů, které zajistí instalaci daného programu do systému a uživateli zbývá jen příslušný program spustit. Druhý způsob, běžný spíše pro různé linuxové distribuce, je založený na distribuci souborů obsahujících zdrojový kód programu, přičemž uživatel je nucen, má-li zájem program používat, si binární spustitelný soubor skompilovat. Druhý způsob pro programátora skýtá zásadní výhodu v tom, že se nemusí zajímat o prostředí, na němž bude koncový uživatel jeho program provozovat, protože kompilace programu pro všechny dostupné konfigurace (kombinace programového a technického vybavení koncového uživatele) je náročná na zdroje. \parencite{Elizabeth2015} Pro onoho koncového uživatele však slyne druhá varianta tou nevýhodou, že kompilace programového vybavení vyžaduje z~jeho strany jisté úsilí a znalosti o vlastním systému. 
+			Aplikace pro klasické počítače (tedy desktopové aplikace) jsou takové aplikace, které jsou určeny pro běh nativně na operačním systému uživatelova počítače. Nativně spouštěná aplikace je, ať už přímo, či nepřímo, závislá na programových vlastnostech operačního systému daného stroje, stejně jako zprostředkovaně na jeho technickém vybavení. Přístupy k~distribuci desktopových aplikací jsou v zásadě dva; první, běžný hlavně pro operační systém Windows, spočívá v distribuci již skompilovaných binárních souborů, které zajistí instalaci daného programu do systému a uživateli zbývá jen příslušný program spustit. Druhý způsob, běžný spíše pro různé linuxové distribuce, je založený na distribuci souborů obsahujících zdrojový kód programu, přičemž uživatel je nucen, má-li zájem program používat, si binární spustitelný soubor skompilovat. Druhý způsob pro programátora skýtá zásadní výhodu v tom, že se nemusí zajímat o prostředí, na němž bude koncový uživatel jeho program provozovat, protože kompilace programu pro všechny dostupné konfigurace (kombinace programového a technického vybavení koncového uživatele) je náročná na zdroje. \parencite{Elizabeth2015} Pro onoho koncového uživatele však slyne druhá varianta tou nevýhodou, že kompilace programového vybavení vyžaduje z~jeho strany jisté úsilí a znalosti o vlastním systému. 
 
 			V rámci rozhraní určených pro zprostředkování dat z~wordnetů jsou desktopové aplikace nejméně zastoupeny. Je tomu pravděpodobně proto, že jsou nejnáročnější na vývoj, zvláště mají-li být dostupné pro všechny majoritní desktopové operační systémy. Dalším důvodem může být fakt, že často bývá zvolen model klient--server, pro který jsou vhodnější spíše aplikace v Javě \parencite[13]{gosling1995java} či webová rozhraní.
 
@@ -1054,7 +1061,7 @@
 
 			\section{HTML}
 
-				Značkovací jazyk HTML je základním stavebním prvkem většiny\td{jsou vubec alternativy, nebo se vsechno nakonec rekompiluje do HTML?} dokumentů pro webové prohlížeče. Jako značkovací jazyk umožňuje HTML definici obsahu dokumentu, jeho strukturalizaci do částí, definici významů jednotlivých částí (například označení nadpisu) a do jisté míry jej lze užívat, byť k~tomu není určeno \parencite{cssWeb}, i pro definici vzhledu dokumentu (tučný řez písma, etc.). Poskytuje také prostředky pro tzv. hypertextové odkazy, jimiž lze provázat různé dokumenty či části jednoho dokumentu. Nezřídka se tyto odkazy v dnešní době používají jako ovládací prvky k~řízení změn obsahu dynamicky generovaného dokumentu, kterým je například zde popisované rozhraní \simplywn. 
+				Značkovací jazyk HTML je základním stavebním prvkem většiny dokumentů pro webové prohlížeče. Jako značkovací jazyk umožňuje HTML definici obsahu dokumentu, jeho strukturalizaci do částí, definici významů jednotlivých částí (například označení nadpisu) a do jisté míry jej lze užívat, byť k~tomu není určeno \parencite{cssWeb}, i pro definici vzhledu dokumentu (tučný řez písma, etc.). Poskytuje také prostředky pro tzv. hypertextové odkazy, jimiž lze provázat různé dokumenty či části jednoho dokumentu. Nezřídka se tyto odkazy v dnešní době používají jako ovládací prvky k~řízení změn obsahu dynamicky generovaného dokumentu, kterým je například zde popisované rozhraní \simplywn. 
 
 				V rozhraní \simplywn HTML slouží k~definici struktury zobrazené webové stránky, jejímu rozdělení na jednotlivé sekce (levý sloupec, pravá plocha, záhlaví, etc.) a ke strukturalizaci posléze zobrazovaných informací. Příkladem může být výpis sémantických relací, v nichž je zobrazovaný synset přítomen. Jednotlivé relace jsou rozděleny do bloků (jež jsou později pomocí CSS nastaveny tak, aby se zobrazovaly jako sloupce) a jednotlivé synsety svázané s~tím zobrazovaným příslušným vztahem jsou vypsány v seznamu. 
 
@@ -1069,7 +1076,7 @@
 
 			\section{JavaScript}
 
-				JavaScript je vysokoúrovňový\footnote{silně abstrahovaný od nízkoúrovňových instrukcí procesoru a nezávislý (či méně závislý) na technickém vybavení počítače} dynamický\footnote{úkony, jež jsou u statických jazyků prováděny při kompilaci, jsou prováděny za běhu programu} netypovaný\footnote{kterékoliv operace jsou povoleny nad jakýmikoliv daty, nekontroluje se typ proměnných} a interpretovaný\footnote{program spouštěný bez předchozí statické kompilace, interpretem následně rozložený na kompilované podrutiny} programovací jazyk používaný vedle HTML a CSS jako jedna ze tří základních technologií pro tvorbu webových aplikací\td{je vubec v poradku me zamenovani webove stranky a webove aplikace?}. Jeho funkce spočívá v zásadě v ovládání obsahu stránky na základě událostí, kterými mohou být například akce uživatele jako kliknutí na odkaz či akce serveru jako je dokončení požadavku a navrácení jeho výsledků.% [cit] wikipedia
+				JavaScript je vysokoúrovňový\footnote{silně abstrahovaný od nízkoúrovňových instrukcí procesoru a nezávislý (či méně závislý) na technickém vybavení počítače} dynamický\footnote{úkony, jež jsou u statických jazyků prováděny při kompilaci, jsou prováděny za běhu programu} netypovaný\footnote{kterékoliv operace jsou povoleny nad jakýmikoliv daty, nekontroluje se typ proměnných} a interpretovaný\footnote{program spouštěný bez předchozí statické kompilace, interpretem následně rozložený na kompilované podrutiny} programovací jazyk používaný vedle HTML a CSS jako jedna ze tří základních technologií pro tvorbu webových aplikací. Jeho funkce spočívá v zásadě v ovládání obsahu stránky na základě událostí, kterými mohou být například akce uživatele jako kliknutí na odkaz či akce serveru jako je dokončení požadavku a navrácení jeho výsledků.% [cit] wikipedia
 
 				Popisované rozhraní momentálně vyžaduje JavaScript a využívá jej na sledování akcí uživatele (inicializace hledání a přepínání zobrazeného synsetu či vizualizace), odesílání požadavků uživatele serveru (hledání), přijímání odpovědí na tyto požadavky a následné zpracování odpovědi a aktualizace HTML dokumentu%tady si stojim za "html dokument", bo je to "htmlovy dokument", nikoliv neco jako "jazyk html" (cf. "webovy dokument" vs. "prostredi web(u)")
 				, tedy zobrazení výsledků hledání uživateli. %history api?
@@ -1082,27 +1089,27 @@
 
 					Tento formát je vhodný na přenos informací, jakými jsou data z~wordnetu, jelikož se jedná o strukturovaná, čistě textová data. Další možností pro přenos takových dat je například formát XML\footnote{eXtensible Markup Language}. Ten oproti formátu JSON umožňuje přesnější specifikace typů hodnot a validaci dat, avšak pro stejné množství informací je datově větší (má větší režii na značkování). XML je navíc oproti formátu JSON méně pohodlně zpracovatelné v JavaScriptu, jelikož syntax formátu JSON reflektuje strukturu objektů v JavaScriptu. Vzhledem k~tomu, že data z~wordnetů bývají krátké řetězce, je evidentní, že při použití XML by bylo přenášeno zbytečně velké množství strukturních informací v podobě značkování. \parencite{jsonVsXML} To v kombinaci s~jednoduchostí zpracování formátu JSON v JavaScriptu přispělo k~rozhodnutí použít v aplikaci \simplywn k~přenosu dat JSON. Ukázka formátu JSON je v kapitole \itNameRef{cha:answerStruct} na straně \pageref{cha:answerStruct}
 
-				\subsection{Ajax}
+				\subsection{AJAX}
 
-					Ajax\footnote{Asynchronous JavaScript And XML} je souhrnné označení skupiny technologií používaných pro asynchronní přenos dat mezi webovým prohlížečem a serverem, tedy pro komunikaci webových aplikací se serverem. Rozdíl oproti tradičnímu přenosu informací mezi serverem a webovou stránkou načtenou u klienta tkví v tom, že bez použití Ajaxu je nutné pro zpracování odpovědi na požadavek načíst stránku znova. Hlavním využitím Ajaxu bývají právě aplikace, jejichž funkčnost je závislá na komunikaci se vzdáleným serverem bez nutnosti načítat celou webovou stránku znovu. \parencite{garrett2005ajax}
+					AJAX\footnote{Asynchronous JavaScript And XML} je souhrnné označení skupiny technologií používaných pro asynchronní přenos dat mezi webovým prohlížečem a serverem, tedy pro komunikaci webových aplikací se serverem. Rozdíl oproti tradičnímu přenosu informací mezi serverem a webovou stránkou načtenou u klienta tkví v tom, že bez použití AJAXu je nutné pro zpracování odpovědi na požadavek načíst stránku znova. Hlavním využitím AJAXu bývají právě aplikace, jejichž funkčnost je závislá na komunikaci se vzdáleným serverem bez nutnosti načítat celou webovou stránku znovu. \parencite{garrett2005ajax}
 
-					U komplexních webových aplikací může být načítání celé stránky znova nevýhodné z~mnoha důvodů. Jedním ze scénářů může být například potřeba obnovit data na části stránky, zatímco uživatel vkládá data (například komentář) na jiné části\footnote{Existuje jistě možnost toto obejít pomocí rámců v HTML, ale ty mají své nevýhody \parencite{frames2013bad}.}. Úplným znovunačtením by byla uživatelova vložená data ztracena, takže je nutné obnovovat jen její část, k~čemuž je výhodné využít Ajax.
+					U komplexních webových aplikací může být načítání celé stránky znova nevýhodné z~mnoha důvodů. Jedním ze scénářů může být například potřeba obnovit data na části stránky, zatímco uživatel vkládá data (například komentář) na jiné části\footnote{Existuje jistě možnost toto obejít pomocí rámců v HTML, ale ty mají své nevýhody \parencite{frames2013bad}.}. Úplným znovunačtením by byla uživatelova vložená data ztracena, takže je nutné obnovovat jen její část, k~čemuž je výhodné využít AJAX.
 
-					Dalším důvodem k~využívání Ajaxu je uživatelův komfort -- je možné během načítání zobrazovat vlastní indikátor načítání, při výpadku spojení zobrazit uživatelsky přívětivou zprávu, etc.
+					Dalším důvodem k~využívání AJAXu je uživatelův komfort -- je možné během načítání zobrazovat vlastní indikátor načítání, při výpadku spojení zobrazit uživatelsky přívětivou zprávu, etc.
 
-					Asynchronní výměna dat mezi webovým prohlížečem a serverem probíhá pomocí aplikačního rozhraní XMLHttpRequest (XHR) dostupného prohlížečům pomocí JavaScriptu. \parencite{mozilla2017XMLHTTP}
+					Asynchronní výměna dat mezi webovým prohlížečem a serverem probíhá pomocí aplikačního rozhraní XHR\footnote{XMLHttpRequest} dostupného v prohlížečích pomocí JavaScriptu. \parencite{mozilla2017XMLHTTP}
 
 				\subsection{Historie v prohlížeči}
 
 					Historie je schopnost webových prohlížečů přecházet mezi jednotlivými stavy, které nastaly během uživatelova prohlížení stránek v daném okně (či kartě) prohlížeče. Klasicky jsou těmito stavy jednotlivé stránky, které uživatel navštívil, ať už v rámci jednoho nebo různých portálů. Pokud například navštíví domovskou stránku vyhledávače DuckDuckGo\footnote{\url{https://duckduckgo.com}}, vyhledá výraz \ex{brno} a následně otevře například výsledek hledání vedoucí na portál Wikipedia\footnote{\url{https://en.wikipedia.org/wiki/Brno}}, zaznamená prohlížeč automaticky tři stavy (domovská stránka vyhledávače, stránka s~výsledky hledání, stránka na Wikipedii), k~nimž je možné se vrátit. Pro porovnání s~nastíněním problému, jež následuje níže, je dlužno podotknout, že v obou zmíněných přechodech mezi stavy karty prohlížeče se stránka načítá zcela znovu\footnote{stav k~1. 6. 2017}, takže se změna stavu zaznamenává automaticky (netřeba ji ošetřovat na straně webové stránky).
 
-					Při užívání dynamického generování obsahu stránky na straně klienta a přenosu požadavků a dat pomocí Ajaxu nastává problém, že z~hlediska prohlížeče se stav nezmění, tudíž není nic zapsáno do historie. Tento problém byl v minulosti řešen různými způsoby, pátá verze HTML však implementuje aplikační rozhraní pro možnost ovládat uměle historii prohlížeče. Je tedy možné v libovolný okamžik běhu JavaScriptu přidat do historie další stav a tím umožnit jeho obnovení například při uživatelově akci \uv{přejít zpět}.
+					Při užívání dynamického generování obsahu stránky na straně klienta a přenosu požadavků a dat pomocí AJAXu nastává problém, že z~hlediska prohlížeče se stav nezmění, tudíž není nic zapsáno do historie. Tento problém byl v minulosti řešen různými způsoby, pátá verze HTML však implementuje aplikační rozhraní pro možnost ovládat uměle historii prohlížeče. Je tedy možné v libovolný okamžik běhu JavaScriptu přidat do historie další stav a tím umožnit jeho obnovení například při uživatelově akci \uv{přejít zpět}.
 
 					Druhým problémem při dynamickém generování obsahu stránky je udržování adresního řádku prohlížeče, který obsahuje URL, aby bylo později možné z~adresy obnovit stav; to je výhodné zejména z~toho důvodu, že by mělo být možné adresu uložit či sdílet. JavaScript umožňuje nativně manipulaci s~adresou v adresním řádku, přičemž \simplywn její udržování implementuje pomocí knihovny URI.js \parencite{urijsWeb}.
 
 				\subsection{Použité knihovny a zásuvné moduly pro JavaScript}
 
-					\paragraph{jQuery} je knihovna navržená s~cílem usnadnit programování v JavaScriptu. Je zaměřená především na zjednodušení práce s~elementy v HTML dokumentu, práci s~událostmi (např. stisk klávesy) a~komunikaci mezi klientem a~serverem pomocí Ajaxu. \parencite{jqueryWeb}
+					\paragraph{jQuery} je knihovna navržená s~cílem usnadnit programování v JavaScriptu. Je zaměřená především na zjednodušení práce s~elementy v HTML dokumentu, práci s~událostmi (např. stisk klávesy) a~komunikaci mezi klientem a~serverem pomocí AJAXu. \parencite{jqueryWeb}
 
 					\paragraph{URI.js} zjednodušuje práci s~adresami (URL). Knihovna URI.js umožňuje jednak obsah adresního řádku zpracovávat pro další práci, a jednak jej umožňuje nastavovat tak, aby odpovídal stavu, v němž se aplikace nachází. \parencite{urijsWeb}
 
@@ -1222,7 +1229,7 @@
 				Získaná data jsou v několika krocích zpracována tak, aby jejich použití v aplikaci bylo jednodušší a jejich struktura odpovídala potřebám rozhraní. Jmenovitě je pole objektů se synsety serializováno do jednoho objektu, v němž lze odkazovat na potřebný synset univerzálnějším způsobem (podle jeho identifikátoru). 
 
 				Textová reprezentace nevyžaduje další reorganizaci dat, ale zpracování odpovědi pro potřeby vizualizace grafem je poněkud komplexnější. Je evidentní, že pro vykreslení grafu je nutné mít k~disposici uzly a hrany, jimiž jsou uzly spojeny. V JSONu získaném ze serveru jsou tyto vztahy obsaženy pouze implicitně tak, že určitý objekt je rodičem dalších objektů, či dítětem výše postaveného objektu. Explicitní údaje o těchto vztazích ve vlastnostech objektů nejsou, a je tudíž nutné je pro knihovnu, která graf vykresluje, vytvořit. Pro tento účel obsahuje aplikace \simplywn funkci \texttt{DFSThruSynsets()}, která prochází synsety v JSONu metodou procházení do hloubky%\footnote{Procházení grafu do šířky je algoritmus pro prohledávání grafu, jenž prochází nejprve sousední uzly a až poté, co projde všechny, se posouvá na další úroveň grafu \parencite{epstein1996ics}}
-				\footnote{Procházení do hloubky (DFS, depth first search) je algoritmus pro prohledávání grafu, jenž prochází postupně celé větve grafu.  Druhou možností je procházení do šířky (BFS, breadth first search), které prochází nejprve všechny uzly co nejblíže kořeni (tedy na stejné úrovni) a až poté přechází na nižší (hlubší) úroveň. \parencite{epstein1996ics} Z~hlediska aplikace \simplywn se tyto dva přístupy liší jen tím, že vykreslují mírně odlišně uspořádané grafy (struktura je zachována)}, každý nalezený synset zapisuje do seznamu uzlů a zároveň k~němu do seznamu hran zapisuje uspořádanou dvojici, která sestává z~identifikátoru jeho rodičovského uzlu a jeho vlastního identifikátoru. Pořadí, v jakém jsou jednotlivé uzly procházeny, je znázorněno na grafu \ref{fig:bfs-ilustr} na straně \pageref{fig:bfs-ilustr}. Procházení do hloubky je implementováno pomocí zásobníku a rekurse. Během procházení dat je pomocí různých atributů nalezených objektů rozlišováno pět druhů uzlů, a to kořenový synset (\texttt{root}), tedy ten, jejž si uživatel vybral, jeho členská slova (\texttt{rootLeaf}), ostatní synsety (\texttt{synset}), jejich členská slova (\texttt{leaf}) a uzly představující sémantické relace (\texttt{semGroup}). 
+				\footnote{Procházení do hloubky (DFS, Depth	First Search) je algoritmus pro prohledávání grafu, jenž prochází postupně celé větve grafu.  Druhou možností je procházení do šířky (BFS, Breadth First Search), které prochází nejprve všechny uzly co nejblíže kořeni (tedy na stejné úrovni) a až poté přechází na nižší (hlubší) úroveň. \parencite{epstein1996ics} Z~hlediska aplikace \simplywn se tyto dva přístupy liší jen tím, že vykreslují mírně odlišně uspořádané grafy (struktura je zachována)}, každý nalezený synset zapisuje do seznamu uzlů a zároveň k~němu do seznamu hran zapisuje uspořádanou dvojici, která sestává z~identifikátoru jeho rodičovského uzlu a jeho vlastního identifikátoru. Pořadí, v jakém jsou jednotlivé uzly procházeny, je znázorněno na grafu \ref{fig:bfs-ilustr} na straně \pageref{fig:bfs-ilustr}. Procházení do hloubky je implementováno pomocí zásobníku a rekurse. Během procházení dat je pomocí různých atributů nalezených objektů rozlišováno pět druhů uzlů, a to kořenový synset (\texttt{root}), tedy ten, jejž si uživatel vybral, jeho členská slova (\texttt{rootLeaf}), ostatní synsety (\texttt{synset}), jejich členská slova (\texttt{leaf}) a uzly představující sémantické relace (\texttt{semGroup}). 
 
 
 
