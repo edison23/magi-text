@@ -29,6 +29,10 @@
 % vymyslet, jak rozjet Visual Browser nebo jeho nefunkcnost popsat diplomaticky (a smazat pak teda příkladem budiž Visual Browser zde rozebíraný)
 
 % nazev rozhrani: not so fickle/frenzy/??? wordnet viewer
+	% RAW - Responsive Wordnet
+	% Yet Another Perfect Wordnet Visualization in Graphs
+	% RWV - responsive wordnet viewer
+	% RAW - Responsively Awesome/ adequate / academic / advanced wordnet viewer
 % doimplementovat, aby rozhrani kontrolovalo, jestli parametry v~url zna
 % udelat v~kodu konfigurovatelnou abulafiu (dotazy na server)
 
@@ -91,7 +95,7 @@
 \newcommand{\td}[2][]{
 	{\hskip -0.5em\todo[size=\footnotesize]{#2}}
 }
-\newcommand{\simplywn}{\textit{NSFW viewer} }
+\newcommand{\simplywn}{\textit{RAW viewer} }
 
 \newcommand{\itNameRef}[1]{\textit{\nameref{#1}}}
 
@@ -113,8 +117,9 @@
 \begin{document}
 
 \todo[inline]{TODO tady v~textu:}
-	\todo[inline,backgroundcolor=red!25]{kontrola, ze pisu novym pravopisem ("responzivní místo responsivní") -- když narazíš na něco starým, prosím, flaguj/opravuj to}
-	\todo[inline,backgroundcolor=red!25]{název rozhraní ještě není finální, nějaké nápady, jako ho vylepšit? (původní nápad Not So Fickle Wordnet viewer, momentálně Not Safe For Work wordnet viewer)}
+	\todo[inline,backgroundcolor=red!25]{prosim kontrolu, ze pisu novym pravopisem ("responzivní místo responsivní") -- když narazíš na něco starým, prosím, flaguj/opravuj to}
+	\todo[inline,backgroundcolor=red!25]{reference na kapitoly by vsude mely byt v kurzive (jejich jmena)}
+	\todo[inline,backgroundcolor=red!25]{název rozhraní ještě není finální, nějaké nápady, jako ho vylepšit? (původní nápad Not So Fickle Wordnet viewer, další Not Safe For Work wordnet viewer), momentalne RAW viewer -> Responsively Awesome Wordnet viewer, to by chtelo neco misto toho "awesome" ale od A}
 
 \par
 \todo[inline]{TODO v~samotném rozhraní:}
@@ -921,7 +926,7 @@
 
 				\subsection{Visual Browser}
 
-					Visual Browser, dostupná z~\url{https://nlp.fi.muni.cz/projekty/visualbrowser/index.html}, je vizualizační aplikace poněkud obecnější, co se jejího účelu týče. Je schopna zobrazit strukturu wordnetu, kódu v~Javě či katalog knihovny. Má pouze vizualizační režim a používá jako zdroj dat soubory RDF\footnote{Resource Description Framework} a k~nim perspektivu v~XML, která umožňuje změnit způsob, jakým je na data nahlíženo. EuroWordNet tak může být zobrazen jako tezaurus či jako slovník díky tomu, že obsahuje více jazyků. \parencite{visualbrowser}\td{update autora na citaci} 
+					Visual Browser, dostupná z~\url{https://nlp.fi.muni.cz/projekty/visualbrowser/index.html}, je vizualizační aplikace poněkud obecnější co se jejího účelu týče. Je schopna zobrazit například strukturu wordnetu, kódu v~Javě či katalog knihovny. Má pouze vizualizační režim a používá jako zdroj dat soubory RDF\footnote{Resource Description Framework} a k~nim perspektivu v~XML, která umožňuje změnit způsob, jakým je na data nahlíženo. Perspektiva určuje, které typy uzlů v grafu mají být zobrazeny a s jakým vzhledem, a definuje, jakým způsobem mají být zobrazeny popisy jednotlivých bodů a hran. EuroWordNet tak může být zobrazen jako tezaurus či jako vizuální slovník díky tomu, že obsahuje více jazyků. \parencite{visualbrowser595310} 
 
 					Rozhraní sestává z~prvků klasických pro vizualizační nástroje, tedy vyhledávacího pole, nabídky s~možnostmi změny zobrazovaní dat (především množství informací, jako jsou například významy hran mezi synsety) a ovládacího prvku sloužícího například pro přibližování či otáčení zobrazeného grafu. Pod těmito nástroji je velká zobrazovací plocha, na níž je vykreslen graf z~nalezených dat. 
 
@@ -1009,7 +1014,7 @@
 
 				Cílem praktické části této práce bylo vytvořit rozhraní k~sémantickým sítím typu wordnet, které by nebylo zatíženo nedostatky, jež byly pozorovány u rozhraní testovaných v~předchozí části práce. Zřejmě nejrozšířenějším problémem u existujících rozhraní pro webové prohlížeče je jejich do různé míry značná problematičnost použitelnosti na mobilních zařízeních s~malým displejem (u některých naprostá nepoužitelnost). Rozhraní implementovaná ve formě aplikace pro klasické počítače jsou na mobilní zařízení nepřenositelná již ze své podstaty a jejich použitelnost na těchto zařízeních nemůže být hodnocena vůbec, faktem však zůstává, že je jejich nepřenositelnost v~porovnání s~webovými rozhraními diskriminuje. 
 
-				Rozhraní, které je výstupem této práce si tedy klade za cíl umožnit uživatelům přístup k~datům wordnetů odkudkoliv, bez ohledu na to, zda pracují na mobilním telefonu, tabletu či klasickém počítači. Jeho návrh se snaží být technologicky nadčasový, ačkoliv v~tomto aspektu budou ve světě webových technologií, jenž se neustále vyvíjí, pravděpodobně vždy existovat jisté limity. Pro rozhraní vytvořené v~rámci této práce to jsou však v~podstatě pouze požadavky na webový prohlížeč koncového uživatele. Uživatelův prohlížeč musí podporovat technologie ECMAScript verze 6\td{mozna jen 5, ale zatim to na nem nefunguje}\footnote{také známý jako ECMAScript 2015; všeobecně označován jako JavaScript, čehož se bude nadále držet i tato práce}, HTML verze 5 a CSS verze 3. Podrobněji se vysvětlení požadavků na verze věnuje kapitola \itNameRef{cha:techno} na straně \pageref{cha:techno}. 
+				Rozhraní, které je výstupem této práce si tedy klade za cíl umožnit uživatelům přístup k~datům wordnetů odkudkoliv, bez ohledu na to, zda pracují na mobilním telefonu, tabletu či klasickém počítači. Jeho návrh se snaží být technologicky nadčasový, ačkoliv v~tomto aspektu budou ve světě webových technologií, jenž se neustále vyvíjí, pravděpodobně vždy existovat jisté limity. Pro rozhraní vytvořené v~rámci této práce to jsou však v~podstatě pouze požadavky na webový prohlížeč koncového uživatele. Uživatelův prohlížeč musí podporovat technologie ECMAScript verze 6\td{mozna jen 5, ale zatim to na nem nefunguje}\footnote{také známý jako ECMAScript 2015; všeobecně označován jako JavaScript, čehož se bude nadále držet i tato práce}, HTML verze 5 a CSS verze 3. V době psaní této práce rozšířené prohlížeče ve svých aktuálních verzích tyto požadavky splňují. Podrobněji se vysvětlení požadavků na verze věnuje kapitola \itNameRef{cha:techno} na straně \pageref{cha:techno}. 
 
 				Rozhraní bylo v~rámci této práce navrženo tak, aby umožňovalo zobrazení dat jak textové, tak grafické. Textové zobrazení je vhodné pro zobrazení synsetů, které obsahují velké množství potomků (hyponyma, meronyma, etc.), a mohou v~grafickém rozhraní být nepřehledné. Také se textové rozhraní spíše hodí k~použití na mobilních zařízeních, jelikož se lépe přizpůsobuje velikosti obrazovky. Grafické zobrazení je naopak vhodné pro rychlý přehled míry komplexity synsetu a jeho vztahů. Může sloužit především jako ilustrace daného slovního významu. Textové a grafické zobrazení se vzájemně nedoplňují, ale jsou různým zobrazením týchž dat a je na uživateli, které ze zobrazení je pro něj komfortnější či užitečnější.
 
@@ -1017,7 +1022,7 @@
 
 				Přesto, že existujících rozhraní je dostupných mnoho, žádné z~nich nesplňuje požadavky moderní platformně nezávislé aplikace, jak bylo ukázáno v~části \itNameRef{part:zwei}. Proto vznikl záměr vytvořit takové rozhraní, které by tyto požadavky (do co největší míry) splňovalo. Vzhledem k~původním záměrům samotného WordNetu (a na něj navazujících projektů), mezi nimiž byly například edukativní účely, je nutné, aby rozhraní k~těmto projektům bylo intuitivní, vizuálně přitažlivé a snadno přístupné. Snadná přístupnost například minimalizuje nutnost správné přípravy školních počítačů k~použití takového rozhraní, což opět zvyšuje šance, že aplikace bude skutečně použita.
 
-				S touto vizí tedy byla vytvořena webová aplikace \simplywn (Not So Fickle Wordnet viewer), která ja v~dalších částech této práce prezentována.
+				S touto vizí tedy byla vytvořena webová aplikace \simplywn (Responsively Awesome Wordnet viewer), která je v~dalších částech této práce prezentována.
 
 		\chapter{Prezentace vytvořeného rozhraní}
 		\label{cha:ui}
@@ -1066,7 +1071,7 @@
 
 				Co se uzlů reprezentujících sémantické relace týče, tam může význam jejich přítomnosti v~grafu být na první pohled poněkud obskurnější, důvody k~jeho použití jsou však jednoduché. Intuitivně by sémantická relace měla být hrana, jež vede mezi synsety spojenými touto relací. Pojmenování hrany by se pak odvíjelo od druhu relace, již reprezentuje. Problémem s~tímto způsobem zobrazení tkví v~tom, že značně centralizuje zobrazení do hvězdicovitého obrazce okolo kořenového uzlu, což zobrazované uzly vizuálně uspořádá do hierarchicky ploché struktury a sníží přehlednost grafu. Z~tohoto důvodu byly do vizualizace grafem zavedeny uzly reprezentující sémantické relace, které synsety svázané s~kořenovým uzlem stejným vztahem sdružují do jednoho podstromu. Díky tomu je dosaženo rozčlenění grafu na jednotlivé sekce podle těchto sémantických relací a uživatel není nucen zkoumat význam každé hrany mezi synsety (cf. vizualizace v~rozhraní Cornetto, ilustrace \ref{fig:wncorplant} na straně \pageref{fig:wncorplant}).
 
-				Responsivita vizualizace je inherentně omezena tím, že se graf byť i nepříliš komplexního synsetu nemůže na malou obrazovku mobilního zařízení vejít, zvláště mají-li být textové popisy uzlů čitelné. Tím, že vizualizace umožňuje přibližování a oddalování, je však tento problém do jisté míry eliminován, protože uživatel může graf přiblížit a přejíždět po něm podobně, jako to umožňují například aplikace na zobrazování elektronických map na WWW. Toto řešení samozřejmě zavádí na dotykových obrazovkách problém s~tím, aby nebylo znemožněno rolování po zbytku stránky. To bylo vyřešeno v~\simplywn zachováním okrajů po stranách kolem plochy s~grafem, kde se běžně vyskytují rolovací ovládací lišty, a uživatel tak tohoto okraje může využít k~rolování stránky namísto posouvání grafu.
+				Responzivita vizualizace je inherentně omezena tím, že se graf byť i nepříliš komplexního synsetu nemůže na malou obrazovku mobilního zařízení vejít, zvláště mají-li být textové popisy uzlů čitelné. Tím, že vizualizace umožňuje přibližování a oddalování, je však tento problém do jisté míry eliminován, protože uživatel může graf přiblížit a přejíždět po něm podobně, jako to umožňují například aplikace na zobrazování elektronických map na WWW. Toto řešení samozřejmě zavádí na dotykových obrazovkách problém s~tím, aby nebylo znemožněno rolování po zbytku stránky. To bylo vyřešeno v~\simplywn zachováním okrajů po stranách kolem plochy s~grafem, kde se běžně vyskytují rolovací ovládací lišty, a uživatel tak tohoto okraje může využít k~rolování stránky namísto posouvání grafu.
 
 
 		\chapter{Použité technologie}
