@@ -1,6 +1,6 @@
-\documentclass[a4paper, 11pt, oneside, showtrims]{book}
-% \usepackage[inner=3.5cm,outer=2.5cm, top=2.5cm]{geometry}
-\usepackage[left=3cm,right=3cm]{geometry}
+\documentclass[a4paper,11pt,openany,twoside]{book}
+\usepackage[inner=3.5cm,outer=2.5cm, top=2.1cm]{geometry}
+% \usepackage[left=3cm,right=3cm]{geometry}
 \usepackage{fontspec}
 \usepackage{lmodern}
 \usepackage[english,czech]{babel}
@@ -41,12 +41,12 @@
 
 % \setmainfont{Vollkorn}
 % \setmainfont[Ligatures=TeX]{CMU Serif Roman}
-\linespread{1.2}
+\linespread{1.12}
 \setlength\emergencystretch{1em}
 \setlength\headheight{14pt}
 % \setstretch{1.5}
 \setcounter{secnumdepth}{3}
-\setcounter{tocdepth}{1}
+\setcounter{tocdepth}{2}
 
 \widowpenalty10000
 \clubpenalty10000
@@ -99,7 +99,7 @@
 \newcommand{\td}[2][]{
 	{\hskip -0.5em\todo[size=\footnotesize]{#2}}
 }
-\newcommand{\simplywn}{\textit{RAW viewer} }
+\newcommand{\simplywn}{RAW viewer }
 
 \newcommand{\itNameRef}[1]{\textit{\nameref{#1}}}
 
@@ -122,15 +122,15 @@
 
 \begin{document}
 
-\todo[inline]{TODO tady v~textu:}
-	\todo[inline,backgroundcolor=red!25]{prosim kontrolu, ze pisu novym pravopisem ("responzivní místo responsivní") -- když narazíš na něco starým, prosím, flaguj/opravuj to}
-	\todo[inline,backgroundcolor=red!25]{reference na kapitoly by vsude mely byt v kurzive (jejich jmena)}
-	\todo[inline,backgroundcolor=red!25]{název rozhraní ještě není finální, nějaké nápady, jako ho vylepšit? (původní nápad Not So Fickle Wordnet viewer, další Not Safe For Work wordnet viewer), momentalne RAW viewer -> Responsively Awesome Wordnet viewer, to by chtelo neco misto toho "awesome" ale od A}
+% \todo[inline]{TODO tady v~textu:}
+% 	\todo[inline,backgroundcolor=red!25]{prosim kontrolu, ze pisu novym pravopisem ("responzivní místo responsivní") -- když narazíš na něco starým, prosím, flaguj/opravuj to}
+% 	\todo[inline,backgroundcolor=red!25]{reference na kapitoly by vsude mely byt v~kurzive (jejich jmena)}
+% 	\todo[inline,backgroundcolor=red!25]{název rozhraní ještě není finální, nějaké nápady, jako ho vylepšit? (původní nápad Not So Fickle Wordnet viewer, další Not Safe For Work wordnet viewer), momentalne RAW viewer -> Responsively Awesome Wordnet viewer, to by chtelo neco misto toho "awesome" ale od A}
 
-\par
-\todo[inline]{TODO v~samotném rozhraní:}
-	\todo[inline,backgroundcolor=red!25]{doimplementovat, aby rozhrani kontrolovalo, jestli parametry v~url zna}
-	\todo[inline,backgroundcolor=red!25]{udelat v~kodu konfigurovatelnou abulafiu (dotazy na server)}
+% \par
+% \todo[inline]{TODO v~samotném rozhraní:}
+% 	\todo[inline,backgroundcolor=red!25]{doimplementovat, aby rozhrani kontrolovalo, jestli parametry v~url zna}
+% 	\todo[inline,backgroundcolor=red!25]{udelat v~kodu konfigurovatelnou abulafiu (dotazy na server)}
 
 	
 	
@@ -174,15 +174,62 @@
 		\end{flushleft}
 	\end{titlepage}
 
-	\newpage
+	\cleardoublepage
 
-	{\setstretch{1.12}
+\par
+\par\vspace*{\fill}
+	\pagestyle{plain}
+\pagenumbering{roman}
+\begin{flushright}
+	Prohlašuji, že jsem svou magisterskou diplomovou práci vypracoval samostatně s~využitím uvedených pramenů a~literatury.
+
+	\vspace{3em}
+
+	    \makebox[2.5in][r]{\dotfill}
+	    
+	    autor práce
+
+	    \par
+
+\end{flushright}
+\clearpage
+
+\par
+\par\vspace*{\fill}
+
+Na tomto místě bych rád poděkoval Adamu Rambouskovi za trpělivé vedení při tvorbě této práce, za pomoc a veškeré odborné rady, jež mi ochotně poskytl.
+
+Děkuji také své rodině za morální podporu a~Marii Staré za jazykové korektury mé práce.
+\clearpage
+
+\section*{Abstrakt}
+
+Tato magisterská diplomová práce se zabývá sémantickými sítěmi typu wordnet a popisuje jejich strukturu a rozhraní, pomocí nichž je možno data wordnetů prohlížet. V~první části obsahuje přehled sémantických vztahů mezi synsety, které se ve wordnetech vyskytují, a zabývá se detailněji princetonským WordNetem. Rozebírá, jak jsou wordnety organizovány a jaká byla východiska této organizace z~hlediska uspořádání lidské paměti. Dále práce porovnává některá existující rozšířená rozhraní k~sítím typu wordnet. Hodnocena byla přístupnost těchto rozhraní z~různých zařízení s~ohledem na to, že uživatelé používají širokou škálu zařízení pro přístup k~informačním zdrojům. Výsledkem hodnocení byla kritéria, která by mělo splňovat nové rozhraní, které bylo vytvořeno v~rámci praktické části této práce. Toto nové rozhraní je koncipováno jako webová aplikace nezávislá na platformě, kterou uživatel používá pro přístup k~rozhraní. Pro co největší přístupnost je přizpůsobeno i pro mobilní zařízení, ovladatelné pomocí klávesnice a jeho stav je obnovitelný z~adresy URL. Jako zdroj dat slouží v~rozhraní různojazyčné wordnety, díky čemuž je umožněno mezijazykové vyhledávání konceptů.
+
+\section*{Abstract}
+
+This master thesis investigates wordnet-type semantic networks and describes their structure and user interfaces to view wordnet data. The first part contains summary of semantic relations between synsets in wordnets and describes Princeton WordNet in more detail. It also examines psycholinguistic foundations of synsets arrangement. In the second part, this work compares some widespread existing wordnet interfaces and examines their accessibility and usage independent on a device and platform. Result of this examination are criteria for the new interface created as a practical part of this work. The new interface is designed as a platform-independent web application -- accessible for mobile devices, controllable by a keyboard and its state is recoverable from a URL address. Wordnets in multiple languages are used as a data source which allows user to perform an interlingual concept search.
+
+\section*{Klíčová slova}
+
+wordnet, vizualizace, sémantická síť, uživatelské rozhraní, webová aplikace, slovní vztahy
+
+\section*{Keywords}
+
+wordnet, visualization, semantic network, user interface, web application, word relations
+
+\clearpage
+
+
+
+	{\setstretch{1.05}
 		\tableofcontents
 
 		\adjustmtc % to make minitoc print right chapter 
 		\adjustmtc % more chapters wih asterisk (no numbering) means we have to add this multiple times
 	}
 
+	% \pagestyle{sensible}
 	% \newpage
 
 		\chapter*{Seznam zkratek}
@@ -223,14 +270,21 @@
 					XML & eXtensible Markup Language \\
 				\end{tabular}
 			\end{table}
+	\pagenumbering{gobble}
+
+	\pagenumbering{arabic}
 
 	\newpage
 
+	
+	
 	\chapter*{Úvod}\label{uvod}
 
 	\addcontentsline{toc}{chapter}{Úvod}
 
-		Tato práce se zabývá sémantickými sítěmi typu wordnet z~pohledu lidského uživatele. Sémantická síť princetonský WordNet a další sítě z~něj vycházející byly projektovány se záměrem pomoci počítačovému zpracování přirozeného jazyka. Díky své struktuře založené na psycholingvistických poznatcích jsou však sémantické sítě potenciálně užitečné i pro lidského uživatele. Tento potenciál společně s~vědními základy, které formovaly strukturu wordnetů, práce rozebírá v části \itNameRef{part:eins}.
+	
+
+		Tato práce se zabývá sémantickými sítěmi typu wordnet z~pohledu lidského uživatele. Sémantická síť princetonský WordNet a další sítě z~něj vycházející byly projektovány se záměrem pomoci počítačovému zpracování přirozeného jazyka. Díky své struktuře založené na psycholingvistických poznatcích jsou však sémantické sítě potenciálně užitečné i pro lidského uživatele. Tento potenciál společně s~vědními základy, které formovaly strukturu wordnetů, práce rozebírá v~části \itNameRef{part:eins}.
 
 		Aby sémantická síť byla pro lidského uživatele použitelná, je nutné umožnit k~ní přístup pomocí rozhraní, které zájemci zobrazí relevantní data. Takových rozhraní bylo vytvořeno za dobu vývoje sémantických sítí značné množství; vytvořená rozhraní se liší tím, na které uživatele jsou zaměřena, platformami, které podporují, či způsoby prezentace dat wordnetů. Jejich společným rysem bývá neaktuálnost návrhu uživatelského rozhraní, a to především v~kontextu přesunu uživatelů z~klasických stolních počítačů a laptopů na mobilní zařízení  \parencite{grace2013mobile}.
 
@@ -242,13 +296,15 @@
 
 	\part{Sémantické sítě}
 	\label{part:eins}
+	% \pagestyle{sensible}
+	% \pagestyle{headings}
 
 		{\noindent Sémantické sítě neboli wordnety jsou lexikální databáze vytvořené s~rozličnými záměry, mezi něž patří například strojová inference informací v~počítačovém zpracování přirozeného jazyka. Ve wordnetech jsou slova (neboli slovní formy) slučována podle významů do synonymických okruhů zvaných synsety a tyto okruhy jsou propojovány sémantickými vztahy \parencite{pala2013vceska, princetonWN}, čímž celek dostává svému označení sémantická síť.}
 
 		\chapter{Princetonský WordNet} % (fold)
 		\label{cha:princeton_wn}
 		
-			Princetonský WordNet je první wordnet vůbec. Vznikal na univerzitě v~Princetonu pod vedením G. A. Millera od poloviny 80. let 20. století. Vzhledem k~tomu, že byl prvním wordnetem, bylo k~němu referováno jako k~WordNetu, bez přívlastku. Ačkoliv tento stav v~podstatě přetrvává dodnes, oproti době jeho vzniku se situace změnila, vzniklo několik dalších wordnetů a nastala potřeba je rozlišit. V~anglickém prostředí se obvykle pojmem wordnet míní  princetonský a všechny ostatní wordnety mají přívlastek či vlastní jméno. Příkladem nechť jsou evropské wordnety BalkaNet či EuroWordNet\footnote{o jiných wordnetech více v~dalších kapitolách}. Ačkoliv v~mezinárodním prostředí je obvyklé přívlastek princetonský používat, tato práce používá následující rozlišením:
+			Princetonský WordNet je první wordnet vůbec. Vznikal na univerzitě v~Princetonu pod vedením G. A. Millera od poloviny 80. let 20. století. Vzhledem k~tomu, že byl prvním wordnetem, bylo k~němu referováno jako k~WordNetu, bez přívlastku. Ačkoliv tento stav v~podstatě přetrvává dodnes, oproti době jeho vzniku se situace změnila, vzniklo několik dalších wordnetů a nastala potřeba je rozlišit. V~anglickém prostředí se obvykle pojmem wordnet míní  princetonský WordNet a všechny ostatní wordnety mají přívlastek či vlastní jméno. Příkladem nechť jsou evropské wordnety BalkaNet či EuroWordNet\footnote{o jiných wordnetech více v~dalších kapitolách}. Ačkoliv v~mezinárodním prostředí je obvyklé přívlastek princetonský používat, tato práce používá následující rozlišením:
 
 			\begin{itemize}
 				\item \textit{WordNet} (ve významu princetonského WordNetu)
@@ -296,7 +352,7 @@
 			\section{Vliv psycholingvistiky na organizaci WordNetu}
 			\label{cha:psycho}
 
-				Jelikož G. A. Miller, koordinátor projektu WordNet, byl svým zaměřením psycholog a přispěl k~vzniku psycholingvistiky, ubíral se projekt Wordnetu podobným směrem. Společně s~P. Johnson-Lairdem se Miller zaměřil na výzkum, jakým způsobem je lexikální materiál uložen v~lidském mozku. Tento vědní směr je označován jako psycholingvistika a jeho počátky jsou spojeny s~průzkumem asociací a způsobem modelování mentálního slovníku člověka. Výchozí myšlenka, jež se odráží i ve způsobu organizace WordNetu, spočívá v~tom, že slovní zásoba je organizována konceptuálně a pro některé slovní druhy (zejména substantiva) hierarchicky. Konceptuálním uspořádáním je míněno seskupování slovních forem s~podobným významem, hierarchická organizace pak staví významy do vztahů například zmíněné hyperonymie a hyponymie.
+				Jelikož G. A. Miller, koordinátor projektu WordNet, byl svým zaměřením psycholog a přispěl k~vzniku psycholingvistiky, ubíral se projekt WordNetu podobným směrem. Společně s~P. Johnson-Lairdem se Miller zaměřil na výzkum, jakým způsobem je lexikální materiál uložen v~lidském mozku. Tento vědní směr je označován jako psycholingvistika a jeho počátky jsou spojeny s~průzkumem asociací a způsobem modelování mentálního slovníku člověka. Výchozí myšlenka, jež se odráží i ve způsobu organizace WordNetu, spočívá v~tom, že slovní zásoba je organizována konceptuálně a pro některé slovní druhy (zejména substantiva) hierarchicky. Konceptuálním uspořádáním je míněno seskupování slovních forem s~podobným významem, hierarchická organizace pak staví významy do vztahů například zmíněné hyperonymie a hyponymie.
 
 				Jednou z~otázek psycholingvistiky bylo, jakým způsobem je v~hierarchickém modelu paměti řešeno získávání vlastností pro význam, které jsou \uv{poděděné} po významech hierarchicky výše umístěných. Aby člověk byl schopen například určit pravdivostní hodnotu výroku \ex{Kanárek může létat}, musí použít svou dlouhodobou paměť. Její organizace je možná (minimálně) dvěma způsoby. První, redundantní, by vypadal tak, že by u každé podtřídy ptáků bylo uloženo, že její instance jsou schopny létat. Druhý, již na první pohled výrazně méně náročný na kapacitu paměti, by příznak schopnosti létat měl uložený pouze u třídy \ex{pták}. Pro zjištění, zda kanárek létá, by pak bylo nutno zapojit inferenční proces ve stylu \textit{kanárek je pták, tudíž může létat}. \parencite{collins1969retrieval} Takový neredundantní model ukládání informací je ilustrován na obrázku \ref{fig:canary-can-sing} na straně \pageref{fig:canary-can-sing}.
 
@@ -311,7 +367,7 @@
 
 				Pokus, kterým podpořili \textcite{collins1969retrieval} teorii o užívání druhého, neredundantního, způsob ukládání příznaků v~paměti, spočíval v~tom, že testovací subjekty, dobrovolníci z~řad zaměstnanců společnosti Bolt, Beranek and Newman, měly určovat, zda jim předložený výrok připadá pravdivý, či nepravdivý. Měli tak činit co nejpřesněji a v~co nejkratším čase, přičemž byla měřena rychlost jejich reakce. Ukázalo se, že reakční doba při určování pravdivosti výroku \ex{Kanárek umí létat}\footnote{angl. \ex{A canary can fly}} je delší než při určování pravdivosti výroku \ex{Kanárek umí zpívat}\footnote{angl. \ex{A canary can sing}} a ještě delší při určování výroku \ex{Kanárek má kůži}\footnote{angl. \ex{A canary has skin}}. Důvodem pro tyto progresivní prodlevy podle \textcite{collins1969retrieval} byla právě zvětšující se vzdálenost od významu \ex{kanárek} k~významu, u něhož byl uložen příslušný příznak, tedy \ex{umí zpívat}, \ex{umí létat}, resp. \ex{má kůži}. Příznak \ex{umí zpívat} totiž je pravděpodobně uložen přímo u \ex{kanárka}, jelikož jej odlišuje od ostatních ptáků, zatímco příznak \ex{umí létat} je obecným znakem ptáků, tudíž je uložen u významu \ex{pták}. V~poslední řadě pak příznak \ex{má kůži} bude patrně uložen u významu \ex{zvíře}, který je z~oněch tří v~hierarchii nejvýše, a tudíž od významu \ex{kanárek} nejdále, jak ilustruje obrázek \ref{fig:canary-can-sing} na straně \pageref{fig:canary-can-sing}.
 
-				WordNet se svou hierarchickou organizací slovní zásoby pravděpodobně konceptuálně blíží organizaci lexika v~lidské paměti. Díky této podobnosti v uspořádání informací se zdá být vhodný nejen k~úkolům počítačového zpracování jazyka, ale i k~činnostem v~jiných oblastech. V~souladu s~příklady, jež byly předloženy výše, se zdá, že zkoumání významů a propojenosti konceptů v~jazyce, s~nímž není uživatel zcela obeznámen, by mohlo ve WordNetu být snazší než v~klasickém slovníku. V~podobném duchu využili při svých kurzech WordNet například \textcite{lemnitzer2003using}.
+				WordNet se svou hierarchickou organizací slovní zásoby pravděpodobně konceptuálně blíží organizaci lexika v~lidské paměti. Díky této podobnosti v~uspořádání informací se zdá být vhodný nejen k~úkolům počítačového zpracování jazyka, ale i k~činnostem v~jiných oblastech. V~souladu s~příklady, jež byly předloženy výše, se zdá, že zkoumání významů a propojenosti konceptů v~jazyce, s~nímž není uživatel zcela obeznámen, by mohlo ve WordNetu být snazší než v~klasickém slovníku. V~podobném duchu využili při svých kurzech WordNet například \textcite{lemnitzer2003using}.
 			
 
 			\section{Organizace WordNetu}
@@ -327,7 +383,7 @@
 
 					% do vztahu by slo zaradit neco o vztazich obecne - Semantic Relations and the Lexicon (M. Lynne Murphy) - 
 
-					Slova (slovní formy) jsou ve WordNetu seskupována podle svého významu (a slovního druhu, k~němuž náležejí). Řadě slov přináležejících ke stejnému významu se v~terminologii WordNetu říká synset \footnote{angl. zkrácenina pro \textit{synonym set}, tedy synonymická řada} neboli synonymická řada. Každý synset reprezentuje jeden význam, ale je nutno mít na paměti, že granularita synsetů nemusí být konzistentní a v~podstatě záleží na tom, jak tvůrci definovali synonymum (více v~kap. \itNameRef{cha:synon} na straně \pageref{cha:synon}). Granularita synsetů je tedy dána tím, jak volná je synonymie, jež slovní formy v jednom synsetu spojuje. Synset je ve WordNetu reprezentací významu a je definován slovy (formami), které obsahuje. Jelikož význam slov je definován tím, v~jakém synsetu se vyskytují (ke kterému konceptu náleží), jde v~podstatě o kruhovou definici, a tudíž je zřejmé, že definice významů musí být rozšířena. Lze říci, že význam konceptu reprezentovaného synsetem je založen na jeho pozici v~celé struktuře. Význam konceptu je tedy definován jeho kontextem, to znamená nadřazenými a podřazenými koncepty. \parencite{kamps2002visualizing} Vztahy mezi koncepty jsou vztahy sémantické, jelikož se týkají významů slov (cf. lexikální vztahy níže v~kapitole \itNameRef{cha:lexvztah} na straně \pageref{cha:lexvztah}). 
+					Slova (slovní formy) jsou ve WordNetu seskupována podle svého významu (a slovního druhu, k~němuž náležejí). Řadě slov přináležejících ke stejnému významu se v~terminologii WordNetu říká synset \footnote{angl. zkrácenina pro \textit{synonym set}, tedy synonymická řada} neboli synonymická řada. Každý synset reprezentuje jeden význam, ale je nutno mít na paměti, že granularita synsetů nemusí být konzistentní a v~podstatě záleží na tom, jak tvůrci definovali synonymum (více v~kap. \itNameRef{cha:synon} na straně \pageref{cha:synon}). Granularita synsetů je tedy dána tím, jak volná je synonymie, jež slovní formy v~jednom synsetu spojuje. Synset je ve WordNetu reprezentací významu a je definován slovy (formami), které obsahuje. Jelikož význam slov je definován tím, v~jakém synsetu se vyskytují (ke kterému konceptu náleží), jde v~podstatě o kruhovou definici, a tudíž je zřejmé, že definice významů musí být rozšířena. Lze říci, že význam konceptu reprezentovaného synsetem je založen na jeho pozici v~celé struktuře. Význam konceptu je tedy definován jeho kontextem, to znamená nadřazenými a podřazenými koncepty. \parencite{kamps2002visualizing} Vztahy mezi koncepty jsou vztahy sémantické, jelikož se týkají významů slov (cf. lexikální vztahy níže v~kapitole \itNameRef{cha:lexvztah} na straně \pageref{cha:lexvztah}). 
 
 					Aby bylo možno WordNet použít k~inferenci (získávání informací) o slovech strojově, jsou synsety ve WordNetu propojeny vztahy, z~nichž je zřejmé, jakou informaci inferenční stroj získá, přejde-li po daném vztahu k~dalšímu konceptu. Strojové zpracování textu, potažmo strojová inference informací, se od té lidské liší v~jednom zásadním aspektu, kterým je fakt, že stroj nemá encyklopedické znalosti o světě, jež má k~dispozici člověk. Pro strojové zpracování textu je tedy nutné zajistit, aby všechna potřebná data bylo možné získat z~lexikální databáze, v~tomto případě z~WordNetu.
 
@@ -378,7 +434,7 @@
 
 					% nejdriv nutno zjistit, jak je to s~temi vztahy ruznych slovnich druhu... jinak ta statistika nedava vuebc smysl 
 
-				V této kapitole jsou podrobněji rozebrány sémantické vztahy konstituující WordNet. Sémantické vztahy jsou, na rozdíl od vztahů lexikálních, které jsou vztahy mezi slovními formami, vztahy mezi koncepty (významy). Rozdíl nejlépe ilustruje příklad: Synonymie je typickým vztahem lexikálním; kdyby byla vztahem sémantickým, znamenalo by to, že dva různé významy (koncepty) mají stejný význam, což by odporovalo definici významu jako celku s jedním smyslem, jelikož v~tom případě by to nebyly dva významy, ale jeden. 
+				V této kapitole jsou podrobněji rozebrány sémantické vztahy konstituující WordNet. Sémantické vztahy jsou, na rozdíl od vztahů lexikálních, které jsou vztahy mezi slovními formami, vztahy mezi koncepty (významy). Rozdíl nejlépe ilustruje příklad: Synonymie je typickým vztahem lexikálním; kdyby byla vztahem sémantickým, znamenalo by to, že dva různé významy (koncepty) mají stejný význam, což by odporovalo definici významu jako celku s~jedním smyslem, jelikož v~tom případě by to nebyly dva významy, ale jeden. 
 
 				Struktura těchto vztahů není, jak by se na první pohled mohlo zdát, plochá, ale organizovaná podle syntaktické kategorie významů, jež jsou těmito vztahy propojeny. Substantiva mají své vlastní vztahy, stejně tak adjektiva, verba a adverbia. Pojmenování těchto vztahů vychází z~lingvistických termínů k~nim relevantních (např. hyperonymie), ale v~některých případech se pojmenování napříč různými syntaktickými kategoriemi překrývá, ačkoliv jde o vztahy různé. Například angl. sloveso \ex{run}\footnote{čes. \ex{běžet}} má ve WordNetu jako hyperonymum uveden synset s~významem \ex{pohybovat se velmi rychle} obsahující slovesa \ex{travel rapidly, speed, hurry, zip}\footnote{čes. \ex{cestovat rychle, uhánět, ...}}. Je evidentní, že tento vztah hyperonymie není identický se vztahem hyperonymie u substantiv, kde \ex{house}\footnote{čes. \ex{dům}} má jako přímé hyperonymum uveden synset \ex{building, edifice}\footnote{čes. \ex{budova, stavba}}. Z~činnosti \ex{běžet} vyplývá činnost \ex{rychle se pohybovat}, ale \ex{budova} je pro \ex{dům} nadřazenou třídou. Jde tedy o vztah podobný, ale nikoliv identický. \parencite{princetonWN}
 
@@ -390,9 +446,9 @@
 				\subsection{Hyperonymie a hyponymie}
 				\label{cha:hyperohyp}
 
-					Vztah nadřazenosti a podřazenosti strukturalizuje především slovní zásobu substantiv vztahem tříd a podtříd. Jde o vztahy tranzitivní a asymetrické. \parencite{miller1990introduction} Díky této hierarchizaci se lze například vyhnout redundanci ukládání informací v~paměti, jelikož příznaky třídy není nutné ukládat u každé podtřídy. Podtřída dědí všechny příznaky své mateřské třídy a přidává minimálně jeden další. Například \ex{tramvaj} je \ex{pouliční kolový přepravník, který jezdí po kolejích a je poháněn elektřinou}\footnote{ve Wordnetu \textit{streetcar, tram, tramcar, trolley, trolley car (a wheeled vehicle that runs on rails and is propelled by electricity)} \parencite{princetonWN}}. Pokud některý ze zděděných příznaků pro podtřídu neplatí, je tento fakt u ní explicitně uložen (podrobněji v~kapitole \itNameRef{cha:psycho} na straně \pageref{cha:psycho}). Uspořádání, v~němž jsou atributy takto děděny, se nazývá dědičný systém\footnote{angl. \textit{inheritance system}} \parencite{touretzky1986mathematics}.
+					Vztah nadřazenosti a podřazenosti strukturalizuje především slovní zásobu substantiv vztahem tříd a podtříd. Jde o vztahy tranzitivní a asymetrické. \parencite{miller1990introduction} Díky této hierarchizaci se lze například vyhnout redundanci ukládání informací v~paměti, jelikož příznaky třídy není nutné ukládat u každé podtřídy. Podtřída dědí všechny příznaky své mateřské třídy a přidává minimálně jeden další. Například \ex{tramvaj} je \ex{pouliční kolový přepravník, který jezdí po kolejích a je poháněn elektřinou}\footnote{ve WordNetu \textit{streetcar, tram, tramcar, trolley, trolley car (a wheeled vehicle that runs on rails and is propelled by electricity)} \parencite{princetonWN}}. Pokud některý ze zděděných příznaků pro podtřídu neplatí, je tento fakt u ní explicitně uložen (podrobněji v~kapitole \itNameRef{cha:psycho} na straně \pageref{cha:psycho}). Uspořádání, v~němž jsou atributy takto děděny, se nazývá dědičný systém\footnote{angl. \textit{inheritance system}} \parencite{touretzky1986mathematics}.
 
-					Substantiva jsou ve Wordnetu organizována tak, že každý význam má svůj mateřský význam (hyperonymum), kromě jednoho jediného, a tím je \ex{entity}\footnote{čes. \ex{entita}}, tedy uměle vytvořený pojem sloužící jako kořen celé sítě. Jeden koncept může mít hyperonymních významů více, například \ex{house} má jako svá hyperonyma uvedeny synsety \ex{(n) dwelling, home, domicile, abode, habitation, dwelling house} a \ex{(n) building, edifice}.
+					Substantiva jsou ve WordNetu organizována tak, že každý význam má svůj mateřský význam (hyperonymum), kromě jednoho jediného, a tím je \ex{entity}\footnote{čes. \ex{entita}}, tedy uměle vytvořený pojem sloužící jako kořen celé sítě. Jeden koncept může mít hyperonymních významů více, například \ex{house} má jako svá hyperonyma uvedeny synsety \ex{(n) dwelling, home, domicile, abode, habitation, dwelling house} a \ex{(n) building, edifice}.
 
 				\subsection{Meronymie a holonymie}
 
@@ -403,7 +459,7 @@
 				% jeste slovesa - entailment a cause (buy:pay, kill:die)
 
 
-			\section{Lexikální vztahy ve Wordnetu}
+			\section{Lexikální vztahy ve WordNetu}
 			\label{cha:lexvztah}
 
 				\subsection{Synonymie}
@@ -420,7 +476,7 @@
 
 					přičemž čísla v~závorce značí index významu dané formy v~daném synsetu. Reprezentace v~různých aplikacích a různých wordnetech se liší (standardem bývá číslo významu psát za dvojtečku), význam však zůstává neměnný. 
 
-					Navzdory zdánlivé jednoduchosti uvedeného konceptu je všeobecnou otázkou, jak synonymii pojímat. Striktní teorie (obvykle připisovaná Leibnizovi) praví, že dvě slova jsou synonymní, pokud se jejich záměnou nikdy nezmění pravdivostní hodnota výroku. Lingvistickou interpretací tohoto poněkud matematicko-logického výroku může být, že dvě slova jsou synonymní v~případě, že se jejich záměnou nikdy neporuší význam (zhruba ona pravdivostní hodnota) a gramatičnost výroku. Je nasnadě, že takto striktně synonymní slova budou pospolu v~jazyce těžko přežívat, jelikož je dokázáno, že jazyk tíhne k~ekonomičnosti, která by takovým soužitím dvou slov byla hrubě porušena \parencite{Lotko2003}. Pravděpodobně jedinými obecně uznávanými synonymy jsou dvojice cizího slova a domácího slova, například \ex{internacionální} a \ex{mezinárodní}. Jejich záměnou se pravděpodobně nikdy pravdivostní hodnota výroku nezmění, stejně tak jako jeho gramatičnost. Stále však zůstává ve hře stylistika, která může být podobnou náhradou narušena např. z~důvodu toho, že se nové slovo nehodí pro zamýšlenou cílovou skupinu čtenářů či je stylisticky příznakové (cf. \ex{zajímavý} a \ex{interesantní}). Lze předpokládat, že navzdory tencenci k ekonomičnosti se v jazyce synonymní výrazy vyskytují, aby bylo možné docílit stylistické uhlazenosti textu (například eliminací opakování stejných slov).
+					Navzdory zdánlivé jednoduchosti uvedeného konceptu je všeobecnou otázkou, jak synonymii pojímat. Striktní teorie (obvykle připisovaná Leibnizovi) praví, že dvě slova jsou synonymní, pokud se jejich záměnou nikdy nezmění pravdivostní hodnota výroku. Lingvistickou interpretací tohoto poněkud matematicko-logického výroku může být, že dvě slova jsou synonymní v~případě, že se jejich záměnou nikdy neporuší význam (zhruba ona pravdivostní hodnota) a gramatičnost výroku. Je nasnadě, že takto striktně synonymní slova budou pospolu v~jazyce těžko přežívat, jelikož je dokázáno, že jazyk tíhne k~ekonomičnosti, která by takovým soužitím dvou slov byla hrubě porušena \parencite{Lotko2003}. Pravděpodobně jedinými obecně uznávanými synonymy jsou dvojice cizího slova a domácího slova, například \ex{internacionální} a \ex{mezinárodní}. Jejich záměnou se pravděpodobně nikdy pravdivostní hodnota výroku nezmění, stejně tak jako jeho gramatičnost. Stále však zůstává ve hře stylistika, která může být podobnou náhradou narušena např. z~důvodu toho, že se nové slovo nehodí pro zamýšlenou cílovou skupinu čtenářů či je stylisticky příznakové (cf. \ex{zajímavý} a \ex{interesantní}). Lze předpokládat, že navzdory tencenci k~ekonomičnosti se v~jazyce synonymní výrazy vyskytují, aby bylo možné docílit stylistické uhlazenosti textu (například eliminací opakování stejných slov).
 
 					Volnější interpretace synonymie počítá ještě s~kontextem. Dvě slova jsou synonymní, jsou-li nahraditelná alespoň ve stejném kontextu. Jako příklad mohou posloužit formy \ex{board} a \ex{plank}\footnote{čes. \ex{prkno} a \ex{fošna}}. V~kontextu dřevařství mohou tyto dvě formy pravděpodobně bez problému být nahrazeny jedna za druhou, ovšem v~případě, že je forma \ex{board} použita ve významu \ex{committee}\footnote{čes. \ex{výbor}}, těžko ji lze nahradit formou \ex{plank}, neboť by se věta obsahující takové nahrazení stala zcela nesmyslnou. \parencite{miller1990introduction} V~českém kontextu mají zřejmě podobný vztah například formy \ex{rada} a \ex{výbor}. Slovní forma \ex{rada} může sloužit jak ve významu rozhodovacího orgánu, což je zhruba synonymní s~formou \ex{výbor}, tak ve významu poučení (např. \ex{upřímná rada přítele}). Opět je evidentní, že záměna forem \ex{rada} a \ex{výbor} v~prvním významu slova \ex{rada} (tedy rozhodovací orgán) je přijatelné, ve druhém už nikoliv (\ex{upřímný výbor přítele}). Nutno podotknout, že forma \ex{výbor} je také polysémní a její další významy se nekryjí s~významy slova \ex{rada}. \parencite{Havranek1989}
 
@@ -428,7 +484,7 @@
 
 					Zaměnitelnost forem podporuje ještě jeden koncept, na němž je WordNet postaven, a to fakt, že jednotlivé významy jsou seskupovány podle slovních druhů. Tento systém vede k~jisté redundantnosti, jelikož především v~analytických jazycích, jako je kupříkladu angličtina, lze nalézt mnoho případů, kdy identická slovní forma zastupuje více slovních druhů. Významy, které taková slovní forma zastupuje (napříč slovními druhy), mohou být velice blízké, nikdy však nebudou stejné (nelze říci, že význam slovesa \ex{run}\footnote{čes. \ex{běžet}} a substantiva \ex{run}\footnote{čes. \ex{běh}} je identický). Jejich záměnou by se sice nestalo vůbec nic, jelikož čtenář či posluchač textu, v~němž taková záměna nastala, by automaticky formu interpretoval ve prospěch správného slovního druhu, avšak pokud by slovní druh byl nějakým způsobem \uv{vynucen} (nechť nyní čtenář pomine úvahy, jakým způsobem lze \textit{vynutit} slovní druh formy), stala by se výpověď zcela negramatickou a nesmyslnou. 
 
-					Jakkoliv to není přímo svázané se synonymií, je na místě poznámka o výskytu stejné formy v~různých synstetech. Slovo je kombinací slovní formy a významu, nebo slovního významu. Slovní forma je projevem \uv{fyzickým}, tedy je to vyřčená či napsaná instance významu. Jak je zjevné z~přirozeného jazyka, nelze počítat s~tím, že by zobrazení významu na formu bylo bijektivní, tedy každý význam byl namapován jedna ku jedné na slovní formu. V~přirozeném jazyce může jedna forma zastupovat více významů a jeden význam může být vyjádřen více formami. Příkladem budiž slovní forma \ex{koruna}, která může zastupovat význam měny, vrcholku stromu, vladařského odznaku etc. Druhým příkladem může být forma \ex{kolej}, již lze interpretovat jako referenci ke stopě po voze, případně dvojici kolejnic sloužících jako vodící dráha pro dopravní prostředky a zároveň jako zařízení vysoké školy pro ubytování studentů. \parencite{Havranek1989} Toto zobrazení jedné formy na více významů se nazývá polysémií nebo homonymií. (Obojí znamená totožnost formy pro různé významy, u polysémie však ony významy mají společný základ (byť může být velmi vzdálený), u homonymie je podobnost zcela nahodilá. \parencite{klepousniotou2002processing}) Uvedené příklady poslouží i k~ilustraci rozdílu mezi homonymií a polysémií. U významů formy \ex{koruna} lze vypozorovat nějaký společný prvek v~tom, že bývají nahoře. \ex{Koruna} stromu je nahoře, panovnickou \ex{korunu} má panovník na hlavě, tedy nahoře, \ex{koruna} jako mince zase pravděpodobně získala své pojmenování díky faktu, že na mincích bývá vyobrazen panovník s~\ex{korunou} na hlavě). Formy \ex{kolej} jsou odlišného základu -- \ex{kolej} jako ubytovací zařízení pochází z~latinského \ex{collegium}, kdežto výraz pro dráhu je odvozen od českého \ex{kolo}. \parencite{Rejzek2012}
+					Jakkoliv to není přímo svázané se synonymií, je na místě poznámka o výskytu stejné formy v~různých synstetech. Slovo je kombinací slovní formy a významu. Slovní forma je projevem \uv{fyzickým}, tedy je to vyřčená či napsaná instance významu. Jak je zjevné z~přirozeného jazyka, nelze počítat s~tím, že by zobrazení významu na formu bylo bijektivní, tedy každý význam byl namapován jedna ku jedné na slovní formu. V~přirozeném jazyce může jedna forma zastupovat více významů a jeden význam může být vyjádřen více formami. Příkladem budiž slovní forma \ex{koruna}, která může zastupovat význam měny, vrcholku stromu, vladařského odznaku etc. Druhým příkladem může být forma \ex{kolej}, již lze interpretovat jako referenci ke stopě po voze, případně dvojici kolejnic sloužících jako vodící dráha pro dopravní prostředky a zároveň jako zařízení vysoké školy pro ubytování studentů. \parencite{Havranek1989} Toto zobrazení jedné formy na více významů se nazývá polysémií nebo homonymií. (Obojí znamená totožnost formy pro různé významy, u polysémie však ony významy mají společný základ (byť může být velmi vzdálený), u homonymie je podobnost zcela nahodilá. \parencite{klepousniotou2002processing}) Uvedené příklady poslouží i k~ilustraci rozdílu mezi homonymií a polysémií. U významů formy \ex{koruna} lze vypozorovat nějaký společný prvek v~tom, že bývají nahoře. \ex{Koruna} stromu je nahoře, panovnickou \ex{korunu} má panovník na hlavě, tedy nahoře, \ex{koruna} jako mince zase pravděpodobně získala své pojmenování díky faktu, že na mincích bývá vyobrazen panovník s~\ex{korunou} na hlavě). Formy \ex{kolej} jsou odlišného základu -- \ex{kolej} jako ubytovací zařízení pochází z~latinského \ex{collegium}, kdežto výraz pro dráhu je odvozen od českého \ex{kolo}. \parencite{Rejzek2012}
 
 					Seskupování významů podle slovních druhů a seskupování forem dle vztahu synonymie se tedy zdá v~případě lexikální databáze určené pro strojové zpracování jazyka být vhodným konceptem. Oproti tradičním slovníkům se totiž počítačově zpracovávaná lexikální databáze nemusí potýkat s~problémem lidského faktoru -- jednotlivé synonymické řady je stroj schopen prohledávat, na rozdíl od člověka, vcelku účinně a nahradit tak v~případě, že WordNet používá člověk, neúčinné lidské procházení rejstříkového obsahu.
 
@@ -656,7 +712,7 @@
 					\begin{itemize}
 						\item přínos oproti základnímu oficiálnímu rozhraní princetonského WordNetu
 							\begin{itemize}
-								\item originální vizualizace dat vedoucí k~možnosti identifikovat trendy v~datech, která zůstávají uživateli skryta v případě základní textové reprezentace dat
+								\item originální vizualizace dat vedoucí k~možnosti identifikovat trendy v~datech, která zůstávají uživateli skryta v~případě základní textové reprezentace dat
 								\item reprezentace dat vhodnější z~hlediska zásad přístupnosti webu\footnote{web accessibility}
 							\end{itemize}
 						\item responzivita rozhraní -- kvalitní použitelnost rozhraní i na zařízeních s~menší obrazovkou, jako jsou mobilní zařízení typu chytrý telefon či tablet
@@ -826,7 +882,7 @@
 
 					Rozložení stránky je vzdáleně podobné základnímu oficiálnímu rozhraní k~princetonskému WordNetu, a to v~tom smyslu, že neobsahuje relativně rozšířený levý sloupec na výběr synsetů, ale jednotlivé významy, které jsou nalezeny po zadání hledané slovní formy do vyhledávacího pole, seskupuje do sekcí v~hlavním bloku spolu s~textovou reprezentací dat. Vyhledávací pole podporuje napovídání z~databáze existujících slovních forem, podobně jako v~rozhraní WordVis, což může usnadnit práci s~vyhledáváním. V~textové reprezentaci rozhraní zobrazuje zřejmě všechny dostupné informace o synsetech, tedy se chová podobně jako základní rozhraní princetonského WordNetu, je-li nastaveno tak, aby nefiltrovalo žádné informace. U jednotlivých vztahů, v~nichž je daný synset přítomen, je možné kliknutím na ikonu šipky otevřít synset nacházející se pomyslně na druhé straně daného vztahu (např. \ex{bicykle}\footnote{angl. \ex{jízdní kolo}} má meronymum \ex{saddle}\footnote{angl. \ex{sedlo}}, takže lze otevřít detail synsetu \ex{saddle}). To trpí stejným neduhem, jako základní rozhraní princetonského WordNetu, to jest, že lze ve smyčce otevírat nadřazený a podřazený synset a stále se zanořovat do smyčky hlouběji. To je nejen nesmyslné, ale zároveň to v~implementaci tohoto rozhraní postupně může začít zpomalovat rychlost reakcí prohlížeče kvůli nadměrnému množství uzlů v~DOM\footnote{Document Object Model, model objektů v~dokumentu}.
 
-					Po levé straně se nachází lišta s~ikonami odkazujícími na další moduly, které se otevírají v~emulaci nových oken (tj. v témže panelu webového prohlížeče). Mezi tyto moduly patří mimo jiné i pokročilé hledání, vizualizace dat a nápověda. 
+					Po levé straně se nachází lišta s~ikonami odkazujícími na další moduly, které se otevírají v~emulaci nových oken (tj. v~témže panelu webového prohlížeče). Mezi tyto moduly patří mimo jiné i pokročilé hledání, vizualizace dat a nápověda. 
 
 					Pokročilé hledání funguje podobně jako u ostatních rozhraní, tedy umožňuje používat zástupné znaky (\ex{*} a \ex{?}), filtrovat slovní druhy, nebo vyhledávat v~jiných polích než jsou slovní formy patřící do synsetů (například v~definicích či podle identifikátoru synsetu). 
 
@@ -871,9 +927,9 @@
 
 					Poněkud nešťastně je řešen design vizualizace, jelikož jednak je možné graf přibližovat a oddalovat pouze kolečkem myší (které je na mobilních telefonech samozřejmě nedostupné), a jednak, pokud uživatel nenajede na konkrétní synset kurzorem myši, graf se samovolně neustále otáčí, což ztěžuje orientaci v~něm.
 
-					Rozhraní je všeobecně responzivní, textová reprezentace je dobře použitelná i na mobilním rozhraní s~malou obrazovkou. Grafická reprezentace je však omezena na větší obrazovky, jelikož v~ní není možné graf posouvat po obrazovce, a tudíž jeho značná část (byť se částečně přizpůsobuje zobrazovací ploše, zřejmě v~závislosti na velikosti obrazovky zařízení) zůstává uživateli skryta. Pro dotyková zařízení také není vhodné spoléhat na přejetí myší přes uzel k zobrazení informační bubliny\footnote{tyto bývají anglicky označovány jako \textit{popup tooltip}}, jelikož to na dotykových obrazovkách také není příliš dobře proveditelné (kvůli neschopnosti rozlišit kliknutí a \uv{přejetí kurzorem}).
+					Rozhraní je všeobecně responzivní, textová reprezentace je dobře použitelná i na mobilním rozhraní s~malou obrazovkou. Grafická reprezentace je však omezena na větší obrazovky, jelikož v~ní není možné graf posouvat po obrazovce, a tudíž jeho značná část (byť se částečně přizpůsobuje zobrazovací ploše, zřejmě v~závislosti na velikosti obrazovky zařízení) zůstává uživateli skryta. Pro dotyková zařízení také není vhodné spoléhat na přejetí myší přes uzel k~zobrazení informační bubliny\footnote{tyto bývají anglicky označovány jako \textit{popup tooltip}}, jelikož to na dotykových obrazovkách také není příliš dobře proveditelné (kvůli neschopnosti rozlišit kliknutí a \uv{přejetí kurzorem}).
 
-					V době vzniku této práce mělo rozhraní dvě verze, z~nichž jedna byla označena jako \textit{živá beta}, druhá jako \textit{současná (3.7)}, avšak při testování nebyly zjištěny zásadní rozdíly mezi těmito verzemi. Nutno  podotknout, že v~prohlížeči použitém k testování na klasickém počítači vykazovala verze beta minoritní chyby v~rozložení stránky.
+					V době vzniku této práce mělo rozhraní dvě verze, z~nichž jedna byla označena jako \textit{živá beta}, druhá jako \textit{současná (3.7)}, avšak při testování nebyly zjištěny zásadní rozdíly mezi těmito verzemi. Nutno  podotknout, že v~prohlížeči použitém k~testování na klasickém počítači vykazovala verze beta minoritní chyby v~rozložení stránky.
 
 			\section{Vizualizace v~aplikačním prostředí Java}
 
@@ -911,7 +967,7 @@
 
 				\subsection{Treebolic}
 
-					\begin{figure}[ht]
+					\begin{figure}[h!]
 						\centering
 						\includegraphics[width=1.0\textwidth]{wntreebolic.png}
 						\caption{Ukázka rozhraní Treebolic (se zobrazenou informační bublinou na synsetu)}
@@ -932,7 +988,7 @@
 
 				\subsection{Visual Browser}
 
-					Visual Browser, dostupná z~\url{https://nlp.fi.muni.cz/projekty/visualbrowser/index.html}, je vizualizační aplikace poněkud obecnější, co se jejího účelu týče. Je schopna zobrazit například strukturu wordnetu, kód v~Javě či katalog knihovny. Má pouze vizualizační režim a používá jako zdroj dat soubory RDF\footnote{Resource Description Framework} a k~nim perspektivu v~XML, která umožňuje změnit způsob, jakým je na data nahlíženo. Perspektiva určuje, které typy uzlů v grafu mají být zobrazeny a s jakým vzhledem, a definuje, jakým způsobem mají být zobrazeny popisy jednotlivých bodů a hran. EuroWordNet tak může být zobrazen jako tezaurus či jako vizuální slovník díky tomu, že obsahuje více jazyků. \parencite{visualbrowser595310} 
+					Visual Browser, dostupná z~\url{https://nlp.fi.muni.cz/projekty/visualbrowser/index.html}, je vizualizační aplikace poněkud obecnější, co se jejího účelu týče. Je schopna zobrazit například strukturu wordnetu, kód v~Javě či katalog knihovny. Má pouze vizualizační režim a používá jako zdroj dat soubory RDF\footnote{Resource Description Framework} a k~nim perspektivu v~XML, která umožňuje změnit způsob, jakým je na data nahlíženo. Perspektiva určuje, které typy uzlů v~grafu mají být zobrazeny a s~jakým vzhledem, a definuje, jakým způsobem mají být zobrazeny popisy jednotlivých bodů a hran. EuroWordNet tak může být zobrazen jako tezaurus či jako vizuální slovník díky tomu, že obsahuje více jazyků. \parencite{visualbrowser595310} 
 
 					Rozhraní sestává z~prvků typických pro vizualizační nástroje, tedy vyhledávacího pole, nabídky s~možnostmi změny zobrazovaní dat (především množství informací, jako jsou například významy hran mezi synsety) a ovládacího prvku sloužícího například pro přibližování či otáčení zobrazeného grafu. Pod těmito nástroji je velká zobrazovací plocha, na níž je vykreslen graf z~nalezených dat. 
 
@@ -986,7 +1042,7 @@
 				Grafické rozhraní aplikace GoldenDict je postaveno na Qt\footnote{multiplatformní soubor nástrojů pro tvorbu grafických rozhraní (\url{https://www.qt.io/ui/})} a pro zobrazování dat z~webu používá WebKit\footnote{vykreslovací jádro pro webové prohlížeče (\url{https://webkit.org/})}. \parencite{goldendict2016}
 
 
-		\chapter{Shrnutí přehledu rozhraní a vyplývající závěry o vhodném rozhraní k~sémantickým sítím}
+		\chapter{Shrnutí přehledu a vyplývající závěry o vhodném rozhraní}
 		\label{cha:shrnuti-prehledu}
 		\chaptermark{Shrnutí přehledu}
 
@@ -995,7 +1051,7 @@
 			% drtiva vetsina rozhrani neni responzivni, coz je problem, kdyz vetsina lidi pouziva web z~mobilu: http://bgr.com/2016/11/02/internet-usage-desktop-vs-mobile/
 			% je potreba rozhrani, ktery bude webovy, vypadat konsistentne na vsech zarizenich a bude splnovat, co se od nej ocekava (designove) - co se ocekava od WN browseru? dunno, but it's important - https://conversionxl.com/why-simple-websites-are-scientifically-better/
 
-			Rozhraní v~přehledu prezentovaném v~této práci v kapitole \itNameRef{cha:porovnani} na straně \pageref{cha:porovnani} byla hodnocena dle různých aspektů odpovídajícím účelu a provedení dané třídy rozhraní. Nejpodrobněji byla hodnocena webová rozhraní. U těch byla jako největší společný nedostatek identifikována nedostatečná responzivita, což vede k~tomu, že uživatel dané rozhraní nemůže (nebo může jen omezeně) používat na mobilním zařízení. To v~době, kdy počet uživatelů přistupujících k~webovým službám přes mobilní zařízení je vyšší než počet těch, kteří k~nim přistupují pomocí klasických počítačů \parencite{Heisler2016}, aplikaci značně diskriminuje. Z~podobného důvodu jsou v~nevýhodě také rozhraní vytvořená pro aplikační prostředí Java a v~ještě větší míře aplikace vytvořené přímo pro operační systémy klasických počítačů. 
+			Rozhraní v~přehledu prezentovaném v~této práci v~kapitole \itNameRef{cha:porovnani} na straně \pageref{cha:porovnani} byla hodnocena dle různých aspektů odpovídajícím účelu a provedení dané třídy rozhraní. Nejpodrobněji byla hodnocena webová rozhraní. U těch byla jako největší společný nedostatek identifikována nedostatečná responzivita, což vede k~tomu, že uživatel dané rozhraní nemůže (nebo může jen omezeně) používat na mobilním zařízení. To v~době, kdy počet uživatelů přistupujících k~webovým službám přes mobilní zařízení je vyšší než počet těch, kteří k~nim přistupují pomocí klasických počítačů \parencite{Heisler2016}, aplikaci značně diskriminuje. Z~podobného důvodu jsou v~nevýhodě také rozhraní vytvořená pro aplikační prostředí Java a v~ještě větší míře aplikace vytvořené přímo pro operační systémy klasických počítačů. 
 
 			Aplikace vytvořené v~Javě sice teoreticky spustitelné na některých mobilních operačních systémech být mohou (jak bylo zmíněno v~kapitole \itNameRef{cha:structhodnoc} na straně \pageref{cha:structhodnoc}, prakticky by jejich použitelnost vzhledem k~jejich návrhu grafického rozhraní byla omezená také výhradně na klasické počítače. 
 
@@ -1020,7 +1076,7 @@
 
 				Cílem praktické části této práce bylo vytvořit rozhraní k~sémantickým sítím typu wordnet, které by nebylo zatíženo nedostatky, jež byly pozorovány u rozhraní testovaných v~předchozí části práce. Zřejmě nejrozšířenějším problémem u existujících rozhraní pro webové prohlížeče je jejich do různé míry značná problematičnost použitelnosti na mobilních zařízeních s~malým displejem (u některých naprostá nepoužitelnost). Rozhraní implementovaná ve formě aplikace pro klasické počítače jsou na mobilní zařízení nepřenositelná již ze své podstaty a jejich použitelnost na těchto zařízeních nemůže být hodnocena vůbec, faktem však zůstává, že je jejich nepřenositelnost v~porovnání s~webovými rozhraními diskriminuje. 
 
-				Rozhraní, které je výstupem této práce si tedy klade za cíl umožnit uživatelům přístup k~datům wordnetů odkudkoliv, bez ohledu na to, zda pracují na mobilním telefonu, tabletu či klasickém počítači. Jeho návrh se snaží být technologicky nadčasový, ačkoliv v~tomto aspektu budou ve světě webových technologií, jenž se neustále vyvíjí, pravděpodobně vždy existovat jisté limity. Pro rozhraní vytvořené v~rámci této práce to jsou však v~podstatě pouze požadavky na webový prohlížeč koncového uživatele. Uživatelův prohlížeč musí podporovat technologie ECMAScript verze 6\td{mozna jen 5, ale zatim to na nem nefunguje}\footnote{také známý jako ECMAScript 2015; všeobecně označován jako JavaScript, čehož se bude nadále držet i tato práce}, HTML verze 5 a CSS verze 3. V době psaní této práce rozšířené prohlížeče ve svých aktuálních verzích tyto požadavky splňují. Podrobněji se vysvětlení požadavků na verze věnuje kapitola \itNameRef{cha:techno} na straně \pageref{cha:techno}. 
+				Rozhraní, které je výstupem této práce si tedy klade za cíl umožnit uživatelům přístup k~datům wordnetů odkudkoliv, bez ohledu na to, zda pracují na mobilním telefonu, tabletu či klasickém počítači. Jeho návrh se snaží být technologicky nadčasový, ačkoliv v~tomto aspektu budou ve světě webových technologií, jenž se neustále vyvíjí, pravděpodobně vždy existovat jisté limity. Pro rozhraní vytvořené v~rámci této práce to jsou však v~podstatě pouze požadavky na webový prohlížeč koncového uživatele. Uživatelův prohlížeč musí podporovat technologie ECMAScript verze 6\footnote{také známý jako ECMAScript 2015; všeobecně označován jako JavaScript, čehož se bude nadále držet i tato práce}, HTML verze 5 a CSS verze 3. V~době psaní této práce rozšířené prohlížeče ve svých aktuálních verzích tyto požadavky splňují. Podrobněji se vysvětlení požadavků na verze věnuje kapitola \itNameRef{cha:techno} na straně \pageref{cha:techno}. 
 
 				Rozhraní bylo v~rámci této práce navrženo tak, aby umožňovalo zobrazení dat jak textové, tak grafické. Textové zobrazení je vhodné pro zobrazení synsetů, které obsahují velké množství potomků (hyponyma, meronyma etc.), a mohou v~grafickém rozhraní být nepřehledné. Také se textové rozhraní spíše hodí k~použití na mobilních zařízeních, jelikož se lépe přizpůsobuje velikosti obrazovky. Grafické zobrazení je naopak vhodné pro rychlý přehled míry komplexity synsetu a jeho vztahů. Může sloužit především jako ilustrace daného slovního významu. Textové a grafické zobrazení se vzájemně nedoplňují, ale jsou různým zobrazením týchž dat a je na uživateli, které ze zobrazení je pro něj komfortnější či užitečnější.
 
@@ -1028,7 +1084,7 @@
 
 				Přesto, že existujících rozhraní je dostupných mnoho, žádné z~nich nesplňuje požadavky moderní platformně nezávislé aplikace, jak bylo ukázáno v~části \itNameRef{part:zwei}. Proto vznikl záměr vytvořit takové rozhraní, které by tyto požadavky (do co největší míry) splňovalo. Vzhledem k~původním záměrům samotného WordNetu (a na něj navazujících projektů), mezi nimiž byly například edukativní účely, je nutné, aby rozhraní k~těmto projektům bylo intuitivní, vizuálně přitažlivé a snadno přístupné. Snadná přístupnost například minimalizuje nutnost správné přípravy školních počítačů k~použití takového rozhraní, což opět zvyšuje šance, že aplikace bude skutečně použita.
 
-				S touto vizí tedy byla vytvořena webová aplikace \simplywn (Responsively Awesome Wordnet viewer), která je v~dalších částech této práce prezentována.
+				S touto vizí tedy byla vytvořena webová aplikace \simplywn (Responsivity Aware Wordnet viewer), která je v~dalších částech této práce prezentována.
 
 		\chapter{Prezentace vytvořeného rozhraní}
 		\label{cha:ui}
@@ -1048,7 +1104,14 @@
 			\section{Textová reprezentace}
 			\label{cha:textovarepres}
 
-				Textový režim reprezentace dat je relativně konservativní a snaží se uživateli přinést přehledný a zároveň komplexní výpis nalezených informací. 
+				Textový režim reprezentace dat (ilustrován na obrázku \ref{fig:simplywn_text} na straně \pageref{fig:simplywn_text}) je relativně konservativní a snaží se uživateli přinést přehledný a zároveň komplexní výpis nalezených informací.
+
+				\begin{figure}[h]
+					\centering
+					\includegraphics[width=1.0\textwidth]{simplywn_text.png}
+					\caption{Textová reprezentace dat v~\simplywn}
+					\label{fig:simplywn_text}
+				\end{figure} 
 
 				Hlavní nadpis tvoří výpis slov patřících do zobrazeného synsetu, pod ním je zobrazena definice významu, cesta a další informace, jako například slovní druh či číslo základního konceptu (BCS\footnote{Base Concept Set}). Cestou k~synsetu je míněn seřazený seznam synsetů, přes něž je možno se ze zobrazeného synsetu po relacích hyperonymie dostat ke kořenovému synsetu. Pod tímto blokem s~informacemi uživatel nalezne výpis synsetů, s~nimiž je ten zobrazený provázán sémantickými relacemi. Jednotlivé vztahy jsou rozděleny do sloupců, což přispívá k~lepšímu škálování reprezentace sémantických relací. Uživateli v~této sekci není zobrazena jedna důležitá sémantická relace, a to hyperonymie; synsety k~zobrazenému synsetu nadřazené jsou totiž zobrazeny ve zmíněné cestě.
 
@@ -1066,7 +1129,7 @@
 					\label{fig:simplywn_graph}
 				\end{figure}
 
-				Grafická reprezentace nalezených dat je alternativou k~textové a jejím cílem je především uživateli vizualizovat vztahy, jichž je prohlížený synset členem. Podobně jako textová reprezentace se snaží příliš se neodchylovat způsobem zobrazení od již existujících zobrazení, ale zároveň eliminovat nedostatky v~použitelnosti, jimiž se většina existujících implementací vyznačuje. Jmenovitě grafické zobrazení v~\simplywn vůbec nepoužívá interaktivní prvky typu informačních bublin, jež se zobrazují při přejetí myší. Tyto bubliny jsou velmi oblíbené zřejmě proto, že umožňují bez ztráty přehlednosti celého grafu uživateli přístup k~podrobnějším informacím. Jejich zásadní nevýhoda ovšem tkví v~tom, že na dotykových obrazovkách, jimiž bývají vybavena současná mobilní zařízení, koncept přejetí myší přes prvek neexistuje, protože grafické rozhraní na těchto zařízeních nebývá ovládáno externím technickým vybavením počítače typu myš, které pohybuje po obrazovce kurzorem, ale uživatel používá dotyku svých prstů či stylu a dotek na určitém místě obrazovky znamená obvykle kliknutí. Nelze tedy tak jako u klasických počítačů rozlišit přejetí kurzorem myši a kliknutí a funkcionalita zmíněných informačních bublin je tedy buďto zcela nepřístupná či přístupná jen velmi omezeně. 
+				Grafická reprezentace nalezených dat (ilustrována na obrázku \ref{fig:simplywn_graph} na straně \pageref{fig:simplywn_graph}) je alternativou k~textové a jejím cílem je především uživateli vizualizovat vztahy, jichž je prohlížený synset členem. Podobně jako textová reprezentace se snaží příliš se neodchylovat způsobem zobrazení od již existujících zobrazení, ale zároveň eliminovat nedostatky v~použitelnosti, jimiž se většina existujících implementací vyznačuje. Jmenovitě grafické zobrazení v~\simplywn vůbec nepoužívá interaktivní prvky typu informačních bublin, jež se zobrazují při přejetí myší. Tyto bubliny jsou velmi oblíbené zřejmě proto, že umožňují bez ztráty přehlednosti celého grafu uživateli přístup k~podrobnějším informacím. Jejich zásadní nevýhoda ovšem tkví v~tom, že na dotykových obrazovkách, jimiž bývají vybavena současná mobilní zařízení, koncept přejetí myší přes prvek neexistuje, protože grafické rozhraní na těchto zařízeních nebývá ovládáno externím technickým vybavením počítače typu myš, které pohybuje po obrazovce kurzorem, ale uživatel používá dotyku svých prstů či stylu a dotek na určitém místě obrazovky znamená obvykle kliknutí. Nelze tedy tak jako u klasických počítačů rozlišit přejetí kurzorem myši a kliknutí a funkcionalita zmíněných informačních bublin je tedy buďto zcela nepřístupná či přístupná jen velmi omezeně. 
 
 				Další interaktivita značně rozšířená u existujících vizualizací je možnost tažením uzlu myší přeuspořádat graf. U některých z~vizualizací může taková možnost být užitečná proto, že při větším počtu uzlů se některé uzly překrývají a přetažením lze takový překryv eliminovat (většinou však na úkor rozložení jiné části grafu). Obecně by však při správném nastavení zobrazení taková funkcionalita neměla být potřebná, a proto nebyla zavedena ani do vizualizace \simplywn, které se o správné nastavení snaží. Uzly také nejsou odkazy s~podobnou funkcí jako jsou odkazy v~textové reprezentaci proto, aby bylo možné nerušeně graf táhnout a tím se pohybovat po zvětšeném grafu v~zájmu bližšího prozkoumání jeho částí. Klikatelné uzly by mohly takovouto funkcionalitou uživatele rušit, jelikož by jeho tažení mohlo vyvolat nové hledání místo přechodu na jinou část grafu.
 
@@ -1098,7 +1161,7 @@
 				% 	\label{fig:html3d}
 				% \end{figure}
 
-				Pátá verze HTML je v~aplikaci využita jakožto nejnovější s~ohledem na to, že je podporovaná ve všech moderních prohlížečích. \parencite{html5support} Důležitou motivací pro použití této verze je také podpora prvku \texttt{<canvas>}, který umožňuje vykreslovat do dokumentu grafiku \parencite{w3schools2017htmlcanvas} a s jeho pomocí je implementována grafická reprezentace dat. 
+				Pátá verze HTML je v~aplikaci využita jakožto nejnovější s~ohledem na to, že je podporovaná ve všech moderních prohlížečích. \parencite{html5support} Důležitou motivací pro použití této verze je také podpora prvku \texttt{<canvas>}, který umožňuje vykreslovat do dokumentu grafiku \parencite{w3schools2017htmlcanvas} a s~jeho pomocí je implementována grafická reprezentace dat. 
 
 			\section{JavaScript}
 
@@ -1319,7 +1382,7 @@
 
 				Další částí adresy obsahující informace o stavu aplikace je fragment, tedy řetězec znaků za znakem křížku (\texttt{\#}). Fragment je podobně jako parametry nepovinná část adresy, která se využívá na bližší identifikaci informace v~dokumentu, tedy může být kupříkladu odkazem na podsekci v~dokumentu. \parencite{berners2005uniform} Všeobecně se fragment používá k~odkazování uvnitř dokumentu lokálně na straně uživatele, naproti tomu parametry bývají odesílány na server pro účely parametrizace požadavků. V~rozhraní \simplywn je fragment využíván k~ukládání identifikátoru zvoleného synsetu, který má být uživateli zobrazen.
 
-				Při načtení v~prohlížeči aplikace nejprve zjišťuje, zda adresa obsahuje parametry, ze kterých by se měl obnovit stav. Pokud ne (tedy neobsahuje žádné parametry, či se existující parametry neshodují s~těmi používanými aplikací), je rozhraní uvedeno do výchozího stavu. V~opačném případě proběhne pokus o uvedení rozhraní do stavu odpovídajícího hodnotám parametrů, tedy spustí se vyhledávání podle parametru \texttt{input} ve wordnetu zvoleném podle parametru \texttt{source}. Pokud hledání proběhne úspěšně, zobrazí se v~režimu vizualizace podle parametru \texttt{vis} synset, jehož identifikátor odpovídá fragmentu. Pokud některý z~parametrů chybí nebo neobsahuje platná data, použijí se výchozí pevně nastavené parametry.\td{tohle je nutne doimplementovat do rozhraní, nedela to}
+				Při načtení v~prohlížeči aplikace nejprve zjišťuje, zda adresa obsahuje parametry, ze kterých by se měl obnovit stav. Pokud ne (tedy neobsahuje žádné parametry, či se existující parametry neshodují s~těmi používanými aplikací), je rozhraní uvedeno do výchozího stavu. V~opačném případě proběhne pokus o uvedení rozhraní do stavu odpovídajícího hodnotám parametrů, tedy spustí se vyhledávání podle parametru \texttt{input} ve wordnetu zvoleném podle parametru \texttt{source}. Pokud hledání proběhne úspěšně, zobrazí se v~režimu vizualizace podle parametru \texttt{vis} synset, jehož identifikátor odpovídá fragmentu. Pokud některý z~parametrů chybí nebo neobsahuje platná data, použijí se výchozí pevně nastavené parametry.
 
 		\chapter{Možnosti dalšího vývoje}
 		\label{cha:co-se-nestihlo}
@@ -1341,6 +1404,8 @@
 		\chapter*{Závěr}\label{zaver}
 
 		\addcontentsline{toc}{chapter}{Závěr}
+
+		\markright{ZÁVĚR}{}
 
 			Cílem praktické části práce bylo vytvořit funkční uživatelské rozhraní k~sémantickým sítím typu wordnet. Vlastnosti, které by mělo takové rozhraní mít, byly definovány na základě podrobného empirického rozboru některých existujících rozhraní a rozebrány v~kapitole \itNameRef{cha:navrh}. Byly určeny klíčové nedostatky testovaných rozhraní vzhledem k~rozvoji technologií a trendům v~oblasti toho, jak je rozhraním zpřístupňujícím data přistupováno. Nejrozšířenější nedostatek existujících rozhraní byla jejich nedostatečná univerzalita, tedy (ne)schopnost obsloužit uživatele bez ohledu na to, zda pro přístup k~danému rozhraní chtějí použít mobilní zařízení s~relativně malou obrazovkou, tablet či klasický počítač a bez ohledu na to, který operační systém na svém zařízení používají. Přitom nezávislost na zařízení a platformě je z~dnešního hlediska klíčovou vlastností, ježto poměr uživatelů, kteří pracují na mobilním zařízení, a těch, kteří pracují na klasickém počítači, se stále posouvá ve prospěch těch prvních.
 
@@ -1389,6 +1454,7 @@
  
 	% \begin{spacing}{1.05}
 	\printbibliography[]
+
 	% \printbibliography[title={Seznam literatury}]
 	% \bibliographystyle{alpha}
 	% \bibliography{bibliografie}
